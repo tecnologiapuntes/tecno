@@ -1,0 +1,28 @@
+6 PROMPTS DE IA PARA DOCENTES · @tecnologiainsti
+
+Publicación original: https://www.instagram.com/p/De419FSCD92/?img_index=1
+
+1. PLANIFICA UNA SESIÓN REALISTA
+Prepara una sesión de [materia] para [curso], de [duración], sobre [contenido y objetivo]. Considera [recursos y conocimientos previos]. Distribuye inicio, desarrollo y cierre con tiempos que sumen la duración total. Incluye instrucciones, materiales y una evidencia de aprendizaje. Añade una opción si falta tiempo y una ampliación si sobra.
+
+2. CREA ACTIVIDADES VARIADAS
+Propón cinco actividades para trabajar [contenido y objetivo] en [materia y curso]: individual, en parejas, manipulativa, oral y de cierre. Para cada una, indica duración, materiales, instrucciones y qué evidencia de aprendizaje recoger. Usa [recursos disponibles]. Ofrece alternativas sin dispositivos y soluciones orientativas cuando proceda.
+
+3. ADAPTA MATERIALES Y APOYOS
+Adapta la actividad que adjunto sobre [contenido] para [curso]. Prepara una versión con apoyos y otra de ampliación, manteniendo el objetivo de aprendizaje. Usa instrucciones por pasos, vocabulario aclarado y ejemplos cuando sean necesarios. Describe qué cambias y por qué. Considera estas barreras: [descripción sin datos personales].
+
+4. COMPRUEBA QUÉ HAN APRENDIDO
+Diseña ocho preguntas breves sobre [contenido] para [curso]: dos de recuerdo, tres de comprensión y tres de aplicación. Usa los objetivos y criterios que adjunto, sin inventar referencias curriculares. Añade respuestas justificadas y errores frecuentes. Crea un ticket de salida de dos minutos con dos preguntas e indica qué convendría repasar según las respuestas.
+
+5. PREPARA UNA EXPLICACIÓN CLARA
+Ayúdame a explicar [contenido] en [materia y curso] usando mis apuntes. Redacta una explicación breve con idea principal, ejemplo cotidiano y vocabulario esencial. Señala dos errores frecuentes y cómo abordarlos. Propón una analogía indicando sus límites y dos preguntas para comprobar la comprensión. Marca cualquier dato que deba verificarse.
+
+6. REDACTA MENSAJES CLAROS
+Redacta un mensaje de máximo 120 palabras para [familias o alumnado] sobre [tema]. Usa un tono cercano y profesional. Incluye propósito, acción requerida, materiales, fecha y canal de entrega, solo si los aporto. Si falta un dato, deja un marcador entre corchetes. Termina con una indicación clara. No incluyas datos personales del alumnado.
+
+DEL PROMPT A TU CLASE
+1. Completa: indica materia, curso, objetivo, tiempo y recursos.
+2. Revisa: comprueba contenidos, respuestas y adecuación a tu grupo.
+3. Adapta: ajusta la propuesta después de ponerla en práctica.
+
+La IA propone. Tú decides cómo llevarlo al aula.

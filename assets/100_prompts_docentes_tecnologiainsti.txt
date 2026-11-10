@@ -1,0 +1,127 @@
+100 PROMPTS PARA DOCENTES · @tecnologiainsti
+Transcripción de los 100 ejemplos visibles en el carrusel enviado por el autor.
+
+CÓMO UTILIZARLOS
+Indica la materia y el curso, aporta tus propios contenidos y materiales, explica qué necesitas y concreta el formato. Revisa la exactitud de la información, las operaciones, la ortografía y la adecuación del resultado antes de utilizarlo con el alumnado.
+Estas son indicaciones breves para adaptar, no comandos universales. Algunas requieren aportar una imagen, unos apuntes, un gráfico, un código o unos criterios antes de solicitar el recurso.
+
+BIOLOGÍA Y GEOLOGÍA · 1–12
+01 · Anatomía — Etiqueta los órganos del aparato digestivo para 3.º ESO.
+02 · Esquema — Convierte mis apuntes sobre la célula en un esquema visual.
+03 · Proceso — Explica la digestión en seis pasos con frases breves.
+04 · Ciclo — Representa el ciclo del agua e identifica cada proceso.
+05 · Experimento — Diseña una prueba de germinación variando solo la luz.
+06 · Etiquetas — Señala en esta flor las partes que se distingan con claridad.
+07 · Secuencia — Ordena las fases de la mitosis y explica qué ocurre.
+08 · Comparación — Compara célula animal y vegetal en una tabla ilustrada.
+09 · Infografía — Resume las relaciones alimentarias de un ecosistema.
+10 · Tarjetas — Crea seis tarjetas de orgánulos con función y pregunta.
+11 · Simplificación — Adapta estos apuntes sobre rocas a 1.º ESO sin perder rigor.
+12 · Ficha — Prepara una ficha de ecosistemas con soluciones aparte.
+
+INGLÉS · 13–24
+13 · Tarjetas — Crea ocho tarjetas de vocabulario sobre viajes para 2.º ESO.
+14 · Vocabulario — Extrae vocabulario de esta escena y añade frases de ejemplo.
+15 · Relato — Propón un relato en past simple inspirado en esta imagen.
+16 · Secuencia — Ordena cuatro escenas y descríbelas con conectores temporales.
+17 · Comprensión — Redacta un texto A2 sobre esta escena y cinco preguntas.
+18 · Gramática — Corrige estas frases y explica cada cambio en español.
+19 · Etiquetas — Etiqueta en inglés los objetos visibles de este laboratorio.
+20 · Descripción — Guía una descripción de esta ciudad con there is y there are.
+21 · Asociación — Crea una actividad para unir profesiones con sus definiciones.
+22 · Pronunciación — Prepara ejemplos de las terminaciones -ed: /t/, /d/ e /ɪd/.
+23 · Escritura — Diseña una plantilla para escribir un correo informal A2.
+24 · Ficha — Crea ejercicios de past simple y da las respuestas aparte.
+
+MATEMÁTICAS · 25–36
+25 · Esquema — Redibuja este croquis conservando sus medidas y etiquetas.
+26 · Figuras — Compara prismas y pirámides: bases, caras, aristas y vértices.
+27 · Gráfica — Representa estos datos con ejes, unidades y escala adecuada.
+28 · Fracciones — Explica 3/4 con un modelo de cuatro partes iguales.
+29 · Medidas — Anota las medidas que te doy; no las deduzcas de la foto.
+30 · Resolución — Resuelve 3x + 5 = 20 y comprueba el resultado.
+31 · Geometría — Explica Pitágoras con un triángulo de catetos 3 y 4 cm.
+32 · Recta numérica — Sitúa −2, 0, 3 y 5 en una recta con intervalos iguales.
+33 · Patrones — Explica la sucesión 3, 6, 9, 12 y propón dos continuaciones.
+34 · Tabla — Organiza estos resultados en una tabla de frecuencias.
+35 · Problema — Representa un descuento del 20 % sobre un precio de 50 €.
+36 · Ficha — Crea seis problemas de proporcionalidad con soluciones aparte.
+
+TECNOLOGÍA Y DIGITALIZACIÓN · 37–48
+37 · Diagrama de flujo — Representa las fases de diseño y construcción de un puente.
+38 · Algoritmo — Escribe pseudocódigo para decidir si un número es par.
+39 · Código — Explica este programa de Python línea a línea para 2.º ESO.
+40 · Depuración — Detecta errores en mi código y justifica las correcciones.
+41 · Interfaz — Etiqueta los elementos visibles de esta captura de Tinkercad.
+42 · Redes — Explica router, switch y punto de acceso con un esquema.
+43 · Hardware — Distingue torre, placa base, procesador, memoria y periféricos.
+44 · Iconos — Diseña seis iconos coherentes para un proyecto de reciclaje.
+45 · Infografía — Resume dureza, tenacidad, fragilidad y elasticidad.
+46 · Seguridad digital — Crea un cartel para reconocer mensajes de suplantación.
+47 · Secuencia — Ordena las tareas de un proyecto: diseñar, construir y evaluar.
+48 · Ficha — Diseña una ficha de mecanismos con preguntas y soluciones.
+
+EDUCACIÓN PLÁSTICA Y VISUAL · 49–60
+49 · Boceto — Transforma esta fotografía en un boceto a lápiz de líneas claras.
+50 · Contorno — Extrae el contorno de este objeto conservando sus proporciones.
+51 · Color — Crea una lámina para practicar colores cálidos y fríos.
+52 · Dibujo guiado — Explica cómo dibujar una habitación con un punto de fuga.
+53 · Volumen — Propón una escultura de cartón con materiales y pasos.
+54 · Plegado — Prepara una guía de plegado y comprueba que los pasos encajan.
+55 · Collage — Diseña un collage sobre consumo responsable con estas imágenes.
+56 · Módulo — Crea un patrón geométrico mediante traslación de un módulo.
+57 · Cartel — Diseña un cartel con jerarquía visual para una exposición.
+58 · Diseño — Propón tres bocetos de logotipo para nuestro proyecto escolar.
+59 · Trazado — Convierte este motivo en una plantilla de trazado limpio.
+60 · Ficha — Prepara ejercicios de composición, equilibrio y contraste.
+
+GEOGRAFÍA E HISTORIA · 61–72
+61 · Mapa — Etiqueta los lugares indicados sobre el mapa que adjunto.
+62 · Cronología — Ordena estos hechos históricos respetando las fechas aportadas.
+63 · Personaje — Crea una ficha de este personaje usando las fuentes adjuntas.
+64 · Paisaje — Describe el relieve visible sin inventar su localización.
+65 · Comparación — Compara paisaje rural y urbano con semejanzas y diferencias.
+66 · Causas y efectos — Organiza causas y consecuencias de la Revolución Industrial.
+67 · Proceso — Representa la evolución de una ciudad a partir de mis apuntes.
+68 · Caso práctico — Crea un caso de despoblación rural con preguntas de análisis.
+69 · Población — Interpreta esta pirámide de población usando sus datos reales.
+70 · Economía — Explica los sectores económicos con ejemplos de Andalucía.
+71 · Fuente histórica — Analiza autor, fecha, contexto e intención de esta fuente.
+72 · Ficha — Crea preguntas de un climograma; si falta, pídemelo.
+
+LENGUA CASTELLANA Y LITERATURA · 73–84
+73 · Léxico — Crea tarjetas de términos literarios con definición y ejemplo.
+74 · Descripción — Guía una descripción objetiva y otra subjetiva de esta imagen.
+75 · Narración — Propón un relato con planteamiento, nudo y desenlace.
+76 · Vocabulario — Explica estas palabras según el contexto del texto adjunto.
+77 · Lenguaje figurado — Ilustra una metáfora y explica su sentido figurado.
+78 · Antónimos — Propón antónimos adecuados al contexto de estas oraciones.
+79 · Sinónimos — Sustituye repeticiones sin cambiar el significado del texto.
+80 · Acentuación — Separa estas palabras en sílabas y justifica sus tildes.
+81 · Sintaxis — Analiza sujeto y predicado y explica las pruebas utilizadas.
+82 · Escritura — Diseña una guía para redactar un texto argumentativo.
+83 · Comprensión — Crea preguntas literales, inferenciales y críticas de este texto.
+84 · Ficha — Prepara ejercicios de cohesión con respuestas justificadas.
+
+RECURSOS PARA CUALQUIER MATERIA · 85–96
+85 · Limpieza visual — Redibuja este esquema sin alterar su información.
+86 · Etiquetas — Añade etiquetas a las partes identificables de esta imagen.
+87 · Ideas clave — Destaca las cinco ideas principales de mis apuntes.
+88 · Código de color — Agrupa los conceptos por colores y añade una leyenda.
+89 · Simplificación — Reescribe este contenido con frases claras y ejemplos.
+90 · Infografía — Organiza el tema en título, cuatro bloques y conclusión.
+91 · Tarjetas de repaso — Crea diez tarjetas con pregunta delante y respuesta detrás.
+92 · Secuencia — Divide el procedimiento en pasos numerados y verificables.
+93 · Póster — Diseña un cartel de las normas del taller con pictogramas.
+94 · Ficha imprimible — Crea una ficha A4 con instrucciones y espacio para responder.
+95 · Mapa conceptual — Relaciona conceptos con conectores que expliquen el vínculo.
+96 · Esquema visual — Convierte este texto en un esquema con jerarquía clara.
+
+CUATRO IDEAS EXTRA PARA EL AULA · 97–100
+97 · Cómic · Lengua — Crea un guion de seis viñetas sobre un conflicto entre personajes. Incluye diálogo y una propuesta de ilustración por viñeta.
+98 · Cuestionario · Música — Prepara seis preguntas sobre familias de instrumentos para 1.º ESO. Incluye tres opciones, una respuesta correcta y una explicación.
+99 · Rúbrica · Educación Física — Diseña una rúbrica de una secuencia de expresión corporal con cuatro niveles y descriptores observables. Usa los criterios que adjunto.
+100 · Apoyos · Matemáticas — Adapta esta actividad de proporcionalidad con un ejemplo resuelto, pasos guiados y apoyos visuales. Mantén el objetivo de aprendizaje.
+
+Recuerda: son ejemplos para copiar y adaptar, no instrucciones universales. El resultado depende de la herramienta de inteligencia artificial que utilices y de los materiales que aportes.
+Publicación original: https://www.instagram.com/p/De2Un7qCPAy/?img_index=1
