@@ -61,19 +61,34 @@ window.TECNOLOGIA_POSTS = [
   },
   {
     "id": "ig-DfAuxf2ESYT",
-    "title": "Carrusel de IA · Publicación 07",
+    "title": "«Profe, ya he terminado… ¿ahora qué?»: 7 ideas para docentes",
     "category": "Prompts",
-    "excerpt": "Publicación original de @tecnologiainsti. Accede al carrusel y a su texto mediante la visualización de Instagram.",
-    "content": "PUBLICACIÓN ORIGINAL DE INSTAGRAM\n\nEsta entrada incorpora el enlace directo a la publicación y una visualización integrada de Instagram. La descripción y las imágenes originales se muestran desde Instagram, si la plataforma permite la carga en tu navegador.\n\nPara consultar el carrusel completo, su texto y sus enlaces, utiliza «Abrir publicación original en Instagram».\n\nLas imágenes y los textos del carrusel no se han podido recuperar de forma independiente; no se han recreado ni inventado.",
+    "excerpt": "Siete propuestas breves y adaptables para el alumnado que termina antes, con 14 ejemplos de distintas materias y acceso a las infografías y a un documento con 26 prompts.",
+    "content": "«PROFE, YA HE TERMINADO… ¿AHORA QUÉ?»\n\nUna frase habitual en clase… y también una oportunidad para ofrecer opciones que respeten los distintos ritmos de aprendizaje.\n\nQUÉ INCLUYE ESTE CARRUSEL\n• 7 ideas con ejemplos adaptables a cualquier materia: leer, pensar, explicar con palabras propias, revisar, ayudar con pistas, crear recursos y practicar la lógica.\n• 14 ejemplos de distintas asignaturas para llevarlas al aula con más facilidad.\n• Un enlace con las infografías y un documento con 26 prompts para copiar, pegar y adaptar. Encontrarás plantillas generales, ejemplos desarrollados y propuestas extra de Francés, Educación Física, Plástica y Valores.\n\nLAS 7 IDEAS\n1. Un rato de lectura.\n2. Tarjetas con retos.\n3. Explícalo a tu manera.\n4. Revisa antes de entregar.\n5. Ayuda con pistas.\n6. Crea un recurso.\n7. Un reto de lógica.\n\nCLAVE METODOLÓGICA\nLa propuesta es sencilla: primero revisa la tarea terminada y después ofrece una opción breve, autónoma y con sentido. Así terminar antes no se convierte en una carga extra, sino en una oportunidad para seguir aprendiendo.\n\nRECUERDA\nLa IA puede ayudarte a preparar materiales; tú revisas el contenido y decides qué necesita tu grupo.\n\nEn las imágenes del carrusel puedes ver las 7 propuestas desarrolladas y una lámina final con la idea central: cada ritmo tiene su espacio.",
     "created": "2026-10-27",
     "sourceLinks": [
       {
-        "label": "Abrir publicación original en Instagram",
+        "label": "Abrir infografías y documento con 26 prompts",
+        "url": "https://drive.google.com/drive/folders/1bRWYLd3x78rnkf0oD2PmOGtRLsNVJyDh?usp=sharing"
+      },
+      {
+        "label": "Ver publicación original en Instagram",
         "url": "https://www.instagram.com/p/DfAuxf2ESYT/?img_index=1"
       }
     ],
-    "instagramEmbed": "https://www.instagram.com/p/DfAuxf2ESYT/embed/captioned/",
-    "published": 1
+    "published": 1,
+    "images": [
+      "assets/posts/DfAuxf2ESYT-01.webp",
+      "assets/posts/DfAuxf2ESYT-02.webp",
+      "assets/posts/DfAuxf2ESYT-03.webp",
+      "assets/posts/DfAuxf2ESYT-04.webp",
+      "assets/posts/DfAuxf2ESYT-05.webp",
+      "assets/posts/DfAuxf2ESYT-06.webp",
+      "assets/posts/DfAuxf2ESYT-07.webp",
+      "assets/posts/DfAuxf2ESYT-08.webp",
+      "assets/posts/DfAuxf2ESYT-09.webp"
+    ],
+    "image": "assets/posts/DfAuxf2ESYT-01.webp"
   },
   {
     "id": "ig-De419FSCD92",
