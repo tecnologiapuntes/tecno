@@ -136,7 +136,6 @@ window.TECNOLOGIA_POSTS = [
       "assets/posts/DfAuxf2ESYT-09.webp"
     ],
     "image": "assets/posts/DfAuxf2ESYT-01.webp"
-<<<<<<< HEAD
   },
   {
     "id": "ig-docentes-infografias-ia-12",
@@ -163,8 +162,6 @@ window.TECNOLOGIA_POSTS = [
       "assets/posts/DocentesInfografiasIA12-06.webp",
       "assets/posts/DocentesInfografiasIA12-07.webp"
     ]
-=======
->>>>>>> 9587015bc786ca94da6c0e92735c15609348ae26
   },
   {
     "id": "ig-De419FSCD92",
