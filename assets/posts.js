@@ -28,20 +28,67 @@ window.TECNOLOGIA_POSTS = [
     "created": "2026-11-10"
   },
   {
-    "id": "ig-DfF56eRESF4",
-    "title": "Carrusel de IA · Publicación 09",
+    "id": "ig-DfIdCbnCFGc",
+    "title": "7 estilos visuales con IA: 14 prompts para distintas materias",
     "category": "Prompts",
-    "excerpt": "Publicación original de @tecnologiainsti. Accede al carrusel y a su texto mediante la visualización de Instagram.",
-    "content": "PUBLICACIÓN ORIGINAL DE INSTAGRAM\n\nEsta entrada incorpora el enlace directo a la publicación y una visualización integrada de Instagram. La descripción y las imágenes originales se muestran desde Instagram, si la plataforma permite la carga en tu navegador.\n\nPara consultar el carrusel completo, su texto y sus enlaces, utiliza «Abrir publicación original en Instagram».\n\nLas imágenes y los textos del carrusel no se han podido recuperar de forma independiente; no se han recreado ni inventado.",
+    "excerpt": "Siete estilos visuales para crear imágenes didácticas con IA, con 14 prompts de ejemplo y materiales descargables para adaptar en clase.",
+    "created": "2026-11-12",
+    "content": "7 ESTILOS VISUALES CON IA\n\n¿Quieres crear imágenes para explicar tus temas en clase? Aquí tienes 7 estilos visuales con IA y 14 prompts de ejemplo para docentes de distintas materias.\n\nLOS 7 ESTILOS\n1. Cuaderno naturalista.\n2. Diorama 3D.\n3. Pixel art.\n4. Fieltro ilustrado.\n5. Papel recortado.\n6. Plastilina 3D.\n7. Vista isométrica.\n\nMATERIAS Y EJEMPLOS\nBiología, Geografía, Historia, Tecnología, Matemáticas, Inglés, Lengua, Valores, Plástica y Educación Física.\n\nCÓMO APROVECHARLOS\nElige qué quieres que comprenda tu alumnado, adapta el prompt y acompaña la imagen con una pregunta o una actividad. Revisa siempre los textos, los datos y las etiquetas antes de utilizarla.\n\nDESCARGA\nEn el enlace encontrarás las infografías y el documento Word con los 14 prompts para copiar, pegar y adaptar.\n\nGuarda el carrusel, compártelo con otro docente y cuéntame qué estilo probarías primero y para qué tema. @tecnologiainsti",
+    "sourceLinks": [
+      {
+        "label": "Abrir infografías y Word (14 prompts)",
+        "url": "https://drive.google.com/drive/folders/17yp4MHSLSbIlRVSGdHEvq103TLhJ6KWA"
+      },
+      {
+        "label": "Ver publicación original en Instagram",
+        "url": "https://www.instagram.com/p/DfIdCbnCFGc/?img_index=1"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/DfIdCbnCFGc-01.webp",
+    "images": [
+      "assets/posts/DfIdCbnCFGc-01.webp",
+      "assets/posts/DfIdCbnCFGc-02.webp",
+      "assets/posts/DfIdCbnCFGc-03.webp",
+      "assets/posts/DfIdCbnCFGc-04.webp",
+      "assets/posts/DfIdCbnCFGc-05.webp",
+      "assets/posts/DfIdCbnCFGc-06.webp",
+      "assets/posts/DfIdCbnCFGc-07.webp",
+      "assets/posts/DfIdCbnCFGc-08.webp",
+      "assets/posts/DfIdCbnCFGc-09.webp"
+    ]
+  },
+  {
+    "id": "ig-DfF56eRESF4",
+    "title": "Matemáticas: 10 formas de crear actividades con IA · 20 prompts para ESO",
+    "category": "Prompts",
+    "excerpt": "Diez propuestas para trabajar fracciones, porcentajes, ecuaciones, geometría, funciones y estadística, con 20 prompts e infografías descargables.",
+    "content": "MATEMÁTICAS · 10 FORMAS DE CREAR ACTIVIDADES CON IA\n\n¿Eres docente de Matemáticas? Aquí tienes 10 propuestas y 20 prompts de ejemplo para preparar actividades con IA y hacer pensar a tu alumnado. Son ideas para trabajar fracciones, porcentajes, ecuaciones, geometría, funciones y estadística en ESO.\n\nLAS 10 PROPUESTAS\n1. Problemas con contexto: recetas, compras, escalas y descuentos.\n2. Aprender jugando: juegos de tablero y tarjetas para practicar.\n3. Detectives del error: localizar, explicar y corregir fallos frecuentes.\n4. Retos con niveles: desafíos de dificultad creciente y soluciones razonadas.\n5. Aprender manipulando: tiras de fracciones y figuras recortables.\n6. Preguntas abiertas: investigar, comparar estrategias y justificar resultados.\n7. Estaciones de aprendizaje: actividades variadas y tiempos realistas.\n8. Matemáticas cotidianas: presupuestos y comparación de tarifas.\n9. Actividades multinivel: diferentes apoyos para un mismo objetivo.\n10. Evaluación formativa: comprobar lo aprendido y orientar la mejora.\n\nRECURSOS PARA DESCARGAR\nEn el enlace encontrarás las infografías y un documento Word con 20 prompts: dos ejemplos por propuesta, listos para copiar, pegar y adaptar al contenido y al nivel de tu grupo.\n\nCÓMO APROVECHARLOS\nConcreta qué quieres que aprenda tu alumnado, solicita pistas y soluciones razonadas y comprueba los cálculos antes de llevar las actividades al aula. Anímales a explicar cómo han llegado a cada respuesta.\n\nGuarda el carrusel, compártelo con tu departamento y cuéntame qué actividad probarías primero. @tecnologiainsti",
     "created": "2026-10-29",
     "sourceLinks": [
       {
-        "label": "Abrir publicación original en Instagram",
+        "label": "Abrir documento e infografías (20 prompts)",
+        "url": "https://drive.google.com/drive/folders/1sOato6rq6B7hCCKIYB2YPx1b_EBslpT9?usp=sharing"
+      },
+      {
+        "label": "Ver publicación original en Instagram",
         "url": "https://www.instagram.com/p/DfF56eRESF4/?img_index=1"
       }
     ],
-    "instagramEmbed": "https://www.instagram.com/p/DfF56eRESF4/embed/captioned/",
-    "published": 1
+    "published": 1,
+    "image": "assets/posts/DfF56eRESF4-01.webp",
+    "images": [
+      "assets/posts/DfF56eRESF4-01.webp",
+      "assets/posts/DfF56eRESF4-02.webp",
+      "assets/posts/DfF56eRESF4-03.webp",
+      "assets/posts/DfF56eRESF4-04.webp",
+      "assets/posts/DfF56eRESF4-05.webp",
+      "assets/posts/DfF56eRESF4-06.webp",
+      "assets/posts/DfF56eRESF4-07.webp",
+      "assets/posts/DfF56eRESF4-08.webp",
+      "assets/posts/DfF56eRESF4-09.webp",
+      "assets/posts/DfF56eRESF4-10.webp"
+    ]
   },
   {
     "id": "ig-DfDTe6GEcKu",
@@ -89,6 +136,32 @@ window.TECNOLOGIA_POSTS = [
       "assets/posts/DfAuxf2ESYT-09.webp"
     ],
     "image": "assets/posts/DfAuxf2ESYT-01.webp"
+  },
+  {
+    "id": "ig-docentes-infografias-ia-12",
+    "title": "Crea infografías y láminas con IA: 12 prompts para distintas materias",
+    "category": "Prompts",
+    "excerpt": "Doce ejemplos para transformar contenidos en capas, partes, vistas interiores, líneas del tiempo, comparaciones y diagramas de pasos o decisiones.",
+    "created": "2026-11-10",
+    "content": "CREA INFOGRAFÍAS Y LÁMINAS CON IA\n\nConvierte los contenidos de tu materia en imágenes útiles para tus clases con ayuda de la IA. Este carrusel reúne 12 prompts de ejemplo y varias ideas visuales que puedes adaptar a lo que estés trabajando en el aula.\n\nQUÉ ENCONTRARÁS\n• Capas de la Tierra, partes de una guitarra, interior de una vivienda y línea del tiempo, entre otros ejemplos.\n• 6 formatos para explicar contenidos: capas, partes y etiquetas, vistas del interior, líneas del tiempo, comparaciones y pasos o decisiones.\n• Ejemplos de Biología y Geología, Tecnología, Música, Geografía e Historia, Lengua y Literatura, Física y Química, Educación Plástica, Matemáticas y Computación y Robótica.\n• Un enlace con las infografías, un documento Word con los 12 prompts listos para copiar y pegar y una plantilla para crear tus propios ejemplos.\n\nCÓMO USARLO\nConcreta el tema, el curso y lo que quieres que aparezca. Después, revisa los textos, las etiquetas y los datos antes de llevar el resultado a clase.\n\nIDEA CLAVE\nLa IA puede ayudarte a crear el recurso visual; el criterio docente sigue siendo imprescindible para comprobar que el contenido sea correcto, claro y útil.\n\nEn las imágenes del carrusel puedes ver la portada, seis formatos explicados con ejemplos y una lámina final con recomendaciones para pasar de la idea al recurso visual.",
+    "sourceLinks": [
+      {
+        "label": "Abrir documento",
+        "url": "https://drive.google.com/drive/folders/1QKIMJfV-viE6nieyDkDZzxdl4noumekS?usp=sharing"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/DocentesInfografiasIA12-cover.webp",
+    "images": [
+      "assets/posts/DocentesInfografiasIA12-cover.webp",
+      "assets/posts/DocentesInfografiasIA12-01.webp",
+      "assets/posts/DocentesInfografiasIA12-02.webp",
+      "assets/posts/DocentesInfografiasIA12-03.webp",
+      "assets/posts/DocentesInfografiasIA12-04.webp",
+      "assets/posts/DocentesInfografiasIA12-05.webp",
+      "assets/posts/DocentesInfografiasIA12-06.webp",
+      "assets/posts/DocentesInfografiasIA12-07.webp"
+    ]
   },
   {
     "id": "ig-De419FSCD92",
