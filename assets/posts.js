@@ -1,31 +1,110 @@
 // Edita este archivo para añadir o actualizar publicaciones.
 window.TECNOLOGIA_POSTS = [
   {
-    "id": "intro-seneca",
-    "title": "Antes de configurar tu cuaderno",
-    "category": "Cuaderno de Séneca",
-    "excerpt": "Una pequeña guía de planificación para ordenar la evaluación antes de trasladarla a la herramienta.",
-    "content": "Empieza por la planificación didáctica:\n\n• Define qué aprendizaje quieres observar.\n• Decide qué tarea permitirá mostrarlo.\n• Elige las evidencias que vas a recoger.\n• Prepara un instrumento de evaluación comprensible.\n• Comprueba la relación con los criterios aplicables a tu materia y curso.\n\nEsta entrada es una guía de organización; no describe menús concretos de Séneca. Las instrucciones de uso se podrán incorporar como nuevas publicaciones con sus capturas y archivos.",
-    "published": 1,
-    "created": "2026-11-10"
-  },
-  {
-    "id": "intro-prompt",
-    "title": "Un buen prompt empieza con un buen contexto",
+    "id": "ig-Dfkzw_JEQMY",
+    "title": "Adapta exámenes con IA · 8 prompts y 16 ejemplos",
     "category": "Prompts",
-    "excerpt": "Una plantilla adaptable para preparar actividades con IA, sin perder tu criterio docente.",
-    "content": "PLANTILLA PARA COPIAR\n\nActúa como docente de [materia] de [curso]. Diseña una actividad sobre [tema] para un grupo con [características generales, sin datos personales]. Disponemos de [sesiones] y de [materiales].\n\nIncluye: objetivo de aprendizaje, instrucciones claras para el alumnado, materiales, pasos, una propuesta de apoyo y un reto de ampliación. Propón evidencias observables para evaluar.\n\nAntes de responder, pregunta por cualquier dato imprescindible que falte. No inventes referencias normativas.\n\nANTES DE LLEVARLO AL AULA\nRevisa la exactitud, ajusta la dificultad y comprueba que los materiales y los tiempos son realistas. No introduzcas datos personales del alumnado.",
+    "excerpt": "Ocho prompts con ejemplos de exámenes originales y con apoyos: TDAH, dislexia, TEA, discalculia, altas capacidades, capacidad intelectual límite, disortografía y TDL.",
+    "created": "2026-11-12",
+    "content": "ADAPTA EXÁMENES PARA DISTINTAS NECESIDADES DE APRENDIZAJE\n¿Quieres preparar pruebas más accesibles con ayuda de la IA sin perder de vista lo que debes evaluar? Este carrusel reúne 8 prompts y 16 ejemplos visuales de enunciados originales y con apoyos, para adaptar a tu materia y curso.\n\nOCHO PROPUESTAS PARA EL AULA\n1. TDAH: dividir consignas, organizar datos, reservar espacio de trabajo y añadir una revisión final.\n2. Dislexia: mejorar la legibilidad y separar las preguntas sin simplificar lo que se evalúa.\n3. TEA: ofrecer instrucciones explícitas, pasos delimitados y estructura predecible.\n4. Discalculia: ordenar operaciones, cifras y espacios de cálculo manteniendo el objetivo matemático.\n5. Altas capacidades: ofrecer opciones de respuesta y ampliación de análisis sin tareas repetitivas.\n6. Capacidad intelectual límite: presentar la tarea de forma clara y estructurada, con los apoyos acordados.\n7. Disortografía: distinguir los criterios de contenido de los de corrección ortográfica cuando corresponda.\n8. TDL: redactar consignas directas, con una acción por apartado y vocabulario accesible.\n\nCÓMO USAR LOS PROMPTS\nIdentifica el aprendizaje y los criterios de evaluación; describe las barreras observadas sin incluir datos personales. Pide a la IA una propuesta de adaptación, revisa qué se ha cambiado y comprueba que los apoyos no revelan respuestas ni modifican la exigencia de forma inadvertida. Valida los ajustes con el equipo docente y de orientación cuando corresponda.\n\nQUÉ ENCONTRARÁS EN EL CARRUSEL\n• Portada y 8 láminas con comparaciones «original / con apoyos».\n• El texto de cada prompt para copiar y adaptar a otras asignaturas.\n• Una lámina final con cinco comprobaciones antes de utilizar el examen.\n\nRECUERDA\nLas etiquetas diagnósticas no determinan automáticamente un mismo tipo de apoyo para todo el alumnado. La IA ayuda a preparar borradores; las adaptaciones deben responder a necesidades reales y revisarse por el profesorado.\n\nGuarda el carrusel, compártelo con tu claustro y cuéntame qué medida te resulta más útil en tus clases. @tecnologiainsti",
+    "sourceLinks": [
+      {
+        "label": "Copiar los 8 prompts en texto",
+        "url": "assets/8_prompts_adaptar_examenes.txt"
+      },
+      {
+        "label": "Ver publicación original en Instagram",
+        "url": "https://www.instagram.com/p/Dfkzw_JEQMY/"
+      }
+    ],
     "published": 1,
-    "created": "2026-11-10"
+    "image": "assets/posts/Dfkzw_JEQMY-01.webp",
+    "images": [
+      "assets/posts/Dfkzw_JEQMY-01.webp",
+      "assets/posts/Dfkzw_JEQMY-02.webp",
+      "assets/posts/Dfkzw_JEQMY-03.webp",
+      "assets/posts/Dfkzw_JEQMY-04.webp",
+      "assets/posts/Dfkzw_JEQMY-05.webp",
+      "assets/posts/Dfkzw_JEQMY-06.webp",
+      "assets/posts/Dfkzw_JEQMY-07.webp",
+      "assets/posts/Dfkzw_JEQMY-08.webp",
+      "assets/posts/Dfkzw_JEQMY-09.webp",
+      "assets/posts/Dfkzw_JEQMY-10.webp"
+    ]
   },
   {
-    "id": "intro-project",
-    "title": "Del boceto al prototipo: una ficha para empezar",
-    "category": "2º ESO",
-    "excerpt": "Cinco preguntas para convertir una idea de Tecnología en un proyecto de aula.",
-    "content": "Antes de construir, cada equipo responde:\n\n1. ¿Qué problema queremos resolver y para quién?\n2. ¿Qué condiciones debe cumplir la solución?\n3. ¿Qué materiales y herramientas tenemos?\n4. ¿Cómo será nuestro primer prototipo? Dibujad un boceto y señalad sus partes.\n5. ¿Cómo comprobaremos que funciona?\n\nDespués de la prueba, registrad qué ha funcionado, qué cambiaríais y por qué. Acompañad el proceso con fotos del objeto, evitando mostrar datos personales.\n\nReto de mejora: conseguid el mismo resultado usando menos material y explicad qué decisiones habéis tomado.",
+    "id": "ig-DfajIKgkV8f",
+    "title": "19 formas de crear materiales educativos con IA · 38 prompts",
+    "category": "Prompts",
+    "excerpt": "19 propuestas para Secundaria, 20 infografías y 38 prompts editables en Word: esquemas, fichas, juegos, cómics, lapbooks y mucho más.",
+    "created": "2026-11-12",
+    "content": "19 FORMAS DE CREAR MATERIALES EDUCATIVOS CON IA\nUna colección para docentes de Secundaria con propuestas de distintas materias: esquemas, fichas, tarjetas, lapbooks, cómics y juegos para adaptar a tu alumnado.\n\nQUÉ PUEDES DESCARGAR\n• Las 20 imágenes del carrusel: portada y 19 propuestas explicadas con ejemplos.\n• Un documento Word con 38 prompts editables: 19 ejemplos y 19 plantillas para crear materiales con tus propios contenidos.\n\nLAS 19 PROPUESTAS\nOrganizar y explicar: esquema visual, tabla comparativa, mapa mental, proceso paso a paso, línea del tiempo, causa y efecto, diagrama de Venn y pirámide de conceptos.\nPracticar y repasar: ficha de refuerzo, tarjetas recortables, pasatiempo educativo, resumen 3-2-1, ruleta de observación, marcapáginas educativos y dominó educativo.\nCrear y adaptar: lapbook, opciones de acceso y respuesta, guion de minidocumental y cómic educativo.\n\nCÓMO UTILIZARLOS\nElige una propuesta, indica la materia, el curso y el objetivo, y copia el prompt correspondiente. Adapta el contenido y revisa las explicaciones, los datos y las soluciones antes de utilizar el material en el aula.\n\nRECURSOS Y DESCARGAS\nEn el enlace tienes las 20 infografías y el Word con los 38 prompts para copiar, pegar y adaptar.\n\nSÍGUEME Y COMPARTE\nSi te resulta útil, sígueme en @tecnologiainsti. Guarda el carrusel y compártelo con tus compañeros o en tus historias para que llegue a más docentes. ¡Etiquétame si lo compartes!\n¿Qué probarías primero: el cómic, el lapbook o el dominó? Te leo en comentarios.",
+    "sourceLinks": [
+      {
+        "label": "Descargar 20 infografías y Word con 38 prompts",
+        "url": "https://drive.google.com/drive/folders/1xhuhYuEt669XLSlnlecPjGaOfiWSmoex?usp=sharing"
+      },
+      {
+        "label": "Ver el carrusel original en Instagram",
+        "url": "https://www.instagram.com/p/DfajIKgkV8f/"
+      }
+    ],
     "published": 1,
-    "created": "2026-11-10"
+    "image": "assets/posts/DfajIKgkV8f-01.webp",
+    "images": [
+      "assets/posts/DfajIKgkV8f-01.webp",
+      "assets/posts/DfajIKgkV8f-02.webp",
+      "assets/posts/DfajIKgkV8f-03.webp",
+      "assets/posts/DfajIKgkV8f-04.webp",
+      "assets/posts/DfajIKgkV8f-05.webp",
+      "assets/posts/DfajIKgkV8f-06.webp",
+      "assets/posts/DfajIKgkV8f-07.webp",
+      "assets/posts/DfajIKgkV8f-08.webp",
+      "assets/posts/DfajIKgkV8f-09.webp",
+      "assets/posts/DfajIKgkV8f-10.webp",
+      "assets/posts/DfajIKgkV8f-11.webp",
+      "assets/posts/DfajIKgkV8f-12.webp",
+      "assets/posts/DfajIKgkV8f-13.webp",
+      "assets/posts/DfajIKgkV8f-14.webp",
+      "assets/posts/DfajIKgkV8f-15.webp",
+      "assets/posts/DfajIKgkV8f-16.webp",
+      "assets/posts/DfajIKgkV8f-17.webp",
+      "assets/posts/DfajIKgkV8f-18.webp",
+      "assets/posts/DfajIKgkV8f-19.webp",
+      "assets/posts/DfajIKgkV8f-20.webp"
+    ]
+  },
+  {
+    "id": "ig-DfCienciasIA3D",
+    "title": "Ciencias con IA: 8 propuestas y 16 prompts con aspecto 3D",
+    "category": "Prompts",
+    "excerpt": "Ocho propuestas y dieciséis prompts para crear ilustraciones didácticas con aspecto 3D sobre el ojo, la célula vegetal, la piel, las flores, el oído, la Tierra y la atmósfera.",
+    "created": "2026-11-12",
+    "content": "CIENCIAS CON IA\n\n¿Eres docente y quieres crear imágenes para explicar ciencias en clase? Este carrusel reúne 8 propuestas y 16 prompts para preparar ilustraciones con aspecto 3D y actividades listas para adaptar.\n\nQUÉ ENCONTRARÁS\n• Ejemplos sobre el ojo humano, la célula vegetal, la piel, las partes de la flor, el interior de la flor, el oído, la estructura interna de la Tierra y las capas de la atmósfera.\n• Ideas para Biología y Geología, con conexiones con Física y Geografía.\n• Prompts que puedes copiar, pegar y ajustar al nivel, al tema y a lo que quieres que comprenda tu alumnado.\n\nCÓMO APROVECHARLO\n• Pide versiones con y sin etiquetas para repasar.\n• Añade preguntas de comparación, actividades de observación o pequeñas secuencias.\n• Revisa siempre textos, etiquetas, proporciones y simplificaciones antes de usar el resultado en clase.\n\nDESCARGA\nEn el enlace tienes las infografías y el documento Word con los 16 prompts listos para copiar, pegar y adaptar.\n\nAVISO IMPORTANTE\nSon imágenes con apariencia 3D, no modelos digitales manipulables. La estética puede ayudar a comprender, pero no sustituye la revisión científica del contenido.\n\nGuarda este carrusel, compártelo con tu departamento y cuéntame qué tema convertirías en tu próximo recurso visual. @tecnologiainsti",
+    "sourceLinks": [
+      {
+        "label": "Abrir infografías y Word (16 prompts)",
+        "url": "https://drive.google.com/drive/folders/1FHBJTn1ojbamUIfEMRG9iwalBHlBZ4DZ?usp=sharing"
+      },
+      {
+        "label": "Ver el perfil de @tecnologiainsti en Instagram",
+        "url": "https://www.instagram.com/tecnologiainsti/"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/DfCienciasIA3D-01.webp",
+    "images": [
+      "assets/posts/DfCienciasIA3D-01.webp",
+      "assets/posts/DfCienciasIA3D-02.webp",
+      "assets/posts/DfCienciasIA3D-03.webp",
+      "assets/posts/DfCienciasIA3D-04.webp",
+      "assets/posts/DfCienciasIA3D-05.webp",
+      "assets/posts/DfCienciasIA3D-06.webp",
+      "assets/posts/DfCienciasIA3D-07.webp",
+      "assets/posts/DfCienciasIA3D-08.webp",
+      "assets/posts/DfCienciasIA3D-09.webp",
+      "assets/posts/DfCienciasIA3D-10.webp"
+    ]
   },
   {
     "id": "ig-DfIdCbnCFGc",
@@ -56,6 +135,32 @@ window.TECNOLOGIA_POSTS = [
       "assets/posts/DfIdCbnCFGc-07.webp",
       "assets/posts/DfIdCbnCFGc-08.webp",
       "assets/posts/DfIdCbnCFGc-09.webp"
+    ]
+  },
+  {
+    "id": "ig-docentes-infografias-ia-12",
+    "title": "Crea infografías y láminas con IA: 12 prompts para distintas materias",
+    "category": "Prompts",
+    "excerpt": "Doce ejemplos para transformar contenidos en capas, partes, vistas interiores, líneas del tiempo, comparaciones y diagramas de pasos o decisiones.",
+    "created": "2026-11-10",
+    "content": "CREA INFOGRAFÍAS Y LÁMINAS CON IA\n\nConvierte los contenidos de tu materia en imágenes útiles para tus clases con ayuda de la IA. Este carrusel reúne 12 prompts de ejemplo y varias ideas visuales que puedes adaptar a lo que estés trabajando en el aula.\n\nQUÉ ENCONTRARÁS\n• Capas de la Tierra, partes de una guitarra, interior de una vivienda y línea del tiempo, entre otros ejemplos.\n• 6 formatos para explicar contenidos: capas, partes y etiquetas, vistas del interior, líneas del tiempo, comparaciones y pasos o decisiones.\n• Ejemplos de Biología y Geología, Tecnología, Música, Geografía e Historia, Lengua y Literatura, Física y Química, Educación Plástica, Matemáticas y Computación y Robótica.\n• Un enlace con las infografías, un documento Word con los 12 prompts listos para copiar y pegar y una plantilla para crear tus propios ejemplos.\n\nCÓMO USARLO\nConcreta el tema, el curso y lo que quieres que aparezca. Después, revisa los textos, las etiquetas y los datos antes de llevar el resultado a clase.\n\nIDEA CLAVE\nLa IA puede ayudarte a crear el recurso visual; el criterio docente sigue siendo imprescindible para comprobar que el contenido sea correcto, claro y útil.\n\nEn las imágenes del carrusel puedes ver la portada, seis formatos explicados con ejemplos y una lámina final con recomendaciones para pasar de la idea al recurso visual.",
+    "sourceLinks": [
+      {
+        "label": "Abrir documento",
+        "url": "https://drive.google.com/drive/folders/1QKIMJfV-viE6nieyDkDZzxdl4noumekS?usp=sharing"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/DocentesInfografiasIA12-cover.webp",
+    "images": [
+      "assets/posts/DocentesInfografiasIA12-cover.webp",
+      "assets/posts/DocentesInfografiasIA12-01.webp",
+      "assets/posts/DocentesInfografiasIA12-02.webp",
+      "assets/posts/DocentesInfografiasIA12-03.webp",
+      "assets/posts/DocentesInfografiasIA12-04.webp",
+      "assets/posts/DocentesInfografiasIA12-05.webp",
+      "assets/posts/DocentesInfografiasIA12-06.webp",
+      "assets/posts/DocentesInfografiasIA12-07.webp"
     ]
   },
   {
@@ -91,22 +196,6 @@ window.TECNOLOGIA_POSTS = [
     ]
   },
   {
-    "id": "ig-DfDTe6GEcKu",
-    "title": "Carrusel de IA · Publicación 08",
-    "category": "Prompts",
-    "excerpt": "Publicación original de @tecnologiainsti. Accede al carrusel y a su texto mediante la visualización de Instagram.",
-    "content": "PUBLICACIÓN ORIGINAL DE INSTAGRAM\n\nEsta entrada incorpora el enlace directo a la publicación y una visualización integrada de Instagram. La descripción y las imágenes originales se muestran desde Instagram, si la plataforma permite la carga en tu navegador.\n\nPara consultar el carrusel completo, su texto y sus enlaces, utiliza «Abrir publicación original en Instagram».\n\nLas imágenes y los textos del carrusel no se han podido recuperar de forma independiente; no se han recreado ni inventado.",
-    "created": "2026-10-28",
-    "sourceLinks": [
-      {
-        "label": "Abrir publicación original en Instagram",
-        "url": "https://www.instagram.com/p/DfDTe6GEcKu/?img_index=1"
-      }
-    ],
-    "instagramEmbed": "https://www.instagram.com/p/DfDTe6GEcKu/embed/captioned/",
-    "published": 1
-  },
-  {
     "id": "ig-DfAuxf2ESYT",
     "title": "«Profe, ya he terminado… ¿ahora qué?»: 7 ideas para docentes",
     "category": "Prompts",
@@ -136,32 +225,6 @@ window.TECNOLOGIA_POSTS = [
       "assets/posts/DfAuxf2ESYT-09.webp"
     ],
     "image": "assets/posts/DfAuxf2ESYT-01.webp"
-  },
-  {
-    "id": "ig-docentes-infografias-ia-12",
-    "title": "Crea infografías y láminas con IA: 12 prompts para distintas materias",
-    "category": "Prompts",
-    "excerpt": "Doce ejemplos para transformar contenidos en capas, partes, vistas interiores, líneas del tiempo, comparaciones y diagramas de pasos o decisiones.",
-    "created": "2026-11-10",
-    "content": "CREA INFOGRAFÍAS Y LÁMINAS CON IA\n\nConvierte los contenidos de tu materia en imágenes útiles para tus clases con ayuda de la IA. Este carrusel reúne 12 prompts de ejemplo y varias ideas visuales que puedes adaptar a lo que estés trabajando en el aula.\n\nQUÉ ENCONTRARÁS\n• Capas de la Tierra, partes de una guitarra, interior de una vivienda y línea del tiempo, entre otros ejemplos.\n• 6 formatos para explicar contenidos: capas, partes y etiquetas, vistas del interior, líneas del tiempo, comparaciones y pasos o decisiones.\n• Ejemplos de Biología y Geología, Tecnología, Música, Geografía e Historia, Lengua y Literatura, Física y Química, Educación Plástica, Matemáticas y Computación y Robótica.\n• Un enlace con las infografías, un documento Word con los 12 prompts listos para copiar y pegar y una plantilla para crear tus propios ejemplos.\n\nCÓMO USARLO\nConcreta el tema, el curso y lo que quieres que aparezca. Después, revisa los textos, las etiquetas y los datos antes de llevar el resultado a clase.\n\nIDEA CLAVE\nLa IA puede ayudarte a crear el recurso visual; el criterio docente sigue siendo imprescindible para comprobar que el contenido sea correcto, claro y útil.\n\nEn las imágenes del carrusel puedes ver la portada, seis formatos explicados con ejemplos y una lámina final con recomendaciones para pasar de la idea al recurso visual.",
-    "sourceLinks": [
-      {
-        "label": "Abrir documento",
-        "url": "https://drive.google.com/drive/folders/1QKIMJfV-viE6nieyDkDZzxdl4noumekS?usp=sharing"
-      }
-    ],
-    "published": 1,
-    "image": "assets/posts/DocentesInfografiasIA12-cover.webp",
-    "images": [
-      "assets/posts/DocentesInfografiasIA12-cover.webp",
-      "assets/posts/DocentesInfografiasIA12-01.webp",
-      "assets/posts/DocentesInfografiasIA12-02.webp",
-      "assets/posts/DocentesInfografiasIA12-03.webp",
-      "assets/posts/DocentesInfografiasIA12-04.webp",
-      "assets/posts/DocentesInfografiasIA12-05.webp",
-      "assets/posts/DocentesInfografiasIA12-06.webp",
-      "assets/posts/DocentesInfografiasIA12-07.webp"
-    ]
   },
   {
     "id": "ig-De419FSCD92",
@@ -339,5 +402,32 @@ window.TECNOLOGIA_POSTS = [
     ],
     "image": "assets/posts/DepK1t6CGZ2-01.webp",
     "published": 1
+  },
+  {
+    "id": "intro-seneca",
+    "title": "Antes de configurar tu cuaderno",
+    "category": "Cuaderno de Séneca",
+    "excerpt": "Una pequeña guía de planificación para ordenar la evaluación antes de trasladarla a la herramienta.",
+    "content": "Empieza por la planificación didáctica:\n\n• Define qué aprendizaje quieres observar.\n• Decide qué tarea permitirá mostrarlo.\n• Elige las evidencias que vas a recoger.\n• Prepara un instrumento de evaluación comprensible.\n• Comprueba la relación con los criterios aplicables a tu materia y curso.\n\nEsta entrada es una guía de organización; no describe menús concretos de Séneca. Las instrucciones de uso se podrán incorporar como nuevas publicaciones con sus capturas y archivos.",
+    "published": 1,
+    "created": "2026-11-10"
+  },
+  {
+    "id": "intro-prompt",
+    "title": "Un buen prompt empieza con un buen contexto",
+    "category": "Prompts",
+    "excerpt": "Una plantilla adaptable para preparar actividades con IA, sin perder tu criterio docente.",
+    "content": "PLANTILLA PARA COPIAR\n\nActúa como docente de [materia] de [curso]. Diseña una actividad sobre [tema] para un grupo con [características generales, sin datos personales]. Disponemos de [sesiones] y de [materiales].\n\nIncluye: objetivo de aprendizaje, instrucciones claras para el alumnado, materiales, pasos, una propuesta de apoyo y un reto de ampliación. Propón evidencias observables para evaluar.\n\nAntes de responder, pregunta por cualquier dato imprescindible que falte. No inventes referencias normativas.\n\nANTES DE LLEVARLO AL AULA\nRevisa la exactitud, ajusta la dificultad y comprueba que los materiales y los tiempos son realistas. No introduzcas datos personales del alumnado.",
+    "published": 1,
+    "created": "2026-11-10"
+  },
+  {
+    "id": "intro-project",
+    "title": "Del boceto al prototipo: una ficha para empezar",
+    "category": "2º ESO",
+    "excerpt": "Cinco preguntas para convertir una idea de Tecnología en un proyecto de aula.",
+    "content": "Antes de construir, cada equipo responde:\n\n1. ¿Qué problema queremos resolver y para quién?\n2. ¿Qué condiciones debe cumplir la solución?\n3. ¿Qué materiales y herramientas tenemos?\n4. ¿Cómo será nuestro primer prototipo? Dibujad un boceto y señalad sus partes.\n5. ¿Cómo comprobaremos que funciona?\n\nDespués de la prueba, registrad qué ha funcionado, qué cambiaríais y por qué. Acompañad el proceso con fotos del objeto, evitando mostrar datos personales.\n\nReto de mejora: conseguid el mismo resultado usando menos material y explicad qué decisiones habéis tomado.",
+    "published": 1,
+    "created": "2026-11-10"
   }
 ];

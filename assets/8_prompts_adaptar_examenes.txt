@@ -1,0 +1,38 @@
+ADAPTA EXÁMENES PARA ALUMNADO CON DIFICULTADES DE APRENDIZAJE
+8 PROMPTS PARA COPIAR, PEGAR Y ADAPTAR · @tecnologiainsti
+
+INSTRUCCIONES DE USO
+Sustituye los elementos entre corchetes por la información de tu clase, sin añadir datos personales del alumnado. La IA propone borradores; revisa siempre criterios, contenidos, exigencia, apoyos acordados y respuestas antes de usar la prueba.
+
+01 · TDAH · ORGANIZACIÓN Y ATENCIÓN
+Adapta el examen de [MATERIA] y [CURSO] a las dificultades de atención y planificación descritas en [NECESIDADES]. Mantén los criterios y la demanda cognitiva. Separa tareas, numera instrucciones y añade espacios de trabajo y una lista de revisión. No indiques las operaciones si elegirlas es parte de lo evaluado. Entrega la prueba y explica los cambios para revisión docente.
+
+02 · DISLEXIA · ACCESO A LA LECTURA
+Adapta la presentación del examen de [MATERIA] y [CURSO] para las dificultades lectoras descritas en [NECESIDADES]. Usa letra legible, alineación izquierda, interlineado amplio y preguntas separadas. Conserva el texto si su lectura es objeto de evaluación. No señales respuestas ni simplifiques inferencias. Propón apoyos compatibles con el objetivo. Entrega la prueba y una explicación de los cambios.
+
+03 · TEA · INSTRUCCIONES CLARAS
+Adapta el examen de [MATERIA] y [CURSO] según las necesidades de comprensión y anticipación indicadas en [NECESIDADES]. Usa instrucciones literales, estructura estable y tareas claramente delimitadas. Explica qué hacer, dónde responder y cómo saber que se ha terminado. Mantén los aprendizajes y criterios. Evita apoyos que revelen respuestas. Entrega la prueba y justifica cada cambio para revisión docente.
+
+04 · DISCALCULIA · ORGANIZACIÓN NUMÉRICA
+Adapta el formato del examen de Matemáticas de [CURSO] a [NECESIDADES]. Separa ejercicios, alinea cifras y ofrece espacio para organizar datos y cálculos. Conserva números, operaciones y razonamiento evaluado. No añadas resultados ni procedimientos que formen parte de la respuesta. Propón calculadora u otros apoyos solo si son compatibles con el objetivo y están acordados. Explica los cambios.
+
+05 · ALTAS CAPACIDADES · ENRIQUECIMIENTO
+Revisa el examen de [MATERIA] y [CURSO] para ofrecer enriquecimiento según [INTERESES Y NECESIDADES]. Mantén una parte común con los mismos criterios y evidencias. Propón opciones equivalentes de respuesta y una ampliación opcional de análisis o transferencia, sin más ejercicios repetitivos. Separa su valoración de la parte común y explica cualquier cambio de exigencia. Entrega la propuesta para revisión docente.
+
+06 · CAPACIDAD INTELECTUAL LÍMITE · ESTRUCTURA Y APOYOS
+Adapta la presentación del examen de [MATERIA] y [CURSO] a [NECESIDADES Y APOYOS ACORDADOS]. Usa instrucciones breves, tareas delimitadas y organizadores vacíos para responder. Mantén los objetivos y criterios indicados. No reduzcas contenidos ni cambies la rúbrica automáticamente. Si una propuesta modifica lo evaluado, identifícala por separado para decisión del equipo docente y orientación. Explica los cambios.
+
+07 · DISORTOGRAFÍA · EXPRESIÓN ESCRITA
+Analiza el examen de [MATERIA] y [CURSO] y distingue las tareas que evalúan ortografía de las que evalúan otros aprendizajes. Según [CRITERIOS Y APOYOS ACORDADOS], añade espacio de planificación y revisión. No elimines criterios ortográficos si son el objetivo. Separa el feedback del contenido y de la escritura y evita penalizaciones duplicadas. Entrega la prueba y señala las decisiones que debe validar el docente.
+
+08 · TDL · TRASTORNO DEL DESARROLLO DEL LENGUAJE
+Adapta las instrucciones del examen de [MATERIA] y [CURSO] a las necesidades de lenguaje descritas en [NECESIDADES]. Usa frases directas y una acción por apartado. Aclara vocabulario de las consignas que no sea objeto de evaluación. Conserva las inferencias y conceptos evaluados. No conviertas respuestas abiertas en test sin señalar el cambio. Entrega la prueba y explica los apoyos para revisión docente.
+
+COMPROBACIONES FINALES
+1. Define qué aprendizaje evalúas.
+2. Elige apoyos según las necesidades observadas y acordadas.
+3. Comprueba que no se facilitan respuestas.
+4. Revisa criterios, puntuación y formato.
+5. No incluyas datos personales en herramientas de IA.
+
+© Adaptación y diseño de recursos educativos: @tecnologiainsti.
