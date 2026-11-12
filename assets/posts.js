@@ -1,4 +1,3 @@
-// Edita este archivo para añadir o actualizar publicaciones.
 window.TECNOLOGIA_POSTS = [
   {
     "id": "ig-Dfkzw_JEQMY",
@@ -402,6 +401,30 @@ window.TECNOLOGIA_POSTS = [
     ],
     "image": "assets/posts/DepK1t6CGZ2-01.webp",
     "published": 1
+  },
+  {
+    "id": "ig-DdBwtQMiDu8",
+    "title": "Evaluación inicial con IA · 2 prompts y ejemplos por materias",
+    "category": "Prompts",
+    "excerpt": "Dos prompts para diseñar una evaluación inicial escrita y convertirla en una infografía. Ejemplos de Tecnología, Historia, Matemáticas, Inglés y Lengua. Envío cerrado.",
+    "created": "2026-09-08",
+    "content": "EVALUACIÓN INICIAL CON IA\nDos prompts para preparar una evaluación inicial competencial que ayude a conocer el punto de partida del alumnado y representar la propuesta en una infografía visual. La idea no es hacer otro examen más, sino observar qué recuerda, comprende y sabe hacer cada estudiante.\nLOS DOS PROMPTS\n• Evaluación inicial escrita: propuesta de preguntas, retos y actividades adaptables a la materia y al nivel, teniendo en cuenta los aprendizajes del curso anterior y la normativa educativa aplicable.\n• Infografía de evaluación inicial: representación visual de la propuesta, con retos, apartados claros y un formato atractivo para presentarla al alumnado.\nQUÉ SE PRETENDE OBSERVAR\n• Conocimientos previos y comprensión.\n• Aplicación de lo aprendido y resolución de problemas.\n• Comunicación, razonamiento y autonomía.\n• Aspectos que necesitan refuerzo.\nEJEMPLOS DEL CARRUSEL\nIncluye ejemplos de Tecnología y Digitalización (3.º ESO), Geografía e Historia (3.º ESO), Matemáticas (2.º ESO), Inglés (3.º ESO) y Lengua Castellana y Literatura (4.º ESO). Los planteamientos pueden adaptarse también a Infantil, Primaria, Bachillerato y Formación Profesional.\nIMPORTANTE · ENVÍO CERRADO\nLa publicación original anunciaba un envío de prompts para el domingo 13 de septiembre de 2026. Ese envío está cerrado. Aquí se conserva el carrusel como recurso de consulta; no se ofrece un enlace de descarga de los prompts porque no se ha facilitado.\nGuarda las ideas, compártelas con otros docentes y revisa los criterios de evaluación, datos y ejemplos antes de llevar cualquier propuesta al aula. @tecnologiainsti",
+    "sourceLinks": [
+      {
+        "label": "Ver publicación original en Instagram",
+        "url": "https://www.instagram.com/p/DdBwtQMiDu8/?img_index=1"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/DdBwtQMiDu8-01.webp",
+    "images": [
+      "assets/posts/DdBwtQMiDu8-01.webp",
+      "assets/posts/DdBwtQMiDu8-02.webp",
+      "assets/posts/DdBwtQMiDu8-03.webp",
+      "assets/posts/DdBwtQMiDu8-04.webp",
+      "assets/posts/DdBwtQMiDu8-05.webp",
+      "assets/posts/DdBwtQMiDu8-06.webp"
+    ]
   },
   {
     "id": "intro-seneca",

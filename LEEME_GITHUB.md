@@ -1,19 +1,11 @@
-# TecnologíaInsti · Versión V20 · Adaptar exámenes con IA
+# TecnologíaInsti · V22
 
-Web completa basada en **V19**. Se conservan todas las publicaciones de la V19 y se añade la nueva publicación **Adapta exámenes con IA · 8 prompts y 16 ejemplos** en **Inteligencia Artificial → Prompts**.
+Sobre la V21, se añade el carrusel «Evaluación inicial con IA» a Inteligencia Artificial, en su categoría Recursos/Prompts. La fecha original del 8 de septiembre de 2026 se ha obtenido del identificador público de la publicación de Instagram (no fue posible acceder a la fecha visible de Instagram).
 
-- 10 imágenes en orden: **portada, láminas 01–08 y lámina 09 de revisión**.
-- Imágenes locales **WebP** optimizadas sin reducir sus dimensiones (1122 × 1402 px).
-- Texto compacto, en apartados breves, sin saltos de línea innecesarios.
-- Documento `assets/8_prompts_adaptar_examenes.txt`, con los 8 prompts transcritos para copiar y adaptar.
-- Enlace al carrusel original de Instagram.
-- **No se incluye enlace a un Word/Google Drive**, porque no se facilitó en este encargo. El texto editable de los 8 prompts se aporta en formato TXT.
+La publicación queda ordenada cronológicamente, con 6 imágenes WebP optimizadas y un texto de lectura compacta. El envío promocional figura como CERRADO. No se atribuye un enlace descargable a los prompts porque no se ha proporcionado.
 
-## Publicar con GitHub Desktop
+**WEB COMPLETA:** Extrae la carpeta ZIP y copia sus archivos a la raíz del repositorio de GitHub Pages, conservando todas las rutas. No subas el ZIP sin descomprimir.
 
-1. Descomprime el archivo ZIP antes de copiar archivos al repositorio local de GitHub.
-2. Si tu web está exactamente en la V19, puedes usar **V20_SOLO_CAMBIOS.zip**: copia su carpeta `assets` dentro de tu repositorio y permite sustituir `assets/posts.js`.
-3. En GitHub Desktop comprueba los cambios, escribe `Añadir carrusel de adaptación de exámenes con IA` y pulsa **Commit to main**, seguido de **Push origin**.
-4. Si quieres reemplazar la web entera, usa el ZIP completo **V20** y copia su contenido a la raíz de tu repositorio.
+**SOLO CAMBIOS DESDE V21:** Extrae y copia `index.html`, `PUBLICAR.html`, `assets/posts.js` y los seis archivos nuevos en `assets/posts/`. No borres ninguna carpeta ni sustituya `assets/posts.js` con uno anterior. No modifiques el resto de archivos.
 
-**Aviso importante:** Antes de sustituir `assets/posts.js`, comprueba que no hay modificaciones posteriores a la V19 en tu copia local. Si las hay, combínalas para conservarlas. No mezcles versiones remotas mediante la interfaz de conflictos si no has revisado qué información se descarta.
+En GitHub Desktop, pega los archivos dentro del repositorio, comprueba Changes, haz Commit to main y Push origin. Si no aparece el cambio, usa Ctrl+F5.

@@ -71,3 +71,34 @@
 .post-info .read{margin-top:auto}
 @media (max-width:760px){.post-grid{grid-template-columns:1fr;gap:19px}}
 @media (min-width:761px) and (max-width:900px){.post-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* V21 · Identidad de TecnologíaInsti y portada algo más compacta. */
+.brand-mark{width:54px;height:54px;flex:0 0 54px;background:transparent;border-radius:50%;color:inherit;overflow:visible;font-size:initial}
+.brand-mark img{width:100%;height:100%;display:block;object-fit:contain}
+@media (min-width:1061px){
+ .hero{min-height:355px;padding:20px 4.5% 14px;gap:12px}
+ .hero h1{font-size:clamp(52px,5vw,65px);margin:11px 0 11px;line-height:1.05}
+ .hero-copy>p{font-size:13px;line-height:1.55}
+ .hero-actions{margin-top:18px}
+ .hero-note{margin-top:15px}
+ .hero-art{min-height:313px;transform:scale(.76);transform-origin:center center}
+ .title-spark{font-size:40px;left:260px;top:43px}
+}
+@media (min-width:761px) and (max-width:1060px){
+ .hero{min-height:350px;padding:20px 4% 14px;gap:7px}
+ .hero h1{font-size:clamp(47px,5.8vw,59px);margin:11px 0}
+ .hero-copy>p{font-size:12px;line-height:1.5}
+ .hero-actions{margin-top:16px}
+ .hero-note{margin-top:12px}
+ .hero-art{min-height:310px;transform:scale(.73);transform-origin:center center}
+ .title-spark{font-size:36px;left:245px;top:40px}
+}
+@media (max-width:760px){
+ .brand-mark{width:47px;height:47px;flex-basis:47px}
+ .hero{padding:21px 7% 11px}
+ .hero h1{font-size:clamp(40px,9.6vw,55px);margin:12px 0 11px}
+ .hero-actions{margin-top:16px}
+ .hero-note{margin-top:13px}
+ .hero-art{min-height:248px;transform:scale(.75);transform-origin:center top;margin:10px auto -15px}
+ .title-spark{font-size:31px;left:clamp(196px,54vw,250px);top:43px}
+}
