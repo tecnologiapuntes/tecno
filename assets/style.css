@@ -102,3 +102,8 @@
  .hero-art{min-height:248px;transform:scale(.75);transform-origin:center top;margin:10px auto -15px}
  .title-spark{font-size:31px;left:clamp(196px,54vw,250px);top:43px}
 }
+
+/* V23 · vídeo de lapbooks, reproducible en la propia ficha */
+.post-video{display:block;width:100%;max-width:850px;height:auto;max-height:70vh;aspect-ratio:4/3;object-fit:contain;background:#071d29;border-radius:12px;margin:16px auto 20px;box-shadow:0 8px 25px #112a3620}
+.post-video:focus-visible{outline:3px solid #31bcb7;outline-offset:4px}
+@media(max-width:760px){.post-video{max-height:55vh;margin:12px auto 14px}}

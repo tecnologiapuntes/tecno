@@ -1,11 +1,17 @@
-# TecnologíaInsti · V22
+# TecnologíaInsti · Actualización V23
 
-Sobre la V21, se añade el carrusel «Evaluación inicial con IA» a Inteligencia Artificial, en su categoría Recursos/Prompts. La fecha original del 8 de septiembre de 2026 se ha obtenido del identificador público de la publicación de Instagram (no fue posible acceder a la fecha visible de Instagram).
+**Nuevo proyecto:** «Lapbooks: análisis de objetos tecnológicos · 2.º ESO B» (19 de octubre de 2026).
+Está en **Proyectos → 2.º ESO**, con tarjeta ilustrada por un fotograma del vídeo, vídeo integrado y texto compacto.
+El vídeo se ha convertido a MP4 H.264 compatible con navegadores y se ha reducido de tamaño.
 
-La publicación queda ordenada cronológicamente, con 6 imágenes WebP optimizadas y un texto de lectura compacta. El envío promocional figura como CERRADO. No se atribuye un enlace descargable a los prompts porque no se ha proporcionado.
+## Subir a GitHub con GitHub Desktop
+1. Abre el repositorio local de tu web.
+2. Descarga y descomprime **SOLO CAMBIOS V23 DESDE V22**.
+3. Copia los archivos y la carpeta `assets` dentro de la carpeta raíz del repositorio, manteniendo las rutas y aceptando sobrescribir los archivos indicados. **No borres los anteriores.**
+4. Abre GitHub Desktop, revisa los cambios, crea el commit `Añadir proyecto lapbooks 2 ESO` y pulsa **Push origin**.
+5. Abre la web y usa Ctrl+F5 si hay caché.
 
-**WEB COMPLETA:** Extrae la carpeta ZIP y copia sus archivos a la raíz del repositorio de GitHub Pages, conservando todas las rutas. No subas el ZIP sin descomprimir.
+## Alternativa: web completa
+Si tu repositorio no está actualizado a V22, usa la **WEB COMPLETA V23** y conserva la estructura de carpetas. No subas el ZIP como único archivo: hay que descomprimirlo.
 
-**SOLO CAMBIOS DESDE V21:** Extrae y copia `index.html`, `PUBLICAR.html`, `assets/posts.js` y los seis archivos nuevos en `assets/posts/`. No borres ninguna carpeta ni sustituya `assets/posts.js` con uno anterior. No modifiques el resto de archivos.
-
-En GitHub Desktop, pega los archivos dentro del repositorio, comprueba Changes, haz Commit to main y Push origin. Si no aparece el cambio, usa Ctrl+F5.
+La fecha se ha obtenido de la marca temporal codificada en el identificador de Instagram; no se pudo consultar directamente la página pública.

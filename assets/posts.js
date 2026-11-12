@@ -377,6 +377,23 @@ window.TECNOLOGIA_POSTS = [
     "published": 1
   },
   {
+    "id": "ig-DesEqEMR_1D",
+    "title": "Lapbooks: análisis de objetos tecnológicos · 2.º ESO B",
+    "category": "2º ESO",
+    "excerpt": "El alumnado investiga objetos cotidianos y crea lapbooks con solapas, dibujos y materiales reutilizados para explicar su funcionamiento e impacto.",
+    "created": "2026-10-19",
+    "content": "ANÁLISIS DE OBJETOS TECNOLÓGICOS · 2.º ESO B\nUna cartulina puede convertirse en una herramienta para investigar la tecnología que nos rodea. En este proyecto, el alumnado de 2.º ESO B ha diseñado lapbooks sobre distintos objetos cotidianos.\n¿QUÉ HEMOS INVESTIGADO?\n• Cómo funcionan objetos como consolas, telescopios, electrodomésticos y ordenadores.\n• Qué materiales se utilizan para fabricarlos.\n• Cómo han evolucionado a lo largo del tiempo.\n• Qué impacto tienen en la sociedad y en el medioambiente.\nDEL ANÁLISIS A LA PRESENTACIÓN\nCada estudiante ha buscado y seleccionado información, diseñado solapas y desplegables, realizado dibujos y aprovechado materiales reutilizados. El trabajo termina con una exposición oral para explicar lo aprendido con sus propias palabras.\nAPRENDER HACIENDO\nLos lapbooks combinan investigación, diseño, creatividad, comunicación y reflexión crítica. En el vídeo puedes ver una muestra de sus trabajos y de las distintas soluciones que han encontrado para organizar la información.\n¿Qué objeto cotidiano elegirías para analizar en clase? Comparte tu idea con otros docentes. @tecnologiainsti",
+    "sourceLinks": [
+      {
+        "label": "Ver la publicación original en Instagram",
+        "url": "https://www.instagram.com/p/DesEqEMR_1D/"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/DesEqEMR_1D-portada.webp",
+    "video": "assets/posts/DesEqEMR_1D.mp4"
+  },
+  {
     "id": "ig-DepK1t6CGZ2",
     "title": "Pide mejor a ChatGPT o Gemini: 8 claves para docentes",
     "category": "Prompts",
