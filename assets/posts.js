@@ -420,6 +420,23 @@ window.TECNOLOGIA_POSTS = [
     "published": 1
   },
   {
+    "id": "ig-DdcH1mGR8W4",
+    "title": "El puente de 10 folios · Evaluación inicial en 3.º ESO",
+    "category": "3º ESO",
+    "excerpt": "3.º ESO A y B comienza Tecnología y Digitalización con un reto: construir un puente con solo 10 folios y conseguir que soporte tantos libros como sea posible.",
+    "created": "2026-09-18",
+    "content": "EVALUACIÓN INICIAL COMPETENCIAL · 3.º ESO A Y B\n¿Se puede construir un puente resistente utilizando únicamente 10 folios? Así hemos comenzado el curso de Tecnología y Digitalización: poniendo en práctica lo que ya sabemos antes de pasar a la teoría.\nEL RETO: UN PUENTE DE PAPEL\nPor equipos, el alumnado debía diseñar y construir un puente usando solo 10 folios, con el objetivo de soportar el mayor número posible de libros. Algunos puentes consiguieron aguantar todos los libros preparados para la prueba.\nDEL DISEÑO A LA MEJORA\n• Pensar y proponer diferentes soluciones.\n• Diseñar el puente y organizar el trabajo en equipo.\n• Construir con el material disponible.\n• Probar la resistencia con libros y observar los resultados.\n• Detectar qué se podría mejorar y justificar nuevas decisiones.\n¿QUÉ OBSERVAMOS CON ESTA EVALUACIÓN INICIAL?\n• Creatividad y capacidad para resolver problemas.\n• Aplicación de conocimientos tecnológicos previos.\n• Comunicación, organización y reparto de tareas.\n• Colaboración, perseverancia y trabajo en equipo.\nAPRENDER HACIENDO\nMás allá de cuántos libros soportó cada estructura, el reto permite conocer cómo razona y trabaja el alumnado al comienzo del curso. Una evaluación inicial que pone el foco en el proceso, las decisiones y el aprendizaje.\nPequeños retos, grandes aprendizajes. ¡Enhorabuena, 3.º ESO A y B!",
+    "sourceLinks": [
+      {
+        "label": "Ver la publicación original en Instagram",
+        "url": "https://www.instagram.com/p/DdcH1mGR8W4/"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/DdcH1mGR8W4-portada.webp",
+    "video": "assets/posts/DdcH1mGR8W4.mp4"
+  },
+  {
     "id": "ig-DdBwtQMiDu8",
     "title": "Evaluación inicial con IA · 2 prompts y ejemplos por materias",
     "category": "Prompts",

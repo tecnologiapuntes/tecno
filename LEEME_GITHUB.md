@@ -1,17 +1,20 @@
-# TecnologíaInsti · Actualización V23
+# TecnologíaInsti · Versión V24
 
-**Nuevo proyecto:** «Lapbooks: análisis de objetos tecnológicos · 2.º ESO B» (19 de octubre de 2026).
-Está en **Proyectos → 2.º ESO**, con tarjeta ilustrada por un fotograma del vídeo, vídeo integrado y texto compacto.
-El vídeo se ha convertido a MP4 H.264 compatible con navegadores y se ha reducido de tamaño.
+### Proyecto incorporado
+**El puente de 10 folios · Evaluación inicial en 3.º ESO**. Publicación original: 18 de septiembre de 2026.
+Se muestra en **Proyectos → 3º ESO**, con carátula real, vídeo MP4 reproducible y explicación formateada en bloques breves.
+Los proyectos aparecen en orden cronológico descendente. Los lapbooks del 19-10-2026 siguen intactos.
 
-## Subir a GitHub con GitHub Desktop
-1. Abre el repositorio local de tu web.
-2. Descarga y descomprime **SOLO CAMBIOS V23 DESDE V22**.
-3. Copia los archivos y la carpeta `assets` dentro de la carpeta raíz del repositorio, manteniendo las rutas y aceptando sobrescribir los archivos indicados. **No borres los anteriores.**
-4. Abre GitHub Desktop, revisa los cambios, crea el commit `Añadir proyecto lapbooks 2 ESO` y pulsa **Push origin**.
-5. Abre la web y usa Ctrl+F5 si hay caché.
+### Instalar solo estos cambios sobre V23
+1. Abre la carpeta local de tu repositorio de GitHub.
+2. Extrae el ZIP `SOLO_CAMBIOS_DESDE_V23` y **copia su contenido dentro de la raíz del repositorio** sin borrar los archivos anteriores.
+3. Confirma la sustitución de los archivos con el mismo nombre.
+4. En GitHub Desktop, haz `Commit` y `Push origin`.
+5. Recarga la web con Ctrl+F5 y entra en Proyectos → 3º ESO.
 
-## Alternativa: web completa
-Si tu repositorio no está actualizado a V22, usa la **WEB COMPLETA V23** y conserva la estructura de carpetas. No subas el ZIP como único archivo: hay que descomprimirlo.
+### Si no estás en V23
+Usa `WEB_COMPLETA_GITHUB.zip` (descomprimido) para dejar la web actualizada en un solo paso.
+No subas el ZIP como un único archivo al repositorio.
 
-La fecha se ha obtenido de la marca temporal codificada en el identificador de Instagram; no se pudo consultar directamente la página pública.
+La fecha está calculada a partir de la marca temporal codificada en el identificador de la publicación. Instagram no permitió acceder directamente a sus metadatos.
+No se ha modificado la información de otras publicaciones.

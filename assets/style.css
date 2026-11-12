@@ -107,3 +107,7 @@
 .post-video{display:block;width:100%;max-width:850px;height:auto;max-height:70vh;aspect-ratio:4/3;object-fit:contain;background:#071d29;border-radius:12px;margin:16px auto 20px;box-shadow:0 8px 25px #112a3620}
 .post-video:focus-visible{outline:3px solid #31bcb7;outline-offset:4px}
 @media(max-width:760px){.post-video{max-height:55vh;margin:12px auto 14px}}
+
+/* V24 · Reproductor vertical para el proyecto del puente de folios */
+.post-video[src*="DdcH1mGR8W4"]{display:block;width:min(100%,430px);aspect-ratio:9/16;max-height:70vh;object-fit:contain;margin:16px auto 20px}
+@media(max-width:760px){.post-video[src*="DdcH1mGR8W4"]{width:min(100%,360px);max-height:65vh}}
