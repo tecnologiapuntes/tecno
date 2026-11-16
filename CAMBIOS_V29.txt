@@ -1,0 +1,7 @@
+TECNOLOGÍAINSTI V29 — 16/11/2026
+- Botón «☰ Menú» con diseño crema/melocotón similar a la referencia de RoboMisión LAB; visible en ordenador, tableta y móvil.
+- Menú desplegable organizado por Inicio, Inteligencia Artificial, Proyectos (2.º, 3.º y 4.º ESO) y Herramientas docentes, más los enlaces a Instagram y YouTube.
+- El logo oficial de TecnologíaInsti se mueve de la izquierda al extremo derecho de la barra, inmediatamente a la derecha del enlace de YouTube. En móvil se sitúa a la derecha del botón Menú.
+- Cierre de menú al elegir una sección, al pulsar Escape y al pulsar fuera del panel.
+- Todas las publicaciones, vídeos, imágenes y enlaces de la V28 se conservan.
+- Se actualiza el parámetro de caché a v=29.

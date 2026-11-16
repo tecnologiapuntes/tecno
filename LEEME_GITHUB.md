@@ -1,11 +1,12 @@
-# TecnologíaInsti V27 — Actualización para GitHub Pages
+# TecnologíaInsti — V29
 
-## Cambio
-Se ha ocultado el enlace público **Gestionar contenidos** del pie de página, sin eliminar la página de gestión ni modificar las publicaciones.
+## Novedades
+Botón **☰ Menú** en la cabecera y logo a la derecha de YouTube. Se conservan todas las publicaciones de V28.
 
-**Importante:** ocultar el enlace no protege la página de gestión; cualquier persona que conozca su dirección directa podría abrirla. Para restringir acceso se necesita autenticación y autorización reales.
+## Cómo instalar
+- **Web completa**: descomprime el ZIP y sube su contenido a la **raíz** de tu repositorio de GitHub Pages, respetando las carpetas.
+- **Solo cambios desde V28**: sube y reemplaza `index.html`, `assets/app.js` y `assets/style.css`. Es suficiente si tu web publicada ya tiene todo el contenido de V28.
+- Si no aparece el nuevo menú, haz una recarga forzada con **Ctrl+F5**.
 
-## Instalación
-Si ya has publicado la **V26**, descarga **Solo cambios desde V26** y sustituye `index.html` y `assets/app.js` en tu repositorio. Si quieres volver a subir toda la web, usa el paquete completo V27; descomprime y sube el contenido a la raíz del repositorio, conservando la estructura de carpetas.
-
-Si el navegador muestra contenido antiguo, actualiza con Ctrl+F5.
+## Nota
+El enlace de «Gestionar contenidos» permanece oculto, pero la página de administración existente no se ha convertido en privada mediante ese cambio.
