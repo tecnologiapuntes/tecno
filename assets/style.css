@@ -161,3 +161,150 @@ footer .footer-youtube{font-size:11px;color:#a23d2c;font-weight:700;display:flex
 @media(max-width:920px){.header nav{gap:6px;font-size:10px}.header nav .insta-nav{font-size:0;gap:0;padding-left:8px}.header nav .insta-nav svg:last-child{display:none}.header nav .youtube-nav{font-size:0;gap:0;padding:11px}.header nav .youtube-nav svg:last-child{display:none}}
 @media(max-width:760px){.header{height:83px;padding:0 6%;display:flex;justify-content:space-between;gap:10px}.header nav,.header nav.open{display:none}.header .brand{order:2}.header .brand .brand-mark{width:49px;height:49px;flex-basis:49px}.header-menu-panel{width:min(430px,88vw);max-height:calc(100dvh - 106px);top:calc(100% + 13px);padding:14px}.menu-panel-groups{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.menu-panel-group{padding:8px}.menu-panel-group button{padding:8px 5px}.menu-panel-top strong{font-size:15px}}
 @media(max-width:380px){.header-menu-panel{width:calc(100vw - 35px)}.menu-panel-groups{grid-template-columns:1fr}.header .menu-toggle{font-size:12px;padding:11px 13px}}
+
+
+/* V30: Barra y megamenú inspirados en la navegación azul de RoboMisión LAB.
+   Sólo apariencia y accesibilidad; se conservan rutas, filtros y publicaciones. */
+:root { --menu-azul:#152749; --menu-azul-profundo:#102344; --menu-texto:#f8fbff; --menu-menta:#43dfc3; --menu-melocoton:#ffdcaf; --menu-tarjeta:#fff; --menu-opcion:#f2f6fb; }
+html { scroll-padding-top:84px; }
+header.header {
+  position:sticky; top:0; z-index:65; box-sizing:border-box;
+  width:100%; height:70px; max-width:none; margin:0;
+  padding:0 max(26px,calc((100vw - 1210px)/2));
+  display:flex; justify-content:flex-start; align-items:center; gap:16px;
+  background:linear-gradient(100deg,#142548 0%,#152a4d 62%,#17354d 100%);
+  color:var(--menu-texto); border-bottom:1px solid rgba(190,210,236,.28);
+  box-shadow:0 3px 12px rgba(13,29,57,.09);
+}
+.header .header-menu { position:static; flex:0 0 auto; z-index:auto; }
+.header .menu-toggle {
+  display:inline-flex; align-items:center; justify-content:center; gap:11px;
+  min-height:46px; padding:11px 18px; border:1px solid #f1c496;
+  border-bottom:3px solid #d9a274; border-radius:12px;
+  background:var(--menu-melocoton); color:#15294b;
+  font-family:'Manrope',sans-serif; font-size:14px; font-weight:800;
+  box-shadow:0 2px 0 rgba(0,0,0,.1); transition:background .18s ease,transform .18s ease;
+}
+.header .menu-toggle:hover,.header .menu-toggle[aria-expanded=true] { background:#ffe7c5; }
+.header .menu-toggle:focus-visible { outline-color:var(--menu-menta); }
+.header nav { order:2; display:flex; flex:1; min-width:0; align-items:center; justify-content:flex-start; gap:5px; font-size:12px; color:#eef6ff; font-weight:800; }
+.header nav>button,.header nav>.nav-dropdown>.nav-dropdown-trigger {
+  min-height:43px; padding:10px 13px; display:inline-flex; align-items:center;
+  justify-content:center; border-radius:9px; font-size:12px; font-weight:800;
+  color:#f3f7ff; line-height:1.2; white-space:nowrap;
+}
+.header nav>button:hover,.header nav>.nav-dropdown>.nav-dropdown-trigger:hover,
+.header nav>.nav-dropdown:focus-within>.nav-dropdown-trigger { background:#273f67; color:#fff; }
+.header nav .nav-home { background:var(--menu-menta); color:#102849; border-radius:10px; }
+.header nav .nav-home:hover { background:#78f2dc; color:#102849; }
+.header nav .nav-dropdown { min-height:43px; }
+.header nav .nav-chevron { color:#acecdd; opacity:.9; font-size:17px; }
+.header nav .nav-submenu { top:calc(100% + 3px); border-radius:12px; border-color:#cddce9; box-shadow:0 18px 38px #0a213e55; }
+.header nav .nav-submenu button { font-weight:700; }
+.header nav .insta-nav { margin-left:auto; color:#eff8ff; border-left:1px solid #52647a; padding:8px 12px; border-radius:9px; font-size:12px; white-space:nowrap; }
+.header nav .insta-nav:hover { background:#243c5b; }
+.header nav .youtube-nav {
+  display:inline-flex; align-items:center; gap:7px; margin-left:3px;
+  padding:10px 12px; background:#fff8f3; border:1px solid #ecc9b9; border-radius:10px;
+  color:#a63331; font-family:'Manrope',sans-serif; font-weight:800; font-size:12px;
+  white-space:nowrap;
+}
+.header nav .youtube-nav:hover { background:#ffe4d4; }
+.header .brand { order:3; margin-left:4px; flex:0 0 auto; color:#faffff; gap:8px; font-family:'Manrope',sans-serif; font-size:17px; letter-spacing:-.7px; }
+.header .brand .brand-mark { width:48px; height:48px; flex:0 0 48px; border:1.5px solid #56dac8; border-radius:14px; background:#173451; padding:3px; overflow:hidden; }
+.header .brand .brand-mark img { width:100%; height:100%; object-fit:contain; }
+.header .brand small { color:#acd6d5; font-size:7px; letter-spacing:1.3px; }
+.header .brand-light { color:#c2e9e8; font-weight:700; }
+
+/* Megamenú de cuatro tarjetas, con la misma jerarquía visual que la referencia. */
+.header .header-menu-panel {
+  position:fixed; top:70px; left:0; right:0; width:100%; max-width:none; max-height:calc(100dvh - 70px);
+  overflow:auto; margin:0; z-index:65;
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  column-gap:14px; row-gap:16px;
+  padding:29px max(24px,calc((100vw - 1300px)/2)) 25px;
+  border:0; border-top:1px solid #405875; border-bottom:1px solid #405875;
+  border-radius:0; background:var(--menu-azul); color:#17314f;
+  box-shadow:0 24px 50px rgba(10,21,42,.34);
+}
+.menu-panel-top { grid-column:1/-1; flex-direction:row; flex-wrap:wrap; align-items:baseline; gap:14px; border:0; padding:0 0 6px; color:white; }
+.menu-panel-top strong { color:#fff; font-size:24px; font-weight:800; letter-spacing:-.6px; }
+.menu-panel-top span { color:#cbdcf1; font-size:12px; }
+.header .menu-panel-quick,
+.header .menu-panel-group {
+  display:flex; flex-direction:column; gap:4px; min-width:0; margin:0;
+  padding:23px 15px 18px; border-radius:16px; border:1px solid #d5e2ec;
+  background:var(--menu-tarjeta); box-shadow:0 5px 0 rgba(10,27,52,.07);
+}
+.header .menu-panel-quick { grid-column:auto; align-self:stretch; }
+.menu-panel-quick::before,.menu-panel-group::before { display:block; font-size:9px; line-height:1.2; font-weight:900; letter-spacing:.14em; color:#008b8b; font-family:'Manrope',sans-serif; }
+.menu-panel-quick::before { content:'01 · PRIMEROS PASOS'; }
+.menu-panel-group:nth-child(1)::before { content:'02 · INTELIGENCIA ARTIFICIAL'; }
+.menu-panel-group:nth-child(2)::before { content:'03 · APRENDER HACIENDO'; }
+.menu-panel-group:nth-child(3)::before { content:'04 · RECURSOS'; }
+.header .menu-panel-quick h3,.header .menu-panel-group h3 { font-family:'Manrope',sans-serif; font-size:17px; font-weight:900; margin:5px 0 10px; letter-spacing:-.5px; line-height:1.25; color:#142b4c; }
+.menu-panel-groups { display:contents; }
+.header .menu-panel-quick button,.header .menu-panel-group button {
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+  width:100%; min-height:58px; padding:11px 12px; margin:0;
+  text-align:left; font-family:'Manrope',sans-serif; font-weight:800; font-size:12px;
+  color:#15304e; line-height:1.3; border:1px solid transparent; border-radius:11px;
+  background:var(--menu-opcion); transition:background .13s ease,border-color .13s ease,transform .13s ease;
+}
+.header .menu-panel-quick button:hover,.header .menu-panel-group button:hover { background:#d9f6eb; border-color:#8ce7cf; transform:translateY(-1px); }
+.header .menu-panel-quick button:first-of-type { background:#d4f4e9; border-color:#42d6bc; }
+.header .menu-panel-quick button::after,.header .menu-panel-group button::after { display:block; margin-top:4px; font-size:10px; font-family:'DM Sans',sans-serif; line-height:1.35; color:#596f86; font-weight:600; }
+.header .menu-panel-quick button:nth-of-type(1)::after { content:'Portada de TecnologíaInsti'; }
+.header .menu-panel-quick button:nth-of-type(2)::after { content:'Todas las ideas publicadas'; }
+.header .menu-panel-group:nth-child(1) button:nth-of-type(1)::after { content:'Ideas y experiencias con IA'; }
+.header .menu-panel-group:nth-child(1) button:nth-of-type(2)::after { content:'Ejemplos listos para adaptar'; }
+.header .menu-panel-group:nth-child(1) button:nth-of-type(3)::after { content:'Recursos visuales y didácticos'; }
+.header .menu-panel-group:nth-child(2) button:nth-of-type(1)::after { content:'Todos los proyectos del aula'; }
+.header .menu-panel-group:nth-child(2) button:nth-of-type(n+2)::after { content:'Actividades y proyectos por curso'; }
+.header .menu-panel-group:nth-child(3) button:nth-of-type(1)::after { content:'Herramientas para docentes'; }
+.header .menu-panel-group:nth-child(3) button:nth-of-type(2)::after { content:'Evaluación y seguimiento'; }
+.header .menu-panel-group:nth-child(3) button:nth-of-type(3)::after { content:'Utilidades del entorno Séneca'; }
+.menu-panel-social { grid-column:1/-1; justify-content:flex-end; border:0; margin:0; padding:0; gap:10px; }
+.header .menu-panel-social a { flex:0 0 auto; background:#233d61; border:1px solid #56708b; border-radius:9px; padding:11px 16px; color:#f8fdff; font-weight:800; }
+.header .menu-panel-social a:hover { background:#30547e; }
+
+@media(max-width:1270px) {
+ header.header { padding:0 3%; gap:10px; }
+ .header nav { gap:1px; }
+ .header nav>button,.header nav>.nav-dropdown>.nav-dropdown-trigger { font-size:11px; padding:8px 9px; }
+ .header .brand>span:not(.brand-mark) { display:none; }
+ .header .header-menu-panel { padding-inline:3%; }
+}
+@media(max-width:1010px){
+ .header nav .insta-nav { font-size:0; padding:9px 10px; border:0; }
+ .header nav .insta-nav svg:last-child { display:none; }
+ .header nav .youtube-nav { font-size:0; padding:10px 12px; }
+ .header nav .youtube-nav svg:last-child { display:none; }
+ .header .header-menu-panel { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .menu-panel-top,.menu-panel-social { grid-column:1/-1; }
+}
+@media(max-width:760px){
+ header.header { position:sticky; height:66px; padding:0 5%; justify-content:space-between; gap:8px; }
+ .header nav,.header nav.open { display:none; }
+ .header .brand { order:2; margin-left:auto; }
+ .header .brand .brand-mark { width:45px; height:45px; flex-basis:45px; }
+ .header .menu-toggle { min-height:41px; padding:8px 13px; font-size:13px; }
+ .header .header-menu-panel { top:66px; max-height:calc(100dvh - 66px); grid-template-columns:repeat(2,minmax(0,1fr)); padding:22px 4% 24px; gap:11px; }
+ .menu-panel-top { gap:5px; flex-direction:column; padding-bottom:2px; }
+ .menu-panel-top strong { font-size:21px; }
+ .menu-panel-top span { font-size:11px; }
+ .header .menu-panel-quick,.header .menu-panel-group { padding:15px 10px 12px; border-radius:13px; }
+ .header .menu-panel-quick h3,.header .menu-panel-group h3 { font-size:14px; margin:5px 0 8px; }
+ .menu-panel-quick::before,.menu-panel-group::before { letter-spacing:.08em; font-size:8px; }
+ .header .menu-panel-quick button,.header .menu-panel-group button { min-height:46px; font-size:11px; padding:9px 8px; }
+ .header .menu-panel-quick button::after,.header .menu-panel-group button::after { font-size:9px; }
+ .header .menu-panel-social a { font-size:11px; }
+}
+@media(max-width:420px){
+ .header .header-menu-panel { grid-template-columns:1fr; }
+ .menu-panel-top { grid-column:1; }
+ .header .menu-panel-quick,.header .menu-panel-group { padding:15px; }
+ .header .menu-panel-quick h3,.header .menu-panel-group h3 { font-size:16px; }
+ .menu-panel-social { grid-column:1; }
+}
+@media(prefers-reduced-motion:reduce){.header .menu-panel-quick button,.header .menu-panel-group button{transition:none;transform:none}}
