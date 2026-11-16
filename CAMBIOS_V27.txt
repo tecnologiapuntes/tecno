@@ -1,0 +1,5 @@
+TECNOLOGÍAINSTI V27 — 16/11/2026
+- Se elimina el enlace visible «Gestionar contenidos» del pie de página principal, en escritorio y móvil.
+- La herramienta de publicación sigue disponible a través de su dirección directa; ocultar el enlace NO establece una protección de acceso.
+- Se conservan navegación, YouTube, proyectos por curso y todas las publicaciones y recursos de V26.
+- Se actualizan los parámetros de caché de index.html a v=27.

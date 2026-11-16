@@ -1,11 +1,11 @@
-# TecnologíaInsti V26 — publicación en GitHub Pages
+# TecnologíaInsti V27 — Actualización para GitHub Pages
 
-Esta es la versión completa de la web. Para actualizar GitHub, utiliza el ZIP completo y sube su contenido a la raíz de tu repositorio (no la carpeta contenedora). Conserva la estructura `assets/`, `index.html`, `PUBLICAR.html` y `.nojekyll`. Si ya estás en V25, puedes usar el ZIP de solo cambios, que incluye `assets/app.js`, `assets/style.css`, `index.html`, `PUBLICAR.html` y `CAMBIOS_V26.txt`.
+## Cambio
+Se ha ocultado el enlace público **Gestionar contenidos** del pie de página, sin eliminar la página de gestión ni modificar las publicaciones.
 
-## Novedades
+**Importante:** ocultar el enlace no protege la página de gestión; cualquier persona que conozca su dirección directa podría abrirla. Para restringir acceso se necesita autenticación y autorización reales.
 
-* Proyectos → Todos, 2.º ESO, 3.º ESO y 4.º ESO. Las publicaciones se clasifican según el curso informado. 4.º ESO queda vacío hasta publicar un proyecto verificado.
-* YouTube: enlace al canal @tecnologiainsti en barra, banner de redes y pie.
-* Mismo diseño e imágenes de V25; no se alteran los recursos ni el orden cronológico de los posts.
+## Instalación
+Si ya has publicado la **V26**, descarga **Solo cambios desde V26** y sustituye `index.html` y `assets/app.js` en tu repositorio. Si quieres volver a subir toda la web, usa el paquete completo V27; descomprime y sube el contenido a la raíz del repositorio, conservando la estructura de carpetas.
 
-Después de subir los archivos, haz un recargo forzado del navegador (Ctrl+F5) si ves una versión anterior.
+Si el navegador muestra contenido antiguo, actualiza con Ctrl+F5.
