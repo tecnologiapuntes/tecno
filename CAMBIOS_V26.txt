@@ -1,0 +1,7 @@
+TECNOLOGÍAINSTI V26 — 16/11/2026
+- Proyectos: submenú con 2º ESO, 3º ESO y 4º ESO (todos / por curso).
+- Los proyectos ya publicados están clasificados: lapbooks en 2º ESO y puente de 10 folios en 3º ESO.
+- 4º ESO queda preparado y muestra un aviso cuando aún no hay proyectos reales.
+- Añadido botón YouTube en barra de navegación, banner de Instagram/YouTube y pie inferior.
+- Se conservan todas las publicaciones, galerías, vídeos e imágenes de V25.
+- Estilos responsive y recursos cacheados como versión 26.

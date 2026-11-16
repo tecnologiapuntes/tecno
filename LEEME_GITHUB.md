@@ -1,22 +1,11 @@
-# TecnologíaInsti · Versión V25
+# TecnologíaInsti V26 — publicación en GitHub Pages
 
-**Última actualización: 16 de noviembre de 2026.**
+Esta es la versión completa de la web. Para actualizar GitHub, utiliza el ZIP completo y sube su contenido a la raíz de tu repositorio (no la carpeta contenedora). Conserva la estructura `assets/`, `index.html`, `PUBLICAR.html` y `.nojekyll`. Si ya estás en V25, puedes usar el ZIP de solo cambios, que incluye `assets/app.js`, `assets/style.css`, `index.html`, `PUBLICAR.html` y `CAMBIOS_V26.txt`.
 
-## Qué incorpora
-Nueva publicación en **Inteligencia Artificial → Prompts**: «5 ideas para crear materiales imprimibles con IA · 10 prompts», con las siete láminas optimizadas, descripción compacta y accesos a Instagram y a los materiales de Drive. Ordenación cronológica descendente.
+## Novedades
 
-## Cómo publicar en GitHub
-### Opción más sencilla: ZIP completo
-1. Descomprime `TecnologiaInsti_V25_WEB_COMPLETA_GITHUB.zip` en tu ordenador.
-2. Copia el **contenido de la carpeta extraída** a la raíz de tu repositorio (el mismo nivel que `index.html`) y sustituye los archivos coincidentes.
-3. Guarda los cambios con `Commit` y `Push` desde GitHub Desktop, o sube los archivos desde GitHub.
-4. Actualiza la web con `Ctrl + F5`.
+* Proyectos → Todos, 2.º ESO, 3.º ESO y 4.º ESO. Las publicaciones se clasifican según el curso informado. 4.º ESO queda vacío hasta publicar un proyecto verificado.
+* YouTube: enlace al canal @tecnologiainsti en barra, banner de redes y pie.
+* Mismo diseño e imágenes de V25; no se alteran los recursos ni el orden cronológico de los posts.
 
-### Solo cambios si ya tienes V24
-1. Descomprime `TecnologiaInsti_V25_SOLO_CAMBIOS_DESDE_V24.zip`.
-2. Copia dentro de tu repositorio su `index.html`, `assets/posts.js`, las siete imágenes `assets/posts/Df0OTQoEQ23-*.webp` y el texto de cambios si lo deseas. **Conserva las demás carpetas del repositorio**.
-3. Haz `Commit` y `Push`, y recarga la web.
-
-**No subas el ZIP sin descomprimir como si fuera la página web.**
-
-Nota sobre la fecha: Instagram no permitió leer directamente los metadatos; se ha calculado a partir de la marca temporal codificada en el identificador público de la publicación.
+Después de subir los archivos, haz un recargo forzado del navegador (Ctrl+F5) si ves una versión anterior.
