@@ -29,6 +29,23 @@ window.TECNOLOGIA_POSTS = [
     ]
   },
   {
+    "id": "ig-Dfu-GurxJZh",
+    "title": "Halloween en 3.º Diver · Ataúdes a tamaño real",
+    "category": "3º ESO",
+    "excerpt": "Proyecto de 3.º Diversificación para diseñar, construir y decorar ataúdes de cartón a tamaño real trabajando escalas, geometría, dibujo técnico y creatividad.",
+    "created": "2026-11-14",
+    "content": "HALLOWEEN A TAMAÑO REAL EN 3.º DIVER\n\n¿Se puede transformar un simple cartón en un ataúd a tamaño real? El alumnado de 3.º de Diversificación ha demostrado que sí en este proyecto de Halloween que combina dibujo técnico, matemáticas, creatividad y trabajo manual.\n\nDEL PLANO A LA REALIDAD\n• Hemos trabajado las escalas para interpretar planos y trasladar sus medidas a dimensiones reales.\n• Hemos medido, marcado y cortado las piezas de cartón para convertirlas en estructuras tridimensionales.\n• Hemos buscado soluciones para unir las piezas y conseguir ataúdes estables y resistentes.\n\nDISEÑO, CONSTRUCCIÓN Y DECORACIÓN\nCada grupo ha pasado por varias fases: planificación, trazado, montaje y decoración. Las pinturas, texturas y detalles finales han permitido personalizar cada propuesta y dar a los ataúdes un aspecto terrorífico.\n\nAPRENDIZAJES QUE HAY DETRÁS\nEste proyecto permite aplicar contenidos de geometría, escalas, representación, medición y uso de herramientas, además de fomentar la creatividad, el trabajo en equipo y la resolución de problemas reales.\n\nPorque aprender Tecnología no es solo estudiar cómo se hacen las cosas, sino atreverse a hacerlas. El resultado da auténtico miedo… y empezó con unas simples planchas de cartón. ¿Qué te parecen nuestros ataúdes? @tecnologiainsti",
+    "sourceLinks": [
+      {
+        "label": "Ver la publicación original en Instagram",
+        "url": "https://www.instagram.com/p/Dfu-GurxJZh/"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/Dfu-GurxJZh-portada.webp",
+    "video": "assets/posts/Dfu-GurxJZh.mp4"
+  },
+  {
     "id": "ig-DfCienciasIA3D",
     "title": "Ciencias con IA: 8 propuestas y 16 prompts con aspecto 3D",
     "category": "Prompts",
