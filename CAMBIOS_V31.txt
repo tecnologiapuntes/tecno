@@ -1,0 +1,6 @@
+V31 · Ajustes solicitados sobre la V30
+- Eliminada la tarjeta 01 «Empieza por aquí» del menú desplegable, con la reordenación de las 3 tarjetas restantes.
+- Eliminados los microrrótulos «02 · Inteligencia Artificial», «03 · Aprender haciendo» y «04 · Recursos».
+- Cambiado «Ayuda al profesorado» por «HERRAMIENTAS DOCENTES».
+- Colores homogeneizados en todo el sitio con una paleta azul noche, turquesa y melocotón; fondo claro y tarjetas uniformes.
+- Sin modificaciones del catálogo de publicaciones, imágenes, fechas ni enlaces.

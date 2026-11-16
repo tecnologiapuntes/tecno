@@ -308,3 +308,62 @@ header.header {
  .menu-panel-social { grid-column:1; }
 }
 @media(prefers-reduced-motion:reduce){.header .menu-panel-quick button,.header .menu-panel-group button{transition:none;transform:none}}
+
+
+/* V31 · Menú de tres columnas, sin primeros pasos ni rótulos de numeración. */
+:root {
+  --navy:#152749;           /* Mismo azul noche en cabecera, portada y botones */
+  --mint:#43dfc3;           /* Mismo turquesa de la navegación */
+  --peach:#ffdcaf;          /* Mismo melocotón del botón Menú */
+  --paper:#f4f7f9;          /* Fondo claro neutro y uniforme */
+  --muted:#617287;
+  --menu-azul:#152749;
+  --menu-azul-profundo:#152749;
+  --menu-menta:#43dfc3;
+  --menu-melocoton:#ffdcaf;
+  --menu-opcion:#f0f5fa;
+}
+header.header { background:var(--navy); }
+.hero { background:var(--navy); }
+.header .header-menu-panel {
+  background:var(--navy);
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.header .menu-panel-group { padding:23px 20px 22px; }
+.header .menu-panel-group h3 { margin:0 0 13px; font-size:19px; }
+/* Remove the extra tiny phrases above each card, leaving just its actual title. */
+.menu-panel-group::before,.menu-panel-quick::before { display:none !important; content:none !important; }
+/* Only three real cards are retained in the panel. */
+.menu-panel-groups { display:contents; }
+.menu-panel-top,.menu-panel-social { grid-column:1 / -1; }
+/* Consistent brand palette across the rest of the site, not just the menu. */
+body { background:var(--paper); color:var(--navy); }
+.area,.post { background:#fff; border-color:#dbe5ec; }
+.area .area-top>svg,.area.peach .area-top>svg,.area.blue .area-top>svg { background:#dbf8f1; }
+.post-visual,.post-visual.peach,.post-visual.blue { background:#ddf4ef; }
+.post-visual:has(img) { background:#e6f1f6; }
+.post-meta button { background:#e1f5ee; color:var(--navy); }
+.instagram-banner,.social-banner { background:#e5f3f0; }
+.project-subsections { background:#eaf1f7; border-color:#d8e3ed; }
+.project-subsections button { border-color:#ccdce7; }
+.project-subsections button.active,.project-subsections button[aria-pressed=true] { background:var(--navy); }
+.category-links button { background:#eef4f8; }
+.filters button,.search { border-color:#d8e3ed; }
+.posts-section { border-top-color:#dbe5ec; }
+.modal { background:var(--paper); }
+.source-links a:first-child,.primary { background:var(--mint); color:var(--navy); }
+footer { background:var(--navy); color:#f5fbff; border:0; max-width:none;
+         padding:27px max(5%,calc((100vw - 1220px)/2)); }
+footer p,footer>a:last-child,footer .footer-youtube { color:#d7e7f3; }
+footer a:hover { color:var(--mint); }
+@media(max-width:1010px){
+  .header .header-menu-panel{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media(max-width:760px){
+  .header .header-menu-panel{grid-template-columns:1fr; gap:10px;}
+  .header .menu-panel-group{padding:16px;}
+  .header .menu-panel-group h3{font-size:16px; margin:0 0 8px;}
+  .header .menu-panel-group button{min-height:45px;}
+  footer{padding:24px 6%;}
+}
