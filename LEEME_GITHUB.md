@@ -1,20 +1,22 @@
-# TecnologíaInsti · Versión V24
+# TecnologíaInsti · Versión V25
 
-### Proyecto incorporado
-**El puente de 10 folios · Evaluación inicial en 3.º ESO**. Publicación original: 18 de septiembre de 2026.
-Se muestra en **Proyectos → 3º ESO**, con carátula real, vídeo MP4 reproducible y explicación formateada en bloques breves.
-Los proyectos aparecen en orden cronológico descendente. Los lapbooks del 19-10-2026 siguen intactos.
+**Última actualización: 16 de noviembre de 2026.**
 
-### Instalar solo estos cambios sobre V23
-1. Abre la carpeta local de tu repositorio de GitHub.
-2. Extrae el ZIP `SOLO_CAMBIOS_DESDE_V23` y **copia su contenido dentro de la raíz del repositorio** sin borrar los archivos anteriores.
-3. Confirma la sustitución de los archivos con el mismo nombre.
-4. En GitHub Desktop, haz `Commit` y `Push origin`.
-5. Recarga la web con Ctrl+F5 y entra en Proyectos → 3º ESO.
+## Qué incorpora
+Nueva publicación en **Inteligencia Artificial → Prompts**: «5 ideas para crear materiales imprimibles con IA · 10 prompts», con las siete láminas optimizadas, descripción compacta y accesos a Instagram y a los materiales de Drive. Ordenación cronológica descendente.
 
-### Si no estás en V23
-Usa `WEB_COMPLETA_GITHUB.zip` (descomprimido) para dejar la web actualizada en un solo paso.
-No subas el ZIP como un único archivo al repositorio.
+## Cómo publicar en GitHub
+### Opción más sencilla: ZIP completo
+1. Descomprime `TecnologiaInsti_V25_WEB_COMPLETA_GITHUB.zip` en tu ordenador.
+2. Copia el **contenido de la carpeta extraída** a la raíz de tu repositorio (el mismo nivel que `index.html`) y sustituye los archivos coincidentes.
+3. Guarda los cambios con `Commit` y `Push` desde GitHub Desktop, o sube los archivos desde GitHub.
+4. Actualiza la web con `Ctrl + F5`.
 
-La fecha está calculada a partir de la marca temporal codificada en el identificador de la publicación. Instagram no permitió acceder directamente a sus metadatos.
-No se ha modificado la información de otras publicaciones.
+### Solo cambios si ya tienes V24
+1. Descomprime `TecnologiaInsti_V25_SOLO_CAMBIOS_DESDE_V24.zip`.
+2. Copia dentro de tu repositorio su `index.html`, `assets/posts.js`, las siete imágenes `assets/posts/Df0OTQoEQ23-*.webp` y el texto de cambios si lo deseas. **Conserva las demás carpetas del repositorio**.
+3. Haz `Commit` y `Push`, y recarga la web.
+
+**No subas el ZIP sin descomprimir como si fuera la página web.**
+
+Nota sobre la fecha: Instagram no permitió leer directamente los metadatos; se ha calculado a partir de la marca temporal codificada en el identificador público de la publicación.

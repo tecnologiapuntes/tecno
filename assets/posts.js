@@ -1,10 +1,71 @@
 window.TECNOLOGIA_POSTS = [
   {
+    "id": "ig-Df0OTQoEQ23",
+    "title": "5 ideas para crear materiales imprimibles con IA · 10 prompts",
+    "category": "Prompts",
+    "excerpt": "Cinco propuestas para Secundaria: fichas de práctica, comprensión lectora, juegos, organizadores y listas de cotejo. Incluye 7 infografías y 10 prompts editables.",
+    "created": "2026-11-16",
+    "content": "5 IDEAS PARA CREAR MATERIALES IMPRIMIBLES CON IA\n¿Necesitas una ficha, una lectura o un juego para trabajar los contenidos de Secundaria? Este carrusel reúne cinco propuestas con ejemplos visuales y prompts que puedes adaptar a tu materia y grupo.\n\nLOS CINCO MATERIALES\n1. Ficha de práctica: actividades variadas para aplicar y reforzar conceptos.\n2. Comprensión lectora: lecturas breves con preguntas de diferentes tipos.\n3. Juego imprimible: tarjetas y retos para aprender y repasar en equipo.\n4. Organizador de clase: planificación, tareas y responsabilidades.\n5. Rúbrica o lista de cotejo: seguimiento de trabajos y proyectos.\n\nDESCARGA LOS RECURSOS\nEn el enlace encontrarás un Word editable con 10 prompts, dos por propuesta, listos para copiar y adaptar. Cada prompt también pide dos ejemplos de uso.\n\nANTES DE IMPRIMIR\nPersonaliza la materia, el curso y las instrucciones. Comprueba el contenido, la legibilidad, las soluciones y los espacios de respuesta antes de usar los materiales en el aula.\n\nGuarda esta publicación, compártela con tus compañeros y cuéntame: ¿cuál de estos cinco materiales crearías primero? @tecnologiainsti",
+    "sourceLinks": [
+      {
+        "label": "Descargar Word con 10 prompts e infografías",
+        "url": "https://drive.google.com/drive/folders/1f8PjBxOXqzoHQcXZanEJ5Y-QfNu_XoL-?usp=sharing"
+      },
+      {
+        "label": "Ver publicación original en Instagram",
+        "url": "https://www.instagram.com/p/Df0OTQoEQ23/?img_index=1"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/Df0OTQoEQ23-01.webp",
+    "images": [
+      "assets/posts/Df0OTQoEQ23-01.webp",
+      "assets/posts/Df0OTQoEQ23-02.webp",
+      "assets/posts/Df0OTQoEQ23-03.webp",
+      "assets/posts/Df0OTQoEQ23-04.webp",
+      "assets/posts/Df0OTQoEQ23-05.webp",
+      "assets/posts/Df0OTQoEQ23-06.webp",
+      "assets/posts/Df0OTQoEQ23-07.webp"
+    ]
+  },
+  {
+    "id": "ig-DfCienciasIA3D",
+    "title": "Ciencias con IA: 8 propuestas y 16 prompts con aspecto 3D",
+    "category": "Prompts",
+    "excerpt": "Ocho propuestas y dieciséis prompts para crear ilustraciones didácticas con aspecto 3D sobre el ojo, la célula vegetal, la piel, las flores, el oído, la Tierra y la atmósfera.",
+    "created": "2026-11-12",
+    "content": "CIENCIAS CON IA\n\n¿Eres docente y quieres crear imágenes para explicar ciencias en clase? Este carrusel reúne 8 propuestas y 16 prompts para preparar ilustraciones con aspecto 3D y actividades listas para adaptar.\n\nQUÉ ENCONTRARÁS\n• Ejemplos sobre el ojo humano, la célula vegetal, la piel, las partes de la flor, el interior de la flor, el oído, la estructura interna de la Tierra y las capas de la atmósfera.\n• Ideas para Biología y Geología, con conexiones con Física y Geografía.\n• Prompts que puedes copiar, pegar y ajustar al nivel, al tema y a lo que quieres que comprenda tu alumnado.\n\nCÓMO APROVECHARLO\n• Pide versiones con y sin etiquetas para repasar.\n• Añade preguntas de comparación, actividades de observación o pequeñas secuencias.\n• Revisa siempre textos, etiquetas, proporciones y simplificaciones antes de usar el resultado en clase.\n\nDESCARGA\nEn el enlace tienes las infografías y el documento Word con los 16 prompts listos para copiar, pegar y adaptar.\n\nAVISO IMPORTANTE\nSon imágenes con apariencia 3D, no modelos digitales manipulables. La estética puede ayudar a comprender, pero no sustituye la revisión científica del contenido.\n\nGuarda este carrusel, compártelo con tu departamento y cuéntame qué tema convertirías en tu próximo recurso visual. @tecnologiainsti",
+    "sourceLinks": [
+      {
+        "label": "Abrir infografías y Word (16 prompts)",
+        "url": "https://drive.google.com/drive/folders/1FHBJTn1ojbamUIfEMRG9iwalBHlBZ4DZ?usp=sharing"
+      },
+      {
+        "label": "Ver el perfil de @tecnologiainsti en Instagram",
+        "url": "https://www.instagram.com/tecnologiainsti/"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/DfCienciasIA3D-01.webp",
+    "images": [
+      "assets/posts/DfCienciasIA3D-01.webp",
+      "assets/posts/DfCienciasIA3D-02.webp",
+      "assets/posts/DfCienciasIA3D-03.webp",
+      "assets/posts/DfCienciasIA3D-04.webp",
+      "assets/posts/DfCienciasIA3D-05.webp",
+      "assets/posts/DfCienciasIA3D-06.webp",
+      "assets/posts/DfCienciasIA3D-07.webp",
+      "assets/posts/DfCienciasIA3D-08.webp",
+      "assets/posts/DfCienciasIA3D-09.webp",
+      "assets/posts/DfCienciasIA3D-10.webp"
+    ]
+  },
+  {
     "id": "ig-Dfkzw_JEQMY",
     "title": "Adapta exámenes con IA · 8 prompts y 16 ejemplos",
     "category": "Prompts",
     "excerpt": "Ocho prompts con ejemplos de exámenes originales y con apoyos: TDAH, dislexia, TEA, discalculia, altas capacidades, capacidad intelectual límite, disortografía y TDL.",
-    "created": "2026-11-12",
+    "created": "2026-11-10",
     "content": "ADAPTA EXÁMENES PARA DISTINTAS NECESIDADES DE APRENDIZAJE\n¿Quieres preparar pruebas más accesibles con ayuda de la IA sin perder de vista lo que debes evaluar? Este carrusel reúne 8 prompts y 16 ejemplos visuales de enunciados originales y con apoyos, para adaptar a tu materia y curso.\n\nOCHO PROPUESTAS PARA EL AULA\n1. TDAH: dividir consignas, organizar datos, reservar espacio de trabajo y añadir una revisión final.\n2. Dislexia: mejorar la legibilidad y separar las preguntas sin simplificar lo que se evalúa.\n3. TEA: ofrecer instrucciones explícitas, pasos delimitados y estructura predecible.\n4. Discalculia: ordenar operaciones, cifras y espacios de cálculo manteniendo el objetivo matemático.\n5. Altas capacidades: ofrecer opciones de respuesta y ampliación de análisis sin tareas repetitivas.\n6. Capacidad intelectual límite: presentar la tarea de forma clara y estructurada, con los apoyos acordados.\n7. Disortografía: distinguir los criterios de contenido de los de corrección ortográfica cuando corresponda.\n8. TDL: redactar consignas directas, con una acción por apartado y vocabulario accesible.\n\nCÓMO USAR LOS PROMPTS\nIdentifica el aprendizaje y los criterios de evaluación; describe las barreras observadas sin incluir datos personales. Pide a la IA una propuesta de adaptación, revisa qué se ha cambiado y comprueba que los apoyos no revelan respuestas ni modifican la exigencia de forma inadvertida. Valida los ajustes con el equipo docente y de orientación cuando corresponda.\n\nQUÉ ENCONTRARÁS EN EL CARRUSEL\n• Portada y 8 láminas con comparaciones «original / con apoyos».\n• El texto de cada prompt para copiar y adaptar a otras asignaturas.\n• Una lámina final con cinco comprobaciones antes de utilizar el examen.\n\nRECUERDA\nLas etiquetas diagnósticas no determinan automáticamente un mismo tipo de apoyo para todo el alumnado. La IA ayuda a preparar borradores; las adaptaciones deben responder a necesidades reales y revisarse por el profesorado.\n\nGuarda el carrusel, compártelo con tu claustro y cuéntame qué medida te resulta más útil en tus clases. @tecnologiainsti",
     "sourceLinks": [
       {
@@ -32,11 +93,37 @@ window.TECNOLOGIA_POSTS = [
     ]
   },
   {
+    "id": "ig-docentes-infografias-ia-12",
+    "title": "Crea infografías y láminas con IA: 12 prompts para distintas materias",
+    "category": "Prompts",
+    "excerpt": "Doce ejemplos para transformar contenidos en capas, partes, vistas interiores, líneas del tiempo, comparaciones y diagramas de pasos o decisiones.",
+    "created": "2026-11-10",
+    "content": "CREA INFOGRAFÍAS Y LÁMINAS CON IA\n\nConvierte los contenidos de tu materia en imágenes útiles para tus clases con ayuda de la IA. Este carrusel reúne 12 prompts de ejemplo y varias ideas visuales que puedes adaptar a lo que estés trabajando en el aula.\n\nQUÉ ENCONTRARÁS\n• Capas de la Tierra, partes de una guitarra, interior de una vivienda y línea del tiempo, entre otros ejemplos.\n• 6 formatos para explicar contenidos: capas, partes y etiquetas, vistas del interior, líneas del tiempo, comparaciones y pasos o decisiones.\n• Ejemplos de Biología y Geología, Tecnología, Música, Geografía e Historia, Lengua y Literatura, Física y Química, Educación Plástica, Matemáticas y Computación y Robótica.\n• Un enlace con las infografías, un documento Word con los 12 prompts listos para copiar y pegar y una plantilla para crear tus propios ejemplos.\n\nCÓMO USARLO\nConcreta el tema, el curso y lo que quieres que aparezca. Después, revisa los textos, las etiquetas y los datos antes de llevar el resultado a clase.\n\nIDEA CLAVE\nLa IA puede ayudarte a crear el recurso visual; el criterio docente sigue siendo imprescindible para comprobar que el contenido sea correcto, claro y útil.\n\nEn las imágenes del carrusel puedes ver la portada, seis formatos explicados con ejemplos y una lámina final con recomendaciones para pasar de la idea al recurso visual.",
+    "sourceLinks": [
+      {
+        "label": "Abrir documento",
+        "url": "https://drive.google.com/drive/folders/1QKIMJfV-viE6nieyDkDZzxdl4noumekS?usp=sharing"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/DocentesInfografiasIA12-cover.webp",
+    "images": [
+      "assets/posts/DocentesInfografiasIA12-cover.webp",
+      "assets/posts/DocentesInfografiasIA12-01.webp",
+      "assets/posts/DocentesInfografiasIA12-02.webp",
+      "assets/posts/DocentesInfografiasIA12-03.webp",
+      "assets/posts/DocentesInfografiasIA12-04.webp",
+      "assets/posts/DocentesInfografiasIA12-05.webp",
+      "assets/posts/DocentesInfografiasIA12-06.webp",
+      "assets/posts/DocentesInfografiasIA12-07.webp"
+    ]
+  },
+  {
     "id": "ig-DfajIKgkV8f",
     "title": "19 formas de crear materiales educativos con IA · 38 prompts",
     "category": "Prompts",
     "excerpt": "19 propuestas para Secundaria, 20 infografías y 38 prompts editables en Word: esquemas, fichas, juegos, cómics, lapbooks y mucho más.",
-    "created": "2026-11-12",
+    "created": "2026-11-06",
     "content": "19 FORMAS DE CREAR MATERIALES EDUCATIVOS CON IA\nUna colección para docentes de Secundaria con propuestas de distintas materias: esquemas, fichas, tarjetas, lapbooks, cómics y juegos para adaptar a tu alumnado.\n\nQUÉ PUEDES DESCARGAR\n• Las 20 imágenes del carrusel: portada y 19 propuestas explicadas con ejemplos.\n• Un documento Word con 38 prompts editables: 19 ejemplos y 19 plantillas para crear materiales con tus propios contenidos.\n\nLAS 19 PROPUESTAS\nOrganizar y explicar: esquema visual, tabla comparativa, mapa mental, proceso paso a paso, línea del tiempo, causa y efecto, diagrama de Venn y pirámide de conceptos.\nPracticar y repasar: ficha de refuerzo, tarjetas recortables, pasatiempo educativo, resumen 3-2-1, ruleta de observación, marcapáginas educativos y dominó educativo.\nCrear y adaptar: lapbook, opciones de acceso y respuesta, guion de minidocumental y cómic educativo.\n\nCÓMO UTILIZARLOS\nElige una propuesta, indica la materia, el curso y el objetivo, y copia el prompt correspondiente. Adapta el contenido y revisa las explicaciones, los datos y las soluciones antes de utilizar el material en el aula.\n\nRECURSOS Y DESCARGAS\nEn el enlace tienes las 20 infografías y el Word con los 38 prompts para copiar, pegar y adaptar.\n\nSÍGUEME Y COMPARTE\nSi te resulta útil, sígueme en @tecnologiainsti. Guarda el carrusel y compártelo con tus compañeros o en tus historias para que llegue a más docentes. ¡Etiquétame si lo compartes!\n¿Qué probarías primero: el cómic, el lapbook o el dominó? Te leo en comentarios.",
     "sourceLinks": [
       {
@@ -74,43 +161,11 @@ window.TECNOLOGIA_POSTS = [
     ]
   },
   {
-    "id": "ig-DfCienciasIA3D",
-    "title": "Ciencias con IA: 8 propuestas y 16 prompts con aspecto 3D",
-    "category": "Prompts",
-    "excerpt": "Ocho propuestas y dieciséis prompts para crear ilustraciones didácticas con aspecto 3D sobre el ojo, la célula vegetal, la piel, las flores, el oído, la Tierra y la atmósfera.",
-    "created": "2026-11-12",
-    "content": "CIENCIAS CON IA\n\n¿Eres docente y quieres crear imágenes para explicar ciencias en clase? Este carrusel reúne 8 propuestas y 16 prompts para preparar ilustraciones con aspecto 3D y actividades listas para adaptar.\n\nQUÉ ENCONTRARÁS\n• Ejemplos sobre el ojo humano, la célula vegetal, la piel, las partes de la flor, el interior de la flor, el oído, la estructura interna de la Tierra y las capas de la atmósfera.\n• Ideas para Biología y Geología, con conexiones con Física y Geografía.\n• Prompts que puedes copiar, pegar y ajustar al nivel, al tema y a lo que quieres que comprenda tu alumnado.\n\nCÓMO APROVECHARLO\n• Pide versiones con y sin etiquetas para repasar.\n• Añade preguntas de comparación, actividades de observación o pequeñas secuencias.\n• Revisa siempre textos, etiquetas, proporciones y simplificaciones antes de usar el resultado en clase.\n\nDESCARGA\nEn el enlace tienes las infografías y el documento Word con los 16 prompts listos para copiar, pegar y adaptar.\n\nAVISO IMPORTANTE\nSon imágenes con apariencia 3D, no modelos digitales manipulables. La estética puede ayudar a comprender, pero no sustituye la revisión científica del contenido.\n\nGuarda este carrusel, compártelo con tu departamento y cuéntame qué tema convertirías en tu próximo recurso visual. @tecnologiainsti",
-    "sourceLinks": [
-      {
-        "label": "Abrir infografías y Word (16 prompts)",
-        "url": "https://drive.google.com/drive/folders/1FHBJTn1ojbamUIfEMRG9iwalBHlBZ4DZ?usp=sharing"
-      },
-      {
-        "label": "Ver el perfil de @tecnologiainsti en Instagram",
-        "url": "https://www.instagram.com/tecnologiainsti/"
-      }
-    ],
-    "published": 1,
-    "image": "assets/posts/DfCienciasIA3D-01.webp",
-    "images": [
-      "assets/posts/DfCienciasIA3D-01.webp",
-      "assets/posts/DfCienciasIA3D-02.webp",
-      "assets/posts/DfCienciasIA3D-03.webp",
-      "assets/posts/DfCienciasIA3D-04.webp",
-      "assets/posts/DfCienciasIA3D-05.webp",
-      "assets/posts/DfCienciasIA3D-06.webp",
-      "assets/posts/DfCienciasIA3D-07.webp",
-      "assets/posts/DfCienciasIA3D-08.webp",
-      "assets/posts/DfCienciasIA3D-09.webp",
-      "assets/posts/DfCienciasIA3D-10.webp"
-    ]
-  },
-  {
     "id": "ig-DfIdCbnCFGc",
     "title": "7 estilos visuales con IA: 14 prompts para distintas materias",
     "category": "Prompts",
     "excerpt": "Siete estilos visuales para crear imágenes didácticas con IA, con 14 prompts de ejemplo y materiales descargables para adaptar en clase.",
-    "created": "2026-11-12",
+    "created": "2026-10-30",
     "content": "7 ESTILOS VISUALES CON IA\n\n¿Quieres crear imágenes para explicar tus temas en clase? Aquí tienes 7 estilos visuales con IA y 14 prompts de ejemplo para docentes de distintas materias.\n\nLOS 7 ESTILOS\n1. Cuaderno naturalista.\n2. Diorama 3D.\n3. Pixel art.\n4. Fieltro ilustrado.\n5. Papel recortado.\n6. Plastilina 3D.\n7. Vista isométrica.\n\nMATERIAS Y EJEMPLOS\nBiología, Geografía, Historia, Tecnología, Matemáticas, Inglés, Lengua, Valores, Plástica y Educación Física.\n\nCÓMO APROVECHARLOS\nElige qué quieres que comprenda tu alumnado, adapta el prompt y acompaña la imagen con una pregunta o una actividad. Revisa siempre los textos, los datos y las etiquetas antes de utilizarla.\n\nDESCARGA\nEn el enlace encontrarás las infografías y el documento Word con los 14 prompts para copiar, pegar y adaptar.\n\nGuarda el carrusel, compártelo con otro docente y cuéntame qué estilo probarías primero y para qué tema. @tecnologiainsti",
     "sourceLinks": [
       {
@@ -134,32 +189,6 @@ window.TECNOLOGIA_POSTS = [
       "assets/posts/DfIdCbnCFGc-07.webp",
       "assets/posts/DfIdCbnCFGc-08.webp",
       "assets/posts/DfIdCbnCFGc-09.webp"
-    ]
-  },
-  {
-    "id": "ig-docentes-infografias-ia-12",
-    "title": "Crea infografías y láminas con IA: 12 prompts para distintas materias",
-    "category": "Prompts",
-    "excerpt": "Doce ejemplos para transformar contenidos en capas, partes, vistas interiores, líneas del tiempo, comparaciones y diagramas de pasos o decisiones.",
-    "created": "2026-11-10",
-    "content": "CREA INFOGRAFÍAS Y LÁMINAS CON IA\n\nConvierte los contenidos de tu materia en imágenes útiles para tus clases con ayuda de la IA. Este carrusel reúne 12 prompts de ejemplo y varias ideas visuales que puedes adaptar a lo que estés trabajando en el aula.\n\nQUÉ ENCONTRARÁS\n• Capas de la Tierra, partes de una guitarra, interior de una vivienda y línea del tiempo, entre otros ejemplos.\n• 6 formatos para explicar contenidos: capas, partes y etiquetas, vistas del interior, líneas del tiempo, comparaciones y pasos o decisiones.\n• Ejemplos de Biología y Geología, Tecnología, Música, Geografía e Historia, Lengua y Literatura, Física y Química, Educación Plástica, Matemáticas y Computación y Robótica.\n• Un enlace con las infografías, un documento Word con los 12 prompts listos para copiar y pegar y una plantilla para crear tus propios ejemplos.\n\nCÓMO USARLO\nConcreta el tema, el curso y lo que quieres que aparezca. Después, revisa los textos, las etiquetas y los datos antes de llevar el resultado a clase.\n\nIDEA CLAVE\nLa IA puede ayudarte a crear el recurso visual; el criterio docente sigue siendo imprescindible para comprobar que el contenido sea correcto, claro y útil.\n\nEn las imágenes del carrusel puedes ver la portada, seis formatos explicados con ejemplos y una lámina final con recomendaciones para pasar de la idea al recurso visual.",
-    "sourceLinks": [
-      {
-        "label": "Abrir documento",
-        "url": "https://drive.google.com/drive/folders/1QKIMJfV-viE6nieyDkDZzxdl4noumekS?usp=sharing"
-      }
-    ],
-    "published": 1,
-    "image": "assets/posts/DocentesInfografiasIA12-cover.webp",
-    "images": [
-      "assets/posts/DocentesInfografiasIA12-cover.webp",
-      "assets/posts/DocentesInfografiasIA12-01.webp",
-      "assets/posts/DocentesInfografiasIA12-02.webp",
-      "assets/posts/DocentesInfografiasIA12-03.webp",
-      "assets/posts/DocentesInfografiasIA12-04.webp",
-      "assets/posts/DocentesInfografiasIA12-05.webp",
-      "assets/posts/DocentesInfografiasIA12-06.webp",
-      "assets/posts/DocentesInfografiasIA12-07.webp"
     ]
   },
   {
