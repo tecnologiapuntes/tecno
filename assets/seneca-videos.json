@@ -1,11 +1,8 @@
 {
   "playlist_id": "PL4P4xfIXfbrF57UhR4Y_El-mdtnddYcyn",
   "playlist_title": "Cuaderno Séneca. LOMLOE",
-<<<<<<< HEAD
-  "videos": []
-=======
   "source": "yt-dlp",
-  "updated_at": "2026-11-17T22:21:48.022305+00:00",
+  "updated_at": "2026-11-17T22:36:01.510009+00:00",
   "videos": [
     {
       "id": "4OuTn9qWlhg",
@@ -152,5 +149,4 @@
       "description_es": ""
     }
   ]
->>>>>>> 947f6bb7d7ef31736067f2663268c051aa5908a5
 }
