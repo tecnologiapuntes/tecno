@@ -1,3 +1,25 @@
+# TecnologíaInsti V41 · Portada corregida y cierre de publicaciones pulsando fuera
+
+Se ha incorporado el carrusel correcto «6 tipos de fichas para tus clases con Gemini y ChatGPT», con **ocho imágenes WebP** (portada + siete láminas), y se ha mejorado la navegación en las publicaciones: ahora pueden cerrarse pulsando en el fondo exterior. También se pueden cerrar las imágenes ampliadas pulsando en el fondo, sin interrumpir la navegación con flechas.
+
+## Cómo actualizar sin conflictos desde V40
+
+1. Antes de subir archivos, termina cualquier fusión pendiente y sincroniza GitHub Desktop (Fetch origin y Pull origin).
+2. Descomprime el ZIP «SOLO CAMBIOS DESDE V40» y copia sus archivos a la raíz del repositorio, respetando la estructura de carpetas.
+3. Haz Commit y Push origin. Para ver la nueva portada, recarga la página con Ctrl + F5 si fuera necesario.
+4. **No borres ni reemplaces `assets/seneca-videos.json`**: contiene la lista real de 18 vídeos que genera GitHub Actions; no se distribuye en ninguno de los ZIP de V41.
+
+## Archivos principales modificados
+
+- `assets/posts.js`: enlaza las ocho imágenes correctas de la publicación.
+- `assets/app.js`: cierre al pulsar en el fondo oscuro exterior.
+- `index.html`: actualización de las referencias de los scripts para evitar caché antigua.
+- `assets/posts/FichasIA-20261118-V41-00.webp` a `-07.webp`: el carrusel corregido.
+
+---
+
+## Nota sobre el conflicto anterior
+
 # TecnologíaInsti V40 · Corrección del conflicto de Cuaderno de Séneca
 
 ## El problema que se ha corregido

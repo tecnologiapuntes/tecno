@@ -1,0 +1,8 @@
+VERSIÓN V41 · TECNOLOGÍAINSTI
+
+- Publicación «6 tipos de fichas para Secundaria con Gemini y ChatGPT»: sustituidas por las ocho imágenes originales facilitadas (portada + siete láminas), en el mismo orden.
+- Nuevos nombres de archivo para evitar que la caché muestre la portada incorrecta de versiones anteriores.
+- En todas las publicaciones se puede cerrar la ficha pulsando sobre el fondo exterior, sin necesidad de usar la X. Pulsar dentro no la cierra.
+- También se puede cerrar una lámina ampliada pulsando sobre el fondo, sin que se cierren por error las flechas ni al pulsar en la imagen.
+- Conservadas el resto de publicaciones, la organización de menús y el apartado Cuaderno de Séneca.
+- El archivo assets/seneca-videos.json se excluye de los ZIP para preservar los datos que sincroniza GitHub.

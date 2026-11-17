@@ -13,16 +13,16 @@ window.TECNOLOGIA_POSTS = [
       }
     ],
     "published": 1,
-    "image": "assets/posts/FichasIA-20261118-00.webp",
+    "image": "assets/posts/FichasIA-20261118-V41-00.webp",
     "images": [
-      "assets/posts/FichasIA-20261118-00.webp",
-      "assets/posts/FichasIA-20261118-01.webp",
-      "assets/posts/FichasIA-20261118-02.webp",
-      "assets/posts/FichasIA-20261118-03.webp",
-      "assets/posts/FichasIA-20261118-04.webp",
-      "assets/posts/FichasIA-20261118-05.webp",
-      "assets/posts/FichasIA-20261118-06.webp",
-      "assets/posts/FichasIA-20261118-07.webp"
+      "assets/posts/FichasIA-20261118-V41-00.webp",
+      "assets/posts/FichasIA-20261118-V41-01.webp",
+      "assets/posts/FichasIA-20261118-V41-02.webp",
+      "assets/posts/FichasIA-20261118-V41-03.webp",
+      "assets/posts/FichasIA-20261118-V41-04.webp",
+      "assets/posts/FichasIA-20261118-V41-05.webp",
+      "assets/posts/FichasIA-20261118-V41-06.webp",
+      "assets/posts/FichasIA-20261118-V41-07.webp"
     ]
   },
   {
