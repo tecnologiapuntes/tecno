@@ -1,5 +1,36 @@
 window.TECNOLOGIA_POSTS = [
   {
+    "id": "recurso-rubricas-5-claves-20261117",
+    "title": "Crea mejores rúbricas con ChatGPT o Gemini · 5 claves y 10 prompts",
+    "category": "Prompts",
+    "excerpt": "Cinco claves para crear rúbricas útiles y ajustadas a Secundaria, con 7 infografías y un Word editable que incluye 10 prompts.",
+    "created": "2026-11-17",
+    "content": "CREA MEJORES RÚBRICAS CON CHATGPT O GEMINI\n¿Le pides una rúbrica a la IA y recibes un resultado demasiado genérico? Estas cinco claves te ayudarán a formular mejores indicaciones y obtener un borrador útil para tu aula.\nLAS CINCO CLAVES\n1. Explica la tarea real y qué producto entregará el alumnado.\n2. Indica qué aprendizajes y evidencias observables vas a valorar.\n3. Concreta el curso, el nivel esperado y lo trabajado en clase.\n4. Pide niveles de logro claros, con descriptores diferenciados.\n5. Define el formato de la rúbrica y cómo se utilizará para evaluar y mejorar.\nQUÉ INCLUYE EL RECURSO\n• 7 láminas del carrusel: portada, cinco claves con ejemplo y muestra, y cierre.\n• Un Word editable con 10 prompts (dos por cada clave), con ejemplos para Tecnología, Lengua, Biología, Historia y otras materias de Secundaria.\n• Un enlace a la carpeta de descarga de las infografías y el documento.\nCÓMO APLICARLO\nCopia un prompt del Word, sustituye los campos entre corchetes, facilita los criterios de evaluación correspondientes y revisa los descriptores antes de utilizar la rúbrica. La IA ayuda a preparar un borrador; los criterios curriculares, los apoyos y la valoración final corresponden al profesorado.\nGuarda este recurso para tu próxima rúbrica y compártelo con otro docente. ¿Para qué actividad de tu asignatura la crearías? @tecnologiainsti",
+    "sourceLinks": [
+      {
+        "label": "Descargar el Word editable · 10 prompts",
+        "url": "assets/descargas/10_Prompts_Rubricas_Secundaria.docx"
+      },
+      {
+        "label": "Ver las infografías y el Word en Google Drive",
+        "url": "https://drive.google.com/drive/folders/1MQFxCgDDSL9bWAI2bRLRv0VKue78DxCG?usp=sharing"
+      }
+    ],
+    "published": 1,
+    "image": "assets/posts/RubricasIA-20261117-00.webp",
+    "images": [
+      "assets/posts/RubricasIA-20261117-00.webp",
+      "assets/posts/RubricasIA-20261117-01.webp",
+      "assets/posts/RubricasIA-20261117-02.webp",
+      "assets/posts/RubricasIA-20261117-03.webp",
+      "assets/posts/RubricasIA-20261117-04.webp",
+      "assets/posts/RubricasIA-20261117-05.webp",
+      "assets/posts/RubricasIA-20261117-06.webp"
+    ],
+    "attachment": "assets/descargas/10_Prompts_Rubricas_Secundaria.docx",
+    "attachmentName": "Descargar Word · 10 prompts"
+  },
+  {
     "id": "ig-Df0OTQoEQ23",
     "title": "5 ideas para crear materiales imprimibles con IA · 10 prompts",
     "category": "Prompts",

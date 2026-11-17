@@ -1,0 +1,7 @@
+TECNOLOGÍA INSTI · V32 (17/11/2026)
+- Se incorpora en la categoría «Prompts» la publicación «Crea mejores rúbricas con ChatGPT o Gemini · 5 claves y 10 prompts».
+- 7 láminas originales, convertidas a WebP de alta calidad para reducir el peso de la web sin reducir sus dimensiones (1122 × 1402 px).
+- Galería completa, portada, texto compacto con apartados, enlace a Drive y Word editable adjunto para descarga directa.
+- Orden descendente por la fecha de incorporación a la web (17/11/2026); no se facilitó la URL del post original para confirmar su fecha de publicación en Instagram.
+- Mantiene las 21 publicaciones y todos los recursos anteriores de V31; no se modifica el diseño global.
+- Archivos HTML cacheados con versión 32 para mostrar cambios sin problemas de caché.
