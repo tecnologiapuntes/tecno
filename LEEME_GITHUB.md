@@ -1,27 +1,24 @@
-# TecnologíaInsti — V31
+# TecnologíaInsti — V37 · Cuaderno de Séneca
 
-## Cambios en esta versión
-- Menú desplegable con 3 tarjetas: «Prompts y recursos IA», «Proyectos» y «HERRAMIENTAS DOCENTES».
-- Eliminada la tarjeta «Empieza por aquí» y los rótulos pequeños «02», «03», «04» de las demás.
-- Paleta uniforme en toda la página: azul noche, turquesa y melocotón. Diseño adaptable a escritorio y móvil.
-- El contenido de publicaciones, fechas, categorías, imágenes, vídeos y enlaces se mantiene intacto.
+## Qué cambia
 
-## Cómo actualizar GitHub Pages
-1. Si ya tienes la **V30**, descarga el archivo **SOLO_CAMBIOS_DESDE_V30**.
-2. Descomprímelo y copia su contenido a la **raíz del repositorio**, sobrescribiendo los archivos existentes, incluida la carpeta `assets`.
-3. Si no estás seguro de la versión anterior, utiliza el archivo **WEB_COMPLETA_GITHUB** y sustituye el contenido del repositorio con sus archivos.
-4. Actualiza la página con **Ctrl+F5** para evitar que se muestre el diseño guardado en caché.
+- Se elimina el índice de vídeos duplicado. El apartado muestra directamente tarjetas con miniaturas, búsqueda y reproducción.
+- Se añaden a la **barra superior de Cuaderno de Séneca** los mismos tres menús desplegables que en Inicio: Inteligencia Artificial, Proyectos y Herramientas docentes (con Cuaderno de Séneca y Herramientas Docentes).
+- Los títulos mostrados se presentan en español, aplicando traducciones precisas para los temas conocidos. En los vídeos con título inglés aún no traducido se usa temporalmente un título neutro en español para no inventar contenido.
+- Cuando GitHub sincroniza YouTube, se intenta generar automáticamente traducciones de títulos y descripciones. Las traducciones anteriores se conservan para cada vídeo y pueden revisarse si el servicio automático no acierta.
+- Si una descripción original está en inglés y su traducción aún no está disponible, se presenta un aviso en español con enlace al original en YouTube, no un texto inventado.
+- Conserva el diseño en azul noche, turquesa y melocotón, tarjetas y el menú móvil.
 
-> La opción «Gestionar contenidos» está oculta en la navegación, pero el archivo de gestión sigue existiendo. Ocultar un enlace no equivale a proteger la herramienta.
+## Cómo actualizar desde V36
 
+1. Usa el ZIP **SOLO_CAMBIOS_DESDE_V36** y descomprímelo sobre la raíz de tu repositorio, respetando la carpeta `assets`, `scripts` y `.github/workflows`.
+2. **No borres ni sobrescribas `assets/seneca-videos.json`**: allí se encuentran los metadatos de los vídeos recuperados desde YouTube. Este ZIP no incluye dicho archivo.
+3. Sincroniza antes GitHub Desktop: **Fetch origin → Pull origin** (resuelve conflictos si los hay) y después **Push origin**.
+4. En **GitHub → Actions → Sincronizar vídeos del Cuaderno de Séneca → Run workflow**, ejecuta la sincronización para intentar completar traducciones de los 18 vídeos. Es necesario que YouTube y el servicio de traducción sean accesibles; si fallan, la página conserva el texto en español de reserva.
+5. Recarga la página con **Ctrl + F5**.
 
-## NOVEDAD V35: CUADERNO DE SÉNECA
+## ZIP completo
 
-- Archivo nuevo: `cuaderno-seneca.html`. Se abre desde **Herramientas docentes → Cuaderno de Séneca** en la cabecera y el menú.
-- Índice adaptable de tres columnas en ordenador; NO se muestra el recuadro decorativo que indicaba «3 columnas del índice».
-- Cada vídeo recuperado de YouTube aparece en una tarjeta con miniatura, título y descripción, con reproductor integrado al abrir. No se inventan metadatos.
-- Los datos se guardan en `assets/seneca-videos.json` y se intentan actualizar mediante GitHub Actions. La lista original se reproduce incluso si no se puede recuperar el inventario.
-- Tras subir todos los archivos a GitHub, abre **Actions → Sincronizar vídeos del Cuaderno de Séneca → Run workflow** para intentar importar inmediatamente los vídeos. Para guardar los cambios generados, quizá necesites habilitar **Settings → Actions → General → Workflow permissions → Read and write permissions**.
-- YouTube puede bloquear la obtención automática. En ese caso la lista original seguirá enlazada y reproducible; el índice individual se activará cuando se consiga sincronizar.
+Para no destruir accidentalmente los 18 registros de tu repositorio, el ZIP WEB_COMPLETA_GITHUB **omite intencionadamente** `assets/seneca-videos.json`. Si ya tienes la web, **conserva la versión existente** de ese archivo. En una instalación nueva, la acción de sincronización lo creará cuando obtenga datos; mientras tanto se muestra un reproductor de la lista original.
 
-Conserva la estructura de carpetas del ZIP, incluida `.github/workflows/`. Si ya tienes la V34, sube la versión de solo cambios.
+La web pública sigue siendo GitHub Pages, y este paquete no modifica el `index.html`, `assets/app.js` ni `assets/posts.js` de la V36.

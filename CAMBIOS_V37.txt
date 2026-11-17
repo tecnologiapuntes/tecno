@@ -1,0 +1,9 @@
+VERSIÓN V37 — Cuaderno de Séneca
+
+• Eliminado por completo el índice duplicado: las tarjetas con miniaturas son ahora el único listado.
+• Menú superior con desplegables reales en Inteligencia Artificial, Proyectos y Herramientas docentes, equivalentes a los de la portada.
+• Menú general mantiene los mismos apartados y es utilizable en móvil.
+• Títulos visibles siempre en español: traducción por reglas de temas conocidos, traducciones guardadas tras sincronización y fallback neutro español cuando YouTube no facilita una traducción.
+• Descripciones visibles en español cuando se sincroniza su traducción. Si no se puede traducir el texto inglés, se indica claramente y se conserva el enlace a YouTube; no se publica el original inglés como si fuera español.
+• Sin cambios en assets/posts.js, assets/app.js, index.html ni publicaciones anteriores.
+• La sincronización de GitHub intenta traducir automáticamente títulos y descripciones con deep-translator cuando hay conexión; las traducciones pueden requerir revisión.

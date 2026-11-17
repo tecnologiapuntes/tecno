@@ -48,3 +48,31 @@
 .video-info h3{font-weight:500;line-height:1.43;letter-spacing:0}
 .modal-head h2{font-weight:550;line-height:1.35}
 @media(max-width:540px){.index-copy .index-title{font-size:13.5px}}
+
+/* V37 · Sin índice, navegación con los tres desplegables de portada */
+.mainlinks{gap:9px;align-items:center;min-width:0}
+.mainlinks .nav-home{display:inline-flex;padding:12px 13px;border-radius:11px;font-size:13px;font-weight:650}
+.mainlinks .nav-home:hover{background:#284463}
+.nav-group{position:relative;flex:0 0 auto}
+.nav-trigger{border:0;background:transparent;color:#fff;font-size:12px;font-weight:580;display:inline-flex;align-items:center;gap:6px;border-radius:10px;padding:13px 9px;white-space:nowrap}
+.nav-trigger.active{background:var(--turq);color:#06293c;font-weight:660}
+.nav-trigger:hover:not(.active),.nav-trigger[aria-expanded="true"]:not(.active){background:#294766}
+.nav-trigger:focus-visible,.menu-btn:focus-visible,.nav-dropdown a:focus-visible{outline:2px solid var(--turq);outline-offset:2px}
+.nav-caret{font-size:11px;opacity:.88}
+.nav-dropdown{position:absolute;top:calc(100% + 13px);left:0;min-width:224px;padding:8px;border-radius:13px;background:#fff;border:1px solid #dce6ef;box-shadow:0 18px 48px #041c3b5c;z-index:70;display:flex;flex-direction:column;gap:3px}
+.nav-dropdown a{font-size:12.5px;font-weight:520;color:#152d4a;border-radius:9px;padding:11px 12px;white-space:nowrap;opacity:1}
+.nav-dropdown a:hover,.nav-dropdown a[aria-current="page"]{background:#dcf7ef;color:#0c4847}
+.nav-group-tools .nav-dropdown{left:auto;right:0}
+[hidden]{display:none!important}
+.video-counter{color:#08786e;background:#dcf7ef;border-radius:999px;font-size:11px;padding:7px 11px;font-weight:650;white-space:nowrap}
+main>.section-head{margin-top:28px;margin-bottom:22px;flex-wrap:wrap}
+main>.section-head .searchbox{margin-left:auto}
+.video-section{padding:0 0 72px}
+.video-info h3{font-weight:440;font-size:15.5px;line-height:1.5;letter-spacing:0}
+.video-info p{font-size:12.5px;line-height:1.65}
+.modal-head h2{font-weight:510}
+.seneca-menu-panel a{font-weight:540}
+@media(max-width:1220px){.mainlinks{gap:3px}.nav-trigger{font-size:11px;padding:12px 7px}}
+@media(max-width:1060px){.mainlinks{display:none}}
+@media(max-width:830px){main>.section-head{align-items:stretch}main>.section-head .searchbox{margin-left:0}}
+@media(max-width:540px){.video-info h3{font-size:15px}.video-counter{align-self:flex-start}}

@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Instalar lector de metadatos
-        run: python -m pip install --upgrade yt-dlp
+        run: python -m pip install --upgrade yt-dlp deep-translator
       - name: Consultar lista pública de YouTube
         run: python scripts/sincronizar_cuaderno_seneca.py
       - name: Guardar cambios si se han obtenido datos nuevos

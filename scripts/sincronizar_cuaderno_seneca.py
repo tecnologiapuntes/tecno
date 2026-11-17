@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Sync public YouTube playlist metadata into static JSON for GitHub Pages.
+"""Sync public YouTube playlist metadata and Spanish display text.
 
-Run with Python 3 + yt-dlp. We never invent missing descriptions or videos.
-Existing validated metadata is preserved if YouTube blocks fetching.
+Uses yt-dlp and, when available, deep-translator to translate descriptions.
+Never invents video IDs, titles or descriptions. Previously translated fields
+stay attached to their video IDs on the next synchronization.
 """
 import json
 import os
@@ -96,6 +97,77 @@ def enrich_description(entries, old):
     return entries
 
 
+# Exact subject-based translations for the known original English titles.
+# Future videos are translated online when possible; translations are cached.
+TITLE_RULES_ES = [
+    (r'getting started|\bsetup\b', 'Primeros pasos y configuración del Cuaderno de Séneca LOMLOE'),
+    (r'(evaluable|assessable) activities without creating', 'Actividades evaluables sin crear una situación de aprendizaje (SdA)'),
+    (r'creation of learning situations', 'Creación de situaciones de aprendizaje (SdA)'),
+    (r'(assessable|evaluable) activities from the learning standards', 'Actividades evaluables a partir de los estándares de aprendizaje'),
+    (r'assess criteria without using', 'Evaluar criterios sin utilizar el cuaderno ni materiales de aprendizaje'),
+    (r'exporting grades from moodle', 'Exportación de calificaciones de Moodle a Séneca'),
+    (r'grading the quarter', 'Calificación del trimestre en Séneca'),
+    (r'cloning assessable activities', 'Clonación de actividades evaluables (leer la descripción)'),
+    (r'recovering activities|solutions for missing data', 'Recuperación de actividades y solución de datos desaparecidos'),
+    (r'easy seneca extension|mass grading criteria', 'Extensión Easy Séneca: calificación masiva de criterios'),
+]
+TITLE_EN = re.compile(r'\b(workbook|notebook|gradebook|getting|started|setup|evaluable|assessable|activities|without|creating|learning|standards|assess|grading|grades|quarter|cloning|recovering|missing|criteria|extension|description|exporting|teacher|students|reports|configuration|importing|copying|deleting)\b',re.I)
+TEXT_EN = re.compile(r'\b(you can|you will|how to|in this video|in this tutorial|the following|we show|learning standards|gradebook|this tool|evaluable activities|with the|about the|for your|from the)\b',re.I)
+
+
+def translate_field(text, existing=''):
+    """Best-effort translation preserving URLs. No fake translations on failure."""
+    if existing and str(existing).strip():
+        return str(existing).strip()
+    if not text or not text.strip():
+        return ''
+    try:
+        from deep_translator import GoogleTranslator
+        trans = GoogleTranslator(source='auto',target='es')
+        # The free endpoint has a per-request character limit.
+        # Split on sentences/whitespace rather than splitting words in half.
+        fragments=[]; src=text.strip()
+        while src:
+            if len(src)<=3400:
+                fragments.append(src); break
+            pivot=max(src.rfind('\n',0,3400),src.rfind('. ',0,3400),src.rfind(' ',0,3400))
+            if pivot<1000: pivot=3400
+            fragments.append(src[:pivot]);src=src[pivot:].lstrip()
+        translated=[]
+        for fragment in fragments:
+            result=trans.translate(fragment)
+            if not result: return ''
+            translated.append(result)
+        return '\n'.join(translated)
+    except Exception as exc:
+        print('Traducción no disponible:',str(exc)[:150]);return ''
+
+
+def add_spanish_fields(rows, old):
+    old_map={v['id']:v for v in old.get('videos',[]) if isinstance(v,dict) and v.get('id')}
+    for v in rows:
+        old_v=old_map.get(v['id'],{})
+        src_title=v['title'].strip()
+        src_desc=(v.get('description') or '').strip()
+        saved_es=old_v.get('title_es','')
+        if saved_es and old_v.get('title') == v['title']:
+            v['title_es']=saved_es
+        else:
+            rule=next((es for pattern,es in TITLE_RULES_ES if re.search(pattern,src_title,re.I)),None)
+            if rule: v['title_es']=rule
+            elif TITLE_EN.search(src_title):
+                v['title_es']=translate_field(src_title)
+            else: v['title_es']=re.sub(r'^[\d.\-· ]+','',src_title)
+        # A new English description must not silently reuse an old translation.
+        if src_desc and old_v.get('description','')==src_desc and old_v.get('description_es'):
+            v['description_es']=old_v['description_es']
+        elif src_desc and TEXT_EN.search(src_desc):
+            v['description_es']=translate_field(src_desc)
+        else:
+            v['description_es']=src_desc
+    return rows
+
+
 def main():
     old=read_old()
     try: rows=extract_via_yt_dlp()
@@ -119,6 +191,7 @@ def main():
         return
     unique=enrich_description(unique,old)
     unique=[v for v in unique if v['title'].strip()]
+    unique=add_spanish_fields(unique,old)
     if not unique:return
     # Preserve updated_at and avoid commits if only datetime changed.
     if old.get('videos')==unique:
