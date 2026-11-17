@@ -1,0 +1,10 @@
+V36 - Cuaderno de Séneca: títulos en español y tipografía ligera
+
+- Títulos en español para los 10 vídeos que aparecían en inglés en el índice.
+- Se conserva el título original de YouTube para futuras sincronizaciones, búsqueda y consulta.
+- Se muestran los títulos traducidos en índice, tarjetas, ventana de vídeo y etiquetas accesibles.
+- El índice utiliza ahora tipografía normal, no negrita; tarjetas y ventana con letra más ligera.
+- El buscador encuentra tanto los títulos traducidos como los originales.
+- Los títulos ya escritos en español no se modifican.
+- No se modifican los metadatos ni el orden de los vídeos, ni el resto de la web.
+- Para nuevas traducciones puede utilizarse title_es en assets/seneca-videos.json.

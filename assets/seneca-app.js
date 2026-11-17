@@ -23,32 +23,60 @@
   const validVideo = v => v && /^[\w-]{11}$/.test(v.id) && typeof v.title==='string' && v.title.trim();
   const original = v => 'https://www.youtube.com/watch?v=' + encodeURIComponent(v.id) + '&list=' + PLAYLIST;
   const thumb = v => /^https:\/\//.test(v.thumbnail||'') ? v.thumbnail : 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg';
+
+  // Translation of titles shown on the site. Keep v.title unchanged so
+  // syncing GitHub Actions can update the original YouTube metadata safely.
+  // Rules are matched by subject, not by position: adding/reordering videos
+  // cannot assign an incorrect translation to another video.
+  const titleRulesEs = [
+    [/\bgetting started\b|\bsetup\b/i, 'Primeros pasos y configuración del Cuaderno de Séneca LOMLOE'],
+    [/\bevaluable activities without creating\b/i, 'Actividades evaluables sin crear una situación de aprendizaje (SdA)'],
+    [/\bcreation of learning situations\b/i, 'Creación de situaciones de aprendizaje (SdA)'],
+    [/\b(?:assessable|evaluable) activities from the learning standards\b/i, 'Actividades evaluables a partir de los estándares de aprendizaje'],
+    [/\bassess criteria without using\b/i, 'Evaluación de criterios sin utilizar el cuaderno'],
+    [/\bexporting grades from moodle\b/i, 'Exportar calificaciones de Moodle a Séneca'],
+    [/\bgrading the quarter\b/i, 'Calificación del trimestre'],
+    [/\bcloning assessable activities\b/i, 'Clonar actividades evaluables · Importante: leer la descripción'],
+    [/\brecovering activities\b/i, 'Recuperar actividades y solucionar problemas con datos perdidos'],
+    [/\beasy seneca extension\b|\bmass grading criteria\b/i, 'Extensión Easy Séneca · Calificación masiva de criterios']
+  ];
+  function displayTitle(v) {
+    const source = String(v.title || '').trim();
+    if (typeof v.title_es === 'string' && v.title_es.trim()) return v.title_es.trim();
+    const rule = titleRulesEs.find(([pattern]) => pattern.test(source));
+    if (rule) return rule[1];
+    // Existing original titles in Spanish should remain intact.
+    return source.replace(/\s*[📱📕📗📘📙📲]+\s*$/gu,'').trim();
+  }
+
   function indexCard(v, n) {
     const button = el('button','index-item'); button.type='button'; button.dataset.id=v.id;
-    button.setAttribute('aria-label','Abrir ' + v.title);
+    button.setAttribute('aria-label','Abrir ' + displayTitle(v));
+    if(displayTitle(v)!==v.title) button.title='Título original: '+v.title;
     button.append(el('span','index-num',pad(n+1)));
     const content=el('span','index-copy');
-    content.append(el('strong','',v.title),el('small','','Videotutorial · Cuaderno de Séneca'));
+    content.append(el('span','index-title',displayTitle(v)),el('small','','Videotutorial · Cuaderno de Séneca'));
     button.append(content,el('span','arrow','›'));
     button.addEventListener('click',()=>show(v.id));
     return button;
   }
   function videoCard(v, n) {
     const button=el('button','video-card'); button.type='button';button.dataset.id=v.id;
-    button.setAttribute('aria-label','Ver vídeo: '+v.title);
+    button.setAttribute('aria-label','Ver vídeo: '+displayTitle(v));
+    if(displayTitle(v)!==v.title) button.title='Título original: '+v.title;
     const image=el('div','video-thumb');const img=el('img');img.src=thumb(v);
     img.alt='Miniatura original del vídeo: '+v.title;img.loading='lazy';
     img.onerror=()=>{img.onerror=null;img.src='https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg'};
     image.append(img,el('span','big-play','▶'));
     const info=el('div','video-info');info.append(el('span','video-num','VÍDEO '+pad(n+1)));
-    info.append(el('h3','',v.title),el('p','',v.description ? v.description.slice(0,170).replace(/\s+/g,' ') + (v.description.length>170?'…':'') : 'Ver el videotutorial y consultar los detalles disponibles en YouTube.'));
+    info.append(el('h3','',displayTitle(v)),el('p','',v.description ? v.description.slice(0,170).replace(/\s+/g,' ') + (v.description.length>170?'…':'') : 'Ver el videotutorial y consultar los detalles disponibles en YouTube.'));
     info.append(el('span','video-open','Ver vídeo y descripción ↗'));
     button.append(image,info);button.addEventListener('click',()=>show(v.id));return button;
   }
   function render(){
     search.closest('.searchbox').hidden=!videos.length;
     const q=search.value.trim().toLocaleLowerCase('es');
-    filtered=videos.filter(v=>(v.title+' '+(v.description||'')).toLocaleLowerCase('es').includes(q));
+    filtered=videos.filter(v=>(displayTitle(v)+' '+v.title+' '+(v.description||'')).toLocaleLowerCase('es').includes(q));
     index.replaceChildren(...filtered.map(v=>indexCard(v,videos.indexOf(v))));
     cards.replaceChildren(...filtered.map(v=>videoCard(v,videos.indexOf(v))));
     if(videos.length){
@@ -68,9 +96,9 @@
   }
   function show(id){
     active=videos.findIndex(v=>v.id===id);if(active===-1)return;
-    const v=videos[active];document.querySelector('#modal-title').textContent=pad(active+1)+' · '+v.title;
+    const v=videos[active];document.querySelector('#modal-title').textContent=pad(active+1)+' · '+displayTitle(v);
     player.replaceChildren();const frame=el('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(v.id)+'?rel=0';
-    frame.title='Reproducir '+v.title;frame.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    frame.title='Reproducir '+displayTitle(v);frame.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     frame.setAttribute('referrerpolicy','strict-origin-when-cross-origin');frame.setAttribute('allowfullscreen','');
     player.append(frame);
     description.replaceChildren();linkify(v.description || 'Este vídeo no tiene una descripción disponible en los datos recuperados de YouTube.',description);
