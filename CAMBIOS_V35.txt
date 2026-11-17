@@ -1,0 +1,12 @@
+TECNOLOGÍAINSTI · V35 · CUADERNO DE SÉNECA
+
+1. Nuevo apartado cuaderno-seneca.html accesible desde Herramientas docentes > Cuaderno de Séneca, tanto en barra superior como en Menú.
+2. Índice automático en 3 columnas escritorio / 2 tableta / 1 móvil, buscador, tarjetas con miniaturas originales, reproductor en detalle y descripción original.
+3. Suprimido el recuadro «3 columnas del índice» marcado en la captura.
+4. Enlace a la lista original de YouTube: PL4P4xfIXfbrF57UhR4Y_El-mdtnddYcyn.
+5. Importador automático de metadatos incluido en scripts/ y .github/workflows/. Se ejecuta al subir los archivos que lo activan, manualmente o los lunes.
+6. IMPORTANTE: no se ha podido recuperar el inventario de YouTube en este entorno; no se han inventado títulos ni descripciones. Hasta que GitHub Actions consiga datos, la web muestra la playlist real incrustada, y el índice individual permanece oculto.
+7. GitHub > Settings > Actions > General > Workflow permissions: permitir Read and write permissions si tu repositorio lo requiere para guardar el JSON.
+8. GitHub > Actions > «Sincronizar vídeos del Cuaderno de Séneca» > Run workflow para forzar una importación. YouTube puede limitar la extracción y no se garantiza que funcione sin restricciones.
+
+Se conservan todas las publicaciones, proyectos, imágenes y recursos anteriores.

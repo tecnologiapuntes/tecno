@@ -367,3 +367,8 @@ footer a:hover { color:var(--mint); }
   .header .menu-panel-group button{min-height:45px;}
   footer{padding:24px 6%;}
 }
+
+/* V34 · Herramientas docentes en la barra superior: desplegable como IA y Proyectos. */
+.header nav .nav-dropdown-tools .nav-submenu{min-width:210px}
+.header nav .nav-dropdown-tools .nav-submenu button{white-space:nowrap}
+@media(max-width:760px){.header nav .nav-dropdown-tools .nav-submenu{min-width:0}.header nav .nav-dropdown-tools .nav-submenu button{white-space:normal}}

@@ -1,0 +1,10 @@
+TECNOLOGÍA INSTI · V34
+
+- La opción «Herramientas docentes» de la barra superior ahora tiene desplegable igual que las opciones de IA y Proyectos.
+- Opciones del desplegable: «Cuaderno de Séneca» y «Herramientas Docentes».
+- Mantiene la opción de entrar en Herramientas docentes tocando el botón principal.
+- Comportamiento adaptado al móvil mediante las mismas reglas de navegación ya existentes.
+- Se conservan todos los contenidos y medios de la V33; el carrusel de «6 tipos de fichas» sigue pendiente de las imágenes originales.
+- Actualizados los identificadores de versión CSS/JS para evitar caché.
+
+Publicación: sube los archivos descomprimidos a la raíz del repositorio y conserva las rutas de carpeta.

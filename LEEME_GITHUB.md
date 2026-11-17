@@ -13,3 +13,15 @@
 4. Actualiza la página con **Ctrl+F5** para evitar que se muestre el diseño guardado en caché.
 
 > La opción «Gestionar contenidos» está oculta en la navegación, pero el archivo de gestión sigue existiendo. Ocultar un enlace no equivale a proteger la herramienta.
+
+
+## NOVEDAD V35: CUADERNO DE SÉNECA
+
+- Archivo nuevo: `cuaderno-seneca.html`. Se abre desde **Herramientas docentes → Cuaderno de Séneca** en la cabecera y el menú.
+- Índice adaptable de tres columnas en ordenador; NO se muestra el recuadro decorativo que indicaba «3 columnas del índice».
+- Cada vídeo recuperado de YouTube aparece en una tarjeta con miniatura, título y descripción, con reproductor integrado al abrir. No se inventan metadatos.
+- Los datos se guardan en `assets/seneca-videos.json` y se intentan actualizar mediante GitHub Actions. La lista original se reproduce incluso si no se puede recuperar el inventario.
+- Tras subir todos los archivos a GitHub, abre **Actions → Sincronizar vídeos del Cuaderno de Séneca → Run workflow** para intentar importar inmediatamente los vídeos. Para guardar los cambios generados, quizá necesites habilitar **Settings → Actions → General → Workflow permissions → Read and write permissions**.
+- YouTube puede bloquear la obtención automática. En ese caso la lista original seguirá enlazada y reproducible; el índice individual se activará cuando se consiga sincronizar.
+
+Conserva la estructura de carpetas del ZIP, incluida `.github/workflows/`. Si ya tienes la V34, sube la versión de solo cambios.
