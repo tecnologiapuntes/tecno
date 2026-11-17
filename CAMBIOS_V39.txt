@@ -1,0 +1,10 @@
+TECNOLOGÍAINSTI · V39 · 17/11/2026
+
+• Última publicación de Prompts: «6 tipos de fichas para tus clases con Gemini y ChatGPT».
+• Texto ajustado al mensaje original del autor, con las seis propuestas y la llamada a la descarga.
+• Portada y siete imágenes oficiales del carrusel, en el orden exacto 00–07.
+• Enlace destacado a Google Drive, donde están el documento Word con 12 prompts y las infografías.
+• Se actualiza la versión del archivo posts.js en index.html para evitar caché anterior.
+• Sin cambios en menús, Cuaderno de Séneca ni restantes publicaciones.
+
+NOTA: El enlace dirige a una carpeta de Google Drive. No se ha añadido descarga directa del Word, ya que no se ha facilitado el enlace individual o el archivo original.

@@ -1,19 +1,29 @@
 window.TECNOLOGIA_POSTS = [
   {
     "id": "ig-fichas-secundaria-20261118",
-    "title": "6 tipos de fichas para Secundaria con Gemini y ChatGPT · 12 prompts",
+    "title": "6 tipos de fichas para tus clases con Gemini y ChatGPT · 12 prompts",
     "category": "Prompts",
-    "excerpt": "Comprensión lectora, cálculo matemático, vocabulario, ciencias, educación emocional y lógica. Incluye infografías y un Word editable con 12 prompts y ejemplos.",
+    "excerpt": "Seis propuestas para Secundaria: comprensión lectora, cálculo, vocabulario e idiomas, ciencias, educación emocional y atención y lógica. Incluye 8 infografías y 12 prompts descargables en Word.",
     "created": "2026-11-18",
-    "content": "6 TIPOS DE FICHAS PARA SECUNDARIA CON GEMINI Y CHATGPT\n¿Quieres crear materiales para tus clases y necesitas ideas concretas para empezar? Este recurso reúne seis propuestas con un prompt y una muestra de resultado por tipo de ficha.\nLAS SEIS PROPUESTAS\n1. Comprensión lectora: textos y actividades para comprender, interpretar y reflexionar.\n2. Cálculo matemático: ejercicios de aplicación y práctica adaptables al curso.\n3. Vocabulario e idiomas: propuestas para aprender y utilizar palabras y expresiones.\n4. Ciencias: actividades para repasar y aplicar conocimientos científicos.\n5. Educación emocional: fichas para identificar emociones y favorecer la reflexión.\n6. Atención y lógica: retos para observar, razonar y resolver problemas.\nDESCARGA LAS INFOGRAFÍAS Y EL WORD\nEn Google Drive encontrarás las infografías del carrusel y el Word editable con 12 prompts (dos por cada tipo de ficha), junto con ejemplos y respuestas.\nCÓMO USARLOS\nElige una propuesta, copia el prompt en Gemini o ChatGPT y adapta materia, curso y contenidos a tu grupo. Antes de imprimir o compartir, revisa el nivel de dificultad, las instrucciones, las respuestas y la adecuación de los ejemplos.\n¿Qué tipo de ficha probarías primero y para qué materia? Guarda la idea y compártela con otros docentes. @tecnologiainsti",
+    "content": "🤖📚 6 TIPOS DE FICHAS PARA TUS CLASES CON GEMINI Y CHATGPT\n\n¿Quieres crear materiales para Secundaria y necesitas ideas concretas para empezar? En este carrusel tienes un prompt y un ejemplo de resultado por propuesta. Desliza y descubre cómo preparar:\n\n📖 Comprensión lectora.\n🔢 Cálculo matemático.\n🌍 Vocabulario e idiomas.\n🧪 Ciencias.\n💬 Educación emocional.\n🧩 Atención y lógica.\n\n📄 Además, tienes un Word editable con 12 prompts —dos por cada tipo de ficha—, adaptados a distintas materias de Secundaria y acompañados de ejemplos y respuestas.\n\nSolo tienes que copiar el prompt en Gemini o ChatGPT, ajustar el curso y el contenido a tu grupo y revisar el resultado antes de llevarlo al aula.\n\n🌐 Encontrarás el material en el apartado «PROMPTS» de mi web (enlace en la bio):\nhttps://tecnologiapuntes.github.io/tecno/\n\n💾 Guarda este post para preparar tus próximas clases.\n📲 Compártelo con ese compañero que siempre está buscando nuevas ideas.\n\n👇 ¿Qué tipo de ficha probarías primero y para qué materia?\n\nSígueme en @tecnologiainsti para más recursos e ideas para el aula.\n\n#InteligenciaArtificial #IAEducativa #ChatGPT #Gemini #IAEnEducacion #PromptsEducativos #RecursosEducativos #Secundaria #Docentes #MaterialesDidacticos #TecnologiaEducativa #Tecnologiainsti",
     "sourceLinks": [
       {
-        "label": "Descargar infografías y Word editable · 12 prompts",
+        "label": "DESCARGAR · Word editable (12 prompts) y 8 infografías en Google Drive",
         "url": "https://drive.google.com/drive/folders/16LDOQARNGRqgOuy2jVS7LnjT-PIijV1a?usp=sharing"
       }
     ],
     "published": 1,
-    "image": "assets/posts/FichasIA-20261118-portada.svg"
+    "image": "assets/posts/FichasIA-20261118-00.webp",
+    "images": [
+      "assets/posts/FichasIA-20261118-00.webp",
+      "assets/posts/FichasIA-20261118-01.webp",
+      "assets/posts/FichasIA-20261118-02.webp",
+      "assets/posts/FichasIA-20261118-03.webp",
+      "assets/posts/FichasIA-20261118-04.webp",
+      "assets/posts/FichasIA-20261118-05.webp",
+      "assets/posts/FichasIA-20261118-06.webp",
+      "assets/posts/FichasIA-20261118-07.webp"
+    ]
   },
   {
     "id": "recurso-rubricas-5-claves-20261117",

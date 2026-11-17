@@ -1,0 +1,4 @@
+VERSIÓN V38
+- Sustituidas las imágenes del último post del apartado Prompts por el carrusel real enviado por el usuario.
+- Añadidas las 8 imágenes del recurso “6 tipos de fichas para Secundaria con Gemini y ChatGPT”.
+- La publicación ahora muestra portada + 7 láminas dentro de la galería del post.

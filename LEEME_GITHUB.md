@@ -22,3 +22,8 @@
 Para no destruir accidentalmente los 18 registros de tu repositorio, el ZIP WEB_COMPLETA_GITHUB **omite intencionadamente** `assets/seneca-videos.json`. Si ya tienes la web, **conserva la versión existente** de ese archivo. En una instalación nueva, la acción de sincronización lo creará cuando obtenga datos; mientras tanto se muestra un reproductor de la lista original.
 
 La web pública sigue siendo GitHub Pages, y este paquete no modifica el `index.html`, `assets/app.js` ni `assets/posts.js` de la V36.
+
+
+### Actualización V39
+
+Sube el contenido de **V39_SOLO_CAMBIOS_DESDE_V38** conservando la estructura de las carpetas. `assets/posts.js` reemplaza el archivo de publicaciones, `index.html` actualiza la caché y `assets/posts/FichasIA-20261118-*.webp` contienen las ocho imágenes. La carpeta de Google Drive sigue enlazada para descargar el Word y las infografías.
