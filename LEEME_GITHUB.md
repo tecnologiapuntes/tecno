@@ -1,29 +1,42 @@
-# TecnologíaInsti — V37 · Cuaderno de Séneca
+# TecnologíaInsti V40 · Corrección del conflicto de Cuaderno de Séneca
 
-## Qué cambia
+## El problema que se ha corregido
 
-- Se elimina el índice de vídeos duplicado. El apartado muestra directamente tarjetas con miniaturas, búsqueda y reproducción.
-- Se añaden a la **barra superior de Cuaderno de Séneca** los mismos tres menús desplegables que en Inicio: Inteligencia Artificial, Proyectos y Herramientas docentes (con Cuaderno de Séneca y Herramientas Docentes).
-- Los títulos mostrados se presentan en español, aplicando traducciones precisas para los temas conocidos. En los vídeos con título inglés aún no traducido se usa temporalmente un título neutro en español para no inventar contenido.
-- Cuando GitHub sincroniza YouTube, se intenta generar automáticamente traducciones de títulos y descripciones. Las traducciones anteriores se conservan para cada vídeo y pueden revisarse si el servicio automático no acierta.
-- Si una descripción original está en inglés y su traducción aún no está disponible, se presenta un aviso en español con enlace al original en YouTube, no un texto inventado.
-- Conserva el diseño en azul noche, turquesa y melocotón, tarjetas y el menú móvil.
+El ZIP completo de versiones anteriores incluía un archivo de ejemplo vacío
+`assets/seneca-videos.json` (`"videos": []`). GitHub Actions ya había generado
+en el repositorio la versión real con los 18 vídeos. Subir el ZIP anterior o
+fusionar su rama podía provocar conflictos o sustituir el archivo real.
 
-## Cómo actualizar desde V36
+**A partir de la V40 ese archivo no se distribuye en los ZIP.** Conservar el
+archivo existente en el repositorio es imprescindible: es el que utilizan las
+miniaturas, títulos y enlaces de los 18 videotutoriales.
 
-1. Usa el ZIP **SOLO_CAMBIOS_DESDE_V36** y descomprímelo sobre la raíz de tu repositorio, respetando la carpeta `assets`, `scripts` y `.github/workflows`.
-2. **No borres ni sobrescribas `assets/seneca-videos.json`**: allí se encuentran los metadatos de los vídeos recuperados desde YouTube. Este ZIP no incluye dicho archivo.
-3. Sincroniza antes GitHub Desktop: **Fetch origin → Pull origin** (resuelve conflictos si los hay) y después **Push origin**.
-4. En **GitHub → Actions → Sincronizar vídeos del Cuaderno de Séneca → Run workflow**, ejecuta la sincronización para intentar completar traducciones de los 18 vídeos. Es necesario que YouTube y el servicio de traducción sean accesibles; si fallan, la página conserva el texto en español de reserva.
-5. Recarga la página con **Ctrl + F5**.
+## Para actualizar desde la V39
 
-## ZIP completo
+1. Resuelve o cancela antes los conflictos de fusión que haya en GitHub.
+2. Cuando tengas la rama principal sincronizada, extrae el ZIP de **solo
+   cambios V40** y copia los archivos a la raíz de tu repositorio, respetando
+   las carpetas. En esta actualización solo cambia el workflow de GitHub.
+3. No borres ni sustituyas `assets/seneca-videos.json`.
+4. GitHub Desktop: primero **Fetch origin**, después **Pull origin**, confirma
+   y sube los cambios con **Push origin**.
 
-Para no destruir accidentalmente los 18 registros de tu repositorio, el ZIP WEB_COMPLETA_GITHUB **omite intencionadamente** `assets/seneca-videos.json`. Si ya tienes la web, **conserva la versión existente** de ese archivo. En una instalación nueva, la acción de sincronización lo creará cuando obtenga datos; mientras tanto se muestra un reproductor de la lista original.
+## Si tienes el conflicto abierto ahora
 
-La web pública sigue siendo GitHub Pages, y este paquete no modifica el `index.html`, `assets/app.js` ni `assets/posts.js` de la V36.
+- Abre `assets/seneca-videos.json` en el editor de conflictos.
+- **Conserva la versión completa que contiene los 18 vídeos**, no la versión
+  vacía que muestra `"videos": []`.
+- Elimina las marcas `<<<<<<<`, `=======`, `>>>>>>>` y comprueba que el archivo
+  JSON sigue teniendo un único objeto y la lista `videos` completa.
+- Marca el conflicto como resuelto, finaliza la fusión y comprueba la web.
+- Si necesitas ayuda para saber qué bloque conservar, no finalices la fusión
+  y comparte el contenido del conflicto (puede ser una captura).
 
+## Sobre el ZIP completo
 
-### Actualización V39
+Contiene toda la web de la V39, más esta corrección, **excepto** el archivo
+`assets/seneca-videos.json`. Eso es intencionado. En una instalación nueva
+sin ese archivo, el sistema mostrará temporalmente el enlace a la lista de
+reproducción y el workflow lo generará al sincronizar YouTube.
 
-Sube el contenido de **V39_SOLO_CAMBIOS_DESDE_V38** conservando la estructura de las carpetas. `assets/posts.js` reemplaza el archivo de publicaciones, `index.html` actualiza la caché y `assets/posts/FichasIA-20261118-*.webp` contienen las ocho imágenes. La carpeta de Google Drive sigue enlazada para descargar el Word y las infografías.
+No se han modificado las publicaciones ni los demás archivos de contenido.

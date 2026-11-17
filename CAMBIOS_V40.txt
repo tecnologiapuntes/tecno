@@ -1,0 +1,16 @@
+TECNOLOGIAINSTI V40 — CORRECCIÓN DE CONFLICTOS EN GITHUB
+
+1. Los ZIP completos ya NO incluyen assets/seneca-videos.json. Ese archivo
+   contiene los metadatos de los vídeos que genera GitHub Actions, y se
+   conserva en tu repositorio al actualizar la web.
+2. Ajustada la acción de GitHub para guardar cambios en el JSON tanto si
+   ya existe como si se acaba de crear (sin crear commits cuando no cambia).
+3. No se modifican las 23 publicaciones, las imágenes, los enlaces, ni los
+   apartados de la web; mantiene todas las mejoras de la V39.
+
+IMPORTANTE: Si GitHub muestra UN CONFLICTO YA ABIERTO para
+assets/seneca-videos.json, el ZIP nuevo no lo resuelve automáticamente.
+En el editor de conflictos, conserva el JSON completo que contiene
+18 vídeos y descarta la versión que indica "videos": [].
+Si no puedes identificar con seguridad el archivo completo, cancela la
+fusión y revisa ambos lados con una copia de seguridad.
