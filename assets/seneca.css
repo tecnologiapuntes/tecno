@@ -76,3 +76,10 @@ main>.section-head .searchbox{margin-left:auto}
 @media(max-width:1060px){.mainlinks{display:none}}
 @media(max-width:830px){main>.section-head{align-items:stretch}main>.section-head .searchbox{margin-left:0}}
 @media(max-width:540px){.video-info h3{font-size:15px}.video-counter{align-self:flex-start}}
+
+
+/* V42 · Evita que los desplegables se cierren al mover el cursor desde
+   Inteligencia Artificial, Proyectos o Herramientas docentes al panel. */
+.nav-group .nav-dropdown {
+  top:calc(100% - 2px);
+}

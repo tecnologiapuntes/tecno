@@ -1,0 +1,6 @@
+V42 · CORRECCIÓN DE NAVEGACIÓN
+- Eliminado el hueco invisible que cerraba los desplegables al mover el ratón.
+- Corregidos los menús Inteligencia Artificial, Proyectos y Herramientas docentes en la portada y sus vistas de publicaciones.
+- Corregidos los tres desplegables de la página Cuaderno de Séneca.
+- Actualizadas las versiones de CSS en index.html y cuaderno-seneca.html para evitar caché antigua.
+- No se modifican las publicaciones, imágenes, vídeos ni el catálogo generado de Séneca.

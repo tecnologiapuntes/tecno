@@ -372,3 +372,12 @@ footer a:hover { color:var(--mint); }
 .header nav .nav-dropdown-tools .nav-submenu{min-width:210px}
 .header nav .nav-dropdown-tools .nav-submenu button{white-space:nowrap}
 @media(max-width:760px){.header nav .nav-dropdown-tools .nav-submenu{min-width:0}.header nav .nav-dropdown-tools .nav-submenu button{white-space:normal}}
+
+
+/* V42 · Navegación estable: elimina la zona sin interacción entre el botón
+   y las opciones desplegadas. El solapamiento evita cierres por zoom/subpíxeles. */
+@media (min-width:761px) {
+  .header nav .nav-dropdown .nav-submenu {
+    top:calc(100% - 2px);
+  }
+}
