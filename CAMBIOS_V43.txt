@@ -1,0 +1,9 @@
+TECNOLOGÍA INSTI · V43
+
+- Nueva publicación en Inteligencia Artificial → Prompts: «DUA en Secundaria: 3 ideas rápidas con Gemini y ChatGPT».
+- Fecha: 19/11/2026, posición cronológica más reciente.
+- Cinco imágenes originales adjuntadas, optimizadas para la web y en el orden del carrusel.
+- Enlace de descarga a la carpeta de Drive con el Word editable de 6 prompts.
+- Enlace a la publicación original de Instagram.
+- Actualizada la versión de assets/posts.js en index.html para evitar caché antigua.
+- Sin cambios en los menús ni en Cuaderno de Séneca. No se distribuye assets/seneca-videos.json para no sobrescribir los 18 vídeos sincronizados.
