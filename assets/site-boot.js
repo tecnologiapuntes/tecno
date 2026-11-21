@@ -26,7 +26,7 @@
       console.warn("TecnologíaInsti: no se pudo cargar el contenido añadido desde el panel.",err);
     }
     const app = document.createElement("script");
-    app.src = "./assets/app.js?v=45";
+    app.src = "./assets/app.js?v=46";
     app.onerror = () => { const node=document.getElementById("root"); if(node)node.textContent="No se pudo cargar la web. Actualiza la página para intentarlo de nuevo."; };
     document.body.appendChild(app);
   }

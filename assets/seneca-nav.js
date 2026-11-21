@@ -10,7 +10,7 @@
     const link=(item)=>{
       const a=document.createElement('a');a.href=core.href(item);a.textContent=item.label;
       if(item.type==='url'){a.target='_blank';a.rel='noopener noreferrer';}
-      if(item.type==='page'&&item.value.split('#')[0]==='cuaderno-seneca.html')a.setAttribute('aria-current','page');
+      if(item.type==='page' && (item.value.split('#')[0] === location.pathname.split('/').pop()))a.setAttribute('aria-current','page');
       return a;
     };
     main.replaceChildren();
@@ -19,6 +19,7 @@
     for(const item of menu.items){
       if(item.children?.length){
         const group=document.createElement('div');group.className='nav-group';
+        if(item.children.some(c=>c.type==='page'&&c.value.split('#')[0]===location.pathname.split('/').pop()))group.classList.add('current-section');
         const btn=document.createElement('button');btn.type='button';btn.className='nav-trigger';btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-haspopup','true');
         btn.textContent=item.label+' ▾';
         const dropdown=document.createElement('div');dropdown.className='nav-dropdown';dropdown.hidden=true;

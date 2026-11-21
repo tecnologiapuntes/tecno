@@ -1,0 +1,1 @@
+V46: nuevo subapartado Inteligencia Artificial → Videotutoriales; página propia con búsqueda, reproductor y lista de YouTube; sincronización semanal en GitHub Actions; navegación compartida y migración del menú existente. No se incluyen archivos autogenerados.
