@@ -109,3 +109,16 @@ El contenido se almacena como texto con marcadores sencillos (Markdown), por lo 
 Los nuevos posts se guardan en assets/cms-posts.json y los menús personalizados en assets/cms-menu.json. **Ninguno de estos archivos se incluye en los ZIP V52**, ni los listados de YouTube: no los sobrescribas al actualizar. No requiere otro token.
 
 Nota: el estilo de texto se aplica al campo «Texto completo de la publicación». El título y el resumen corto se mantienen como texto plano por claridad y consistencia de las tarjetas.
+
+
+## V54 · Nuevos apartados del administrador
+
+**Programar un post:** en Nueva publicación elige «Programar», indica día y hora de España peninsular, y guarda. El sistema oculta la entrada hasta esa fecha al visitar la web. GitHub Pages sigue siendo público y el contenido se puede consultar en el repositorio antes de hacerse visible.
+
+**Biblioteca multimedia:** abre la pestaña correspondiente para subir imágenes o documentos, filtrar o buscar archivos existentes. Desde el editor pulsa «Elegir imágenes de la biblioteca» o «Elegir documento de la biblioteca». Puedes combinar archivos antiguos y nuevos.
+
+**Etiquetas y filtros:** introduce etiquetas separadas por comas y utiliza los filtros del listado por estado, apartado, tema y fecha.
+
+**Portada:** personaliza textos, enlaces e imagen desde la pestaña Portada. Es independiente del menú de tres niveles y se guarda en `assets/cms-site.json`.
+
+**Videotutoriales:** añade un vídeo pegando un enlace individual de YouTube, redacta su título y descripción en español y elige sección. Los metadatos se almacenan en `assets/cms-videos.json`, separados de las listas automáticas.

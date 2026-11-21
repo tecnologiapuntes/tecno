@@ -451,3 +451,10 @@ footer a:hover { color:var(--mint); }
 .ti-panel-branch[open] > summary::after{transform:rotate(180deg)}
 .ti-panel-branch > summary:hover,.ti-panel-branch > summary:focus-visible{background:#d8f7ee;outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.ti-panel-branch > summary::after{transition:none}}
+
+/* V54 · Portada editable y filtro temático integrado. */
+.hero-art.hero-photo{background-size:cover;background-position:center;background-repeat:no-repeat;overflow:hidden}
+.hero-art.hero-photo>*{display:none!important}
+.tag-filter{display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:13px;font-weight:650;color:#173b52}
+.tag-filter select{border:1px solid #bfd6d8;border-radius:9px;padding:9px 11px;background:white;color:#15385a;max-width:190px}
+@media(max-width:650px){.tag-filter{width:100%}.tag-filter select{flex:1;max-width:100%}}

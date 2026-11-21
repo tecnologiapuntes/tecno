@@ -1,0 +1,26 @@
+TECNOLOGÍAINSTI V54 · MEJORAS DE ADMINISTRACIÓN
+
+1. PUBLICACIONES PROGRAMADAS
+- Nuevo selector: Publicar ahora / Programar / Borrador.
+- Fecha y hora en Europe/Madrid. Al guardar, la publicación aparecerá en la web solo desde esa fecha al visitar la página.
+- Advertencia: GitHub Pages es público. Los contenidos programados pueden existir en el repositorio antes de mostrarse en la web y no son privados.
+
+2. BIBLIOTECA MULTIMEDIA
+- Pestaña Biblioteca multimedia para ver, filtrar y buscar imágenes, PDF, Word y otros documentos guardados en assets/posts, assets/descargas y assets/biblioteca.
+- Subida optimizada de imágenes a WebP y documentos sin conversión; permite seleccionar imágenes existentes para la portada, carrusel o un documento descargable desde Nueva publicación.
+- Los originales de impresión no se sustituyen automáticamente por la vista WebP de la web.
+
+3. ETIQUETAS Y FILTROS
+- Etiquetas de hasta 16 temas por publicación. Nuevos filtros del administrador por estado, categoría, etiqueta y fechas.
+- Búsqueda de etiquetas y selector temático en Novedades.
+
+4. PORTADA
+- Pestaña Portada: titular, frase destacada, descripción, enlace, imagen opcional y orden de tarjetas principales.
+- Los cambios se guardan en assets/cms-site.json, que no se distribuye ni sobrescribe al actualizar la web.
+
+5. VÍDEOS MANUALES
+- Pestaña Videotutoriales: añadir un vídeo pegando el enlace de YouTube, introducir título y descripción en español, asignarlo a IA o Cuaderno de Séneca y editarlo o eliminarlo.
+- Los vídeos se guardan en assets/cms-videos.json. Se combinan con los vídeos sincronizados, dando prioridad a las correcciones manuales y conservando los datos generados por Actions.
+
+PROTECCIÓN DE CONTENIDOS
+No se distribuyen assets/cms-posts.json, assets/cms-menu.json, assets/cms-videos.json, assets/cms-site.json, assets/ia-videos.json ni assets/seneca-videos.json. Tus publicaciones, menús y listas sincronizadas de GitHub no se sobrescriben.

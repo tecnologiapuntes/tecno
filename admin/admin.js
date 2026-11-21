@@ -7,13 +7,18 @@
   const POSTS_PATH = "assets/posts.js";
   const CMS_PATH = "assets/cms-posts.json";
   const MENU_PATH = "assets/cms-menu.json";
+  const VIDEOS_PATH = "assets/cms-videos.json";
+  const SITE_PATH = "assets/cms-site.json";
   const menuCore = window.TI_MENU;
   const root = document;
   const el = (id) => root.getElementById(id);
   const state = {
     token: null, login: null, branch: "main", posts: [], editingId: null,
     original: null, media: [], uploadingDoc: null, busy: false,
-    menu: menuCore.normalize(menuCore.defaults), menuBaseline: null, menuEditId: null, menuNextParent: "", activeTab: "posts"
+    menu: menuCore.normalize(menuCore.defaults), menuBaseline: null, menuEditId: null, menuNextParent: "", activeTab: "posts",
+    library: [], libraryLimit: 48, mediaPickerMode:"",selectedDoc:null,
+    site:null,siteBaseline:null,siteImageFile:null,
+    manualVideos:[],videoBaseline:null,videoEditingId:null
   };
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const localDate = () => {
@@ -25,9 +30,9 @@
   const slug = (name) => normalize(name).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g, "").slice(0,48) || "publicacion";
   const assetUrl = (path) => {
     const src = String(path || "");
-    if (/^assets\/[a-z0-9_./-]+$/i.test(src) && !src.includes("..")) return new URL("../" + src, location.href).href;
+    if (/^assets\/[a-z0-9_./-]+$/i.test(src) && !src.includes("..")) return new URL("../" + src, document.baseURI).href;
     if (/^https:\/\//.test(src)) return src;
-    return new URL("../assets/logo-tecnologiainsti.webp", location.href).href;
+    return new URL("../assets/logo-tecnologiainsti.webp", document.baseURI).href;
   };
   function status(area, message, type="pending") {
     const target = el(area);
@@ -164,14 +169,28 @@
     const posts = [...state.posts].sort((a,b)=>String(b.created||"").localeCompare(String(a.created||"")));
     el("totalCount").textContent=String(posts.length);
     el("publishedCount").textContent=String(posts.filter(p=>p.published).length);
-    el("draftCount").textContent=String(posts.filter(p=>!p.published).length);
-    const q=normalize(el("searchPosts").value).toLowerCase();
-    const filtered=posts.filter(p=>[p.title,p.category,p.created,p.excerpt].join(" ").toLowerCase().includes(q));
+    el("draftCount").textContent=String(posts.filter(p=>postState(p)!=="public").length);
+    const q=normalize(el("searchPosts").value).toLowerCase(),tag=normalize(el("filterTag").value).toLowerCase();
+    const statusValue=el("filterStatus").value,cat=el("filterCategory").value;
+    const from=el("filterFrom").value,to=el("filterTo").value;
+    const categories=[...new Set(posts.map(p=>p.category).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));
+    const select=el("filterCategory"),oldCategory=select.value;
+    select.replaceChildren(new Option("Todos", ""),...categories.map(c=>new Option(c,c)));
+    if(categories.includes(oldCategory))select.value=oldCategory;
+    const filtered=posts.filter(p=>{
+      const stateValue=postState(p);
+      if(statusValue&&statusValue!==stateValue)return false;
+      if(cat&&p.category!==cat)return false;
+      if(from&&String(p.created||"")<from)return false;
+      if(to&&String(p.created||"")>to)return false;
+      if(tag&&!(p.tags||[]).some(t=>t.toLowerCase().includes(tag)))return false;
+      return [p.title,p.category,p.created,p.excerpt,...(p.tags||[])].join(" ").toLowerCase().includes(q);
+    });
     const container=el("postList");
     if(!filtered.length){container.innerHTML='<div class="empty">No hay publicaciones con ese término.</div>';return;}
     container.innerHTML=filtered.map(p=>`<article class="post-row" data-id="${esc(p.id)}">
       <img class="post-thumb" src="${esc(assetUrl(p.image))}" loading="lazy" alt="" />
-      <div class="post-text"><h3>${esc(short(p.title,150))}${p.published?"":'<span>BORRADOR</span>'}</h3><p>${esc(p.category)} · ${esc(p.created||"Sin fecha")}</p></div>
+      <div class="post-text"><h3>${esc(short(p.title,150))}${postState(p)==="draft"?'<span>BORRADOR</span>':postState(p)==="scheduled"?'<span>PROGRAMADA</span>':""}</h3><p>${esc(p.category)} · ${esc(p.created||"Sin fecha")}${postState(p)==="scheduled"?" · Publicar: "+esc(new Date(p.publishAt).toLocaleString("es-ES",{timeZone:"Europe/Madrid"})):""}</p></div>
       <div class="post-actions"><button class="btn secondary" type="button" data-edit="${esc(p.id)}">Editar</button><button type="button" class="btn danger" data-remove="${esc(p.id)}">Eliminar</button></div>
     </article>`).join("");
   }
@@ -205,7 +224,14 @@
     el("postExcerpt").value=p.excerpt || "";
     el("postContent").value=p.content || "";
     updatePostPreview();
-    el("postPublished").checked=p.published !== 0;
+    const scheduled=p.published && p.publishAt && Date.parse(p.publishAt)>Date.now();
+    el("postPublishMode").value=!p.published?"draft":scheduled?"scheduled":"now";
+    el("postSchedule").value=p.publishAt?toMadridLocal(p.publishAt):"";
+    toggleSchedule("post");
+    el("postTags").value=(Array.isArray(p.tags)?p.tags:[]).join(", ");
+    state.selectedDoc=null;
+    el("selectedDocumentLabel").textContent="";
+    el("removeSelectedDoc").hidden=true;
     el("attachmentInput").value="";
     el("photoInput").value="";
     el("currentAttachment").textContent=p.attachment ? `Documento actual: ${p.attachmentName || p.attachment}` : "";
@@ -312,7 +338,9 @@
     event.preventDefault();
     if(state.busy)return;
     const title=normalize(el("postTitle").value),content=normalize(el("postContent").value);
-    const category=el("postCategory").value,created=el("postDate").value;
+    const category=el("postCategory").value;
+    let created=el("postDate").value;
+    if(el("postPublishMode").value==="scheduled"&&el("postSchedule").value)created=el("postSchedule").value.slice(0,10);
     if(!title||!content||!created||!category) {status("saveStatus","Completa el título, el apartado, la fecha y el texto.","error");return;}
     let links;
     try {links=collectLinks();}catch(e){status("saveStatus",e.message,"error");return;}
@@ -353,11 +381,22 @@
       if(!excerpt)excerpt=window.TI_POST_FORMAT.plain(content).slice(0,230);
       const newPost={
         ...(old||{}),id,title,category,excerpt,created,content,sourceLinks:links,
-        published:el("postPublished").checked?1:0,
+        published:el("postPublishMode").value!=="draft"?1:0,
+        tags:parseTags(el("postTags").value),
         image:imagePaths[0]||""
       };
+      const mode=el("postPublishMode").value;
+      if(mode==="scheduled")newPost.publishAt=madridToUTC(el("postSchedule").value);
+      else delete newPost.publishAt;
       if(imagePaths.length>1)newPost.images=imagePaths;
       else delete newPost.images;
+      if(state.selectedDoc){
+        attachment=state.selectedDoc.path;
+        attachmentName="Descargar "+state.selectedDoc.name;
+        links=links.filter(l=>l.url!==old?.attachment);
+        links.push({label:attachmentName,url:attachment});
+        newPost.sourceLinks=links;
+      }
       if(attachment){newPost.attachment=attachment;newPost.attachmentName=attachmentName;}
       const cms=data.cms;
       cms.posts=cms.posts.filter(p=>p.id!==id);
@@ -436,6 +475,7 @@
   function signOut(){
     state.token=null;state.posts=[];state.login=null;state.original=null;state.editingId=null;releasePreviews();
     state.menu=menuCore.normalize(menuCore.defaults);state.menuBaseline=null;state.activeTab="posts";
+    state.library=[];state.selectedDoc=null;state.site=null;state.siteBaseline=null;state.manualVideos=[];state.videoBaseline=null;
     el("workspace").hidden=true;el("loginPanel").hidden=false;el("accountLabel").hidden=true;el("signOut").hidden=true;
     el("token").value="";
     status("loginMessage","Sesión cerrada. Tu token no se ha guardado.","success");
@@ -444,14 +484,20 @@
   function switchTab(tab){
     if(state.busy)return;
     state.activeTab=tab;
-    el("tabPosts").classList.toggle("active",tab==="posts");
-    el("tabMenus").classList.toggle("active",tab==="menus");
-    el("tabPosts").setAttribute("aria-selected",String(tab==="posts"));
-    el("tabMenus").setAttribute("aria-selected",String(tab==="menus"));
+    for(const [name,id] of Object.entries({posts:"tabPosts",menus:"tabMenus",media:"tabMedia",site:"tabSite",videos:"tabVideos"})){
+      el(id).classList.toggle("active",name===tab);
+      el(id).setAttribute("aria-selected",String(name===tab));
+    }
     el("editorPanel").hidden=true;
     el("listPanel").hidden=tab!=="posts";
     el("menuPanel").hidden=tab!=="menus";
+    el("mediaPanel").hidden=tab!=="media";
+    el("sitePanel").hidden=tab!=="site";
+    el("videosPanel").hidden=tab!=="videos";
     if(tab==="menus")renderMenuTree();
+    if(tab==="media")loadLibrary().catch(e=>status("mediaStatus",errMessage(e),"error"));
+    if(tab==="site")loadSite().catch(e=>status("siteStatus",errMessage(e),"error"));
+    if(tab==="videos")loadManualVideos().catch(e=>status("videoStatus",errMessage(e),"error"));
   }
   function findMenuItem(id){
     let result=null;
@@ -639,9 +685,296 @@
   function valueLineStart(value,index){const prev=value.lastIndexOf('\n',Math.max(0,index-1));return prev+1;}
   function valueLineEnd(value,index){const next=value.indexOf('\n',index);return next<0?value.length:next;}
 
+
+  // V54 · Etiquetas, programación (zona Europe/Madrid), multimedia y metadatos.
+  function parseTags(text){
+    const seen=new Set();return String(text||"").split(/[;,\n]/).map(v=>v.trim().slice(0,44)).filter(v=>{
+      const key=v.toLocaleLowerCase("es");if(!v||seen.has(key))return false;seen.add(key);return true;
+    }).slice(0,16);
+  }
+  function postState(p){return !p?.published?"draft":(p.publishAt && Date.parse(p.publishAt)>Date.now()?"scheduled":"public");}
+  function toggleSchedule(kind){
+    const mode=el(kind==="post"?"postPublishMode":"videoPublishMode").value;
+    el(kind==="post"?"postScheduleField":"videoScheduleField").hidden=mode!=="scheduled";
+  }
+  function toMadridLocal(iso){
+    if(!iso||!Number.isFinite(Date.parse(iso)))return "";
+    const parts=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Madrid",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date(iso)).map(p=>[p.type,p.value]));
+    return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}`;
+  }
+  function madridToUTC(local){
+    if(!/^\d{4}-\d\d-\d\dT\d\d:\d\d$/.test(local||""))throw Error("Indica una fecha y hora válida para programar.");
+    const candidate=Date.parse(local+":00Z");
+    if(!Number.isFinite(candidate))throw Error("La fecha programada no es válida.");
+    const timezoneParts=new Intl.DateTimeFormat("en",{timeZone:"Europe/Madrid",timeZoneName:"shortOffset",hour:"2-digit"});
+    const match=timezoneParts.formatToParts(new Date(candidate)).find(p=>p.type==="timeZoneName")?.value?.match(/GMT([+-])(\d{1,2})(?::(\d{2}))?/);
+    const offset=match?(match[1]==="+"?1:-1)*(Number(match[2])*60+Number(match[3]||0)):60;
+    const iso=new Date(candidate-offset*60000).toISOString();
+    if(toMadridLocal(iso)!==local)throw Error("La hora elegida coincide con un cambio horario. Selecciona otra hora.");
+    if(Date.parse(iso)<=Date.now())throw Error("Para programar, elige una fecha y hora futuras.");
+    return iso;
+  }
+  async function readJson(path,fallback){
+    try{const response=await github(`/contents/${path}?ref=${encodeURIComponent(state.branch)}`);
+      const value=JSON.parse(new TextDecoder().decode(bytesFromB64(response.content)));
+      return value;
+    }catch(error){if(/^404 · /.test(error.message))return structuredClone(fallback);throw error;}
+  }
+  async function saveJsonAtomic(path,value,message){
+    const sha=await createGitBlob(JSON.stringify(value,null,2)+"\n");
+    return atomicCommit([{path,sha}],message);
+  }
+  // ========= Biblioteca multimedia =========
+  const documentExt=/\.(pdf|docx?|xlsx|pptx)$/i;
+  const imageExt=/\.(webp|jpe?g|png)$/i;
+  const typeFromPath=path=>imageExt.test(path)?"image":documentExt.test(path)?"document":"other";
+  const nameFromPath=path=>decodeURIComponent(path.split("/").pop()||path);
+  function mediaEntries(){return state.library.filter(m=>typeFromPath(m.path)!=="other");}
+  async function loadLibrary(){
+    status("mediaStatus","Leyendo archivos del repositorio…");
+    const head=await github(`/git/ref/heads/${encodeURIComponent(state.branch)}`);
+    const commit=await github(`/git/commits/${head.object.sha}`);
+    const tree=await github(`/git/trees/${commit.tree.sha}?recursive=1`);
+    if(tree.truncated)throw Error("El listado de GitHub está incompleto: el repositorio supera el límite de búsqueda.");
+    state.library=(tree.tree||[]).filter(f=>f.type==="blob" && /^assets\/(posts|descargas|biblioteca)\//.test(f.path) && typeFromPath(f.path)!=="other")
+      .map(f=>({path:f.path,name:nameFromPath(f.path),size:f.size||0,type:typeFromPath(f.path)}))
+      .sort((a,b)=>b.path.localeCompare(a.path,"es"));
+    state.libraryLimit=48;renderMediaLibrary();
+    status("mediaStatus",`${state.library.length} archivos localizados. Puedes buscarlos y reutilizarlos en cualquier publicación.`,"success");
+  }
+  function mediaCard(m,picker=false){
+    const path=esc(m.path),name=esc(m.name),size=m.size?Math.round(m.size/1024)+" KB":"";
+    const thumb=m.type==="image"?`<img src="${esc(assetUrl(m.path))}" loading="lazy" alt=""/>`:`<div class="media-icon">📄</div>`;
+    const allowed=!picker || (["image","hero"].includes(state.mediaPickerMode)&&m.type==="image") || (state.mediaPickerMode==="document"&&m.type==="document");
+    return `<article class="media-file">${thumb}<strong title="${path}">${name}</strong><small>${m.type==="image"?"Imagen · ":"Documento · "}${size}</small><div class="media-actions">${picker?`<button type="button" class="btn secondary" data-library-use="${path}" ${allowed?"":"disabled"}>${state.mediaPickerMode==="image"?"Añadir al carrusel":"Elegir documento"}</button>`:`<button type="button" class="btn secondary" data-library-copy="${path}">Copiar ruta</button>`}</div></article>`;
+  }
+  function renderMediaLibrary(){
+    const q=normalize(el("mediaSearch").value).toLowerCase(),type=el("mediaType").value;
+    const all=mediaEntries().filter(m=>(type==="all"||m.type===type)&&m.path.toLowerCase().includes(q));
+    el("mediaGrid").innerHTML=all.slice(0,state.libraryLimit).map(m=>mediaCard(m)).join("") || '<div class="empty">No se encontraron archivos con ese filtro.</div>';
+    el("mediaMore").hidden=all.length<=state.libraryLimit;
+    el("mediaMore").textContent=`Mostrar más (${Math.max(0,all.length-state.libraryLimit)} restantes)`;
+  }
+  function renderMediaPicker(){
+    const q=normalize(el("mediaPickerSearch").value).toLowerCase();
+    const matches=mediaEntries().filter(m=>m.type===(state.mediaPickerMode==="document"?"document":"image")&&m.path.toLowerCase().includes(q));
+    el("mediaPickerGrid").innerHTML=matches.slice(0,state.libraryLimit).map(m=>mediaCard(m,true)).join("") || '<p class="empty">No hay archivos de este tipo. Puedes subirlos desde Biblioteca multimedia.</p>';
+    el("mediaPickerMore").hidden=matches.length<=state.libraryLimit;
+  }
+  async function openMediaPicker(mode){
+    state.mediaPickerMode=mode;
+    state.libraryLimit=48;
+    el("mediaPickerTitle").textContent=mode==="document"?"Elegir documento":mode==="hero"?"Elegir imagen de la portada":"Elegir imágenes del carrusel";
+    el("mediaPickerSearch").value="";
+    el("mediaPicker").showModal();
+    if(!state.library.length){try{await loadLibrary();}catch(e){alert(errMessage(e));}}
+    renderMediaPicker();
+  }
+  function useMedia(path){
+    const m=state.library.find(x=>x.path===path);if(!m)return;
+    if(state.mediaPickerMode==="hero"){
+      state.site.hero.image=path;state.siteImageFile=null;el("heroImageUpload").value="";renderSiteImage();
+    }else if(state.mediaPickerMode==="document"){
+      state.selectedDoc=m;state.uploadingDoc=null;el("attachmentInput").value="";
+      el("selectedDocumentLabel").textContent="Documento seleccionado: "+m.name;
+      el("removeSelectedDoc").hidden=false;
+    }else{
+      if(state.media.some(x=>x.path===path)){alert("Esta imagen ya está incluida en el carrusel.");return;}
+      state.media.push({path});renderMedia();
+    }
+    el("mediaPicker").close();
+  }
+  async function uploadMedia(files){
+    if(!files.length||state.busy)return;
+    state.busy=true;
+    try{
+      const changes=[];
+      for(let i=0;i<files.length;i++){
+        const file=files[i];
+        if(file.size>10*1024*1024)throw Error("Archivo superior a 10 MB: "+file.name);
+        const kind=/^image\/(png|jpeg|webp)$/.test(file.type)?"image":documentExt.test(file.name)?"document":"other";
+        if(kind==="other")throw Error("Formato no permitido: "+file.name);
+        status("mediaStatus",`Procesando archivo ${i+1} de ${files.length}: ${file.name}`);
+        const suffix=kind==="image"?"webp":file.name.split(".").pop().toLowerCase();
+        const blob=kind==="image"?await convertToWebp(file):file;
+        const path=`assets/biblioteca/${Date.now().toString(36)}-${slug(file.name)}-${Math.random().toString(36).slice(2,7)}.${suffix}`;
+        changes.push({path,sha:await createGitBlob(blob)});
+      }
+      await atomicCommit(changes,`Añadir ${changes.length} archivo(s) a biblioteca multimedia`);
+      await loadLibrary();
+      status("mediaStatus",`${changes.length} archivo(s) guardado(s) en GitHub.`,"success");
+    }catch(e){status("mediaStatus",errMessage(e),"error");}
+    finally{state.busy=false;el("mediaUploadInput").value="";}
+  }
+  // ========= Portada =========
+  const defaultSite=()=>({version:1,hero:{kicker:"EL ESPACIO DE @TECNOLOGIAINSTI",line1:"Del feed",line2:"a tu ",accent:"aula.",description:"Ideas, proyectos y herramientas para enseñar Tecnología y hacer más fácil tu día a día como docente.",primaryText:"Ver novedades",secondaryText:"Nos vemos en Instagram",secondaryUrl:"https://www.instagram.com/tecnologiainsti/",image:""},areasOrder:["Inteligencia Artificial","Proyectos","Herramientas docentes"]});
+  async function loadSite(){
+    const data=await readJson(SITE_PATH,defaultSite());
+    const defaults=defaultSite();
+    state.site={version:1,hero:{...defaults.hero,...(data.hero||{})},areasOrder:Array.isArray(data.areasOrder)?data.areasOrder:defaults.areasOrder};
+    state.siteBaseline=JSON.stringify(data);
+    state.siteImageFile=null;fillSite();status("siteStatus","Portada cargada desde GitHub.","success");
+  }
+  function fillSite(){
+    const h=state.site.hero;
+    for(const [field,id] of Object.entries({kicker:"heroKicker",line1:"heroLine1",line2:"heroLine2",accent:"heroAccent",description:"heroDescription",primaryText:"heroPrimaryText",secondaryText:"heroSecondaryText",secondaryUrl:"heroSecondaryUrl"}))el(id).value=h[field]||"";
+    renderSiteImage();renderAreas();
+  }
+  function renderSiteImage(){
+    const path=state.site.hero.image||"";
+    el("heroImageLabel").textContent=state.siteImageFile?`Imagen nueva: ${state.siteImageFile.name}`:path?`Imagen existente: ${path}`:"Se mostrará la ilustración original de la portada";
+    const img=el("heroImagePreview");
+    if(img.dataset.blob){URL.revokeObjectURL(img.dataset.blob);delete img.dataset.blob;}
+    if(state.siteImageFile){img.src=URL.createObjectURL(state.siteImageFile);img.dataset.blob=img.src;img.hidden=false;}
+    else if(path){img.src=assetUrl(path);img.hidden=false;}
+    else {img.removeAttribute("src");img.hidden=true;}
+  }
+  function renderAreas(){
+    const items=state.site.areasOrder;
+    el("siteAreaOrder").innerHTML=items.map((name,i)=>`<div class="site-area-item"><span>${esc(name)}</span><button type="button" class="mini-btn" data-area-up="${i}" ${i===0?"disabled":""}>↑</button><button type="button" class="mini-btn" data-area-down="${i}" ${i===items.length-1?"disabled":""}>↓</button></div>`).join("");
+  }
+  async function saveSite(event){
+    event.preventDefault();if(state.busy)return;
+    state.busy=true;status("siteStatus","Verificando portada en GitHub…");
+    try{
+      const remote=await readJson(SITE_PATH,defaultSite());
+      if(JSON.stringify(remote)!==state.siteBaseline)throw Error("La portada fue modificada desde otra sesión. Recarga la versión de GitHub antes de continuar.");
+      const hero={};for(const [field,id] of Object.entries({kicker:"heroKicker",line1:"heroLine1",line2:"heroLine2",accent:"heroAccent",description:"heroDescription",primaryText:"heroPrimaryText",secondaryText:"heroSecondaryText",secondaryUrl:"heroSecondaryUrl"}))hero[field]=normalize(el(id).value);
+      if(!/^https:\/\/[^\s<>"']+$/i.test(hero.secondaryUrl))throw Error("El segundo enlace debe empezar por https://");
+      hero.image=state.site.hero.image||"";
+      const changes=[];
+      if(state.siteImageFile){
+        if(state.siteImageFile.size>10*1024*1024)throw Error("La imagen supera los 10 MB.");
+        hero.image=`assets/biblioteca/portada-${Date.now().toString(36)}.webp`;
+        const converted=await convertToWebp(state.siteImageFile);
+        changes.push({path:hero.image,sha:await createGitBlob(converted)});
+      }
+      const saved={version:1,hero,areasOrder:state.site.areasOrder};
+      changes.push({path:SITE_PATH,sha:await createGitBlob(JSON.stringify(saved,null,2)+"\n")});
+      await atomicCommit(changes,"Actualizar portada de TecnologíaInsti");
+      state.site=saved;state.siteBaseline=JSON.stringify(saved);state.siteImageFile=null;fillSite();
+      status("siteStatus","Portada guardada. Los cambios aparecerán al actualizar la web.","success");
+    }catch(e){status("siteStatus",errMessage(e),"error");}finally{state.busy=false;}
+  }
+  // ========= Videotutoriales manuales =========
+  const emptyVideos=()=>({version:1,videos:[]});
+  async function loadManualVideos(){
+    const doc=await readJson(VIDEOS_PATH,emptyVideos());
+    if(!Array.isArray(doc.videos))throw Error("El archivo de vídeos manuales no es válido.");
+    state.manualVideos=doc.videos;state.videoBaseline=JSON.stringify(doc);renderManualVideos();
+    status("videoStatus",`${doc.videos.length} vídeos manuales guardados en GitHub.`,"success");
+  }
+  function extractYoutubeId(value){
+    try{const url=new URL(value);const host=url.hostname.replace(/^www\./,"");
+      if(!["youtube.com","m.youtube.com","youtu.be","youtube-nocookie.com"].includes(host))return "";
+      const id=host==="youtu.be"?url.pathname.slice(1):url.searchParams.get("v")||(url.pathname.match(/^\/(?:shorts|live|embed)\/([a-zA-Z0-9_-]{11})/)||[])[1];
+      return /^[a-zA-Z0-9_-]{11}$/.test(id||"")?id:"";
+    }catch{return "";}
+  }
+  function renderManualVideos(){
+    el("manualVideoList").innerHTML=state.manualVideos.map(v=>`<div class="manual-video-item" data-vid="${esc(v.id)}"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" /><div><strong>${esc(v.title_es||v.title||"Videotutorial")}</strong><br /><small>${esc(v.category)} · ${esc(v.created||"Sin fecha")} · ${v.enabled===false?"Oculto":v.publishAt&&Date.parse(v.publishAt)>Date.now()?"Programado":"Visible"}</small></div><div class="post-actions"><button type="button" class="btn secondary" data-v-edit="${esc(v.id)}">Editar</button><button type="button" class="btn danger" data-v-delete="${esc(v.id)}">Eliminar</button></div></div>`).join("")||'<p class="empty">Todavía no has añadido vídeos manualmente. Los vídeos de tus listas seguirán sincronizándose como antes.</p>';
+  }
+  function editVideo(id=null){
+    const video=state.manualVideos.find(v=>v.id===id)||{};
+    state.videoEditingId=id;
+    el("videoFormTitle").textContent=id?"Editar videotutorial":"Nuevo videotutorial";
+    el("videoUrl").value=id?"https://www.youtube.com/watch?v="+id:"";
+    el("videoUrl").readOnly=!!id;
+    el("videoTitle").value=video.title_es||video.title||"";
+    el("videoDescription").value=video.description_es||"";
+    el("videoCategory").value=video.category||"Videotutoriales IA";
+    el("videoDate").value=video.created||localDate();
+    el("videoTags").value=(video.tags||[]).join(", ");
+    el("videoThumb").value=video.customThumbnail||"";
+    el("videoPublishMode").value=video.enabled===false?"draft":video.publishAt&&Date.parse(video.publishAt)>Date.now()?"scheduled":"now";
+    el("videoSchedule").value=toMadridLocal(video.publishAt);toggleSchedule("video");
+    el("videoForm").hidden=false;el("videoForm").scrollIntoView({block:"start"});
+  }
+  async function saveVideo(event){
+    event.preventDefault();if(state.busy)return;
+    const id=extractYoutubeId(el("videoUrl").value);
+    if(!id){status("videoStatus","Introduce un enlace válido de un vídeo de YouTube (no una lista de reproducción).","error");return;}
+    const title=normalize(el("videoTitle").value),description=normalize(el("videoDescription").value);
+    if(!title){status("videoStatus","Introduce un título en español.","error");return;}
+    const thumb=normalize(el("videoThumb").value);
+    if(thumb && !/^https:\/\/[^\s<>"']+$/i.test(thumb)){status("videoStatus","La miniatura debe ser una dirección https:// válida.","error");return;}
+    state.busy=true;status("videoStatus","Verificando vídeos en GitHub…");
+    try{
+      const remote=await readJson(VIDEOS_PATH,emptyVideos());
+      if(JSON.stringify(remote)!==state.videoBaseline)throw Error("El catálogo de vídeos cambió en GitHub. Pulsa Actualizar vídeos antes de editar.");
+      const mode=el("videoPublishMode").value;
+      const old=remote.videos.find(v=>v.id===id)||{};
+      const video={...old,id,category:el("videoCategory").value,title,title_es:title,description_es:description,created:el("videoDate").value||localDate(),tags:parseTags(el("videoTags").value),enabled:mode!=="draft",title_es_verified:true,description_es_verified:true,
+        thumbnail:thumb||"https://i.ytimg.com/vi/"+id+"/hqdefault.jpg",customThumbnail:thumb};
+      if(mode==="scheduled")video.publishAt=madridToUTC(el("videoSchedule").value);else delete video.publishAt;
+      remote.videos=(remote.videos||[]).filter(v=>v.id!==id);remote.videos.push(video);remote.updatedAt=new Date().toISOString();
+      await saveJsonAtomic(VIDEOS_PATH,remote,`Guardar videotutorial: ${title.slice(0,70)}`);
+      state.manualVideos=remote.videos;state.videoBaseline=JSON.stringify(remote);renderManualVideos();el("videoForm").hidden=true;
+      status("videoStatus","Vídeo guardado en GitHub. La ficha aparecerá en su sección y en Novedades.","success");
+    }catch(e){status("videoStatus",errMessage(e),"error");}finally{state.busy=false;}
+  }
+  async function deleteVideo(id){
+    const video=state.manualVideos.find(v=>v.id===id);if(!video||!confirm(`¿Eliminar del catálogo manual el vídeo «${video.title_es||video.title}»?\n\nSi también está en una lista automática puede seguir apareciendo desde esa lista.`))return;
+    state.busy=true;
+    try{const remote=await readJson(VIDEOS_PATH,emptyVideos());
+      if(JSON.stringify(remote)!==state.videoBaseline)throw Error("El catálogo cambió en GitHub; recárgalo.");
+      remote.videos=remote.videos.filter(v=>v.id!==id);remote.updatedAt=new Date().toISOString();
+      await saveJsonAtomic(VIDEOS_PATH,remote,"Eliminar videotutorial del catálogo manual");
+      state.manualVideos=remote.videos;state.videoBaseline=JSON.stringify(remote);renderManualVideos();status("videoStatus","Vídeo eliminado del catálogo manual.","success");
+    }catch(e){status("videoStatus",errMessage(e),"error");}finally{state.busy=false;}
+  }
   function bind() {
     el("tabPosts").addEventListener("click",()=>switchTab("posts"));
     el("tabMenus").addEventListener("click",()=>switchTab("menus"));
+    el("tabMedia").addEventListener("click",()=>switchTab("media"));
+    el("tabSite").addEventListener("click",()=>switchTab("site"));
+    el("tabVideos").addEventListener("click",()=>switchTab("videos"));
+    for(const id of ["filterStatus","filterCategory","filterTag","filterFrom","filterTo"]){
+      el(id).addEventListener("change",renderList);
+      if(id==="filterTag")el(id).addEventListener("input",renderList);
+    }
+    el("postPublishMode").addEventListener("change",()=>toggleSchedule("post"));
+    el("videoPublishMode").addEventListener("change",()=>toggleSchedule("video"));
+    el("chooseLibraryImages").addEventListener("click",()=>openMediaPicker("image"));
+    el("chooseLibraryDocument").addEventListener("click",()=>openMediaPicker("document"));
+    el("removeSelectedDoc").addEventListener("click",()=>{
+      state.selectedDoc=null;el("removeSelectedDoc").hidden=true;el("selectedDocumentLabel").textContent="";
+    });
+    el("mediaPickerClose").addEventListener("click",()=>el("mediaPicker").close());
+    el("mediaPickerSearch").addEventListener("input",renderMediaPicker);
+    el("mediaPickerGrid").addEventListener("click",e=>{
+      const button=e.target.closest("[data-library-use]");if(button)useMedia(button.dataset.libraryUse);
+    });
+    el("mediaPickerMore").addEventListener("click",()=>{state.libraryLimit+=48;renderMediaPicker();});
+    el("mediaSearch").addEventListener("input",()=>{state.libraryLimit=48;renderMediaLibrary();});
+    el("mediaType").addEventListener("change",()=>{state.libraryLimit=48;renderMediaLibrary();});
+    el("mediaReload").addEventListener("click",()=>loadLibrary().catch(e=>status("mediaStatus",errMessage(e),"error")));
+    el("mediaMore").addEventListener("click",()=>{state.libraryLimit+=48;renderMediaLibrary();});
+    el("mediaUploadInput").addEventListener("change",e=>uploadMedia([...e.target.files]));
+    el("mediaGrid").addEventListener("click",e=>{
+      const button=e.target.closest("[data-library-copy]");if(!button)return;
+      const value=button.dataset.libraryCopy;
+      navigator.clipboard?.writeText(value).then(()=>status("mediaStatus","Ruta copiada: "+value,"success")).catch(()=>prompt("Copia la ruta:",value)) || prompt("Copia la ruta:",value);
+    });
+    el("siteForm").addEventListener("submit",saveSite);
+    el("siteReload").addEventListener("click",()=>loadSite().catch(e=>status("siteStatus",errMessage(e),"error")));
+    el("chooseHeroImage").addEventListener("click",()=>openMediaPicker("hero"));
+    el("heroRemoveImage").addEventListener("click",()=>{state.site.hero.image="";state.siteImageFile=null;el("heroImageUpload").value="";renderSiteImage();});
+    el("heroImageUpload").addEventListener("change",e=>{state.siteImageFile=e.target.files[0]||null;renderSiteImage();});
+    el("siteAreaOrder").addEventListener("click",e=>{
+      const up=e.target.closest("[data-area-up]"),down=e.target.closest("[data-area-down]");if(!up&&!down)return;
+      const at=Number((up||down).dataset[up?"areaUp":"areaDown"]),to=at+(up?-1:1);
+      if(to<0||to>=state.site.areasOrder.length)return;
+      [state.site.areasOrder[at],state.site.areasOrder[to]]=[state.site.areasOrder[to],state.site.areasOrder[at]];renderAreas();
+    });
+    el("videoAdd").addEventListener("click",()=>editVideo());
+    el("videoReload").addEventListener("click",()=>loadManualVideos().catch(e=>status("videoStatus",errMessage(e),"error")));
+    el("manualVideoList").addEventListener("click",e=>{
+      const edit=e.target.closest("[data-v-edit]"),remove=e.target.closest("[data-v-delete]");
+      if(edit)editVideo(edit.dataset.vEdit);if(remove)deleteVideo(remove.dataset.vDelete);
+    });
+    el("videoCancel").addEventListener("click",()=>el("videoForm").hidden=true);
+    el("videoForm").addEventListener("submit",saveVideo);
     el("menuAddTop").addEventListener("click",()=>openMenuForm());
     el("menuAddChild").addEventListener("click",()=>openMenuForm(null,state.menu.items[0]?.id||""));
     el("menuTree").addEventListener("click",e=>{
@@ -719,7 +1052,10 @@
       }
       renderMedia();
     });
-    el("attachmentInput").addEventListener("change",e=>{state.uploadingDoc=e.target.files[0]||null;});
+    el("attachmentInput").addEventListener("change",e=>{
+      state.uploadingDoc=e.target.files[0]||null;
+      if(state.uploadingDoc){state.selectedDoc=null;el("selectedDocumentLabel").textContent="";el("removeSelectedDoc").hidden=true;}
+    });
   }
   bind();
 })();

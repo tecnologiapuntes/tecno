@@ -69,7 +69,7 @@
     overlay.hidden=false;originalOverflow=document.body.style.overflow;document.body.style.overflow='hidden';closeButton.focus();
   }
   function render(posts){
-    const available=posts.filter(p=>p&&p.published&&p.category===category)
+    const available=posts.filter(p=>p&&window.TI_VISIBILITY.visible(p)&&p.category===category)
       .sort((a,b)=>type(b.created).localeCompare(type(a.created)));
     if(!available.length){host.hidden=true;return;}
     const header=el('div','post-page-header');

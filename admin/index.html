@@ -8,10 +8,10 @@
   <meta name="theme-color" content="#102445" />
   <title>Administración · TecnologíaInsti</title>
   <link rel="icon" href="../assets/favicon-tecnologiainsti.png" type="image/png" />
-  <link rel="stylesheet" href="./admin.css?v=52" />
+  <link rel="stylesheet" href="./admin.css?v=54" />
   <script src="../assets/menu-config.js?v=51"></script>
   <script src="../assets/post-format.js?v=52"></script>
-  <script defer src="./admin.js?v=52"></script>
+  <script defer src="./admin.js?v=54"></script>
 </head>
 <body>
   <header class="topbar">
@@ -66,9 +66,19 @@
       <div class="workspace-tabs" role="tablist" aria-label="Tipo de contenido">
         <button id="tabPosts" type="button" role="tab" aria-selected="true" class="tab active">Publicaciones</button>
         <button id="tabMenus" type="button" role="tab" aria-selected="false" class="tab">Menús y apartados</button>
+        <button id="tabMedia" type="button" role="tab" aria-selected="false" class="tab">Biblioteca multimedia</button>
+        <button id="tabSite" type="button" role="tab" aria-selected="false" class="tab">Portada</button>
+        <button id="tabVideos" type="button" role="tab" aria-selected="false" class="tab">Videotutoriales</button>
       </div>
       <div id="listPanel" class="panel">
         <div class="list-tools"><label class="search-wrap">Buscar <input id="searchPosts" placeholder="Título, categoría, fecha…" type="search" /></label><button id="reloadPosts" class="btn secondary" type="button">↻ Actualizar lista</button></div>
+        <div class="advanced-filters">
+          <label>Estado <select id="filterStatus"><option value="">Todos</option><option value="public">Publicados</option><option value="scheduled">Programados</option><option value="draft">Borradores</option></select></label>
+          <label>Apartado <select id="filterCategory"><option value="">Todos</option></select></label>
+          <label>Etiqueta <input id="filterTag" type="search" placeholder="Ej.: DUA, Arduino…" /></label>
+          <label>Desde <input id="filterFrom" type="date" /></label>
+          <label>Hasta <input id="filterTo" type="date" /></label>
+        </div>
         <div id="postList" class="post-list" aria-live="polite"></div>
       </div>
 
@@ -80,6 +90,7 @@
             <div class="field"><div class="category-field-heading"><label for="postCategory">Apartado de la web <em>*</em></label><button id="refreshCategories" class="category-refresh" type="button" title="Consultar los apartados actuales de GitHub">↻ Actualizar apartados</button></div><select id="postCategory" required><option value="Prompts">IA → Prompts</option><option value="Recursos IA">IA → Recursos IA</option><option value="2º ESO">Proyectos → 2.º ESO</option><option value="3º ESO">Proyectos → 3.º ESO</option><option value="4º ESO">Proyectos → 4.º ESO</option><option value="Cuaderno de Séneca">Herramientas docentes → Cuaderno de Séneca</option><option value="Utilidades Séneca">Herramientas docentes → Herramientas docentes</option></select><p id="categoryHint" class="category-hint">Al abrir el editor se consultan automáticamente los apartados actuales de GitHub.</p></div>
             <div class="field"><label for="postDate">Fecha de publicación <em>*</em></label><input id="postDate" type="date" required /></div>
           </div>
+          <div class="field"><label for="postTags">Etiquetas (separadas por comas)</label><input id="postTags" maxlength="650" placeholder="DUA, Arduino, Evaluación, 3.º ESO" /><p class="hint">Permiten localizar la misma publicación en búsquedas y filtros temáticos, sin duplicarla.</p></div>
           <div class="field"><label for="postExcerpt">Descripción corta de la tarjeta</label><textarea id="postExcerpt" rows="2" maxlength="380" placeholder="Resumen que se verá antes de abrir la publicación"></textarea></div>
           <div class="field rich-field"><label for="postContent">Texto completo de la publicación <em>*</em></label>
             <div id="postToolbar" class="format-toolbar" role="toolbar" aria-label="Formato del texto de la publicación">
@@ -102,14 +113,20 @@
           <div class="section-title"><h3>Portada y carrusel</h3><p>La primera imagen será la portada. Puedes subir varias a la vez y moverlas para ordenar el carrusel.</p></div>
           <label for="photoInput" class="upload-area" id="imageDrop"><span class="upload-icon">▧</span><strong>Pulsa aquí o arrastra tus imágenes</strong><small>PNG, JPG y WebP · conversión automática a WebP · hasta 10 MB por imagen de origen</small></label>
           <input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden />
+          <div class="media-pick-row"><button type="button" class="btn secondary" id="chooseLibraryImages">▧ Elegir imágenes de la biblioteca</button><span class="hint">Puedes combinar imágenes nuevas y reutilizadas, y ordenarlas con las flechas.</span></div>
           <div id="gallery" class="gallery" aria-label="Orden de las imágenes"></div>
 
           <div class="section-title"><h3>Enlaces y descargas</h3><p>Para tu Word, PDF, carpeta de Drive o publicación original de Instagram.</p></div>
           <div id="linksList" class="links-list"></div>
           <button type="button" class="btn secondary" id="addLink">+ Añadir enlace</button>
-          <div class="field attachment-field"><label for="attachmentInput">Subir documento a la web (opcional)</label><input id="attachmentInput" type="file" accept=".docx,.pdf,.doc,.xlsx,.pptx" /><small id="currentAttachment" class="hint"></small><small class="hint">Si ya tienes un enlace de Drive, no necesitas subir el Word.</small></div>
+          <div class="field attachment-field"><label for="attachmentInput">Subir documento a la web (opcional)</label><input id="attachmentInput" type="file" accept=".docx,.pdf,.doc,.xlsx,.pptx" /><small id="currentAttachment" class="hint"></small><small class="hint">Si ya tienes un enlace de Drive, no necesitas subir el Word.</small><div class="media-pick-row"><button type="button" class="btn secondary" id="chooseLibraryDocument">Elegir documento de la biblioteca</button><button type="button" class="btn secondary" id="removeSelectedDoc" hidden>Quitar documento seleccionado</button></div><p id="selectedDocumentLabel" class="hint"></p></div>
 
-          <div class="publish-options"><label class="toggle"><input type="checkbox" id="postPublished" checked /><span>Publicar ahora en la web</span></label><p>Desmarca la casilla para guardar como borrador. La fecha sirve para ordenar, no programa la publicación.</p></div>
+          <div class="publish-options">
+            <label for="postPublishMode"><strong>Estado de publicación</strong></label>
+            <select id="postPublishMode"><option value="now">Publicar ahora</option><option value="scheduled">Programar publicación</option><option value="draft">Guardar como borrador</option></select>
+            <div id="postScheduleField" class="field" hidden><label for="postSchedule">Fecha y hora previstas (España peninsular)</label><input type="datetime-local" id="postSchedule" step="60" /><small>Se hará visible automáticamente desde esa fecha al visitar la web. Esta misma fecha se usará para ordenarla en Novedades. Horario Europe/Madrid.</small></div>
+            <p>Nota: GitHub Pages es público. El contenido programado permanece oculto en la interfaz hasta su fecha, pero sus datos pueden consultarse en el repositorio público.</p>
+          </div>
           <div class="editor-actions"><button class="btn secondary" type="button" id="cancelEditBottom">Cancelar</button><button class="btn primary" type="submit" id="savePost">Guardar en GitHub</button></div>
           <div id="saveStatus" role="status" aria-live="polite"></div>
         </form>
@@ -131,7 +148,50 @@
         <div class="menu-save-row"><p class="hint">Los cambios no se publican hasta pulsar «Guardar menú en GitHub». No se modificarán tus publicaciones ni el archivo de vídeos de Séneca.</p><button id="menuReset" type="button" class="btn secondary">Deshacer cambios</button><button id="menuSave" type="button" class="btn primary">Guardar menú en GitHub</button></div>
         <div id="menuStatus" aria-live="polite" role="status"></div>
       </section>
-      <p class="footer-hint">Las publicaciones nuevas se guardan en <code>assets/cms-posts.json</code>, sin modificar los 24 posts originales de <code>assets/posts.js</code>. Los cambios quedan registrados en GitHub y no sobrescriben los vídeos de Séneca. Los menús se editan desde la pestaña «Menús y apartados».</p>
+      <section id="mediaPanel" class="panel" hidden aria-labelledby="mediaTitle">
+        <div class="section-title"><h2 id="mediaTitle">Biblioteca multimedia</h2><p>Imágenes, carruseles y documentos ya guardados en tu repositorio. Puedes reutilizarlos sin volver a subirlos.</p></div>
+        <div class="media-library-tools"><label>Buscar archivo <input id="mediaSearch" type="search" placeholder="Nombre, formato, tema…" /></label><label>Tipo <select id="mediaType"><option value="all">Todos</option><option value="image">Imágenes</option><option value="document">Documentos</option></select></label><button id="mediaReload" class="btn secondary" type="button">↻ Actualizar</button></div>
+        <label for="mediaUploadInput" class="upload-area"><span class="upload-icon">↥</span><strong>Subir imágenes o documentos a la biblioteca</strong><small>Las imágenes se convierten a WebP. Los PDF y Word mantienen sus archivos originales. Máximo 10 MB por archivo.</small></label>
+        <input type="file" id="mediaUploadInput" accept="image/png,image/jpeg,image/webp,.pdf,.doc,.docx,.pptx,.xlsx" multiple hidden />
+        <p class="hint">Los archivos usados en varias publicaciones no se duplican. No se borrarán archivos que puedan estar enlazados en otros posts.</p>
+        <div id="mediaStatus" role="status" aria-live="polite"></div><div id="mediaGrid" class="media-browser-grid"></div>
+        <div class="media-pager"><button id="mediaMore" class="btn secondary" type="button" hidden>Mostrar más archivos</button></div>
+      </section>
+      <section id="sitePanel" class="panel" hidden aria-labelledby="siteTitle">
+        <div class="section-title"><h2 id="siteTitle">Gestión de la portada</h2><p>Edita los textos y la imagen principal sin cambiar el diseño de TecnologíaInsti.</p></div>
+        <form id="siteForm">
+          <div class="field"><label for="heroKicker">Texto pequeño superior</label><input id="heroKicker" maxlength="100" /></div>
+          <div class="field-grid"><div class="field"><label for="heroLine1">Primera línea del título</label><input id="heroLine1" maxlength="80" /></div><div class="field"><label for="heroLine2">Segunda línea del título</label><input id="heroLine2" maxlength="80" /></div></div>
+          <div class="field"><label for="heroAccent">Palabra o frase destacada del título</label><input id="heroAccent" maxlength="80" /></div>
+          <div class="field"><label for="heroDescription">Descripción de la portada</label><textarea id="heroDescription" rows="3" maxlength="500"></textarea></div>
+          <div class="field-grid"><div class="field"><label for="heroPrimaryText">Texto del botón principal</label><input id="heroPrimaryText" maxlength="60" /></div><div class="field"><label for="heroSecondaryText">Texto del segundo enlace</label><input id="heroSecondaryText" maxlength="60" /></div></div>
+          <div class="field"><label for="heroSecondaryUrl">Dirección del segundo enlace (https://)</label><input id="heroSecondaryUrl" type="url" /></div>
+          <div class="field"><label>Imagen opcional de la portada</label><div class="media-pick-row"><button id="chooseHeroImage" class="btn secondary" type="button">Elegir de la biblioteca</button><button id="heroRemoveImage" class="btn secondary" type="button">Usar ilustración original</button></div><input id="heroImageUpload" type="file" accept="image/png,image/jpeg,image/webp" /><div id="heroImageLabel" class="hint">Ilustración original</div><img id="heroImagePreview" class="hero-image-preview" alt="Vista previa de la imagen principal" hidden /></div>
+          <div class="section-title"><h3>Orden de las tres secciones destacadas</h3><p>Ordena las tarjetas principales de la portada. No modifica tus apartados del menú.</p></div><div id="siteAreaOrder" class="site-area-order"></div>
+          <div class="editor-actions"><button id="siteReload" type="button" class="btn secondary">Recuperar versión de GitHub</button><button type="submit" class="btn primary">Guardar portada en GitHub</button></div><div id="siteStatus" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+      <section id="videosPanel" class="panel" hidden aria-labelledby="videosTitle">
+        <div class="section-title"><h2 id="videosTitle">Gestión manual de videotutoriales</h2><p>Añade vídeos individuales pegando su enlace de YouTube, sin depender de la sincronización de las listas. Puedes editar el título y la descripción en español.</p></div>
+        <button id="videoAdd" class="btn primary" type="button">+ Añadir videotutorial</button><button id="videoReload" class="btn secondary" type="button">↻ Actualizar vídeos</button>
+        <div id="manualVideoList" class="manual-video-list"></div>
+        <form id="videoForm" hidden>
+          <h3 id="videoFormTitle">Nuevo videotutorial</h3>
+          <div class="field"><label for="videoUrl">Enlace del vídeo de YouTube <em>*</em></label><input id="videoUrl" type="url" required placeholder="https://www.youtube.com/watch?v=…" /></div>
+          <div class="field"><label for="videoTitle">Título en español <em>*</em></label><input id="videoTitle" maxlength="220" required /></div>
+          <div class="field"><label for="videoDescription">Descripción en español</label><textarea id="videoDescription" rows="5" maxlength="20000"></textarea></div>
+          <div class="field-grid"><div class="field"><label for="videoCategory">Sección</label><select id="videoCategory"><option value="Videotutoriales IA">Inteligencia Artificial → Videotutoriales</option><option value="Cuaderno de Séneca">Herramientas docentes → Cuaderno de Séneca</option></select></div><div class="field"><label for="videoDate">Fecha original del vídeo</label><input id="videoDate" type="date" /></div></div>
+          <div class="field"><label for="videoTags">Etiquetas (comas)</label><input id="videoTags" placeholder="IA, ChatGPT, Cuaderno…" /></div>
+          <div class="field"><label for="videoThumb">Miniatura personalizada (opcional, https://)</label><input id="videoThumb" type="url" placeholder="Por defecto se utiliza la de YouTube" /></div>
+          <div class="field"><label for="videoPublishMode">Estado</label><select id="videoPublishMode"><option value="now">Publicar</option><option value="scheduled">Programar</option><option value="draft">Ocultar temporalmente</option></select></div>
+          <div class="field" id="videoScheduleField" hidden><label for="videoSchedule">Publicar desde (España peninsular)</label><input id="videoSchedule" type="datetime-local" /></div>
+          <div class="editor-actions"><button id="videoCancel" class="btn secondary" type="button">Cancelar</button><button class="btn primary" type="submit" id="videoSave">Guardar vídeo en GitHub</button></div>
+          <p class="hint">Los vídeos de las listas de reproducción automáticas se conservan. Si añades uno con el mismo ID, tu título y tu descripción tendrán preferencia.</p>
+        </form>
+        <div id="videoStatus" role="status" aria-live="polite"></div>
+      </section>
+      <dialog id="mediaPicker" class="media-picker-dialog"><div class="media-picker-header"><div><h2 id="mediaPickerTitle">Elegir de la biblioteca</h2><p>Selecciona un archivo existente en GitHub.</p></div><button type="button" class="btn secondary" id="mediaPickerClose">Cerrar ×</button></div><input id="mediaPickerSearch" type="search" placeholder="Buscar por nombre…" aria-label="Buscar en la biblioteca" /><div id="mediaPickerGrid" class="media-browser-grid"></div><button id="mediaPickerMore" class="btn secondary" type="button" hidden>Mostrar más</button></dialog>
+      <p class="footer-hint">Las publicaciones se guardan en <code>assets/cms-posts.json</code>, sin modificar los posts originales de <code>assets/posts.js</code>. Los cambios quedan registrados en GitHub y no sobrescriben los vídeos de Séneca. Los menús se editan desde la pestaña «Menús y apartados».</p>
     </section>
   </main>
 </body>

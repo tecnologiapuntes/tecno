@@ -110,20 +110,34 @@
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'){panel.hidden=true;toggle.setAttribute('aria-expanded','false');}
   });
-  async function load(){
+  async function mergeManual(automatic,category){
     try{
-      const res=await fetch('./assets/ia-videos.json?lista=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj&v=49',{cache:'no-store'});
-      if(!res.ok)throw Error('Archivo no disponible');
-      const data=await res.json();
-      // Evita mostrar vídeos de una lista anterior mientras GitHub sincroniza la nueva.
-      if(data.playlist_id!==PLAYLIST){
-        console.info('Esperando los datos de la lista correcta de IA. Reproductor oficial disponible.');
-        videos=[];partial=false;render();return;
+      const response=await fetch('./assets/cms-videos.json',{cache:'no-store'});
+      if(!response.ok)return automatic;
+      const data=await response.json();
+      const map=new Map(automatic.map(v=>[v.id,v]));
+      for(const v of (Array.isArray(data.videos)?data.videos:[])){
+        if(v.category!==category||!/^[\w-]{11}$/.test(String(v.id||'')))continue;
+        // An expressly disabled manual entry overrides the automatic one.
+        if(!window.TI_VISIBILITY.videoVisible(v)){map.delete(v.id);continue;}
+        map.set(v.id,{...map.get(v.id),...v,title:v.title_es||v.title,
+          title_es:v.title_es||v.title,description_es:v.description_es||v.description||'',
+          title_es_verified:true,description_es_verified:true,
+          thumbnail:v.thumbnail||'https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg'});
       }
-      videos=(Array.isArray(data.videos)?data.videos:[]).filter(isVideo);
-      partial=String(data.source||'').startsWith('RSS parcial');render();
-      const match=location.hash.match(/^#video-([\w-]{11})$/);if(match)show(match[1]);
-    }catch(err){console.warn('Videotutoriales IA no sincronizados:',err);videos=[];render()}
+      return [...map.values()].filter(isVideo);
+    }catch(error){console.warn('Vídeos manuales no disponibles:',error);return automatic;}
+  }
+  async function load(){
+    let automatic=[];
+    try{
+      const res=await fetch('./assets/ia-videos.json?lista='+PLAYLIST+'&v=54',{cache:'no-store'});
+      if(res.ok){const data=await res.json();
+        if(data.playlist_id===PLAYLIST){automatic=(Array.isArray(data.videos)?data.videos:[]).filter(isVideo);partial=String(data.source||'').startsWith('RSS parcial');}
+      }
+    }catch(err){console.warn('YouTube IA: sincronización no disponible',err);}
+    videos=await mergeManual(automatic,'Videotutoriales IA');render();
+    const match=location.hash.match(/^#video-([\w-]{11})$/);if(match)show(match[1]);
   }
   render();
   load();

@@ -64,9 +64,33 @@
       return [];
     }
   }
+  async function manualPosts(){
+    try{
+      const response=await fetch('./assets/cms-videos.json',{cache:'no-store'});
+      if(!response.ok)return {entries:[],blocked:[]};
+      const payload=await response.json();
+      const raw=Array.isArray(payload.videos)?payload.videos:[];
+      const blocked=raw.filter(v=>!window.TI_VISIBILITY.videoVisible(v)).map(v=>v.id);
+      const entries=raw
+        .filter(v=>window.TI_VISIBILITY.videoVisible(v)&&reId.test(String(v.id||'')))
+        .map((v,i)=>{
+          const feed=playlists.find(p=>p.category===v.category);
+          if(!feed)return null;
+          const row=toPost({...v,title:v.title_es||v.title,description:v.description_es||v.description},i,feed);
+          if(row){row.created=v.created||row.created;row.tags=Array.isArray(v.tags)?v.tags:[];}
+          return row;
+        }).filter(Boolean);
+      return {entries,blocked};
+    }catch(e){console.warn('Vídeos añadidos manualmente no disponibles',e);return {entries:[],blocked:[]};}
+  }
   window.TI_NEWS={async load(){
     const rows=(await Promise.all(playlists.map(read))).flat();
+    const manual=await manualPosts();
+    const byId=new Map(rows.map(row=>[row.youtubeId,row]));
+    for(const id of manual.blocked)byId.delete(id);
+    for(const row of manual.entries)byId.set(row.youtubeId,row);
+    const unique=[...byId.values()];
     const ids=new Set();
-    return rows.filter(row=>{if(ids.has(row.youtubeId))return false;ids.add(row.youtubeId);return true;});
+    return unique.filter(row=>{if(ids.has(row.youtubeId))return false;ids.add(row.youtubeId);return true;});
   },dateFrom,toPost};
 })();
