@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""V48: sincroniza la lista correcta de IA sin afectar a Séneca ni a los posts.
+"""V49: sincroniza títulos y descripciones en español sin afectar a Séneca ni posts.
 
 Si el acceso a YouTube falla, conserva los datos previos. Si solo el RSS
 responde, no reemplaza una lista completa con el subconjunto de 15 elementos.
@@ -10,6 +10,96 @@ from pathlib import Path
 from datetime import datetime, timezone
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree as ET
+
+# Si se pierde el acceso a YouTube, se siguen traduciendo las fichas
+# previamente sincronizadas, sin reescribir ni inventar sus metadatos.
+SPANISH_TOKENS = set('el la los las un una que de del al con sin para como cómo tus sus este esta esto los más por entre en usa crea crear aprende utilizar sobre profesor profesora profesorado alumnado clase aula educación tecnología no sí además quieres tendrás podemos cuando donde guía vídeo infografía infografías herramienta herramientas actividades clase'.split())
+ENGLISH_TOKENS = set('the a an and for from with without how what why your this these those that you can using use learn about tutorial tutorials beginners best tips guide create build to be will it new top tools are on in at or by of get started must should'.split())
+ENGLISH_PHRASES = re.compile(r'\b(?:how to|in this video|in this tutorial|step by step|learn how|the best|this tool|for teachers|what is|why you|you can|you will|in order to|watch this|download the|getting started|find out|subscribe to)\b',re.I)
+
+def classify_language(text):
+    """Spanish, other, or uncertain. Brands and links are ignored."""
+    import unicodedata
+    clean=re.sub(r'https?://\S+|www\.\S+|#[\w-]+|@\w+', ' ', text or '')
+    words=[w.lower() for w in re.findall(r"[a-záéíóúñü]+",clean,re.I)]
+    if ENGLISH_PHRASES.search(clean):return 'other'
+    s=sum(w in SPANISH_TOKENS for w in words)
+    e=sum(w in ENGLISH_TOKENS for w in words)
+    # Typical mix of software brand names and Spanish words: keep Spanish.
+    if s>=2 and s>=e:return 'es'
+    if e>=2 and e>s:return 'other'
+    if re.search(r'[¿¡áéíóúñ]',clean,re.I) and s>=1:return 'es'
+    try:
+        from langdetect import detect_langs
+        scores=detect_langs(clean[:3500])
+        if scores and scores[0].lang=='es' and scores[0].prob>0.75:return 'es'
+        if scores and scores[0].lang!='es' and scores[0].prob>0.72:return 'other'
+    except Exception: pass
+    return 'uncertain'
+
+
+def translate_spanish(text, label):
+    """Translate complete text (split safely), preserve URLs and never invent it."""
+    text=str(text or '').strip()
+    if not text:return ''
+    if classify_language(text)=='es':
+        nonempty=[part for part in text.splitlines() if len(part.strip())>20 and not part.strip().startswith('http')]
+        if not any(classify_language(part)=='other' for part in nonempty):return text
+    try:
+        from deep_translator import GoogleTranslator
+        translator=GoogleTranslator(source='auto',target='es')
+        # Split long descriptions into full lines/blocks, never cut URLs.
+        pieces=[]
+        for line in text.splitlines(keepends=True):
+            if len(line)<=3500:
+                pieces.append(line)
+            else:
+                # Whitespace boundaries avoid cutting words in half.
+                remaining=line
+                while len(remaining)>3500:
+                    split_at=remaining.rfind(' ',0,3400)
+                    if split_at<800:split_at=3400
+                    pieces.append(remaining[:split_at]);remaining=remaining[split_at:]
+                if remaining:pieces.append(remaining)
+        if not pieces:return ''
+        out=[]
+        for item in pieces:
+            if not item.strip() or re.fullmatch(r'\s*https?://\S+\s*',item):
+                out.append(item);continue
+            translated=translator.translate(item.strip())
+            if not translated:raise ValueError('Traducción vacía')
+            # Preserve paragraph structure.
+            out.append(('\n' if item.startswith('\n') else '')+translated+('\n' if item.endswith('\n') else ''))
+        result=''.join(out).strip()
+        if classify_language(result)=='other':
+            print(f'La traducción de {label} sigue sin estar en español.')
+            return ''
+        return result
+    except Exception as exc:
+        print(f'Traducción no disponible ({label}): {str(exc)[:180]}')
+        return ''
+
+
+def add_spanish_fields(entries, old):
+    previous={v['id']:v for v in old.get('videos',[]) if isinstance(v,dict) and v.get('id')}
+    for video in entries:
+        prev=previous.get(video['id'],{})
+        for field in ('title','description'):
+            source=str(video.get(field) or '').strip()
+            translated_key=field+'_es'
+            status_key=field+'_es_verified'
+            if not source:
+                video[translated_key]=''
+                video[status_key]=False
+                continue
+            old_trans=str(prev.get(translated_key) or '').strip()
+            valid_old=(prev.get(field)==source and old_trans and classify_language(old_trans)!='other')
+            translated=old_trans if valid_old else translate_spanish(source,field+' '+video['id'])
+            # If the translation service fails, English must never become a visible translation.
+            if not translated and classify_language(source)=='es':translated=source
+            video[translated_key]=translated
+            video[status_key]=bool(translated) and classify_language(translated)!='other'
+    return entries
 
 PLAYLIST = 'PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj'
 URL = "https://www.youtube.com/playlist?list=" + PLAYLIST
@@ -102,6 +192,7 @@ def main():
     print("Lista de IA solicitada:", URL)
     old=read_previous()
     source="yt-dlp"
+    reused_old_data=False
     try: rows=via_ytdlp()
     except Exception as exc:
         print("YouTube no accesible mediante yt-dlp:",str(exc)[:160]); rows=[]
@@ -109,8 +200,15 @@ def main():
         try: rows=via_rss();source="RSS parcial (máximo 15)"
         except Exception as exc: print("RSS no accesible:",str(exc)[:160]);rows=[]
     if not rows:
-        print("No hay datos disponibles; se conserva el listado existente.")
-        return
+        if not old.get('videos'):
+            print("No hay datos disponibles; se conserva el listado existente.")
+            return
+        print("No se pudo leer YouTube; se traducirán los metadatos previamente sincronizados.")
+        # Important: copy so translations do not mutate `old` in-place,
+        # otherwise comparison incorrectly reports "no changes".
+        rows=[dict(v) for v in old['videos']]
+        source=old.get('source','Datos conservados')
+        reused_old_data=True
     seen=set(); unique=[]
     for row in rows:
         if row["id"] not in seen:
@@ -121,7 +219,9 @@ def main():
     if source=="yt-dlp" and old.get("source")=="yt-dlp" and len(unique)<len(old.get("videos",[])):
         print("YouTube devolvió menos vídeos que antes; se conserva la lista completa previa.")
         return
-    unique=enrich(unique,old)
+    if not reused_old_data:
+        unique=enrich(unique,old)
+    unique=add_spanish_fields(unique,old)
     for v in unique:
         # Preserve normalized keys even when blank: no placeholder masquerading as data.
         v.setdefault("description","")

@@ -7,8 +7,10 @@
 .ia-video-page .modal-content{padding-top:5px}
 @media(max-width:540px){.ia-video-page .hero h1{font-size:clamp(30px,8vw,38px)}}
 
-/* V48: la lista correcta se muestra siempre, aun si falla la sincronización de tarjetas. */
-.ia-video-page .ia-playlist-always {display:block; margin-bottom:28px}
-.ia-video-page .ia-playlist-always .fallback-copy h3 {font-weight:650}
-.ia-video-page .ia-playlist-always[hidden] {display:none}
-.ia-video-page .video-section:not([hidden]) {margin-top:12px}
+/* V49: tarjetas compactas; no se muestra el reproductor grande de la lista. */
+.ia-video-page .video-section:not([hidden]) {margin-top:0}
+.ia-video-page .ia-empty-state {margin:14px 0 32px; padding:23px 26px; border:1px solid #DCE9EE; background:#FFF; border-radius:18px}
+.ia-video-page .ia-empty-state[hidden] {display:none!important}
+.ia-video-page .ia-empty-state h3 {font-size:18px; margin:0 0 8px; color:#102445}
+.ia-video-page .ia-empty-state p {margin:0 0 14px; font-size:13px; line-height:1.6; color:#59718C}
+.ia-video-page .ia-empty-state a {display:inline-flex; text-decoration:none; background:#DAF9F0; padding:10px 14px; border-radius:9px; color:#113853; font-size:13px; font-weight:650}

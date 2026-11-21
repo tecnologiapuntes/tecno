@@ -1,0 +1,7 @@
+TecnologíaInsti V50 · Apartados dinámicos en el editor
+- El selector de apartados vuelve a consultar los menús guardados en GitHub al abrir una publicación y al actualizar la lista.
+- El selector también incluye Inteligencia Artificial → Videotutoriales, que anteriormente faltaba al ser una página y no una categoría de filtro.
+- Los posts creados en Videotutoriales IA o Cuaderno de Séneca pueden visualizarse dentro de esas páginas.
+- Un botón «Actualizar apartados» permite refrescar sin abandonar el formulario.
+- Se conserva la gestión de apartados personalizados y se migran menús antiguos sin borrar sus categorías.
+- No se distribuyen datos del CMS, menús privados ni vídeos sincronizados.

@@ -27,3 +27,11 @@
 .menu-save-row .btn{white-space:normal}
 #menuStatus{font-size:13px;line-height:1.5;margin-top:12px}
 @media(max-width:760px){.menu-node{align-items:flex-start;flex-wrap:wrap}.menu-node-actions{width:100%;justify-content:flex-start}.menu-children{margin-left:9px}.menu-node-actions button{font-size:11px}.menu-save-row .btn{flex:1}}
+
+/* V50 · Refresco de categorías del menú en el editor. */
+.category-field-heading{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;margin-bottom:6px}
+.category-field-heading label{margin:0}
+.category-refresh{background:#e6f9f3;border:1px solid #b6e7da;color:#0b615e;border-radius:8px;padding:5px 9px;cursor:pointer;font-size:12px;font-weight:600;font-family:inherit}
+.category-refresh:hover{background:#d3f2e8}
+.category-refresh:disabled{opacity:.55;cursor:wait}
+.category-hint{font-size:11px!important;line-height:1.5!important;color:#59718c!important;margin:6px 0 0!important}

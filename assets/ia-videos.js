@@ -19,15 +19,30 @@
   const thumb=v=>/^https:\/\//.test(v.thumbnail||'')?v.thumbnail:'https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg';
 
 
-  // Mostrar sólo metadatos reales. No inventar títulos o descripciones de vídeos.
-// Si se produce una traducción, se conserva el original asociado al ID.
-function title(v,n){
-  return String(v.title_es || v.title || '').trim();
-}
-function spanishDescription(v){
-  const value=String(v.description_es || v.description || '').trim();
-  return value || 'Este vídeo no incluye una descripción recuperable. Consulta su ficha original en YouTube.';
-}
+  // La traducción se guarda por ID en GitHub Actions. La ficha pública nunca
+  // expone accidentalmente metadatos ingleses mientras se termina el proceso.
+  const spanishWords=/(?:\b(?:el|la|los|las|una|uno|del|para|con|sin|cómo|qué|tus|mis|sus|este|esta|esto|aprende|profes|profesorado|alumnado|clase|aula|enseñanza|educación|herramienta|guía|crea|gratis|infografías|inteligencia|artificial|mejores|trucos|vídeo|tutoriales|novedades|edita|editarla|secreto|solución|utilizar|usar)\b|[áéíóúñ¿¡])/i;
+  const englishWords=/(?:\b(?:how to|the best|this video|this tutorial|in this|you can|you will|learn how|for teachers|step by step|the new|what is|how do|getting started|tips for|video tutorial|your classroom|with these|for your|using ai|top tips|subscribe to|check out|watch this|download the|tutorial on)\b)/i;
+  function safeSpanish(source){
+    const t=String(source||'').trim();
+    return !!t && spanishWords.test(t) && !englishWords.test(t);
+  }
+  function title(v,n){
+    const translated=String(v.title_es||'').trim();
+    if(translated && !englishWords.test(translated) && (safeSpanish(translated)||v.title_es_verified===true))return translated;
+    const source=String(v.title||'').trim();
+    if(safeSpanish(source))return source;
+    return 'Videotutorial de inteligencia artificial · '+pad(n+1)+' (título pendiente de traducción)';
+  }
+  function spanishDescription(v){
+    const translated=String(v.description_es||'').trim();
+    if(translated && !englishWords.test(translated) && (safeSpanish(translated)||v.description_es_verified===true))return translated;
+    const source=String(v.description||'').trim();
+    if(safeSpanish(source))return source;
+    return source
+      ? 'La traducción completa de esta descripción está pendiente. Puedes consultar el texto original en YouTube.'
+      : 'Este vídeo no tiene una descripción disponible. Puedes consultar sus detalles en YouTube.';
+  }
   function videoCard(v,n){
     const button=el('button','video-card');button.type='button';button.dataset.id=v.id;
     button.setAttribute('aria-label','Ver vídeo: '+title(v,n));
@@ -49,11 +64,11 @@ function spanishDescription(v){
     cards.replaceChildren(...filtered.map(v=>videoCard(v,videos.indexOf(v))));
     if(videos.length){
       status.textContent=(filtered.length===videos.length?videos.length+' vídeos':filtered.length+' de '+videos.length+' vídeos')+(partial?' · lista parcial':'');
-      // The official playlist remains visible even if the list metadata changes.
-      fallback.hidden=false;section.hidden=false;
+      // Mostrar exclusivamente las tarjetas, sin reproductor de lista gigante.
+      fallback.hidden=true;section.hidden=false;
       if(!filtered.length)cards.append(el('p','no-results','No se encontraron vídeos con ese término.'));
     }else{
-      status.textContent='Ver la lista oficial de YouTube';fallback.hidden=false;section.hidden=true;
+      status.textContent='Sincronización pendiente';fallback.hidden=false;section.hidden=true;
     }
   }
   function linkify(text,parent){
@@ -97,7 +112,7 @@ function spanishDescription(v){
   });
   async function load(){
     try{
-      const res=await fetch('./assets/ia-videos.json?lista=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj&v=48',{cache:'no-store'});
+      const res=await fetch('./assets/ia-videos.json?lista=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj&v=49',{cache:'no-store'});
       if(!res.ok)throw Error('Archivo no disponible');
       const data=await res.json();
       // Evita mostrar vídeos de una lista anterior mientras GitHub sincroniza la nueva.
@@ -110,5 +125,6 @@ function spanishDescription(v){
       const match=location.hash.match(/^#video-([\w-]{11})$/);if(match)show(match[1]);
     }catch(err){console.warn('Videotutoriales IA no sincronizados:',err);videos=[];render()}
   }
+  render();
   load();
 })();

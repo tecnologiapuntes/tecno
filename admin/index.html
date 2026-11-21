@@ -8,9 +8,9 @@
   <meta name="theme-color" content="#102445" />
   <title>Administración · TecnologíaInsti</title>
   <link rel="icon" href="../assets/favicon-tecnologiainsti.png" type="image/png" />
-  <link rel="stylesheet" href="./admin.css?v=45" />
-  <script src="../assets/menu-config.js?v=45"></script>
-  <script defer src="./admin.js?v=45"></script>
+  <link rel="stylesheet" href="./admin.css?v=50" />
+  <script src="../assets/menu-config.js?v=50"></script>
+  <script defer src="./admin.js?v=50"></script>
 </head>
 <body>
   <header class="topbar">
@@ -76,7 +76,7 @@
         <form id="postForm">
           <div class="field"><label for="postTitle">Título <em>*</em></label><input id="postTitle" required maxlength="220" placeholder="Ej.: 5 ideas para aprender con IA" /></div>
           <div class="field-grid">
-            <div class="field"><label for="postCategory">Apartado de la web <em>*</em></label><select id="postCategory" required><option value="Prompts">IA → Prompts</option><option value="Recursos IA">IA → Recursos IA</option><option value="2º ESO">Proyectos → 2.º ESO</option><option value="3º ESO">Proyectos → 3.º ESO</option><option value="4º ESO">Proyectos → 4.º ESO</option><option value="Cuaderno de Séneca">Herramientas docentes → Cuaderno de Séneca</option><option value="Utilidades Séneca">Herramientas docentes → Herramientas docentes</option></select></div>
+            <div class="field"><div class="category-field-heading"><label for="postCategory">Apartado de la web <em>*</em></label><button id="refreshCategories" class="category-refresh" type="button" title="Consultar los apartados actuales de GitHub">↻ Actualizar apartados</button></div><select id="postCategory" required><option value="Prompts">IA → Prompts</option><option value="Recursos IA">IA → Recursos IA</option><option value="2º ESO">Proyectos → 2.º ESO</option><option value="3º ESO">Proyectos → 3.º ESO</option><option value="4º ESO">Proyectos → 4.º ESO</option><option value="Cuaderno de Séneca">Herramientas docentes → Cuaderno de Séneca</option><option value="Utilidades Séneca">Herramientas docentes → Herramientas docentes</option></select><p id="categoryHint" class="category-hint">Al abrir el editor se consultan automáticamente los apartados actuales de GitHub.</p></div>
             <div class="field"><label for="postDate">Fecha de publicación <em>*</em></label><input id="postDate" type="date" required /></div>
           </div>
           <div class="field"><label for="postExcerpt">Descripción corta de la tarjeta</label><textarea id="postExcerpt" rows="2" maxlength="380" placeholder="Resumen que se verá antes de abrir la publicación"></textarea></div>

@@ -1,0 +1,8 @@
+TecnologíaInsti V49 · Videotutoriales IA
+- Eliminado el reproductor grande de la lista de YouTube. Solo tarjetas con miniaturas.
+- En ausencia temporal de tarjetas, se muestra un aviso pequeño con enlace a YouTube.
+- Traducción de títulos y descripciones completos al español en GitHub Actions.
+- Si la traducción no está disponible, la web muestra un aviso en español (sin inventar una traducción).
+- Los metadatos de IA guardados se pueden traducir incluso si YouTube falla en una sincronización posterior.
+- No se modifica el listado de Séneca ni los posts ni los menús personalizados.
+- Tras subir, ejecutar GitHub Actions > Sincronizar videotutoriales de Inteligencia Artificial > Run workflow.

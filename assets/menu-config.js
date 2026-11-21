@@ -1,7 +1,7 @@
 "use strict";
 /* Fuente común del menú público y del editor de TecnologíaInsti. */
 (() => {
-  const defaults = {version:2,items:[
+  const defaults = {version:3,items:[
     {id:"ia",label:"Inteligencia Artificial",type:"filter",value:"Inteligencia Artificial",description:"Prompts y recursos para el aula",children:[
       {id:"ia-prompts",label:"Prompts",type:"filter",value:"Prompts"},
       {id:"ia-recursos",label:"Recursos IA",type:"filter",value:"Recursos IA"},
@@ -20,11 +20,11 @@
   const validUrl = v => /^https:\/\/[^\s<>"']+$/i.test(v);
   function normalize(raw){
     if(!raw||!Array.isArray(raw.items)) return clone(defaults);
-    // V46: migrar menús guardados desde la V45 sin perder sus apartados propios.
-    // Cuando el usuario guarde el menú de nuevo quedará en versión 2 y podrá
-    // mover o eliminar «Videotutoriales» sin que vuelva a añadirse.
+    // V50: migración única de menús guardados en versiones anteriores, preservando
+    // apartados personales. Tras guardar versión 3 se podrán borrar o mover
+    // Videotutoriales sin que la aplicación lo vuelva a añadir.
     const document=clone(raw);
-    if(Number(document.version||1)<2){
+    if(Number(document.version||1)<3){
       const ia=document.items.find(i=>i.id==="ia"||/inteligencia artificial/i.test(i.label||""));
       if(ia){
         if(!Array.isArray(ia.children))ia.children=[];
@@ -46,7 +46,7 @@
       if(!isChild){out.description=text(item.description,150);out.children=Array.isArray(item.children)?item.children.slice(0,60).map(c=>process(c,true)).filter(Boolean):[];}
       return out;
     };
-    return {version:2,items:document.items.slice(0,24).map(x=>process(x,false)).filter(Boolean)};
+    return {version:3,items:document.items.slice(0,24).map(x=>process(x,false)).filter(Boolean)};
   }
   function href(item){
     if(item.type==="page"&&validPage(item.value)){
@@ -54,20 +54,41 @@
       // even if the CMS menu was saved before the update.
       if(item.value.split("#")[0]==="videotutoriales-ia.html"){
         const fragment=item.value.includes("#")?"#"+item.value.split("#")[1]:"";
-        return "./videotutoriales-ia.html?lista=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj&v=48"+fragment;
+        return "./videotutoriales-ia.html?lista=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj&v=49"+fragment;
       }
       return "./"+item.value;
     }
     if(item.type==="url"&&validUrl(item.value))return item.value;
     return "./index.html?seccion="+encodeURIComponent(item.value)+"#publicaciones";
   }
+  // Los apartados de tipo «filter» son categorías de publicación.
+  // Las dos páginas que admiten entradas añadidas desde el CMS también se
+  // ofrecen como destino y muestran esas entradas dentro de su propia página.
+  const POST_PAGES={"videotutoriales-ia.html":"Videotutoriales IA","cuaderno-seneca.html":"Cuaderno de Séneca"};
+  function publishCategory(item){
+    if(item.type==="filter")return item.value;
+    if(item.type==="page")return POST_PAGES[String(item.value).split("#")[0]]||null;
+    return null;
+  }
   function categories(menu){
     const list=[];
-    for(const item of normalize(menu).items) {
-      if(item.type==="filter")list.push({value:item.value,label:item.label+" (apartado principal)"});
-      for(const c of item.children)if(c.type==="filter")list.push({value:c.value,label:`${item.label} → ${c.label}`});
+    const group=(item,label)=>{
+      const value=publishCategory(item);
+      if(value)list.push({value,label});
+      // Las demás páginas/enlaces se señalan en el selector, pero no se
+      // ofrecen como categoría ya que no disponen de listado de publicaciones.
+      else list.push({value:"",label:label+" (solo enlace, no admite publicaciones)",disabled:true});
+    };
+    for(const item of normalize(menu).items){
+      group(item,item.label+" (apartado principal)");
+      for(const child of item.children)group(child,`${item.label} → ${child.label}`);
     }
-    return [...new Map(list.map(x=>[x.value,x])).values()];
+    // No permitir duplicados por categoría; mantener opciones informativas.
+    const seen=new Set();return list.filter(item=>{
+      if(!item.value)return true;
+      if(seen.has(item.value))return false;
+      seen.add(item.value);return true;
+    });
   }
   window.TI_MENU={defaults,clone,normalize,href,categories,validUrl,validPage};
 })();

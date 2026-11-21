@@ -1,5 +1,5 @@
 "use strict";
-// TecnologíaInsti · Panel GitHub V44. Sin servicios externos ni contraseña almacenada.
+// TecnologíaInsti · Panel GitHub V50. Categorías sincronizadas desde el menú actual.
 (() => {
   const OWNER = "tecnologiapuntes";
   const REPO = "tecno";
@@ -124,21 +124,41 @@
   function fillCategories(){
     const cat=el("postCategory"), prior=cat.value;
     const list=menuCore.categories(state.menu);
-    // Legacy categories remain editable, including posts from previous versions.
-    for(const p of state.posts) if(p.category&&!list.some(x=>x.value===p.category))list.push({value:p.category,label:p.category+" (existente)"});
-    if(!list.length)list.push({value:"Prompts",label:"Prompts"});
-    cat.replaceChildren(...list.map(({value,label})=>new Option(label,value)));
-    if([...cat.options].some(o=>o.value===prior))cat.value=prior;
+    // Mantener la opción de editar entradas de categorías históricas.
+    for(const p of state.posts)if(p.category&&!list.some(x=>x.value===p.category))list.push({value:p.category,label:p.category+" (existente)"});
+    if(!list.some(x=>x.value))list.push({value:"Prompts",label:"Prompts"});
+    cat.replaceChildren(...list.map(({value,label,disabled})=>{
+      const option=new Option(label,value);option.disabled=!!disabled;return option;
+    }));
+    if([...cat.options].some(o=>!o.disabled&&o.value===prior))cat.value=prior;
+    else cat.value=cat.querySelector('option:not([disabled])')?.value||"";
+    explainCategory();
+  }
+  function explainCategory(){
+    const cat=el("postCategory").value;
+    const hint=el("categoryHint");
+    if(cat==="Videotutoriales IA")hint.textContent="Este post aparecerá debajo de los videotutoriales, en la página de Inteligencia Artificial → Videotutoriales.";
+    else if(cat==="Cuaderno de Séneca")hint.textContent="Este post aparecerá también dentro de la página de Cuaderno de Séneca.";
+    else hint.textContent="Los apartados nuevos de tipo categoría se cargan desde tu menú de GitHub. Las páginas o enlaces externos sin listado de publicaciones no se pueden seleccionar como destino.";
+  }
+  async function syncMenuCategories({force=false}={}){
+    // Nunca descartar cambios de menú que el usuario esté editando sin guardar.
+    if(!force&&state.menuBaseline&&state.menuBaseline!==JSON.stringify(state.menu))return false;
+    const remote=await readRemoteMenu();
+    state.menu=remote;
+    state.menuBaseline=JSON.stringify(remote);
+    fillCategories();renderMenuTree();
+    return true;
   }
   async function latestData() {
     const [legacy,cms]=await Promise.all([readRemotePosts(),readRemoteCms()]);
     return {legacy,cms,combined:mergePosts(legacy,cms)};
   }
   async function refreshPosts() {
-    const latest=await latestData();
+    // Consultar siempre el menú más reciente al actualizar la lista.
+    const [latest]=await Promise.all([latestData(),syncMenuCategories()]);
     state.posts=latest.combined;
-    fillCategories();
-    renderList();
+    fillCategories();renderList();
   }
   function renderList() {
     const posts = [...state.posts].sort((a,b)=>String(b.created||"").localeCompare(String(a.created||"")));
@@ -159,7 +179,13 @@
     for (const media of state.media) if (media.url && media.file) URL.revokeObjectURL(media.url);
     state.media=[];
   }
-  function newEditor(id=null) {
+  async function newEditor(id=null) {
+    if(state.busy)return;
+    try{await syncMenuCategories();}
+    catch(e){
+      // La edición continúa con el último menú conocido; avisamos del fallo.
+      status("menuStatus","No se han podido actualizar los apartados: "+errMessage(e),"error");
+    }
     state.editingId=id;
     state.original=id ? structuredClone(state.posts.find(p=>p.id===id)) : null;
     const p=state.original || {};
@@ -173,7 +199,8 @@
     if(p.category && !Array.from(category.options).some(o=>o.value===p.category)) {
       const option=new Option(p.category,p.category);category.append(option);
     }
-    category.value=p.category || (category.options[0]?.value || "Prompts");
+    category.value=p.category || ([...category.options].find(o=>!o.disabled)?.value || "Prompts");
+    explainCategory();
     el("postDate").value=p.created || localDate();
     el("postExcerpt").value=p.excerpt || "";
     el("postContent").value=p.content || "";
@@ -285,7 +312,7 @@
     if(state.busy)return;
     const title=normalize(el("postTitle").value),content=normalize(el("postContent").value);
     const category=el("postCategory").value,created=el("postDate").value;
-    if(!title||!content||!created) {status("saveStatus","Completa el título, la fecha y el texto.","error");return;}
+    if(!title||!content||!created||!category) {status("saveStatus","Completa el título, el apartado, la fecha y el texto.","error");return;}
     let links;
     try {links=collectLinks();}catch(e){status("saveStatus",e.message,"error");return;}
     setBusy(true);
@@ -395,10 +422,6 @@
       state.branch=repo.default_branch||"main";
       if(repo.permissions && repo.permissions.push===false)throw new Error("Tu cuenta no tiene permiso para publicar en este repositorio.");
       await refreshPosts();
-      state.menu=await readRemoteMenu();
-      state.menuBaseline=JSON.stringify(state.menu);
-      fillCategories();
-      renderMenuTree();
       el("token").value="";
       el("loginPanel").hidden=true;
       el("workspace").hidden=false;
@@ -580,6 +603,13 @@
       finally{button.disabled=false;}
     });
     el("searchPosts").addEventListener("input",renderList);
+    el("postCategory").addEventListener("change",explainCategory);
+    el("refreshCategories").addEventListener("click",async()=>{
+      const button=el("refreshCategories");button.disabled=true;
+      try{await syncMenuCategories();}
+      catch(e){alert("No se pudieron actualizar los apartados de GitHub. "+errMessage(e));}
+      finally{button.disabled=false;}
+    });
     el("postList").addEventListener("click",e=>{
       const edit=e.target.closest("[data-edit]"),remove=e.target.closest("[data-remove]");
       if(edit)newEditor(edit.dataset.edit);

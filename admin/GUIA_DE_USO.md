@@ -77,3 +77,8 @@ La autenticación mediante el botón habitual «Iniciar sesión con GitHub» (OA
 
 ## Menús y apartados (V45)
 Consulta `LEEME_GITHUB_V45.md` en la raíz. Puedes crear apartados desde la segunda pestaña del panel, asignar categorías o enlaces, ordenar y guardar.
+
+
+## Actualización V50: apartados dinámicos en el editor
+
+En **Nueva publicación → Apartado de la web** se muestran los apartados y subapartados actuales de GitHub. La lista se refresca al abrir el editor y con el botón **↻ Actualizar apartados**. También encontrarás **Inteligencia Artificial → Videotutoriales**, que ahora admite publicaciones mostradas debajo de los videotutoriales. Para instrucciones completas consulta `LEEME_GITHUB_V50.md` en la raíz del repositorio.
