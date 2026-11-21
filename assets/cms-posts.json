@@ -39,6 +39,8 @@
       "attachmentName": "Descargar 24_Prompts_Evaluacion_Secundaria.docx"
     }
   ],
-  "hiddenIds": [],
-  "updatedAt": "2026-11-21T19:26:00.518Z"
+  "hiddenIds": [
+    "intro-seneca"
+  ],
+  "updatedAt": "2026-11-21T21:34:59.216Z"
 }
