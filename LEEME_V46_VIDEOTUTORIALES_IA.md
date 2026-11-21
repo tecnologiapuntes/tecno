@@ -5,7 +5,7 @@
 - **Inteligencia Artificial → Videotutoriales** en la barra superior y en el botón «Menú».
 - Página `videotutoriales-ia.html` con buscador y tarjetas de vídeo en tres columnas, dos en tableta y una en móvil.
 - Cada tarjeta abre un reproductor con el vídeo, su descripción y los botones anterior/siguiente. Pulsa fuera del cuadro, Escape o la X para cerrar.
-- Lista original: https://www.youtube.com/playlist?list=PL4P4xfIXfbrFFZW3sRgL3hXmBFJqIHusy
+- Lista original: https://www.youtube.com/playlist?list=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj
 - Sincronización gratuita desde GitHub Actions, con intento semanal de actualización.
 - El menú se puede seguir editando desde `/admin/`. Los menús creados con V45 se migran automáticamente sin perder sus apartados.
 

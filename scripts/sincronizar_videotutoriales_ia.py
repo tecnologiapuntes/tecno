@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sincroniza una lista real de YouTube, sin datos simulados ni alterar Séneca.
+"""V48: sincroniza la lista correcta de IA sin afectar a Séneca ni a los posts.
 
 Si el acceso a YouTube falla, conserva los datos previos. Si solo el RSS
 responde, no reemplaza una lista completa con el subconjunto de 15 elementos.
@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree as ET
 
-PLAYLIST = 'PL4P4xfIXfbrFFZW3sRgL3hXmBFJqIHusy'
+PLAYLIST = 'PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj'
 URL = "https://www.youtube.com/playlist?list=" + PLAYLIST
 OUTPUT = Path(__file__).resolve().parents[1]/"assets"/"ia-videos.json"
 ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
@@ -99,6 +99,7 @@ def enrich(entries, old):
 
 
 def main():
+    print("Lista de IA solicitada:", URL)
     old=read_previous()
     source="yt-dlp"
     try: rows=via_ytdlp()

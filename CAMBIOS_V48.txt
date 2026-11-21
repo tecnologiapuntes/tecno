@@ -1,0 +1,12 @@
+V48 · Corrección persistente de la lista de YouTube de Inteligencia Artificial
+
+Lista CORRECTA:
+https://www.youtube.com/playlist?list=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj
+
+- Reproductor oficial visible siempre, independientemente de la sincronización de vídeos.
+- Tarjetas y descripciones se muestran solo con metadatos de esta lista, nunca de la anterior.
+- Enlaces de navegación actualizados para abrir una URL nueva y evitar caché antigua.
+- Versionado de los archivos de la página a V48.
+- Guion de sincronización actualizado para mostrar el enlace consultado en el registro de Actions.
+
+No se sobrescribe assets/ia-videos.json, assets/seneca-videos.json ni el contenido del CMS.

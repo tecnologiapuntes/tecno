@@ -6,3 +6,9 @@
 .ia-video-page .video-counter{font-weight:620}
 .ia-video-page .modal-content{padding-top:5px}
 @media(max-width:540px){.ia-video-page .hero h1{font-size:clamp(30px,8vw,38px)}}
+
+/* V48: la lista correcta se muestra siempre, aun si falla la sincronización de tarjetas. */
+.ia-video-page .ia-playlist-always {display:block; margin-bottom:28px}
+.ia-video-page .ia-playlist-always .fallback-copy h3 {font-weight:650}
+.ia-video-page .ia-playlist-always[hidden] {display:none}
+.ia-video-page .video-section:not([hidden]) {margin-top:12px}

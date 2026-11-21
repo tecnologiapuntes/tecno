@@ -1,0 +1,19 @@
+V47 · Corrección de la lista de videotutoriales de Inteligencia Artificial
+
+Lista correcta:
+https://www.youtube.com/playlist?list=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj
+
+- Actualizada la página de videotutoriales (reproductor y enlaces).
+- Actualizado el listado que intenta sincronizar GitHub Actions.
+- Adaptado el código para no enseñar vídeos procedentes de la lista anterior.
+- Conservadas las publicaciones, los menús personalizados y Cuaderno de Séneca.
+- No se incluye ni sobrescribe assets/ia-videos.json, que se genera desde GitHub.
+
+INSTALACIÓN
+1. Sincroniza previamente tu repositorio local con GitHub (Fetch origin / Pull origin) y resuelve cualquier conflicto pendiente.
+2. Copia al repositorio los archivos del ZIP de cambios, respetando sus carpetas.
+3. Confirma los cambios y pulsa Push origin.
+4. En GitHub > Actions > Sincronizar videotutoriales de Inteligencia Artificial > Run workflow.
+5. Comprueba Videotutoriales en la web cuando haya terminado el proceso. Si la extracción falla, se mostrará la lista mediante el reproductor de YouTube.
+
+NOTA: Si antes había datos de la lista incorrecta, seguirán en GitHub hasta que el proceso consiga la sincronización. Mientras tanto, la web los ignorará y mostrará la lista correcta directamente.

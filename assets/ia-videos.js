@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const PLAYLIST='PL4P4xfIXfbrFFZW3sRgL3hXmBFJqIHusy';
+  const PLAYLIST='PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj';
   const cards=document.querySelector('#video-cards');
   const status=document.querySelector('#video-count');
   const fallback=document.querySelector('#ia-fallback');
@@ -49,10 +49,11 @@ function spanishDescription(v){
     cards.replaceChildren(...filtered.map(v=>videoCard(v,videos.indexOf(v))));
     if(videos.length){
       status.textContent=(filtered.length===videos.length?videos.length+' vídeos':filtered.length+' de '+videos.length+' vídeos')+(partial?' · lista parcial':'');
-      fallback.hidden=true;section.hidden=false;
+      // The official playlist remains visible even if the list metadata changes.
+      fallback.hidden=false;section.hidden=false;
       if(!filtered.length)cards.append(el('p','no-results','No se encontraron vídeos con ese término.'));
     }else{
-      status.textContent='Lista de YouTube';fallback.hidden=false;section.hidden=true;
+      status.textContent='Ver la lista oficial de YouTube';fallback.hidden=false;section.hidden=true;
     }
   }
   function linkify(text,parent){
@@ -96,9 +97,15 @@ function spanishDescription(v){
   });
   async function load(){
     try{
-      const res=await fetch('./assets/ia-videos.json',{cache:'no-store'});
+      const res=await fetch('./assets/ia-videos.json?lista=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj&v=48',{cache:'no-store'});
       if(!res.ok)throw Error('Archivo no disponible');
-      const data=await res.json();videos=(Array.isArray(data.videos)?data.videos:[]).filter(isVideo);
+      const data=await res.json();
+      // Evita mostrar vídeos de una lista anterior mientras GitHub sincroniza la nueva.
+      if(data.playlist_id!==PLAYLIST){
+        console.info('Esperando los datos de la lista correcta de IA. Reproductor oficial disponible.');
+        videos=[];partial=false;render();return;
+      }
+      videos=(Array.isArray(data.videos)?data.videos:[]).filter(isVideo);
       partial=String(data.source||'').startsWith('RSS parcial');render();
       const match=location.hash.match(/^#video-([\w-]{11})$/);if(match)show(match[1]);
     }catch(err){console.warn('Videotutoriales IA no sincronizados:',err);videos=[];render()}

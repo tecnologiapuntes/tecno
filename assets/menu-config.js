@@ -49,7 +49,15 @@
     return {version:2,items:document.items.slice(0,24).map(x=>process(x,false)).filter(Boolean)};
   }
   function href(item){
-    if(item.type==="page"&&validPage(item.value))return "./"+item.value;
+    if(item.type==="page"&&validPage(item.value)){
+      // V48: this page has a playlist ID correction. Keep its URL fresh
+      // even if the CMS menu was saved before the update.
+      if(item.value.split("#")[0]==="videotutoriales-ia.html"){
+        const fragment=item.value.includes("#")?"#"+item.value.split("#")[1]:"";
+        return "./videotutoriales-ia.html?lista=PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj&v=48"+fragment;
+      }
+      return "./"+item.value;
+    }
     if(item.type==="url"&&validUrl(item.value))return item.value;
     return "./index.html?seccion="+encodeURIComponent(item.value)+"#publicaciones";
   }
