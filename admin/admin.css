@@ -53,3 +53,18 @@
 .menu-branch:not(:first-child){margin-top:7px}
 .menu-item-form select{width:100%}
 @media(max-width:760px){.menu-branch .menu-children{margin-left:8px;padding-left:8px}.menu-level-3>.menu-node{padding:9px 6px}}
+
+/* V52 · Formato de publicaciones con vista previa. */
+.format-toolbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px;border:1px solid #c8d9e5;border-radius:11px 11px 0 0;background:#f2f8fb}
+.format-toolbar button{border:1px solid #cbdce9;background:#fff;color:#193654;border-radius:8px;min-height:35px;padding:6px 11px;font-size:13px;font-weight:650}
+.format-toolbar button:hover,.format-toolbar button:focus-visible{background:#d9f8f1;border-color:#14a999}
+.format-separator{width:1px;height:24px;background:#c5d7df;margin:0 4px}
+.rich-field #postContent{border-radius:0 0 11px 11px;border-top:0;min-height:225px;width:100%;font-size:14px;line-height:1.7}
+.format-preview{background:#fff;border:1px solid #cbdce9;border-radius:12px;margin-top:9px;overflow:hidden}
+.format-preview summary{background:#eff8f6;padding:12px 16px;cursor:pointer;font-size:13px;font-weight:750;color:#10374c}
+.format-preview-body{padding:17px;line-height:1.65;font-size:14px;overflow-wrap:anywhere;max-height:420px;overflow-y:auto}
+.format-preview-body p{margin:0 0 11px}.format-preview-body h2{font-size:20px;margin:18px 0 9px}.format-preview-body h3{font-size:16px;margin:16px 0 7px}
+.format-preview-body ul,.format-preview-body ol{padding-left:25px;margin:6px 0 13px}.format-preview-body li{margin:4px 0}
+.format-preview-body a{color:#036f87;text-decoration:underline;font-weight:600;overflow-wrap:anywhere}
+.format-preview-empty{color:#6b8390;font-style:italic}
+@media(max-width:580px){.format-toolbar{gap:4px}.format-toolbar button{padding:6px 8px}.format-separator{margin:0 2px}}

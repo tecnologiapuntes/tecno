@@ -59,7 +59,7 @@
       controls.append(prev,indicator,next);gallery.append(controls);body.append(gallery);update();
     }
     body.append(el('p','post-page-date',post.created||''));
-    const text=el('div','post-page-content',post.content||post.excerpt||'');body.append(text);
+    const text=el('div','post-page-content');text.innerHTML=window.TI_POST_FORMAT.format(post.content||post.excerpt||'');body.append(text);
     if(Array.isArray(post.sourceLinks))for(const link of post.sourceLinks){
       const href=fileHref(link.url||'');if(!href)continue;
       const a=el('a','post-page-download',link.label||'Abrir recurso');a.href=href;a.target='_blank';a.rel='noopener noreferrer';

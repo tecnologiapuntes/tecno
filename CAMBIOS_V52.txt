@@ -1,0 +1,1 @@
+V52: editor de formato para el texto completo de las publicaciones, enlaces dentro del texto y vista previa compartida con la web. No modifica contenido almacenado en GitHub.

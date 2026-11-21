@@ -434,3 +434,11 @@ footer a:hover { color:var(--mint); }
 
 .news-stats{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
 .news-stats span{font-size:11px;letter-spacing:.01em;color:#264665;border:1px solid #c8d9e5;border-radius:50px;padding:6px 10px;background:#f9fcff;font-weight:650}
+
+/* V52 · Texto enriquecido y enlaces seguros dentro de las publicaciones. */
+.article-content a{color:#057e8f;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.article-content a:hover{color:#114f72}
+.article-content strong{font-weight:800}
+.article-content em{font-style:italic}
+.article-content h2{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:800;margin:22px 0 10px}
+.article-content u{text-decoration:underline;text-decoration-color:#08a898;text-underline-offset:3px}

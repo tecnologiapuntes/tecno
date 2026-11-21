@@ -23,3 +23,12 @@
 .post-page-download{display:inline-flex;background:#d7f8ee;color:#0e5b56;border-radius:9px;padding:11px 14px;margin:6px 9px 7px 0;font-size:12px;font-weight:700}
 @media(max-width:850px){.post-page-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){.post-page-grid{grid-template-columns:1fr}.post-page-overlay{padding:10px}.post-page-modal-bar,.post-page-modal-body{padding:12px}.post-page-modal-bar h2{font-size:16px}}
+
+/* V52 · El texto de las publicaciones de páginas independientes utiliza el mismo formato que la portada. */
+.post-page-content{white-space:normal;line-height:1.7}
+.post-page-content p{margin:0 0 11px}
+.post-page-content h2{font-size:19px;margin:20px 0 10px}
+.post-page-content h3{font-size:16px;margin:17px 0 8px}
+.post-page-content ul,.post-page-content ol{padding-left:25px;margin:8px 0 14px}
+.post-page-content a{color:#047988;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.post-page-content u{text-decoration-color:#0da99a;text-underline-offset:3px}

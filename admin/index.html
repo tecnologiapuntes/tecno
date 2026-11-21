@@ -8,9 +8,10 @@
   <meta name="theme-color" content="#102445" />
   <title>Administración · TecnologíaInsti</title>
   <link rel="icon" href="../assets/favicon-tecnologiainsti.png" type="image/png" />
-  <link rel="stylesheet" href="./admin.css?v=51" />
+  <link rel="stylesheet" href="./admin.css?v=52" />
   <script src="../assets/menu-config.js?v=51"></script>
-  <script defer src="./admin.js?v=51"></script>
+  <script src="../assets/post-format.js?v=52"></script>
+  <script defer src="./admin.js?v=52"></script>
 </head>
 <body>
   <header class="topbar">
@@ -80,7 +81,23 @@
             <div class="field"><label for="postDate">Fecha de publicación <em>*</em></label><input id="postDate" type="date" required /></div>
           </div>
           <div class="field"><label for="postExcerpt">Descripción corta de la tarjeta</label><textarea id="postExcerpt" rows="2" maxlength="380" placeholder="Resumen que se verá antes de abrir la publicación"></textarea></div>
-          <div class="field"><label for="postContent">Texto completo de la publicación <em>*</em></label><textarea id="postContent" rows="11" required placeholder="Pega aquí el texto de Instagram o escribe tu explicación. Se respetarán saltos de línea y apartados."></textarea></div>
+          <div class="field rich-field"><label for="postContent">Texto completo de la publicación <em>*</em></label>
+            <div id="postToolbar" class="format-toolbar" role="toolbar" aria-label="Formato del texto de la publicación">
+              <button type="button" data-format="bold" title="Negrita (Ctrl+B)" aria-label="Negrita"><strong>N</strong></button>
+              <button type="button" data-format="italic" title="Cursiva (Ctrl+I)" aria-label="Cursiva"><em>C</em></button>
+              <button type="button" data-format="underline" title="Subrayado" aria-label="Subrayado"><u>S</u></button>
+              <button type="button" data-format="strike" title="Tachado" aria-label="Tachado"><s>T</s></button>
+              <span class="format-separator" aria-hidden="true"></span>
+              <button type="button" data-format="heading" title="Título de apartado">Título</button>
+              <button type="button" data-format="bullets" title="Lista con viñetas">• Lista</button>
+              <button type="button" data-format="numbers" title="Lista numerada">1. Lista</button>
+              <span class="format-separator" aria-hidden="true"></span>
+              <button type="button" data-format="link" title="Insertar enlace (Ctrl+K)">🔗 Enlace</button>
+            </div>
+            <textarea id="postContent" rows="11" required placeholder="Escribe aquí. Selecciona una frase y usa la barra para poner negrita, cursiva o un enlace."></textarea>
+            <p class="hint">Selecciona el texto que quieras destacar y pulsa el botón de formato. El resultado aparecerá en la vista previa. Los enlaces del texto serán clicables en la web.</p>
+            <details class="format-preview" open><summary>Vista previa de la publicación</summary><div id="postContentPreview" class="format-preview-body" aria-live="polite"></div></details>
+          </div>
 
           <div class="section-title"><h3>Portada y carrusel</h3><p>La primera imagen será la portada. Puedes subir varias a la vez y moverlas para ordenar el carrusel.</p></div>
           <label for="photoInput" class="upload-area" id="imageDrop"><span class="upload-icon">▧</span><strong>Pulsa aquí o arrastra tus imágenes</strong><small>PNG, JPG y WebP · conversión automática a WebP · hasta 10 MB por imagen de origen</small></label>

@@ -1,5 +1,5 @@
 "use strict";
-// TecnologíaInsti · Panel GitHub V51. Menús jerárquicos hasta tres niveles.
+// TecnologíaInsti · Panel GitHub V52. Editor con formato y menús jerárquicos.
 (() => {
   const OWNER = "tecnologiapuntes";
   const REPO = "tecno";
@@ -204,6 +204,7 @@
     el("postDate").value=p.created || localDate();
     el("postExcerpt").value=p.excerpt || "";
     el("postContent").value=p.content || "";
+    updatePostPreview();
     el("postPublished").checked=p.published !== 0;
     el("attachmentInput").value="";
     el("photoInput").value="";
@@ -349,7 +350,7 @@
         links.push({label:attachmentName,url:attachment});
       }
       let excerpt=normalize(el("postExcerpt").value);
-      if(!excerpt)excerpt=content.replace(/\s+/g," ").slice(0,230);
+      if(!excerpt)excerpt=window.TI_POST_FORMAT.plain(content).slice(0,230);
       const newPost={
         ...(old||{}),id,title,category,excerpt,created,content,sourceLinks:links,
         published:el("postPublished").checked?1:0,
@@ -587,6 +588,57 @@
     catch(e){status("menuStatus",errMessage(e),"error");}
   }
 
+  // El contenido del editor se conserva como texto ligero (Markdown).
+  // El formato se comparte con la web publica y no admite HTML ejecutable.
+  function updatePostPreview(){
+    const text=el("postContent").value;
+    const preview=el("postContentPreview");
+    preview.innerHTML=text.trim() ? window.TI_POST_FORMAT.format(text) : '<p class="format-preview-empty">Escribe algo para ver cómo quedará en tu web…</p>';
+  }
+  function wrapSelection(before,after,placeholder){
+    const textarea=el("postContent"),value=textarea.value;
+    const start=textarea.selectionStart,end=textarea.selectionEnd;
+    const chosen=value.slice(start,end)||placeholder;
+    const inserted=before+chosen+after;
+    textarea.setRangeText(inserted,start,end,'select');
+    textarea.focus();
+    textarea.setSelectionRange(start+before.length,start+before.length+chosen.length);
+    updatePostPreview();
+  }
+  function formatPostText(command){
+    const textarea=el("postContent"),start=textarea.selectionStart,end=textarea.selectionEnd;
+    if(command==='bold')return wrapSelection('**','**','texto en negrita');
+    if(command==='italic')return wrapSelection('*','*','texto en cursiva');
+    if(command==='underline')return wrapSelection('++','++','texto subrayado');
+    if(command==='strike')return wrapSelection('~~','~~','texto tachado');
+    if(command==='link'){
+      const raw=prompt('Introduce la dirección completa (https://…):','https://');
+      if(raw===null)return;
+      const url=raw.trim();
+      if(!/^https?:\/\/\S+$/i.test(url)||/[()<>"'\s]/.test(url)){
+        alert('El enlace debe ser una dirección válida que empiece por https:// (sin espacios).');
+        return;
+      }
+      return wrapSelection('[',']('+url+')','texto del enlace');
+    }
+    // Aplicar título / lista solo a las líneas seleccionadas, sin anidar marcadores.
+    let first=valueLineStart(textarea.value,start),last=end;
+    if(last>first&&textarea.value[last-1]==='\n')last--;
+    last=valueLineEnd(textarea.value,last);
+    const lines=textarea.value.slice(first,last).split('\n');
+    const formatted=lines.map((line,i)=>{
+      if(command==='heading')return '## '+line.replace(/^#{2,3}\s+/, '');
+      if(command==='bullets')return '- '+line.replace(/^(?:[-*•]|\d{1,3}[.)])\s+/, '');
+      if(command==='numbers')return (i+1)+'. '+line.replace(/^(?:[-*•]|\d{1,3}[.)])\s+/, '');
+      return line;
+    }).join('\n');
+    textarea.setRangeText(formatted,first,last,'select');
+    textarea.focus();textarea.setSelectionRange(first,first+formatted.length);
+    updatePostPreview();
+  }
+  function valueLineStart(value,index){const prev=value.lastIndexOf('\n',Math.max(0,index-1));return prev+1;}
+  function valueLineEnd(value,index){const next=value.indexOf('\n',index);return next<0?value.length:next;}
+
   function bind() {
     el("tabPosts").addEventListener("click",()=>switchTab("posts"));
     el("tabMenus").addEventListener("click",()=>switchTab("menus"));
@@ -640,6 +692,16 @@
     el("cancelEditBottom").addEventListener("click",closeEditor);
     el("addLink").addEventListener("click",()=>addLinkRow());
     el("postForm").addEventListener("submit",savePost);
+    el("postContent").addEventListener("input",updatePostPreview);
+    el("postToolbar").addEventListener("pointerdown",e=>{if(e.target.closest("button"))e.preventDefault();});
+    el("postToolbar").addEventListener("click",e=>{
+      const button=e.target.closest("[data-format]");if(button)formatPostText(button.dataset.format);
+    });
+    el("postContent").addEventListener("keydown",e=>{
+      if(!(e.ctrlKey||e.metaKey)||e.altKey)return;
+      const commands={b:'bold',i:'italic',k:'link'};
+      if(commands[e.key.toLowerCase()]){e.preventDefault();formatPostText(commands[e.key.toLowerCase()]);}
+    });
     el("photoInput").addEventListener("change",e=>{addImages([...e.target.files]);e.target.value="";});
     const drop=el("imageDrop");
     drop.addEventListener("dragover",e=>{e.preventDefault();drop.style.borderColor="#0aa896";});
