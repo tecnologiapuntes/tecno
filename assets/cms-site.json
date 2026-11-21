@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "hero": {
+    "kicker": "EL ESPACIO DE @TECNOLOGIAINSTI",
+    "line1": "",
+    "line2": "",
+    "accent": "",
+    "description": "Ideas, proyectos y herramientas para enseñar Tecnología y hacer más fácil tu día a día como docente.",
+    "primaryText": "Ver novedades",
+    "secondaryText": "Nos vemos en Instagram",
+    "secondaryUrl": "https://www.instagram.com/tecnologiainsti/",
+    "image": ""
+  },
+  "areasOrder": [
+    "Inteligencia Artificial",
+    "Proyectos",
+    "Herramientas docentes"
+  ]
+}
