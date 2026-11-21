@@ -1,0 +1,7 @@
+VERSIÓN V51 · TECNOLOGÍAINSTI
+
+1. MENÚS JERÁRQUICOS: apartado principal → subapartado → sub-subapartado, hasta tres niveles. Editables y publicables desde /admin/. Sincronización del menú entre portada, botón Menú, Cuaderno de Séneca y Videotutoriales IA.
+2. ADMINISTRACIÓN: ubicación y orden de tercer nivel; validaciones para evitar ciclos; categorías nuevas seleccionables al crear publicaciones. Los menús personalizados se conservan.
+3. TABLÓN DE NOVEDADES: el antiguo «Tablón de recursos» muestra publicaciones y vídeos de todas las secciones en una cronología común. Filtros Todo/Publicaciones/Vídeos, búsqueda, miniaturas, fechas y modal de vídeo.
+4. FECHAS Y ORDEN: las fechas de los posts se muestran siempre; los procesos de YouTube intentan recuperar fechas originales, conservan los metadatos previos y muestran los vídeos sin fecha al final, sin inventarlas.
+5. SEGURIDAD Y COMPATIBILIDAD: los ZIP NO incluyen assets/cms-posts.json, assets/cms-menu.json, assets/seneca-videos.json ni assets/ia-videos.json, ya que GitHub y el panel los administran.

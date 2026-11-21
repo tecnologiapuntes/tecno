@@ -91,3 +91,27 @@ main>.section-head .searchbox{margin-left:auto}
 .nav-group .nav-dropdown{top:calc(100% - 3px)}
 @media(max-width:830px){.seneca-menu-panel{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.seneca-menu-panel{grid-template-columns:1fr}}
+
+/* V51 · Navegación anidada hasta tercer nivel, ratón, teclado y tacto. */
+.ti-branch{position:relative;display:flex;align-items:center;min-width:190px;gap:0}
+.ti-branch>.ti-branch-link,.ti-branch>.ti-leaf{flex:1;min-width:0}
+.ti-branch-toggle{flex:0 0 34px;min-height:36px;border:0;background:transparent;color:#17656b;font-size:19px;cursor:pointer;border-radius:7px}
+.ti-branch-toggle:hover,.ti-branch-toggle:focus-visible{background:#d9f7ee}
+.ti-submenu{display:none;position:absolute;top:-7px;left:calc(100% - 2px);min-width:214px;max-width:min(295px,90vw);padding:7px;border:1px solid #d8e5ee;border-radius:12px;background:white;box-shadow:0 14px 32px #092e4b38;z-index:101;flex-direction:column;gap:3px}
+.ti-branch:hover>.ti-submenu,.ti-branch:focus-within>.ti-submenu,.ti-branch.ti-expanded>.ti-submenu{display:flex}
+.ti-submenu .ti-leaf,.ti-submenu .ti-branch-link{display:block;width:100%;text-align:left;padding:11px;border-radius:8px;background:transparent;border:0;color:#153351;font-weight:530;font-size:12.5px;white-space:normal;line-height:1.35;text-decoration:none;cursor:pointer}
+.ti-submenu .ti-leaf:hover,.ti-submenu .ti-branch-link:hover{background:#d9f7ee}
+.ti-panel-branch{padding-left:0;min-width:0}
+.ti-panel-branch>summary{cursor:pointer;padding:10px 13px;font-size:13px;color:#153351;font-weight:650;background:#eaf8f6;border-radius:8px;list-style:revert}
+.ti-panel-nested{padding-left:13px;border-left:2px solid #a1e6d9;margin:6px 0 8px 9px;display:flex;flex-direction:column;gap:5px}
+.ti-panel-branch .ti-panel-all{font-size:12px;background:#f5f9fd;margin:5px 0}
+.ti-panel-leaf{margin:2px 0;font-weight:500}
+@media(max-width:1190px){.ti-submenu{left:auto;right:calc(100% - 2px)}}
+
+.nav-dropdown .ti-branch{margin:0;width:100%}
+.nav-dropdown .ti-branch-link{font-size:12.5px;font-weight:520;color:#152d4a;border-radius:9px;padding:11px 12px;white-space:normal;text-decoration:none}
+.nav-dropdown .ti-branch-link:hover{background:#dcf7ef}
+.nav-dropdown .ti-submenu{top:-7px}
+.seneca-menu-panel .ti-panel-branch{width:100%}
+.seneca-menu-panel .ti-panel-nested{padding-left:12px}
+.seneca-menu-panel .ti-panel-branch>summary{font-size:12px}

@@ -8,9 +8,9 @@
   <meta name="theme-color" content="#102445" />
   <title>Administración · TecnologíaInsti</title>
   <link rel="icon" href="../assets/favicon-tecnologiainsti.png" type="image/png" />
-  <link rel="stylesheet" href="./admin.css?v=50" />
-  <script src="../assets/menu-config.js?v=50"></script>
-  <script defer src="./admin.js?v=50"></script>
+  <link rel="stylesheet" href="./admin.css?v=51" />
+  <script src="../assets/menu-config.js?v=51"></script>
+  <script defer src="./admin.js?v=51"></script>
 </head>
 <body>
   <header class="topbar">
@@ -98,7 +98,7 @@
         </form>
       </section>
       <section id="menuPanel" class="panel menu-management" aria-labelledby="menuTitle" hidden>
-        <div class="menu-heading"><div><span class="intro-chip">NAVEGACIÓN</span><h2 id="menuTitle">Menús y apartados</h2><p>Ordena los apartados principales y crea subapartados. Los cambios aparecerán en la barra superior y en el botón «Menú», también en Cuaderno de Séneca.</p></div></div>
+        <div class="menu-heading"><div><span class="intro-chip">NAVEGACIÓN</span><h2 id="menuTitle">Menús y apartados</h2><p>Organiza hasta tres niveles: apartados, subapartados y sub-subapartados. Los cambios aparecerán en la barra superior y en el botón «Menú», también en Cuaderno de Séneca y Videotutoriales IA.</p></div></div>
         <div class="menu-manager-actions"><button id="menuAddTop" type="button" class="btn primary">+ Añadir apartado principal</button><button id="menuAddChild" type="button" class="btn secondary">+ Añadir subapartado</button></div>
         <div id="menuTree" class="menu-tree" aria-live="polite"></div>
         <form id="menuItemForm" class="menu-item-form" hidden>
@@ -108,7 +108,7 @@
           <div class="field-grid"><div class="field"><label for="menuType">Al pulsar debe…</label><select id="menuType"><option value="filter">Mostrar publicaciones de una categoría</option><option value="page">Abrir una página de la web</option><option value="url">Abrir un enlace externo</option></select></div>
           <div class="field"><label for="menuValue">Categoría o dirección <em>*</em></label><input id="menuValue" required maxlength="450" placeholder="Nombre de la categoría" /></div></div>
           <div class="field"><label for="menuDescription">Descripción breve (opcional)</label><input id="menuDescription" maxlength="150" placeholder="Ej.: Fichas, herramientas y tutoriales" /></div>
-          <p class="hint">Para crear una categoría nueva, elige «Mostrar publicaciones» y escribe su nombre. Después podrás seleccionarla al crear un post. Para enlaces externos utiliza https://. Para páginas propias utiliza el nombre del archivo, por ejemplo <code>cuaderno-seneca.html</code>.</p>
+          <p class="hint">Puedes poner un elemento dentro de otro subapartado para crear un tercer nivel. La ubicación es editable; no se pierden sus publicaciones. Para crear una categoría nueva, elige «Mostrar publicaciones» y escribe su nombre. Después podrás seleccionarla al crear un post. Para enlaces externos utiliza https://. Para páginas propias utiliza el nombre del archivo, por ejemplo <code>cuaderno-seneca.html</code>.</p>
           <div class="editor-actions"><button class="btn secondary" type="button" id="menuCancel">Cancelar</button><button class="btn primary" type="submit" id="menuApply">Aplicar al menú</button></div>
         </form>
         <div class="menu-save-row"><p class="hint">Los cambios no se publican hasta pulsar «Guardar menú en GitHub». No se modificarán tus publicaciones ni el archivo de vídeos de Séneca.</p><button id="menuReset" type="button" class="btn secondary">Deshacer cambios</button><button id="menuSave" type="button" class="btn primary">Guardar menú en GitHub</button></div>

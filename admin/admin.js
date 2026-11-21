@@ -1,5 +1,5 @@
 "use strict";
-// TecnologíaInsti · Panel GitHub V50. Categorías sincronizadas desde el menú actual.
+// TecnologíaInsti · Panel GitHub V51. Menús jerárquicos hasta tres niveles.
 (() => {
   const OWNER = "tecnologiapuntes";
   const REPO = "tecno";
@@ -453,25 +453,32 @@
     if(tab==="menus")renderMenuTree();
   }
   function findMenuItem(id){
-    for(const group of state.menu.items){
-      if(group.id===id)return {item:group,parent:null,list:state.menu.items};
-      for(const child of group.children||[])if(child.id===id)return {item:child,parent:group,list:group.children};
+    let result=null;
+    function go(list,parent,depth,ancestors){
+      for(const item of list){
+        if(item.id===id){result={item,parent,list,depth,ancestors};return;}
+        if(item.children?.length&&depth<3)go(item.children,item,depth+1,[...ancestors,item]);
+        if(result)return;
+      }
     }
-    return null;
+    go(state.menu.items,null,1,[]);
+    return result;
   }
-  function drawMenuChildren(group){
-    return (group.children||[]).map((child,index)=>`<div class="menu-node child" data-mid="${esc(child.id)}">
-      <div class="menu-node-text"><strong>${esc(child.label)}</strong><small>${child.type==="filter"?"Publicaciones: "+esc(child.value):child.type==="page"?"Página: "+esc(child.value):"Enlace externo"}</small></div>
-      <div class="menu-node-actions"><button type="button" data-action="up" title="Subir" ${index===0?"disabled":""}>↑</button><button type="button" data-action="down" title="Bajar" ${index===group.children.length-1?"disabled":""}>↓</button><button type="button" data-action="edit">Editar</button><button type="button" data-action="remove" title="Eliminar subapartado">✕</button></div>
-    </div>`).join("");
+  const subtreeDepth=node=>1+Math.max(0,...(node.children||[]).map(subtreeDepth));
+  function renderMenuNode(item,depth,index,length){
+    const descendants=item.children||[];
+    const level=depth===1?"main":depth===2?"child":"grandchild";
+    const desc=item.type==="filter"?"Publicaciones: "+item.value:item.type==="page"?"Página: "+item.value:"Enlace externo";
+    const add=depth<3?`<button type="button" data-action="add-child">+ ${depth===1?"Subapartado":"Sub-subapartado"}</button>`:"";
+    return `<div class="menu-branch menu-level-${depth}" data-mid="${esc(item.id)}">
+      <div class="menu-node ${level}"><div class="menu-node-text"><strong>${esc(item.label)}</strong><small>Nivel ${depth} · ${esc(desc)}${descendants.length?" · "+descendants.length+" dentro":""}</small></div>
+      <div class="menu-node-actions"><button type="button" data-action="up" title="Subir" ${index===0?"disabled":""}>↑</button><button type="button" data-action="down" title="Bajar" ${index===length-1?"disabled":""}>↓</button>${add}<button type="button" data-action="edit">Editar</button><button type="button" data-action="remove" title="Eliminar apartado">✕</button></div></div>
+      ${descendants.length?`<div class="menu-children">${descendants.map((child,i)=>renderMenuNode(child,depth+1,i,descendants.length)).join("")}</div>`:""}
+    </div>`;
   }
   function renderMenuTree(){
     const box=el("menuTree");
-    box.innerHTML=state.menu.items.map((item,index)=>`<section class="menu-group-card" data-mid="${esc(item.id)}">
-      <div class="menu-node main"><div class="menu-node-text"><strong>${esc(item.label)}</strong><small>${item.type==="filter"?"Categoría principal":item.type==="page"?"Página interna":"Enlace externo"}${item.children.length?" · "+item.children.length+" subapartados":""}</small></div>
-      <div class="menu-node-actions"><button type="button" data-action="up" title="Subir" ${index===0?"disabled":""}>↑</button><button type="button" data-action="down" title="Bajar" ${index===state.menu.items.length-1?"disabled":""}>↓</button><button type="button" data-action="add-child">+ Subapartado</button><button type="button" data-action="edit">Editar</button><button type="button" data-action="remove" title="Eliminar apartado">✕</button></div></div>
-      <div class="menu-children">${drawMenuChildren(item)}</div>
-    </section>`).join("");
+    box.innerHTML=state.menu.items.map((item,index)=>`<section class="menu-group-card">${renderMenuNode(item,1,index,state.menu.items.length)}</section>`).join("");
     if(!state.menu.items.length)box.innerHTML='<p class="empty">Aún no hay apartados. Añade uno para empezar.</p>';
     const changed=state.menuBaseline!==JSON.stringify(state.menu);
     el("menuSave").disabled=!changed||state.busy;
@@ -485,11 +492,21 @@
     const item=found?.item||{};
     el("menuFormTitle").textContent=id?"Editar elemento":"Nuevo elemento del menú";
     const select=el("menuParent");
-    select.replaceChildren(new Option("Barra principal (apartado)",""),...state.menu.items.filter(x=>x.id!==id).map(x=>new Option("Dentro de "+x.label,x.id)));
+    const options=[new Option("Barra principal (apartado)","")];
+    menuCore.walk(state.menu,(node,depth,parents)=>{
+      if(depth>=3||node.id===id)return;
+      // Impedir mover un grupo dentro de sus propios descendientes.
+      if(id&&parents.some(p=>p.id===id))return;
+      if(found&&depth+subtreeDepth(found.item)>3)return;
+      options.push(new Option("  ".repeat(depth-1)+[...parents.map(p=>p.label),node.label].join(" → "),node.id));
+    });
+    select.replaceChildren(...options);
     select.value=found?.parent?.id||parentId||"";
+    if(![...select.options].some(x=>x.value===select.value))select.value="";
     el("menuLabel").value=item.label||"";
     el("menuType").value=item.type||"filter";
     el("menuValue").value=item.value||"";
+    el("menuValue").dataset.auto="0";
     el("menuDescription").value=item.description||"";
     el("menuItemForm").hidden=false;
     el("menuLabel").focus();
@@ -504,7 +521,7 @@
   }
   function deleteMenuItem(id){
     const found=findMenuItem(id);if(!found)return;
-    const affected=found.parent?"este subapartado":"este apartado y sus subapartados";
+    const affected=found.item.children?.length?"este apartado y todo lo que contiene":"este elemento";
     if(!confirm(`¿Eliminar ${affected}: «${found.item.label}»?\n\nLas publicaciones se conservarán, pero dejarán de tener ese enlace en el menú.`))return;
     found.list.splice(found.list.findIndex(x=>x.id===id),1);
     closeMenuForm();renderMenuTree();fillCategories();
@@ -512,32 +529,36 @@
   function applyMenuItem(event){
     event.preventDefault();
     const label=normalize(el("menuLabel").value),type=el("menuType").value;
-    const value=normalize(el("menuValue").value)|| (type==="filter"?label:"");
+    const value=normalize(el("menuValue").value)||(type==="filter"?label:"");
     const description=normalize(el("menuDescription").value);
     const parentId=el("menuParent").value;
     if(!label||!value){alert("Rellena el nombre y el destino.");return;}
     if(type==="url"&&!menuCore.validUrl(value)){alert("El enlace externo debe empezar por https:// y no contener espacios.");return;}
     if(type==="page"&&!menuCore.validPage(value)){alert("Escribe una página interna válida, por ejemplo cuaderno-seneca.html");return;}
-    if(parentId&&!state.menu.items.some(x=>x.id===parentId)){alert("El apartado principal seleccionado ya no existe.");return;}
+    const parent=parentId?findMenuItem(parentId):null;
+    if(parentId&&!parent){alert("El apartado padre ya no existe. Actualiza el menú.");return;}
     const found=state.menuEditId?findMenuItem(state.menuEditId):null;
-    if(found && parentId && (found.item.children||[]).length){
-      alert("Este apartado tiene subapartados. Antes de convertirlo en subapartado, mueve o elimina sus elementos para no perderlos.");return;
-    }
-    const originalIndex=found?found.list.findIndex(x=>x.id===found.item.id):-1;
-    const sameParent=!!found && (found.parent?.id||"")===parentId;
-    if(found)found.list.splice(originalIndex,1);
+    if(parent&&(parent.depth>=3||parent.depth+subtreeDepth(found?.item||{children:[]})>3)){alert("Se permiten hasta tres niveles visibles. Elige un apartado superior.");return;}
+    if(found&&(parentId===found.item.id||parent?.ancestors.some(p=>p.id===found.item.id))){alert("No puedes mover un apartado dentro de sí mismo.");return;}
+    const oldIndex=found?found.list.findIndex(x=>x.id===found.item.id):-1;
+    const sameParent=!!found&&(found.parent?.id||"")===parentId;
+    if(found)found.list.splice(oldIndex,1);
     const item=found?.item||{id:"nav-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),children:[]};
     Object.assign(item,{label,type,value});
     if(parentId){
-      delete item.children;delete item.description;
-      const list=state.menu.items.find(x=>x.id===parentId).children;
-      if(sameParent)list.splice(originalIndex,0,item);else list.push(item);
+      const list=parent.item.children||(parent.item.children=[]);
+      delete item.description;
+      if(sameParent)list.splice(oldIndex,0,item);else list.push(item);
+    }else{
+      item.description=description;
+      if(sameParent)state.menu.items.splice(oldIndex,0,item);else state.menu.items.push(item);
     }
-    else {
-      item.description=description;item.children=item.children||[];
-      if(sameParent)state.menu.items.splice(originalIndex,0,item);else state.menu.items.push(item);
-    }
-    state.menu=menuCore.normalize(state.menu);
+    const normalized=menuCore.normalize(state.menu);
+    // Importantísimo: nunca guardar cambios que silenciosamente pierdan descendientes.
+    const existingIds=[];menuCore.walk(state.menu,n=>existingIds.push(n.id));
+    const validIds=[];menuCore.walk(normalized,n=>validIds.push(n.id));
+    if(existingIds.length!==validIds.length){alert("El menú excede los límites. Cambios no aplicados.");return;}
+    state.menu=normalized;
     closeMenuForm();renderMenuTree();fillCategories();
   }
   async function saveMenu(){

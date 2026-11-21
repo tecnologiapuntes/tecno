@@ -140,7 +140,8 @@ def via_ytdlp():
         if vid and title and title.lower() not in ("private video", "deleted video"):
             entries.append({"id":vid,"title":title,
                 "description":str(row.get("description") or ""),
-                "thumbnail":f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"})
+                "thumbnail":f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+                "upload_date":str(row.get("upload_date") or row.get("release_date") or "")})
     return entries
 
 
@@ -158,7 +159,8 @@ def via_rss():
         if vid and ID_RE.fullmatch(vid) and title:
             result.append({"id":vid,"title":title,
                 "description":entry.findtext("media:group/media:description",default="",namespaces=ns),
-                "thumbnail":f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"})
+                "thumbnail":f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+                "published_at":entry.findtext("a:published",default="",namespaces=ns)})
     return result
 
 
@@ -174,13 +176,18 @@ def enrich(entries, old):
             prev=previous.get(v["id"],{})
             if prev.get("description") and not v.get("description"):
                 v["description"]=prev["description"]
-            if not v.get("description"):
+            for field in ("upload_date","published_at"):
+                if prev.get(field) and not v.get(field):v[field]=prev[field]
+            # Recuperar fecha de subida incluso de vídeos cuya descripción ya está guardada.
+            if not v.get("description") or not (v.get("upload_date") or v.get("published_at")):
                 try:
                     data=ydl.extract_info("https://www.youtube.com/watch?v="+v["id"],download=False)
                     if data:
-                        v["description"]=str(data.get("description") or "")
+                        if not v.get("description"):v["description"]=str(data.get("description") or "")
+                        if not (v.get("upload_date") or v.get("published_at")):
+                            v["upload_date"]=str(data.get("upload_date") or data.get("release_date") or "")
                 except Exception as exc:
-                    print("Descripción aún inaccesible para",v["id"],str(exc)[:90])
+                    print("Metadatos aún inaccesibles para",v["id"],str(exc)[:90])
             if prev.get("title_es") and prev.get("title")==v["title"]:
                 v["title_es"]=prev["title_es"]
             if prev.get("description_es") and prev.get("description")==v.get("description"):

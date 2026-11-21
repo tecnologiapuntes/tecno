@@ -82,3 +82,13 @@ Consulta `LEEME_GITHUB_V45.md` en la raíz. Puedes crear apartados desde la segu
 ## Actualización V50: apartados dinámicos en el editor
 
 En **Nueva publicación → Apartado de la web** se muestran los apartados y subapartados actuales de GitHub. La lista se refresca al abrir el editor y con el botón **↻ Actualizar apartados**. También encontrarás **Inteligencia Artificial → Videotutoriales**, que ahora admite publicaciones mostradas debajo de los videotutoriales. Para instrucciones completas consulta `LEEME_GITHUB_V50.md` en la raíz del repositorio.
+
+
+## V51: subapartados dentro de subapartados y tablón de novedades
+
+- En **Menús y apartados**, pulsa «+ Añadir subapartado» en un apartado principal o «+ Sub-subapartado» en otro subapartado. Selecciona su **Ubicación**, nombre y categoría, y termina pulsando **Guardar menú en GitHub**.
+- Se admiten **tres niveles en total** (por ejemplo, Proyectos → 3.º ESO → Electricidad). Los enlaces se muestran tanto en la barra principal como en el botón Menú y en las páginas independientes.
+- Las categorías de nivel 3 aparecen en **Nueva publicación → Apartado de la web** al actualizar categorías, y al abrir el editor se consulta la última configuración publicada.
+- El **Tablón de novedades** de la portada combina todos los posts públicos creados en el administrador o anteriores con los vídeos obtenidos de las listas de reproducción de Cuaderno de Séneca e IA. Puedes filtrar por «Publicaciones» o «Vídeos», o por sección.
+- Las novedades se ordenan según la fecha original de publicación; si YouTube aún no proporciona la fecha, ese vídeo queda después de las novedades con fecha y muestra «Fecha pendiente». **No** se usa la fecha de sincronización como si fuera la de publicación.
+- Para recuperar las fechas de vídeos anteriores, entra en GitHub → Actions y ejecuta **Sincronizar vídeos del Cuaderno de Séneca** y **Sincronizar videotutoriales de Inteligencia Artificial**. Si YouTube no responde, las fichas antiguas se conservan, aunque algunas fechas sigan pendientes.

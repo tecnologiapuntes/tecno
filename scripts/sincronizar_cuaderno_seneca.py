@@ -50,7 +50,8 @@ def extract_via_yt_dlp():
         if not video_id: continue
         result.append({'id':video_id, 'title':entry.get('title') or '',
                       'description':entry.get('description') or '',
-                      'thumbnail':f'https://i.ytimg.com/vi/{video_id}/hqdefault.jpg'})
+                      'thumbnail':f'https://i.ytimg.com/vi/{video_id}/hqdefault.jpg',
+                      'upload_date':str(entry.get('upload_date') or entry.get('release_date') or '')})
     return result
 
 
@@ -68,7 +69,8 @@ def extract_via_rss():
         if not v_id or not ID_RE.fullmatch(v_id):continue
         result.append({'id':v_id, 'title':e.findtext('a:title',default='',namespaces=ns),
             'description':e.findtext('media:group/media:description',default='',namespaces=ns),
-            'thumbnail':f'https://i.ytimg.com/vi/{v_id}/hqdefault.jpg'})
+            'thumbnail':f'https://i.ytimg.com/vi/{v_id}/hqdefault.jpg',
+            'published_at':e.findtext('a:published',default='',namespaces=ns)})
     return result
 
 
@@ -84,16 +86,22 @@ def enrich_description(entries, old):
     for item in entries:
         vid=item['id']
         old_v=old_map.get(vid,{})
-        if old_v.get('description'):
-            item['description']=old_v['description'];continue
+        if old_v.get('description') and not item.get('description'):
+            item['description']=old_v['description']
+        for field in ('upload_date','published_at'):
+            if old_v.get(field) and not item.get(field):item[field]=old_v[field]
+        if item.get('description') and (item.get('upload_date') or item.get('published_at')):
+            continue
         try:
             with yt_dlp.YoutubeDL(opts) as ydl:
                 meta=ydl.extract_info('https://www.youtube.com/watch?v='+vid,download=False)
             if meta:
                 item['title']=item['title'] or meta.get('title','')
-                item['description']=meta.get('description') or item.get('description','')
+                if not item.get('description'):item['description']=meta.get('description') or ''
+                if not (item.get('upload_date') or item.get('published_at')):
+                    item['upload_date']=str(meta.get('upload_date') or meta.get('release_date') or '')
         except Exception as exc:
-            print(f'No se pudo leer descripción {vid}: {str(exc)[:130]}')
+            print(f'No se pudieron leer metadatos {vid}: {str(exc)[:130]}')
     return entries
 
 

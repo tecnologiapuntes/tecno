@@ -35,3 +35,21 @@
 .category-refresh:hover{background:#d3f2e8}
 .category-refresh:disabled{opacity:.55;cursor:wait}
 .category-hint{font-size:11px!important;line-height:1.5!important;color:#59718c!important;margin:6px 0 0!important}
+
+/* V51 · Árbol de hasta tres niveles con lectura clara en cualquier pantalla. */
+.menu-branch .menu-children{border-left:2px solid #bde7df;padding-left:13px;margin-left:18px}
+.menu-level-2>.menu-node{background:#ffffff;border:1px solid #e1eaf1}
+.menu-level-3>.menu-node{background:#edf7fb;border:1px solid #cadfe8}
+.menu-level-3>.menu-node .menu-node-text strong{font-weight:540}
+.menu-branch:not(:first-child){margin-top:7px}
+.menu-item-form select{width:100%}
+@media(max-width:760px){.menu-branch .menu-children{margin-left:8px;padding-left:8px}.menu-level-3>.menu-node{padding:9px 6px}}
+
+/* V51 · Árbol de hasta tres niveles con lectura clara en cualquier pantalla. */
+.menu-branch .menu-children{border-left:2px solid #bde7df;padding-left:13px;margin-left:18px}
+.menu-level-2>.menu-node{background:#ffffff;border:1px solid #e1eaf1}
+.menu-level-3>.menu-node{background:#edf7fb;border:1px solid #cadfe8}
+.menu-level-3>.menu-node .menu-node-text strong{font-weight:540}
+.menu-branch:not(:first-child){margin-top:7px}
+.menu-item-form select{width:100%}
+@media(max-width:760px){.menu-branch .menu-children{margin-left:8px;padding-left:8px}.menu-level-3>.menu-node{padding:9px 6px}}
