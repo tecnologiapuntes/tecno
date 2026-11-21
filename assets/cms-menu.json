@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 4,
   "items": [
     {
       "id": "ia",
@@ -12,13 +12,22 @@
           "id": "ia-prompts",
           "label": "Prompts",
           "type": "filter",
-          "value": "Prompts"
+          "value": "Prompts",
+          "children": []
         },
         {
           "id": "ia-recursos",
           "label": "Recursos IA",
           "type": "filter",
-          "value": "Recursos IA"
+          "value": "Recursos IA",
+          "children": []
+        },
+        {
+          "id": "ia-videos",
+          "label": "Videotutoriales",
+          "type": "page",
+          "value": "videotutoriales-ia.html",
+          "children": []
         }
       ]
     },
@@ -33,19 +42,22 @@
           "id": "p-2",
           "label": "2.º ESO",
           "type": "filter",
-          "value": "2º ESO"
+          "value": "2º ESO",
+          "children": []
         },
         {
           "id": "p-3",
           "label": "3.º ESO",
           "type": "filter",
-          "value": "3º ESO"
+          "value": "3º ESO",
+          "children": []
         },
         {
           "id": "p-4",
           "label": "4.º ESO",
           "type": "filter",
-          "value": "4º ESO"
+          "value": "4º ESO",
+          "children": []
         }
       ]
     },
@@ -60,7 +72,15 @@
           "id": "nav-mwqu4hjssmrx",
           "label": "2ºESO",
           "type": "filter",
-          "value": "2ºESO"
+          "value": "2ºESO",
+          "children": [
+            {
+              "id": "nav-mwqxl8zny95k",
+              "label": "Dibujo Técnico",
+              "type": "filter",
+              "value": "Dibujo Técnico"
+            }
+          ]
         }
       ]
     },
@@ -75,13 +95,15 @@
           "id": "d-seneca",
           "label": "Cuaderno de Séneca",
           "type": "page",
-          "value": "cuaderno-seneca.html"
+          "value": "cuaderno-seneca.html",
+          "children": []
         },
         {
           "id": "d-herramientas",
           "label": "Herramientas docentes",
           "type": "filter",
-          "value": "Utilidades Séneca"
+          "value": "Utilidades Séneca",
+          "children": []
         }
       ]
     }
