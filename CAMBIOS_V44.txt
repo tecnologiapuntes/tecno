@@ -1,0 +1,17 @@
+TECNOLOGIAINSTI V44 · PANEL AUTÓNOMO GRATUITO
+
+- Nuevo panel de administración: /admin/
+- Acceso con token personal de GitHub limitado a tecnologiApuntes/tecno (sin contraseña propia ni Supabase).
+- Crear, editar, guardar borradores y eliminar publicaciones.
+- Subir portada y galerías; ordenar imágenes; conversión automática WebP.
+- Añadir enlaces de Drive/Instagram y documentos descargables.
+- Publicar texto + multimedia en un único commit GitHub.
+- Contenido administrado separado del original en assets/cms-posts.json.
+- assets/posts.js (24 originales) y assets/seneca-videos.json permanecen intactos.
+- Cargador seguro para combinar publicaciones originales y administradas antes de mostrar la web.
+- PUBLICAR.html redirige al nuevo panel.
+
+IMPORTANTE: CMS-posts.json es un archivo que creará el panel en GitHub con la primera publicación.
+NO se incluye en los ZIP para evitar sobrescribir contenido de futuros posts, igual que seneca-videos.json.
+
+El acceso OAuth con botón 'Entrar con GitHub' y la edición de apartados del menú no están incluidos en V44.

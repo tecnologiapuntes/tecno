@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#102445" />
+  <title>Administración · TecnologíaInsti</title>
+  <link rel="icon" href="../assets/favicon-tecnologiainsti.png" type="image/png" />
+  <link rel="stylesheet" href="./admin.css?v=44" />
+  <script defer src="./admin.js?v=44"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../" aria-label="Ir a TecnologíaInsti">
+        <img src="../assets/logo-tecnologiainsti.webp" alt="" />
+        <span><strong>TecnologíaInsti</strong><small>Gestor de publicaciones</small></span>
+      </a>
+      <div class="top-actions">
+        <a href="../" class="web-link" target="_blank" rel="noopener noreferrer">↗ Ver web</a>
+        <span id="accountLabel" class="account" hidden></span>
+        <button id="signOut" type="button" class="btn secondary" hidden>Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="loginPanel" class="login" aria-labelledby="loginTitle">
+      <div class="intro-chip">GRATIS · GITHUB PAGES</div>
+      <h1 id="loginTitle">Publica sin tocar código</h1>
+      <p>Crea tus entradas de Prompts, Proyectos y Herramientas docentes con portada, carrusel, enlaces y documentos. Se guardan directamente en tu repositorio.</p>
+      <form id="loginForm" class="login-card">
+        <label for="token">Token personal de GitHub</label>
+        <input id="token" type="password" required autocomplete="off" spellcheck="false" placeholder="github_pat_..." aria-describedby="tokenHelp" />
+        <p id="tokenHelp" class="hint">Es una clave de acceso de GitHub, no tu contraseña. Solo necesitas permiso <strong>Contents: Read and write</strong> para el repositorio <code>tecnologiapuntes/tecno</code>.</p>
+        <button class="btn primary wide" type="submit" id="connectButton">Conectar con GitHub</button>
+        <div id="loginMessage" role="status" aria-live="polite"></div>
+        <details class="help"><summary>¿Cómo consigo el token? (solo la primera vez)</summary>
+          <ol>
+            <li>Entra en <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">GitHub → Nuevo token de acceso limitado</a>.</li>
+            <li>Selecciona propietario de tu cuenta y <strong>Only select repositories → tecno</strong>.</li>
+            <li>En Repository permissions, permite <strong>Contents → Read and write</strong>.</li>
+            <li>Establece una caducidad adecuada; genera el token y cópialo.</li>
+            <li>Pégalo arriba. <strong>Nunca</strong> compartas el token ni lo añadas a GitHub como archivo.</li>
+          </ol>
+        </details>
+      </form>
+      <div class="security-note">🔒 El token se mantiene solo en la memoria de esta pestaña: no se guarda en tu web, en archivos ni en el navegador. Al recargar la página tendrás que introducirlo de nuevo.</div>
+    </section>
+
+    <section id="workspace" hidden aria-label="Panel de publicaciones">
+      <div class="workspace-head">
+        <div><div class="intro-chip">PANEL DE PUBLICACIÓN</div><h1>Mis publicaciones</h1><p>Gestiona las entradas existentes y añade nuevas sin descargar ZIP.</p></div>
+        <button type="button" class="btn primary" id="newPost">+ Nueva publicación</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong id="totalCount">0</strong><span>Publicaciones</span></div>
+        <div class="stat"><strong id="publishedCount">0</strong><span>Publicadas</span></div>
+        <div class="stat"><strong id="draftCount">0</strong><span>Borradores</span></div>
+        <div class="stat"><strong>GitHub</strong><span>Publicación directa</span></div>
+      </div>
+      <div id="listPanel" class="panel">
+        <div class="list-tools"><label class="search-wrap">Buscar <input id="searchPosts" placeholder="Título, categoría, fecha…" type="search" /></label><button id="reloadPosts" class="btn secondary" type="button">↻ Actualizar lista</button></div>
+        <div id="postList" class="post-list" aria-live="polite"></div>
+      </div>
+
+      <section id="editorPanel" class="panel editor" hidden aria-labelledby="editorTitle">
+        <div class="editor-heading"><div><span class="intro-chip">EDITOR</span><h2 id="editorTitle">Nueva publicación</h2></div><button id="cancelEdit" type="button" class="btn secondary">← Volver</button></div>
+        <form id="postForm">
+          <div class="field"><label for="postTitle">Título <em>*</em></label><input id="postTitle" required maxlength="220" placeholder="Ej.: 5 ideas para aprender con IA" /></div>
+          <div class="field-grid">
+            <div class="field"><label for="postCategory">Apartado de la web <em>*</em></label><select id="postCategory" required><option value="Prompts">IA → Prompts</option><option value="Recursos IA">IA → Recursos IA</option><option value="2º ESO">Proyectos → 2.º ESO</option><option value="3º ESO">Proyectos → 3.º ESO</option><option value="4º ESO">Proyectos → 4.º ESO</option><option value="Cuaderno de Séneca">Herramientas docentes → Cuaderno de Séneca</option><option value="Utilidades Séneca">Herramientas docentes → Herramientas docentes</option></select></div>
+            <div class="field"><label for="postDate">Fecha de publicación <em>*</em></label><input id="postDate" type="date" required /></div>
+          </div>
+          <div class="field"><label for="postExcerpt">Descripción corta de la tarjeta</label><textarea id="postExcerpt" rows="2" maxlength="380" placeholder="Resumen que se verá antes de abrir la publicación"></textarea></div>
+          <div class="field"><label for="postContent">Texto completo de la publicación <em>*</em></label><textarea id="postContent" rows="11" required placeholder="Pega aquí el texto de Instagram o escribe tu explicación. Se respetarán saltos de línea y apartados."></textarea></div>
+
+          <div class="section-title"><h3>Portada y carrusel</h3><p>La primera imagen será la portada. Puedes subir varias a la vez y moverlas para ordenar el carrusel.</p></div>
+          <label for="photoInput" class="upload-area" id="imageDrop"><span class="upload-icon">▧</span><strong>Pulsa aquí o arrastra tus imágenes</strong><small>PNG, JPG y WebP · conversión automática a WebP · hasta 10 MB por imagen de origen</small></label>
+          <input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden />
+          <div id="gallery" class="gallery" aria-label="Orden de las imágenes"></div>
+
+          <div class="section-title"><h3>Enlaces y descargas</h3><p>Para tu Word, PDF, carpeta de Drive o publicación original de Instagram.</p></div>
+          <div id="linksList" class="links-list"></div>
+          <button type="button" class="btn secondary" id="addLink">+ Añadir enlace</button>
+          <div class="field attachment-field"><label for="attachmentInput">Subir documento a la web (opcional)</label><input id="attachmentInput" type="file" accept=".docx,.pdf,.doc,.xlsx,.pptx" /><small id="currentAttachment" class="hint"></small><small class="hint">Si ya tienes un enlace de Drive, no necesitas subir el Word.</small></div>
+
+          <div class="publish-options"><label class="toggle"><input type="checkbox" id="postPublished" checked /><span>Publicar ahora en la web</span></label><p>Desmarca la casilla para guardar como borrador. La fecha sirve para ordenar, no programa la publicación.</p></div>
+          <div class="editor-actions"><button class="btn secondary" type="button" id="cancelEditBottom">Cancelar</button><button class="btn primary" type="submit" id="savePost">Guardar en GitHub</button></div>
+          <div id="saveStatus" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+      <p class="footer-hint">Las publicaciones nuevas se guardan en <code>assets/cms-posts.json</code>, sin modificar los 24 posts originales de <code>assets/posts.js</code>. Los cambios quedan registrados en GitHub y no sobrescriben los vídeos de Séneca. Este panel gestiona las secciones actuales; crear nuevas opciones en el menú requiere adaptar la navegación.</p>
+    </section>
+  </main>
+</body>
+</html>
