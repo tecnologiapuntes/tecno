@@ -2,55 +2,87 @@
   "playlist_id": "PL4P4xfIXfbrEG2jHodZqqTS65BZBvrauj",
   "playlist_title": "Videotutoriales de Inteligencia Artificial",
   "source": "yt-dlp",
-  "updated_at": "2026-11-21T20:40:39.466221+00:00",
+  "updated_at": "2026-11-21T21:11:57.682033+00:00",
   "videos": [
     {
       "id": "2TfjdCyR-A0",
       "title": "😱 AI gives you an infographic… but WON'T let you edit it 🚫 | Solution with Canva for FREE 🎨",
       "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/2TfjdCyR-A0/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/2TfjdCyR-A0/hqdefault.jpg",
+      "title_es": "",
+      "title_es_verified": false,
+      "description_es": "",
+      "description_es_verified": false
     },
     {
       "id": "UYMYMyh0JYE",
       "title": "NotebookLM. NO CANVA OR POWERPOINT! Create Presentations and Infographics WITHOUT DESIGNING, usin...",
       "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/UYMYMyh0JYE/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/UYMYMyh0JYE/hqdefault.jpg",
+      "title_es": "",
+      "title_es_verified": false,
+      "description_es": "",
+      "description_es_verified": false
     },
     {
       "id": "9d7NUb8vxZc",
       "title": "NOTEBOOKLM: Google's secret tool for teachers and students. AI.",
       "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/9d7NUb8vxZc/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/9d7NUb8vxZc/hqdefault.jpg",
+      "title_es": "",
+      "title_es_verified": false,
+      "description_es": "",
+      "description_es_verified": false
     },
     {
       "id": "ozTYKmQKlXE",
       "title": "AI Teachers: Transform Your Classes with Maps and Diagrams in Seconds with Napkin.ai! 🚀🧠✨",
       "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/ozTYKmQKlXE/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/ozTYKmQKlXE/hqdefault.jpg",
+      "title_es": "",
+      "title_es_verified": false,
+      "description_es": "",
+      "description_es_verified": false
     },
     {
       "id": "46gBlrKzJGw",
       "title": "IA Profesores. 🎄Villancico🎄 personalizado con los nombres de tus alumnos en minutos con IA y GRATIS.",
       "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/46gBlrKzJGw/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/46gBlrKzJGw/hqdefault.jpg",
+      "title_es": "IA Profesores. 🎄Villancico🎄 personalizado con los nombres de tus alumnos en minutos con IA y GRATIS.",
+      "title_es_verified": true,
+      "description_es": "",
+      "description_es_verified": false
     },
     {
       "id": "jvGA_R5nFM8",
       "title": "IA Profesores. Sorprende a tus alumnos con una🎵canción🎵personalizada en minutos con IA y GRATIS.",
       "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/jvGA_R5nFM8/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/jvGA_R5nFM8/hqdefault.jpg",
+      "title_es": "IA Profesores. Sorprende a tus alumnos con una🎵canción🎵personalizada en minutos con IA y GRATIS.",
+      "title_es_verified": true,
+      "description_es": "",
+      "description_es_verified": false
     },
     {
       "id": "Wf2POko5638",
       "title": "IA Profesores. CHATPDF (GRATIS) Crea exámenes tipo test para Moodle desde un PDF en unos minutos.",
       "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/Wf2POko5638/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/Wf2POko5638/hqdefault.jpg",
+      "title_es": "IA Profesores. CHATPDF (GRATIS) Crea exámenes tipo test para Moodle desde un PDF en unos minutos.",
+      "title_es_verified": true,
+      "description_es": "",
+      "description_es_verified": false
     },
     {
       "id": "5bqNd01ujIs",
       "title": "AI Teachers. Moodle 2024. Create AI-powered quizzes to import into Moodle. Tests in minutes!",
       "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/5bqNd01ujIs/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/5bqNd01ujIs/hqdefault.jpg",
+      "title_es": "",
+      "title_es_verified": false,
+      "description_es": "",
+      "description_es_verified": false
     }
   ]
 }
