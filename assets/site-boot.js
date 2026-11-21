@@ -3,6 +3,11 @@
 // assets/cms-posts.json se crea al hacer la primera publicación desde /admin/.
 (() => {
   async function loadSite() {
+    window.TECNOLOGIA_MENU = window.TI_MENU.normalize(window.TI_MENU.defaults);
+    try {
+      const menuResponse = await fetch("./assets/cms-menu.json", {cache:"no-store"});
+      if(menuResponse.ok) window.TECNOLOGIA_MENU = window.TI_MENU.normalize(await menuResponse.json());
+    } catch (err) { console.warn("TecnologíaInsti: usando el menú predeterminado.",err); }
     const legacy = Array.isArray(window.TECNOLOGIA_POSTS) ? window.TECNOLOGIA_POSTS : [];
     try {
       const response = await fetch("./assets/cms-posts.json", {cache: "no-store"});
@@ -21,7 +26,7 @@
       console.warn("TecnologíaInsti: no se pudo cargar el contenido añadido desde el panel.",err);
     }
     const app = document.createElement("script");
-    app.src = "./assets/app.js?v=41";
+    app.src = "./assets/app.js?v=45";
     app.onerror = () => { const node=document.getElementById("root"); if(node)node.textContent="No se pudo cargar la web. Actualiza la página para intentarlo de nuevo."; };
     document.body.appendChild(app);
   }

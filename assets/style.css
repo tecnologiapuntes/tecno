@@ -381,3 +381,16 @@ footer a:hover { color:var(--mint); }
     top:calc(100% - 2px);
   }
 }
+
+/* V45 · Menú configurable desde /admin/, sin puentes invisibles entre botón y desplegable */
+.header nav .nav-dynamic .nav-submenu {top:calc(100% - 3px);min-width:185px;max-width:min(310px,90vw);}
+.header nav .nav-dynamic .nav-submenu button {white-space:normal;line-height:1.45;}
+.area-grid {grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));}
+.area .category-links button {text-align:left;}
+@media(max-width:1280px){.header nav .nav-dynamic .nav-dropdown-trigger{font-size:11px;padding-inline:8px}}
+
+/* V45: cualquier número de apartados sin textos descriptivos heredados en tarjetas */
+.header .header-menu-panel{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.header .menu-panel-group button::after{display:none!important;content:none!important;}
+@media(max-width:1010px){.header .header-menu-panel{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:760px){.header .header-menu-panel{grid-template-columns:1fr;}}

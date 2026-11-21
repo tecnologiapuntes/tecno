@@ -1,0 +1,9 @@
+VERSIÓN V45 · Menús editables (21/11/2026)
+
+- Nueva pestaña «Menús y apartados» en el panel /admin/.
+- Se pueden añadir, editar, ordenar y eliminar apartados principales o subapartados.
+- Cada elemento puede filtrar publicaciones, abrir una página interna o llevar a una URL HTTPS.
+- Los menús principales y los del botón «Menú» comparten configuración en portada y Cuaderno de Séneca.
+- Las categorías nuevas se ofrecen al crear publicaciones en el editor.
+- La configuración se guarda en assets/cms-menu.json mediante un commit en GitHub.
+- No se modifica assets/posts.js ni assets/seneca-videos.json.

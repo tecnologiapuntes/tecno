@@ -6,11 +6,14 @@
   const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
   const POSTS_PATH = "assets/posts.js";
   const CMS_PATH = "assets/cms-posts.json";
+  const MENU_PATH = "assets/cms-menu.json";
+  const menuCore = window.TI_MENU;
   const root = document;
   const el = (id) => root.getElementById(id);
   const state = {
     token: null, login: null, branch: "main", posts: [], editingId: null,
-    original: null, media: [], uploadingDoc: null, busy: false
+    original: null, media: [], uploadingDoc: null, busy: false,
+    menu: menuCore.normalize(menuCore.defaults), menuBaseline: null, menuEditId: null, menuNextParent: "", activeTab: "posts"
   };
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const localDate = () => {
@@ -105,6 +108,28 @@
       throw e;
     }
   }
+  async function readRemoteMenu(){
+    try{
+      const response=await github(`/contents/${MENU_PATH}?ref=${encodeURIComponent(state.branch)}`);
+      if(response.encoding!=="base64")throw Error("No se pudo leer el menú de GitHub.");
+      const raw=JSON.parse(new TextDecoder().decode(bytesFromB64(response.content)));
+      const normalized=menuCore.normalize(raw);
+      if(normalized.items.length!==raw.items?.length)throw Error("El archivo del menú contiene entradas incompatibles.");
+      return normalized;
+    }catch(e){
+      if(/^404 · /.test(e.message))return menuCore.normalize(menuCore.defaults);
+      throw e;
+    }
+  }
+  function fillCategories(){
+    const cat=el("postCategory"), prior=cat.value;
+    const list=menuCore.categories(state.menu);
+    // Legacy categories remain editable, including posts from previous versions.
+    for(const p of state.posts) if(p.category&&!list.some(x=>x.value===p.category))list.push({value:p.category,label:p.category+" (existente)"});
+    if(!list.length)list.push({value:"Prompts",label:"Prompts"});
+    cat.replaceChildren(...list.map(({value,label})=>new Option(label,value)));
+    if([...cat.options].some(o=>o.value===prior))cat.value=prior;
+  }
   async function latestData() {
     const [legacy,cms]=await Promise.all([readRemotePosts(),readRemoteCms()]);
     return {legacy,cms,combined:mergePosts(legacy,cms)};
@@ -112,6 +137,7 @@
   async function refreshPosts() {
     const latest=await latestData();
     state.posts=latest.combined;
+    fillCategories();
     renderList();
   }
   function renderList() {
@@ -147,7 +173,7 @@
     if(p.category && !Array.from(category.options).some(o=>o.value===p.category)) {
       const option=new Option(p.category,p.category);category.append(option);
     }
-    category.value=p.category || "Prompts";
+    category.value=p.category || (category.options[0]?.value || "Prompts");
     el("postDate").value=p.created || localDate();
     el("postExcerpt").value=p.excerpt || "";
     el("postContent").value=p.content || "";
@@ -369,6 +395,10 @@
       state.branch=repo.default_branch||"main";
       if(repo.permissions && repo.permissions.push===false)throw new Error("Tu cuenta no tiene permiso para publicar en este repositorio.");
       await refreshPosts();
+      state.menu=await readRemoteMenu();
+      state.menuBaseline=JSON.stringify(state.menu);
+      fillCategories();
+      renderMenuTree();
       el("token").value="";
       el("loginPanel").hidden=true;
       el("workspace").hidden=false;
@@ -381,14 +411,169 @@
   }
   function signOut(){
     state.token=null;state.posts=[];state.login=null;state.original=null;state.editingId=null;releasePreviews();
+    state.menu=menuCore.normalize(menuCore.defaults);state.menuBaseline=null;state.activeTab="posts";
     el("workspace").hidden=true;el("loginPanel").hidden=false;el("accountLabel").hidden=true;el("signOut").hidden=true;
     el("token").value="";
     status("loginMessage","Sesión cerrada. Tu token no se ha guardado.","success");
   }
+
+  function switchTab(tab){
+    if(state.busy)return;
+    state.activeTab=tab;
+    el("tabPosts").classList.toggle("active",tab==="posts");
+    el("tabMenus").classList.toggle("active",tab==="menus");
+    el("tabPosts").setAttribute("aria-selected",String(tab==="posts"));
+    el("tabMenus").setAttribute("aria-selected",String(tab==="menus"));
+    el("editorPanel").hidden=true;
+    el("listPanel").hidden=tab!=="posts";
+    el("menuPanel").hidden=tab!=="menus";
+    if(tab==="menus")renderMenuTree();
+  }
+  function findMenuItem(id){
+    for(const group of state.menu.items){
+      if(group.id===id)return {item:group,parent:null,list:state.menu.items};
+      for(const child of group.children||[])if(child.id===id)return {item:child,parent:group,list:group.children};
+    }
+    return null;
+  }
+  function drawMenuChildren(group){
+    return (group.children||[]).map((child,index)=>`<div class="menu-node child" data-mid="${esc(child.id)}">
+      <div class="menu-node-text"><strong>${esc(child.label)}</strong><small>${child.type==="filter"?"Publicaciones: "+esc(child.value):child.type==="page"?"Página: "+esc(child.value):"Enlace externo"}</small></div>
+      <div class="menu-node-actions"><button type="button" data-action="up" title="Subir" ${index===0?"disabled":""}>↑</button><button type="button" data-action="down" title="Bajar" ${index===group.children.length-1?"disabled":""}>↓</button><button type="button" data-action="edit">Editar</button><button type="button" data-action="remove" title="Eliminar subapartado">✕</button></div>
+    </div>`).join("");
+  }
+  function renderMenuTree(){
+    const box=el("menuTree");
+    box.innerHTML=state.menu.items.map((item,index)=>`<section class="menu-group-card" data-mid="${esc(item.id)}">
+      <div class="menu-node main"><div class="menu-node-text"><strong>${esc(item.label)}</strong><small>${item.type==="filter"?"Categoría principal":item.type==="page"?"Página interna":"Enlace externo"}${item.children.length?" · "+item.children.length+" subapartados":""}</small></div>
+      <div class="menu-node-actions"><button type="button" data-action="up" title="Subir" ${index===0?"disabled":""}>↑</button><button type="button" data-action="down" title="Bajar" ${index===state.menu.items.length-1?"disabled":""}>↓</button><button type="button" data-action="add-child">+ Subapartado</button><button type="button" data-action="edit">Editar</button><button type="button" data-action="remove" title="Eliminar apartado">✕</button></div></div>
+      <div class="menu-children">${drawMenuChildren(item)}</div>
+    </section>`).join("");
+    if(!state.menu.items.length)box.innerHTML='<p class="empty">Aún no hay apartados. Añade uno para empezar.</p>';
+    const changed=state.menuBaseline!==JSON.stringify(state.menu);
+    el("menuSave").disabled=!changed||state.busy;
+    el("menuSave").textContent=changed?"Guardar menú en GitHub":"Menú sin cambios";
+    el("menuReset").disabled=!changed||state.busy;
+  }
+  function openMenuForm(id=null,parentId=""){
+    if(state.busy)return;
+    state.menuEditId=id;
+    const found=id?findMenuItem(id):null;
+    const item=found?.item||{};
+    el("menuFormTitle").textContent=id?"Editar elemento":"Nuevo elemento del menú";
+    const select=el("menuParent");
+    select.replaceChildren(new Option("Barra principal (apartado)",""),...state.menu.items.filter(x=>x.id!==id).map(x=>new Option("Dentro de "+x.label,x.id)));
+    select.value=found?.parent?.id||parentId||"";
+    el("menuLabel").value=item.label||"";
+    el("menuType").value=item.type||"filter";
+    el("menuValue").value=item.value||"";
+    el("menuDescription").value=item.description||"";
+    el("menuItemForm").hidden=false;
+    el("menuLabel").focus();
+  }
+  function closeMenuForm(){el("menuItemForm").hidden=true;state.menuEditId=null;}
+  function moveMenuItem(id,direction){
+    const found=findMenuItem(id);if(!found)return;
+    const index=found.list.findIndex(x=>x.id===id),to=index+direction;
+    if(to<0||to>=found.list.length)return;
+    [found.list[index],found.list[to]]=[found.list[to],found.list[index]];
+    renderMenuTree();
+  }
+  function deleteMenuItem(id){
+    const found=findMenuItem(id);if(!found)return;
+    const affected=found.parent?"este subapartado":"este apartado y sus subapartados";
+    if(!confirm(`¿Eliminar ${affected}: «${found.item.label}»?\n\nLas publicaciones se conservarán, pero dejarán de tener ese enlace en el menú.`))return;
+    found.list.splice(found.list.findIndex(x=>x.id===id),1);
+    closeMenuForm();renderMenuTree();fillCategories();
+  }
+  function applyMenuItem(event){
+    event.preventDefault();
+    const label=normalize(el("menuLabel").value),type=el("menuType").value;
+    const value=normalize(el("menuValue").value)|| (type==="filter"?label:"");
+    const description=normalize(el("menuDescription").value);
+    const parentId=el("menuParent").value;
+    if(!label||!value){alert("Rellena el nombre y el destino.");return;}
+    if(type==="url"&&!menuCore.validUrl(value)){alert("El enlace externo debe empezar por https:// y no contener espacios.");return;}
+    if(type==="page"&&!menuCore.validPage(value)){alert("Escribe una página interna válida, por ejemplo cuaderno-seneca.html");return;}
+    if(parentId&&!state.menu.items.some(x=>x.id===parentId)){alert("El apartado principal seleccionado ya no existe.");return;}
+    const found=state.menuEditId?findMenuItem(state.menuEditId):null;
+    if(found && parentId && (found.item.children||[]).length){
+      alert("Este apartado tiene subapartados. Antes de convertirlo en subapartado, mueve o elimina sus elementos para no perderlos.");return;
+    }
+    const originalIndex=found?found.list.findIndex(x=>x.id===found.item.id):-1;
+    const sameParent=!!found && (found.parent?.id||"")===parentId;
+    if(found)found.list.splice(originalIndex,1);
+    const item=found?.item||{id:"nav-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),children:[]};
+    Object.assign(item,{label,type,value});
+    if(parentId){
+      delete item.children;delete item.description;
+      const list=state.menu.items.find(x=>x.id===parentId).children;
+      if(sameParent)list.splice(originalIndex,0,item);else list.push(item);
+    }
+    else {
+      item.description=description;item.children=item.children||[];
+      if(sameParent)state.menu.items.splice(originalIndex,0,item);else state.menu.items.push(item);
+    }
+    state.menu=menuCore.normalize(state.menu);
+    closeMenuForm();renderMenuTree();fillCategories();
+  }
+  async function saveMenu(){
+    if(state.busy)return;
+    if(state.menuBaseline===JSON.stringify(state.menu))return;
+    state.busy=true;renderMenuTree();
+    status("menuStatus","Verificando la versión actual del menú en GitHub…");
+    try{
+      const remote=await readRemoteMenu();
+      // A second editor may have saved meanwhile; do not erase those changes.
+      if(JSON.stringify(remote)!==state.menuBaseline)throw Error("El menú ha cambiado en GitHub desde que lo abriste. Pulsa «Deshacer cambios» y vuelve a editar sobre la versión actual.");
+      const normalized=menuCore.normalize(state.menu);
+      if(JSON.stringify(normalized)!==JSON.stringify(state.menu))throw Error("El menú tiene algún elemento no válido.");
+      const sha=await createGitBlob(JSON.stringify(normalized,null,2)+"\n");
+      await atomicCommit([{path:MENU_PATH,sha}],"Actualizar menús de TecnologíaInsti");
+      state.menu=normalized;state.menuBaseline=JSON.stringify(normalized);
+      renderMenuTree();fillCategories();
+      status("menuStatus","Menús guardados en GitHub. En unos momentos verás las opciones en la barra superior y en el botón «Menú».","success");
+    } catch(e){status("menuStatus",errMessage(e),"error");}
+    finally{state.busy=false;renderMenuTree();}
+  }
+  async function reloadMenu(){
+    if(state.busy)return;
+    if(state.menuBaseline!==JSON.stringify(state.menu) && !confirm("¿Descartar los cambios de menú que aún no has guardado?"))return;
+    try{state.menu=await readRemoteMenu();state.menuBaseline=JSON.stringify(state.menu);closeMenuForm();renderMenuTree();fillCategories();status("menuStatus","Menú actualizado desde GitHub.","success");}
+    catch(e){status("menuStatus",errMessage(e),"error");}
+  }
+
   function bind() {
+    el("tabPosts").addEventListener("click",()=>switchTab("posts"));
+    el("tabMenus").addEventListener("click",()=>switchTab("menus"));
+    el("menuAddTop").addEventListener("click",()=>openMenuForm());
+    el("menuAddChild").addEventListener("click",()=>openMenuForm(null,state.menu.items[0]?.id||""));
+    el("menuTree").addEventListener("click",e=>{
+      const button=e.target.closest("[data-action]");if(!button)return;
+      const id=button.closest("[data-mid]")?.dataset.mid;if(!id)return;
+      const action=button.dataset.action;
+      if(action==="edit")openMenuForm(id);
+      else if(action==="add-child")openMenuForm(null,id);
+      else if(action==="remove")deleteMenuItem(id);
+      else if(action==="up"||action==="down")moveMenuItem(id,action==="up"?-1:1);
+    });
+    el("menuType").addEventListener("change",()=>{
+      const type=el("menuType").value;
+      el("menuValue").placeholder=type==="filter"?"Categoría de publicaciones":type==="page"?"cuaderno-seneca.html":"https://ejemplo.com/";
+    });
+    el("menuLabel").addEventListener("input",()=>{
+      if(!state.menuEditId&&el("menuType").value==="filter"&&(!el("menuValue").value||el("menuValue").dataset.auto==="1")){
+        el("menuValue").value=el("menuLabel").value;el("menuValue").dataset.auto="1";
+      }
+    });
+    el("menuValue").addEventListener("input",()=>{el("menuValue").dataset.auto="0"});
+    el("menuCancel").addEventListener("click",closeMenuForm);
+    el("menuItemForm").addEventListener("submit",applyMenuItem);
+    el("menuSave").addEventListener("click",saveMenu);
+    el("menuReset").addEventListener("click",reloadMenu);
     el("loginForm").addEventListener("submit",connect);
     el("signOut").addEventListener("click",signOut);
-    el("newPost").addEventListener("click",()=>newEditor());
+    el("newPost").addEventListener("click",()=>{switchTab("posts");newEditor();});
     el("reloadPosts").addEventListener("click",async()=>{
       const button=el("reloadPosts");button.disabled=true;
       try{await refreshPosts();}catch(e){alert(errMessage(e));}

@@ -74,3 +74,6 @@ La autenticación mediante el botón habitual «Iniciar sesión con GitHub» (OA
 **La web no muestra la entrada**: comprueba que dejaste marcada la opción Publicar ahora, que no queda ningún despliegue pendiente y que has recargado la página. La primera publicación creará automáticamente el archivo `assets/cms-posts.json`.
 
 **Abrir el HTML desde el disco**: el panel está diseñado para usarse desde tu **web publicada**, no abriendo `admin/index.html` como archivo local.
+
+## Menús y apartados (V45)
+Consulta `LEEME_GITHUB_V45.md` en la raíz. Puedes crear apartados desde la segunda pestaña del panel, asignar categorías o enlaces, ordenar y guardar.

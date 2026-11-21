@@ -110,25 +110,16 @@
   // Navigation dropdowns: accessible on click/touch/keyboard, hover on mouse.
   const toggle=document.querySelector('#seneca-menu-toggle');
   const panel=document.querySelector('#seneca-main-menu');
-  const groups=[...document.querySelectorAll('.nav-group')];
-  function closeDropdowns(except=null){
-    for(const g of groups){if(g!==except){g.querySelector('.nav-dropdown').hidden=true;g.querySelector('.nav-trigger').setAttribute('aria-expanded','false')}}
-  }
-  function openGroup(g){closeDropdowns(g);const d=g.querySelector('.nav-dropdown');d.hidden=false;g.querySelector('.nav-trigger').setAttribute('aria-expanded','true');panel.hidden=true;toggle.setAttribute('aria-expanded','false')}
-  toggle.addEventListener('click',()=>{closeDropdowns();panel.hidden=!panel.hidden;toggle.setAttribute('aria-expanded',String(!panel.hidden))});
-  for(const g of groups){
-    const b=g.querySelector('.nav-trigger'),d=g.querySelector('.nav-dropdown');
-    b.addEventListener('click',()=>{if(d.hidden)openGroup(g);else if(!matchMedia('(hover: hover) and (pointer: fine)').matches)closeDropdowns()});
-    g.addEventListener('mouseenter',e=>{if(matchMedia('(hover: hover) and (pointer: fine)').matches)openGroup(g)});
-    g.addEventListener('mouseleave',()=>{if(matchMedia('(hover: hover) and (pointer: fine)').matches)closeDropdowns()});
-    g.addEventListener('focusout',e=>{if(!g.contains(e.relatedTarget))closeDropdowns()});
-  }
-  document.addEventListener('click',e=>{
-    if(!e.target.closest('.navbar')){panel.hidden=true;toggle.setAttribute('aria-expanded','false');closeDropdowns()}
-    else if(!e.target.closest('.nav-group'))closeDropdowns();
+  toggle.addEventListener('click',()=>{
+    panel.hidden=!panel.hidden;
+    toggle.setAttribute('aria-expanded',String(!panel.hidden));
   });
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'){panel.hidden=true;toggle.setAttribute('aria-expanded','false');closeDropdowns()}});
-
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('.navbar')){panel.hidden=true;toggle.setAttribute('aria-expanded','false');}
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){panel.hidden=true;toggle.setAttribute('aria-expanded','false');}
+  });
   async function load(){
     try{
       const res=await fetch('./assets/seneca-videos.json',{cache:'no-store'});

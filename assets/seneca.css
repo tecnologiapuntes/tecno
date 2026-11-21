@@ -83,3 +83,11 @@ main>.section-head .searchbox{margin-left:auto}
 .nav-group .nav-dropdown {
   top:calc(100% - 2px);
 }
+
+/* V45 · Menú generado desde la misma configuración que la portada */
+.seneca-menu-panel{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+.seneca-menu-panel>div{min-width:0}
+.nav-dropdown a{overflow-wrap:anywhere;white-space:normal;}
+.nav-group .nav-dropdown{top:calc(100% - 3px)}
+@media(max-width:830px){.seneca-menu-panel{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.seneca-menu-panel{grid-template-columns:1fr}}

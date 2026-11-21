@@ -8,15 +8,16 @@
   <meta name="theme-color" content="#102445" />
   <title>Administración · TecnologíaInsti</title>
   <link rel="icon" href="../assets/favicon-tecnologiainsti.png" type="image/png" />
-  <link rel="stylesheet" href="./admin.css?v=44" />
-  <script defer src="./admin.js?v=44"></script>
+  <link rel="stylesheet" href="./admin.css?v=45" />
+  <script src="../assets/menu-config.js?v=45"></script>
+  <script defer src="./admin.js?v=45"></script>
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="../" aria-label="Ir a TecnologíaInsti">
         <img src="../assets/logo-tecnologiainsti.webp" alt="" />
-        <span><strong>TecnologíaInsti</strong><small>Gestor de publicaciones</small></span>
+        <span><strong>TecnologíaInsti</strong><small>Gestor de contenidos y menús</small></span>
       </a>
       <div class="top-actions">
         <a href="../" class="web-link" target="_blank" rel="noopener noreferrer">↗ Ver web</a>
@@ -29,7 +30,7 @@
   <main class="shell">
     <section id="loginPanel" class="login" aria-labelledby="loginTitle">
       <div class="intro-chip">GRATIS · GITHUB PAGES</div>
-      <h1 id="loginTitle">Publica sin tocar código</h1>
+      <h1 id="loginTitle">Publica y organiza tu web</h1>
       <p>Crea tus entradas de Prompts, Proyectos y Herramientas docentes con portada, carrusel, enlaces y documentos. Se guardan directamente en tu repositorio.</p>
       <form id="loginForm" class="login-card">
         <label for="token">Token personal de GitHub</label>
@@ -52,7 +53,7 @@
 
     <section id="workspace" hidden aria-label="Panel de publicaciones">
       <div class="workspace-head">
-        <div><div class="intro-chip">PANEL DE PUBLICACIÓN</div><h1>Mis publicaciones</h1><p>Gestiona las entradas existentes y añade nuevas sin descargar ZIP.</p></div>
+        <div><div class="intro-chip">PANEL DE PUBLICACIÓN</div><h1>Mis publicaciones</h1><p>Gestiona publicaciones y menús sin descargar ZIP.</p></div>
         <button type="button" class="btn primary" id="newPost">+ Nueva publicación</button>
       </div>
       <div class="stats">
@@ -60,6 +61,10 @@
         <div class="stat"><strong id="publishedCount">0</strong><span>Publicadas</span></div>
         <div class="stat"><strong id="draftCount">0</strong><span>Borradores</span></div>
         <div class="stat"><strong>GitHub</strong><span>Publicación directa</span></div>
+      </div>
+      <div class="workspace-tabs" role="tablist" aria-label="Tipo de contenido">
+        <button id="tabPosts" type="button" role="tab" aria-selected="true" class="tab active">Publicaciones</button>
+        <button id="tabMenus" type="button" role="tab" aria-selected="false" class="tab">Menús y apartados</button>
       </div>
       <div id="listPanel" class="panel">
         <div class="list-tools"><label class="search-wrap">Buscar <input id="searchPosts" placeholder="Título, categoría, fecha…" type="search" /></label><button id="reloadPosts" class="btn secondary" type="button">↻ Actualizar lista</button></div>
@@ -92,7 +97,24 @@
           <div id="saveStatus" role="status" aria-live="polite"></div>
         </form>
       </section>
-      <p class="footer-hint">Las publicaciones nuevas se guardan en <code>assets/cms-posts.json</code>, sin modificar los 24 posts originales de <code>assets/posts.js</code>. Los cambios quedan registrados en GitHub y no sobrescriben los vídeos de Séneca. Este panel gestiona las secciones actuales; crear nuevas opciones en el menú requiere adaptar la navegación.</p>
+      <section id="menuPanel" class="panel menu-management" aria-labelledby="menuTitle" hidden>
+        <div class="menu-heading"><div><span class="intro-chip">NAVEGACIÓN</span><h2 id="menuTitle">Menús y apartados</h2><p>Ordena los apartados principales y crea subapartados. Los cambios aparecerán en la barra superior y en el botón «Menú», también en Cuaderno de Séneca.</p></div></div>
+        <div class="menu-manager-actions"><button id="menuAddTop" type="button" class="btn primary">+ Añadir apartado principal</button><button id="menuAddChild" type="button" class="btn secondary">+ Añadir subapartado</button></div>
+        <div id="menuTree" class="menu-tree" aria-live="polite"></div>
+        <form id="menuItemForm" class="menu-item-form" hidden>
+          <h3 id="menuFormTitle">Editar apartado</h3>
+          <div class="field-grid"><div class="field"><label for="menuLabel">Nombre visible <em>*</em></label><input id="menuLabel" maxlength="70" required placeholder="Ej.: Evaluación" /></div>
+          <div class="field"><label for="menuParent">Ubicación</label><select id="menuParent"><option value="">Barra principal (apartado)</option></select></div></div>
+          <div class="field-grid"><div class="field"><label for="menuType">Al pulsar debe…</label><select id="menuType"><option value="filter">Mostrar publicaciones de una categoría</option><option value="page">Abrir una página de la web</option><option value="url">Abrir un enlace externo</option></select></div>
+          <div class="field"><label for="menuValue">Categoría o dirección <em>*</em></label><input id="menuValue" required maxlength="450" placeholder="Nombre de la categoría" /></div></div>
+          <div class="field"><label for="menuDescription">Descripción breve (opcional)</label><input id="menuDescription" maxlength="150" placeholder="Ej.: Fichas, herramientas y tutoriales" /></div>
+          <p class="hint">Para crear una categoría nueva, elige «Mostrar publicaciones» y escribe su nombre. Después podrás seleccionarla al crear un post. Para enlaces externos utiliza https://. Para páginas propias utiliza el nombre del archivo, por ejemplo <code>cuaderno-seneca.html</code>.</p>
+          <div class="editor-actions"><button class="btn secondary" type="button" id="menuCancel">Cancelar</button><button class="btn primary" type="submit" id="menuApply">Aplicar al menú</button></div>
+        </form>
+        <div class="menu-save-row"><p class="hint">Los cambios no se publican hasta pulsar «Guardar menú en GitHub». No se modificarán tus publicaciones ni el archivo de vídeos de Séneca.</p><button id="menuReset" type="button" class="btn secondary">Deshacer cambios</button><button id="menuSave" type="button" class="btn primary">Guardar menú en GitHub</button></div>
+        <div id="menuStatus" aria-live="polite" role="status"></div>
+      </section>
+      <p class="footer-hint">Las publicaciones nuevas se guardan en <code>assets/cms-posts.json</code>, sin modificar los 24 posts originales de <code>assets/posts.js</code>. Los cambios quedan registrados en GitHub y no sobrescriben los vídeos de Séneca. Los menús se editan desde la pestaña «Menús y apartados».</p>
     </section>
   </main>
 </body>
