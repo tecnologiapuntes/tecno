@@ -29,8 +29,14 @@
     };
     const makePanelItem=(item,depth)=>{
       if(!item.children?.length)return link(item);
-      const details=document.createElement('details');details.className='ti-panel-branch';details.open=true;
+      const details=document.createElement('details');details.className='ti-panel-branch';
+      // V53: ocultar niveles inferiores hasta hover (ratón) o clic (táctil/teclado).
+      const mouse=()=>matchMedia('(hover: hover) and (pointer: fine)').matches;
+      details.addEventListener('mouseenter',()=>{if(mouse())details.open=true;});
+      details.addEventListener('mouseleave',()=>{if(mouse())details.open=false;});
+      details.addEventListener('focusout',e=>{if(!details.contains(e.relatedTarget))details.open=false;});
       const summary=document.createElement('summary');summary.textContent=item.label;
+      summary.addEventListener('click',e=>{if(e.detail>0&&mouse()&&details.open)e.preventDefault();});
       const all=link(item,'Ver '+item.label);all.className='ti-panel-all';
       const nested=document.createElement('div');nested.className='ti-panel-nested';
       item.children.forEach(child=>nested.append(makePanelItem(child,depth+1)));

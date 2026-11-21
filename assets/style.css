@@ -442,3 +442,12 @@ footer a:hover { color:var(--mint); }
 .article-content em{font-style:italic}
 .article-content h2{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:800;margin:22px 0 10px}
 .article-content u{text-decoration:underline;text-decoration-color:#08a898;text-underline-offset:3px}
+
+/* V53 · Menú progresivo: segundo y tercer nivel cerrados inicialmente. */
+.ti-panel-branch:not([open]) > :not(summary){display:none!important}
+.ti-panel-branch > summary{user-select:none;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.ti-panel-branch > summary::-webkit-details-marker{display:none}
+.ti-panel-branch > summary::after{content:"⌄";font-weight:700;font-size:15px;color:#13766e;transition:transform .16s ease}
+.ti-panel-branch[open] > summary::after{transform:rotate(180deg)}
+.ti-panel-branch > summary:hover,.ti-panel-branch > summary:focus-visible{background:#d8f7ee;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.ti-panel-branch > summary::after{transition:none}}

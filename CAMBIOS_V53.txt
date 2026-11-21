@@ -1,0 +1,10 @@
+TECNOLOGÍAINSTI V53 · SUBAPARTADOS OCULTOS POR DEFECTO
+
+- Corregido el botón «Menú»: al abrirlo solo se muestran las opciones inmediatas de cada apartado.
+- Los subapartados de niveles 2 y 3 ya no se muestran abiertos automáticamente.
+- En ordenador aparecen al pasar el ratón o hacer clic; en móviles, al tocar el apartado.
+- Corregido también en Cuaderno de Séneca y Videotutoriales IA.
+- Los elementos del menú personalizado y las publicaciones no se modifican.
+- Actualizadas versiones de caché para que se apliquen los cambios.
+
+Instala la versión de solo cambios sobre la V52 o usa la web completa sin sobrescribir los archivos CMS de tu GitHub.
