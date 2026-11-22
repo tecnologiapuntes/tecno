@@ -1,0 +1,11 @@
+/* V56 · Nuevos filtros y enlaces individuales, respetando la paleta existente. */
+.edu-advanced{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px;margin:12px 0 4px;padding:15px 17px;border:1px solid #dce9ef;background:#f7fbfc;border-radius:14px}
+.edu-advanced label{display:grid;gap:5px;font-size:12px;font-weight:750;color:#244666;min-width:150px;flex:1 1 150px}
+.edu-advanced select{min-width:0;width:100%;padding:11px 12px;background:#fff;border:1px solid #ccdfeb;border-radius:9px;color:#1d3654;font:inherit;font-size:13px;min-height:42px}
+.edu-reset{min-height:42px;padding:10px 13px;border:1px solid #b8ddd8;color:#175c61;border-radius:9px;background:#e5f7f3;font-weight:750;cursor:pointer}
+.edu-reset:hover{background:#d6f3ed}
+.edu-count{font-size:12px;color:#5a7689;margin:5px 3px 15px}
+.post-permalink{display:inline-block;margin-top:12px;margin-left:12px;color:#176f74;font-size:12px;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+.post-permalink:focus-visible,.edu-reset:focus-visible,.edu-advanced select:focus-visible{outline:3px solid #eab16d;outline-offset:2px}
+.article-actions .detail-direct{background:#eef8f6;border:1px solid #b8e1dc;text-decoration:none;display:inline-flex;align-items:center;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:750;color:#1b6472}
+@media(max-width:600px){.edu-advanced{padding:12px}.edu-advanced label{flex:1 1 100%}.post-permalink{margin-left:0;display:block}}

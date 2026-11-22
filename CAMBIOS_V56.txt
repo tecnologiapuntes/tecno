@@ -1,0 +1,13 @@
+TECNOLOGÍAINSTI V56 · Novedades y seguridad
+
+1. Página publicacion.html con URL estable por identificador.
+2. Botones de enlace directo, copiar y compartir en publicaciones y administrador.
+3. Buscador de Novedades con curso, materia, tipo, etiquetas y orden.
+4. Editor con clasificación opcional de curso, materia y tipo de recurso.
+5. Panel «Seguridad y diagnóstico»: respaldo JSON, ZIP completo de GitHub,
+   restauración de JSON con doble confirmación e informe de diagnóstico.
+6. Mismo contenido y diseño de V55, sin sobrescribir los datos gestionados.
+
+Para actualizar: ZIP SOLO CAMBIOS DESDE V55; copia, commit, push, Ctrl+F5.
+Los JSON de usuario y los archivos generados por GitHub Actions están EXCLUIDOS.
+Consulta LEEME_GITHUB_V56.md para límites y precauciones.

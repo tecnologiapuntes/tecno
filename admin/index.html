@@ -8,10 +8,12 @@
   <meta name="theme-color" content="#102445" />
   <title>Administración · TecnologíaInsti</title>
   <link rel="icon" href="../assets/favicon-tecnologiainsti.png" type="image/png" />
-  <link rel="stylesheet" href="./admin.css?v=55" />
+  <link rel="stylesheet" href="./admin.css?v=56" />
   <script src="../assets/menu-config.js?v=51"></script>
   <script src="../assets/post-format.js?v=52"></script>
-  <script defer src="./admin.js?v=55"></script>
+  <script src="../assets/post-visibility.js?v=54"></script>
+  <script src="../assets/ti-search-v56.js?v=56"></script>
+  <script defer src="./admin.js?v=56"></script>
 </head>
 <body>
   <header class="topbar">
@@ -69,6 +71,7 @@
         <button id="tabMedia" type="button" role="tab" aria-selected="false" class="tab">Biblioteca multimedia</button>
         <button id="tabSite" type="button" role="tab" aria-selected="false" class="tab">Portada</button>
         <button id="tabVideos" type="button" role="tab" aria-selected="false" class="tab">Videotutoriales</button>
+        <button id="tabTools" type="button" role="tab" aria-selected="false" class="tab">Seguridad y diagnóstico</button>
       </div>
       <div id="listPanel" class="panel">
         <div class="list-tools"><label class="search-wrap">Buscar <input id="searchPosts" placeholder="Título, categoría, fecha…" type="search" /></label><button id="reloadPosts" class="btn secondary" type="button">↻ Actualizar lista</button></div>
@@ -91,6 +94,12 @@
             <div class="field"><label for="postDate">Fecha de publicación <em>*</em></label><input id="postDate" type="date" required /></div>
           </div>
           <div class="field"><label for="postTags">Etiquetas (separadas por comas)</label><input id="postTags" maxlength="650" placeholder="DUA, Arduino, Evaluación, 3.º ESO" /><p class="hint">Permiten localizar la misma publicación en búsquedas y filtros temáticos, sin duplicarla.</p></div>
+          <div class="field-grid education-fields">
+            <div class="field"><label for="postLevel">Curso educativo (opcional)</label><select id="postLevel"><option value="">Sin especificar</option><option>1.º ESO</option><option>2.º ESO</option><option>3.º ESO</option><option>4.º ESO</option></select></div>
+            <div class="field"><label for="postSubject">Materia o temática (opcional)</label><select id="postSubject"><option value="">Detección automática</option><option>Tecnología</option><option>Robótica</option><option>Inteligencia artificial</option><option>Evaluación</option><option>Dibujo técnico</option><option>Otras materias</option></select></div>
+            <div class="field"><label for="postResourceType">Tipo de recurso (opcional)</label><select id="postResourceType"><option value="">Detección automática</option><option>Videotutorial</option><option>Proyecto</option><option>Infografía</option><option>Lectura</option><option>Plantilla</option><option>Otro recurso</option></select></div>
+          </div>
+          <p class="hint" style="margin:-7px 0 19px">Estos campos mejoran la precisión del buscador educativo. Las publicaciones antiguas se clasifican automáticamente cuando no tienen estos datos.</p>
           <div class="field"><label for="postExcerpt">Descripción corta de la tarjeta</label><textarea id="postExcerpt" rows="2" maxlength="380" placeholder="Resumen que se verá antes de abrir la publicación"></textarea></div>
           <div class="field rich-field"><label for="postContent">Texto completo de la publicación <em>*</em></label>
             <div id="postToolbar" class="format-toolbar" role="toolbar" aria-label="Formato del texto de la publicación">
@@ -200,6 +209,33 @@
         <div id="videoStatus" role="status" aria-live="polite"></div>
       </section>
       <dialog id="mediaPicker" class="media-picker-dialog"><div class="media-picker-header"><div><h2 id="mediaPickerTitle">Elegir de la biblioteca</h2><p>Selecciona un archivo existente en GitHub.</p></div><button type="button" class="btn secondary" id="mediaPickerClose">Cerrar ×</button></div><input id="mediaPickerSearch" type="search" placeholder="Buscar por nombre…" aria-label="Buscar en la biblioteca" /><div id="mediaPickerGrid" class="media-browser-grid"></div><button id="mediaPickerMore" class="btn secondary" type="button" hidden>Mostrar más</button></dialog>
+      <section id="toolsPanel" class="panel" hidden aria-labelledby="toolsTitle">
+        <div class="section-title"><h2 id="toolsTitle">Seguridad y diagnóstico</h2><p>Protege tus datos y comprueba el estado de los archivos de TecnologíaInsti, sin modificar tus publicaciones.</p></div>
+        <div class="tools-grid">
+          <article class="tools-box">
+            <h3>Copias de seguridad</h3>
+            <p>Descarga un archivo JSON con publicaciones administradas, menús, portada y vídeos manuales. Los originales de la web se conservan siempre.</p>
+            <button id="backupExport" type="button" class="btn primary">↓ Descargar copia de datos (JSON)</button>
+            <p><strong>Importante:</strong> el JSON <strong>no incluye las imágenes, PDF ni archivos Word</strong>. Para hacer una copia realmente completa, descarga también el ZIP del repositorio de GitHub.</p>
+            <a id="backupRepo" class="btn secondary" href="https://github.com/tecnologiapuntes/tecno/archive/refs/heads/main.zip" target="_blank" rel="noopener noreferrer">↓ Copia completa del repositorio (ZIP)</a>
+            <div id="backupStatus" role="status" aria-live="polite"></div>
+            <details class="tools-restore"><summary>Restaurar una copia de datos</summary>
+              <p>La restauración crea un nuevo commit que sustituye los JSON de publicaciones, menú, portada y vídeos manuales que contiene la copia. <strong>No elimina ni altera los archivos multimedia ni el código.</strong> Confirma dos veces antes de continuar.</p>
+              <label for="backupRestore">Seleccionar copia JSON</label>
+              <input id="backupRestore" type="file" accept="application/json,.json">
+            </details>
+          </article>
+          <article class="tools-box">
+            <h3>Diagnóstico de la web</h3>
+            <p>Localiza imágenes y documentos internos inexistentes, entradas sin portada o texto, fechas incompletas y archivos de imagen demasiado pesados. La comprobación es de solo lectura.</p>
+            <button id="diagRun" type="button" class="btn primary">⌕ Analizar mi web</button>
+            <div id="diagStatus" role="status" aria-live="polite"></div>
+          </article>
+        </div>
+        <h3>Resultados del diagnóstico</h3>
+        <p id="diagSummary" class="hint">Pulsa «Analizar mi web» para obtener un informe actualizado.</p>
+        <div id="diagResults" class="diag-list" aria-live="polite"></div>
+      </section>
       <p class="footer-hint">Las publicaciones se guardan en <code>assets/cms-posts.json</code>, sin modificar los posts originales de <code>assets/posts.js</code>. Los cambios quedan registrados en GitHub y no sobrescriben los vídeos de Séneca. Los menús se editan desde la pestaña «Menús y apartados».</p>
     </section>
   </main>

@@ -191,7 +191,7 @@
     container.innerHTML=filtered.map(p=>`<article class="post-row" data-id="${esc(p.id)}">
       <img class="post-thumb" src="${esc(assetUrl(p.image))}" loading="lazy" alt="" />
       <div class="post-text"><h3>${esc(short(p.title,150))}${postState(p)==="draft"?'<span>BORRADOR</span>':postState(p)==="scheduled"?'<span>PROGRAMADA</span>':""}</h3><p>${esc(p.category)} · ${esc(p.created||"Sin fecha")}${postState(p)==="scheduled"?" · Publicar: "+esc(new Date(p.publishAt).toLocaleString("es-ES",{timeZone:"Europe/Madrid"})):""}</p></div>
-      <div class="post-actions"><button class="btn secondary" type="button" data-edit="${esc(p.id)}">Editar</button><button type="button" class="btn danger" data-remove="${esc(p.id)}">Eliminar</button></div>
+      <div class="post-actions">${postState(p)==="public"?`<a class="btn secondary" target="_blank" rel="noopener noreferrer" href="../publicacion.html?id=${encodeURIComponent(p.id)}" title="Ver la publicación individual">↗ Ver enlace</a><button class="btn secondary" type="button" data-copy-link="${esc(p.id)}">Copiar enlace</button>`:'<span class="hint">Enlace activo al publicarse</span>'}<button class="btn secondary" type="button" data-edit="${esc(p.id)}">Editar</button><button type="button" class="btn danger" data-remove="${esc(p.id)}">Eliminar</button></div>
     </article>`).join("");
   }
   function releasePreviews() {
@@ -229,6 +229,9 @@
     el("postSchedule").value=p.publishAt?toMadridLocal(p.publishAt):"";
     toggleSchedule("post");
     el("postTags").value=(Array.isArray(p.tags)?p.tags:[]).join(", ");
+    el("postLevel").value=p.level||"";
+    el("postSubject").value=p.subject||"";
+    el("postResourceType").value=p.resourceType||"";
     state.selectedDoc=null;
     el("selectedDocumentLabel").textContent="";
     el("removeSelectedDoc").hidden=true;
@@ -385,6 +388,11 @@
         tags:parseTags(el("postTags").value),
         image:imagePaths[0]||""
       };
+      // Clasificación educativa opcional. Se conserva al editar y se usa en los filtros.
+      for(const [key,input] of [["level","postLevel"],["subject","postSubject"],["resourceType","postResourceType"]]){
+        if(el(input).value)newPost[key]=el(input).value;
+        else delete newPost[key];
+      }
       const mode=el("postPublishMode").value;
       if(mode==="scheduled")newPost.publishAt=madridToUTC(el("postSchedule").value);
       else delete newPost.publishAt;
@@ -462,6 +470,7 @@
       state.branch=repo.default_branch||"main";
       if(repo.permissions && repo.permissions.push===false)throw new Error("Tu cuenta no tiene permiso para publicar en este repositorio.");
       await refreshPosts();
+      el("backupRepo").href=`https://github.com/${OWNER}/${REPO}/archive/refs/heads/${encodeURIComponent(state.branch)}.zip`;
       el("token").value="";
       el("loginPanel").hidden=true;
       el("workspace").hidden=false;
@@ -484,7 +493,7 @@
   function switchTab(tab){
     if(state.busy)return;
     state.activeTab=tab;
-    for(const [name,id] of Object.entries({posts:"tabPosts",menus:"tabMenus",media:"tabMedia",site:"tabSite",videos:"tabVideos"})){
+    for(const [name,id] of Object.entries({posts:"tabPosts",menus:"tabMenus",media:"tabMedia",site:"tabSite",videos:"tabVideos",tools:"tabTools"})){
       el(id).classList.toggle("active",name===tab);
       el(id).setAttribute("aria-selected",String(name===tab));
     }
@@ -494,6 +503,7 @@
     el("mediaPanel").hidden=tab!=="media";
     el("sitePanel").hidden=tab!=="site";
     el("videosPanel").hidden=tab!=="videos";
+    el("toolsPanel").hidden=tab!=="tools";
     if(tab==="menus")renderMenuTree();
     if(tab==="media")loadLibrary().catch(e=>status("mediaStatus",errMessage(e),"error"));
     if(tab==="site")loadSite().catch(e=>status("siteStatus",errMessage(e),"error"));
@@ -943,12 +953,147 @@
       state.manualVideos=remote.videos;state.videoBaseline=JSON.stringify(remote);renderManualVideos();status("videoStatus","Vídeo eliminado del catálogo manual.","success");
     }catch(e){status("videoStatus",errMessage(e),"error");}finally{state.busy=false;}
   }
+  // ========= V56 · Copias de seguridad y diagnóstico =========
+  const BACKUP_PATHS=[CMS_PATH,MENU_PATH,SITE_PATH,VIDEOS_PATH];
+  const BACKUP_MARK="TecnologiaInstiBackupV56";
+  const backupEsc=esc;
+  function createDownload(name,text,mime="application/json"){
+    const blob=new Blob([text],{type:mime+";charset=utf-8"});
+    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;
+    document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+  }
+  function setToolsBusy(busy){
+    for(const id of ["backupExport","backupRestore","diagRun"])el(id).disabled=busy;
+  }
+  async function exportBackup(){
+    if(state.busy)return;
+    state.busy=true;setToolsBusy(true);
+    status("backupStatus","Consultando la versión actual de GitHub…");
+    try{
+      const remote=await Promise.all(BACKUP_PATHS.map(path=>readJson(path,null)));
+      const legacy=await readRemotePosts();
+      const backup={format:BACKUP_MARK,version:56,exportedAt:new Date().toISOString(),repository:OWNER+"/"+REPO,branch:state.branch,
+        files:Object.fromEntries(BACKUP_PATHS.map((path,i)=>[path,remote[i]])),
+        legacyPosts:legacy,
+        note:"Esta copia JSON incluye publicaciones, menús, portada, vídeos manuales y referencia de publicaciones originales. NO incluye bytes de fotos, documentos, ficheros de vídeo ni listas automáticas de YouTube. Descarga además el ZIP completo del repositorio para conservarlos."};
+      const date=new Date().toISOString().slice(0,10);
+      createDownload(`TecnologiaInsti_copia_de_datos_${date}.json`,JSON.stringify(backup,null,2)+"\n");
+      status("backupStatus","Copia de datos descargada. Para guardar imágenes y documentos, descarga también la copia completa del repositorio.","success");
+    }catch(e){status("backupStatus",errMessage(e),"error");}
+    finally{state.busy=false;setToolsBusy(false);}
+  }
+  function validateBackup(data){
+    if(!data||data.format!==BACKUP_MARK||data.repository!==OWNER+"/"+REPO||!data.files||typeof data.files!=="object")throw Error("La copia no corresponde a una copia de datos V56 de este repositorio.");
+    const cms=data.files[CMS_PATH],menu=data.files[MENU_PATH],site=data.files[SITE_PATH],videos=data.files[VIDEOS_PATH];
+    if(cms!==null&&(!cms||!Array.isArray(cms.posts)||!Array.isArray(cms.hiddenIds)||cms.posts.some(p=>!p||!p.id||!p.title)))throw Error("El archivo de publicaciones de la copia no es válido.");
+    if(menu!==null&&(!menu||!Array.isArray(menu.items)||menuCore.normalize(menu).items.length!==menu.items.length))throw Error("El menú de la copia no es válido.");
+    if(site!==null&&(!site||typeof site.hero!=="object"||!Array.isArray(site.areasOrder)))throw Error("La configuración de portada de la copia no es válida.");
+    if(videos!==null&&(!videos||!Array.isArray(videos.videos)))throw Error("Los vídeos manuales de la copia no son válidos.");
+    if(BACKUP_PATHS.some(path=>!(path in data.files)))throw Error("La copia está incompleta.");
+    return true;
+  }
+  async function restoreBackup(input){
+    const file=input.files?.[0];input.value="";
+    if(!file)return;
+    if(file.size>16*1024*1024){status("backupStatus","La copia supera 16 MB. Comprueba que sea el archivo JSON exportado desde este administrador.","error");return;}
+    if(state.busy)return;
+    try{
+      const data=JSON.parse(await file.text());validateBackup(data);
+      const count=data.files[CMS_PATH]?.posts?.length||0;
+      const notice=`VAS A RESTAURAR una copia del ${new Date(data.exportedAt||Date.now()).toLocaleString("es-ES")} que contiene ${count} publicaciones administradas.\n\nSe reemplazarán los archivos JSON actuales de publicaciones, menús, portada y vídeos manuales incluidos en esta copia. Se conservarán los medios, el código y los posts originales.\n\n¿Continuar?`;
+      if(!confirm(notice))return;
+      if(!confirm("SEGUNDA CONFIRMACIÓN: ¿restaurar los datos sobre la versión actual de GitHub? Crea antes una copia actual si quieres conservar los cambios recientes."))return;
+      state.busy=true;setToolsBusy(true);
+      status("backupStatus","Creando un punto de restauración en un nuevo commit de GitHub…");
+      const changes=[];
+      for(const path of BACKUP_PATHS){
+        const value=data.files[path];
+        if(value===null)continue; // una sección que no existía no borra la existente
+        const sha=await createGitBlob(JSON.stringify(value,null,2)+"\n");
+        changes.push({path,sha});
+      }
+      if(!changes.length)throw Error("Esta copia no contiene datos para restaurar.");
+      await atomicCommit(changes,`Restaurar copia de datos TecnologíaInsti (${data.exportedAt||"V56"})`);
+      await refreshPosts();
+      status("backupStatus","Copia restaurada en un commit nuevo. Actualiza la página pública cuando GitHub Pages termine de publicarla.","success");
+    }catch(e){status("backupStatus",errMessage(e),"error");}
+    finally{state.busy=false;setToolsBusy(false);}
+  }
+  function diagnosticRow(level,description,detail=""){
+    return {level,description:String(description),detail:String(detail)};
+  }
+  function renderDiagnostics(rows,summary){
+    const container=el("diagResults");
+    const count=key=>rows.filter(row=>row.level===key).length;
+    el("diagSummary").textContent=`${summary} · ${count("error")} incidencias, ${count("warning")} avisos, ${count("info")} observaciones.`;
+    container.replaceChildren(...rows.map(row=>{
+      const item=document.createElement("div");item.className="diag-item diag-"+row.level;
+      const mark=document.createElement("span");mark.textContent=row.level==="error"?"●":row.level==="warning"?"▲":"ℹ";
+      const box=document.createElement("div"),label=document.createElement("strong"),details=document.createElement("p");
+      label.textContent=row.description;details.textContent=row.detail;box.append(label,details);item.append(mark,box);return item;
+    }));
+  }
+  function assetsUsed(post){
+    return [post.image,...(Array.isArray(post.images)?post.images:[]),post.video,post.attachment,
+      ...(Array.isArray(post.sourceLinks)?post.sourceLinks.map(x=>x.url):[])].filter(Boolean);
+  }
+  async function runDiagnostics(){
+    if(state.busy)return;
+    state.busy=true;setToolsBusy(true);
+    status("diagStatus","Analizando publicaciones, menús y archivos del repositorio…");
+    try{
+      const [legacy,cms,menu,site,manual,head]=await Promise.all([
+        readRemotePosts(),readRemoteCms(),readRemoteMenu(),readJson(SITE_PATH,null),readJson(VIDEOS_PATH,{videos:[]}),github(`/git/ref/heads/${encodeURIComponent(state.branch)}`)
+      ]);
+      const commit=await github(`/git/commits/${head.object.sha}`);
+      const tree=await github(`/git/trees/${commit.tree.sha}?recursive=1`);
+      if(tree.truncated)throw Error("GitHub ha devuelto un listado incompleto; no es seguro analizar recursos ausentes.");
+      const paths=new Map((tree.tree||[]).filter(x=>x.type==="blob").map(x=>[x.path,x]));
+      const rows=[],all=mergePosts(legacy,cms),seen=new Set();
+      const hidden=new Set(cms.hiddenIds||[]);
+      for(const post of all){
+        const label=post.title||post.id;
+        if(seen.has(post.id))rows.push(diagnosticRow("error","ID duplicado",post.id));
+        seen.add(post.id);
+        if(!String(post.title||"").trim())rows.push(diagnosticRow("error","Publicación sin título",post.id));
+        if(!String(post.content||"").trim()&&!post.youtubeId)rows.push(diagnosticRow("warning","Publicación sin texto",label));
+        if(!post.image&&!post.images?.length)rows.push(diagnosticRow("warning","Publicación sin portada",label));
+        if(!post.category)rows.push(diagnosticRow("warning","Publicación sin categoría",label));
+        if(!/^\d{4}-\d{2}-\d{2}$/.test(String(post.created||"")))rows.push(diagnosticRow("warning","Fecha incompleta o no reconocida",label));
+        for(const raw of assetsUsed(post)){
+          const value=String(raw).trim();
+          if(/^assets\//.test(value)&&!value.includes("..")&&!paths.has(value))rows.push(diagnosticRow("error","Archivo interno no encontrado",label+" · "+value));
+          else if(!/^https?:\/\//.test(value)&&!value.startsWith("assets/")&&!value.startsWith("#")&&!value.startsWith("mailto:"))rows.push(diagnosticRow("warning","Enlace con ruta no reconocida",label+" · "+value));
+        }
+      }
+      for(const item of (tree.tree||[])){
+        if(item.type!=="blob")continue;
+        if(/\.(?:webp|png|jpe?g)$/i.test(item.path)&&item.size>1300000)rows.push(diagnosticRow("warning","Imagen pesada: "+(item.size/1024/1024).toFixed(1)+" MB",item.path));
+      }
+      const menuCount=(function go(items){return (items||[]).reduce((sum,x)=>sum+1+go(x.children),0);})(menu.items);
+      const publicCount=all.filter(p=>window.TI_VISIBILITY?window.TI_VISIBILITY.visible(p):p.published).length;
+      rows.push(diagnosticRow("info","Estado de las publicaciones",`${all.length} registradas, ${publicCount} visibles, ${all.length-publicCount} borradores o programadas, ${hidden.size} publicaciones originales ocultas`));
+      rows.push(diagnosticRow("info","Menús y biblioteca",`${menuCount} elementos de menú, ${paths.size} archivos en el repositorio, ${manual?.videos?.length||0} vídeos manuales`));
+      rows.push(diagnosticRow("info","Enlaces externos","No se verifican automáticamente: muchos servicios impiden comprobarlos desde el navegador por restricciones de seguridad (CORS)."));
+      rows.push(diagnosticRow("info","Protección de datos","La comprobación solo lee archivos. No publica, modifica ni elimina ningún recurso."));
+      rows.sort((a,b)=>({error:0,warning:1,info:2}[a.level]-{error:0,warning:1,info:2}[b.level]));
+      renderDiagnostics(rows,"Diagnóstico del "+new Date().toLocaleString("es-ES"));
+      state.lastDiagnostic={createdAt:new Date().toISOString(),rows};
+      status("diagStatus","Análisis terminado; consulta los resultados y sus avisos.","success");
+    }catch(e){status("diagStatus",errMessage(e),"error");}
+    finally{state.busy=false;setToolsBusy(false);}
+  }
+
   function bind() {
     el("tabPosts").addEventListener("click",()=>switchTab("posts"));
     el("tabMenus").addEventListener("click",()=>switchTab("menus"));
     el("tabMedia").addEventListener("click",()=>switchTab("media"));
     el("tabSite").addEventListener("click",()=>switchTab("site"));
     el("tabVideos").addEventListener("click",()=>switchTab("videos"));
+    el("tabTools").addEventListener("click",()=>switchTab("tools"));
+    el("backupExport").addEventListener("click",exportBackup);
+    el("backupRestore").addEventListener("change",e=>restoreBackup(e.target));
+    el("diagRun").addEventListener("click",runDiagnostics);
     for(const id of ["filterStatus","filterCategory","filterTag","filterFrom","filterTo"]){
       el(id).addEventListener("change",renderList);
       if(id==="filterTag")el(id).addEventListener("input",renderList);
@@ -1038,7 +1183,8 @@
       finally{button.disabled=false;}
     });
     el("postList").addEventListener("click",e=>{
-      const edit=e.target.closest("[data-edit]"),remove=e.target.closest("[data-remove]");
+      const edit=e.target.closest("[data-edit]"),remove=e.target.closest("[data-remove]"),copy=e.target.closest("[data-copy-link]");
+      if(copy){const url=window.TI_V56.permalink(copy.dataset.copyLink);if(navigator.clipboard?.writeText)navigator.clipboard.writeText(url).then(()=>{copy.textContent="Copiado ✓";}).catch(()=>prompt("Copia el enlace:",url));else prompt("Copia el enlace:",url);}
       if(edit)newEditor(edit.dataset.edit);
       if(remove)deletePost(remove.dataset.remove);
     });
