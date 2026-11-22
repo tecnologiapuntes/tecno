@@ -1,0 +1,10 @@
+TECNOLOGÍAINSTI V55 · CORRECCIÓN DE PORTADA
+
+- Al dejar vacía la segunda línea o la frase destacada, desaparece de la portada: no se sustituyen por textos predeterminados como «a tu aula.».
+- Se elimina el salto de línea forzado si no existe segunda línea ni frase destacada.
+- Se corrige el espacio entre la segunda línea y la palabra destacada al guardar el texto desde el administrador (antes se recortaba el espacio final).
+- El símbolo decorativo se sitúa junto al final del título, sin solaparse con textos personalizados.
+- Nueva vista previa instantánea de los textos en el administrador, antes de guardar en GitHub.
+- El guardado continúa utilizando el archivo assets/cms-site.json del usuario, que queda EXCLUIDO de los ZIP.
+- Se actualizan las versiones de caché para evitar que se mezclen el JS antiguo y el nuevo.
+- No se modifica ninguna publicación, vídeo o menú personalizado.

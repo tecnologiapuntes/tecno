@@ -458,3 +458,6 @@ footer a:hover { color:var(--mint); }
 .tag-filter{display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:13px;font-weight:650;color:#173b52}
 .tag-filter select{border:1px solid #bfd6d8;border-radius:9px;padding:9px 11px;background:white;color:#15385a;max-width:190px}
 @media(max-width:650px){.tag-filter{width:100%}.tag-filter select{flex:1;max-width:100%}}
+
+/* V55: el símbolo sigue al titular editable sin superponerse a palabras largas. */
+.hero h1 .title-spark{position:relative;left:auto;top:auto;display:inline-block;vertical-align:super;font-size:.42em;line-height:1;margin-left:.10em}

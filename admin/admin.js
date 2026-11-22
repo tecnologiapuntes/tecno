@@ -818,7 +818,27 @@
   function fillSite(){
     const h=state.site.hero;
     for(const [field,id] of Object.entries({kicker:"heroKicker",line1:"heroLine1",line2:"heroLine2",accent:"heroAccent",description:"heroDescription",primaryText:"heroPrimaryText",secondaryText:"heroSecondaryText",secondaryUrl:"heroSecondaryUrl"}))el(id).value=h[field]||"";
-    renderSiteImage();renderAreas();
+    renderSiteImage();renderAreas();renderSitePreview();
+  }
+  function renderSitePreview(){
+    // Misma regla que la web: vacío significa vacío, nunca texto de ejemplo.
+    const value=id=>el(id).value;
+    const line1=value("heroLine1"),line2=value("heroLine2"),accent=value("heroAccent");
+    const showSecond=Boolean(line1&&(line2||accent));
+    el("sitePreviewKicker").textContent=value("heroKicker");
+    el("sitePreviewKicker").hidden=!value("heroKicker");
+    el("sitePreviewLine1").textContent=line1;
+    el("sitePreviewBreak").hidden=!showSecond;
+    el("sitePreviewLine2").textContent=line2;
+    el("sitePreviewAccent").textContent=accent?(line2.trim()?" ":"")+accent:"";
+    el("sitePreviewAccent").hidden=!accent;
+    el("sitePreviewStar").hidden=!(line1||line2||accent);
+    el("sitePreviewDescription").textContent=value("heroDescription");
+    el("sitePreviewDescription").hidden=!value("heroDescription");
+    el("sitePreviewPrimary").textContent=value("heroPrimaryText");
+    el("sitePreviewPrimary").hidden=!value("heroPrimaryText");
+    el("sitePreviewSecondary").textContent=value("heroSecondaryText");
+    el("sitePreviewSecondary").hidden=!value("heroSecondaryText");
   }
   function renderSiteImage(){
     const path=state.site.hero.image||"";
@@ -957,6 +977,7 @@
       navigator.clipboard?.writeText(value).then(()=>status("mediaStatus","Ruta copiada: "+value,"success")).catch(()=>prompt("Copia la ruta:",value)) || prompt("Copia la ruta:",value);
     });
     el("siteForm").addEventListener("submit",saveSite);
+    el("siteForm").addEventListener("input",renderSitePreview);
     el("siteReload").addEventListener("click",()=>loadSite().catch(e=>status("siteStatus",errMessage(e),"error")));
     el("chooseHeroImage").addEventListener("click",()=>openMediaPicker("hero"));
     el("heroRemoveImage").addEventListener("click",()=>{state.site.hero.image="";state.siteImageFile=null;el("heroImageUpload").value="";renderSiteImage();});

@@ -52,7 +52,7 @@
       window.TECNOLOGIA_POSTS = [...byId.values()];
     } catch (err) { console.warn("No se pudieron añadir los videotutoriales al tablón:",err); }
     const app = document.createElement("script");
-    app.src = "./assets/app.js?v=54";
+    app.src = "./assets/app.js?v=55";
     app.onerror = () => { const node=document.getElementById("root"); if(node)node.textContent="No se pudo cargar la web. Actualiza la página para intentarlo de nuevo."; };
     document.body.appendChild(app);
   }

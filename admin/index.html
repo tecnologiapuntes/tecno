@@ -8,10 +8,10 @@
   <meta name="theme-color" content="#102445" />
   <title>Administración · TecnologíaInsti</title>
   <link rel="icon" href="../assets/favicon-tecnologiainsti.png" type="image/png" />
-  <link rel="stylesheet" href="./admin.css?v=54" />
+  <link rel="stylesheet" href="./admin.css?v=55" />
   <script src="../assets/menu-config.js?v=51"></script>
   <script src="../assets/post-format.js?v=52"></script>
-  <script defer src="./admin.js?v=54"></script>
+  <script defer src="./admin.js?v=55"></script>
 </head>
 <body>
   <header class="topbar">
@@ -163,6 +163,15 @@
           <div class="field"><label for="heroKicker">Texto pequeño superior</label><input id="heroKicker" maxlength="100" /></div>
           <div class="field-grid"><div class="field"><label for="heroLine1">Primera línea del título</label><input id="heroLine1" maxlength="80" /></div><div class="field"><label for="heroLine2">Segunda línea del título</label><input id="heroLine2" maxlength="80" /></div></div>
           <div class="field"><label for="heroAccent">Palabra o frase destacada del título</label><input id="heroAccent" maxlength="80" /></div>
+          <div class="site-live-preview" aria-label="Vista previa de la portada">
+            <div class="site-live-preview-heading"><strong>Vista previa de los textos</strong><small>Se actualiza mientras escribes. El texto se adapta al ancho de cada pantalla.</small></div>
+            <div class="site-preview-screen">
+              <div id="sitePreviewKicker" class="site-preview-kicker"></div>
+              <h3 class="site-preview-title"><span id="sitePreviewLine1"></span><br id="sitePreviewBreak" hidden /><span id="sitePreviewLine2"></span><em id="sitePreviewAccent"></em><span id="sitePreviewStar" class="site-preview-star" aria-hidden="true">✳</span></h3>
+              <p id="sitePreviewDescription" class="site-preview-description"></p>
+              <div class="site-preview-buttons"><span id="sitePreviewPrimary" class="site-preview-primary"></span><span id="sitePreviewSecondary" class="site-preview-secondary"></span></div>
+            </div>
+          </div>
           <div class="field"><label for="heroDescription">Descripción de la portada</label><textarea id="heroDescription" rows="3" maxlength="500"></textarea></div>
           <div class="field-grid"><div class="field"><label for="heroPrimaryText">Texto del botón principal</label><input id="heroPrimaryText" maxlength="60" /></div><div class="field"><label for="heroSecondaryText">Texto del segundo enlace</label><input id="heroSecondaryText" maxlength="60" /></div></div>
           <div class="field"><label for="heroSecondaryUrl">Dirección del segundo enlace (https://)</label><input id="heroSecondaryUrl" type="url" /></div>
