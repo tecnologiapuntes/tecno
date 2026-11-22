@@ -1,0 +1,7 @@
+V57 · Las publicaciones actualizan la barra de direcciones como Instagram.
+- Se conserva el lector/modal original, sin navegar a otra página.
+- La URL pasa a /tecno/?post=ID y se puede copiar y compartir.
+- Volver/Atrás/Adelante recupera el estado correcto de la publicación.
+- Los enlaces publicacion.html?id=ID anteriores siguen funcionando.
+- El administrador genera enlaces nuevos ?post=ID para compartir.
+- No modifica publicaciones, portadas, menús ni archivos multimedia.

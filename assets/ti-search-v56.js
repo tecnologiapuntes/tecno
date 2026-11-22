@@ -45,7 +45,7 @@
     const id=typeof post==="object"?post.id:post;
     const script=document.querySelector('script[src*="ti-search-v56.js"]');
     const root=script?new URL("../",script.src):new URL(location.pathname.includes("/admin/")?"../":"./",document.baseURI);
-    return new URL("publicacion.html?id="+encodeURIComponent(clean(id)),root).href;
+    return new URL("?post="+encodeURIComponent(clean(id)),root).href;
   }
   async function share(post){
     const url=permalink(post);
