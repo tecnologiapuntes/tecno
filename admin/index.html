@@ -8,12 +8,12 @@
   <meta name="theme-color" content="#102445" />
   <title>Administración · TecnologíaInsti</title>
   <link rel="icon" href="../assets/favicon-tecnologiainsti.png" type="image/png" />
-  <link rel="stylesheet" href="./admin.css?v=56" />
+  <link rel="stylesheet" href="./admin.css?v=56" /><link rel="stylesheet" href="./themes-v58.css?v=58" />
   <script src="../assets/menu-config.js?v=51"></script>
   <script src="../assets/post-format.js?v=52"></script>
   <script src="../assets/post-visibility.js?v=54"></script>
   <script src="../assets/ti-search-v56.js?v=57"></script>
-  <script defer src="./admin.js?v=56"></script>
+  <script src="../assets/themes-v58.js?v=58"></script><script defer src="./admin.js?v=58"></script>
 </head>
 <body>
   <header class="topbar">
@@ -70,6 +70,7 @@
         <button id="tabMenus" type="button" role="tab" aria-selected="false" class="tab">Menús y apartados</button>
         <button id="tabMedia" type="button" role="tab" aria-selected="false" class="tab">Biblioteca multimedia</button>
         <button id="tabSite" type="button" role="tab" aria-selected="false" class="tab">Portada</button>
+        <button id="tabAppearance" type="button" role="tab" aria-selected="false" class="tab">Apariencia y colores</button>
         <button id="tabVideos" type="button" role="tab" aria-selected="false" class="tab">Videotutoriales</button>
         <button id="tabTools" type="button" role="tab" aria-selected="false" class="tab">Seguridad y diagnóstico</button>
       </div>
@@ -189,6 +190,22 @@
           <div class="editor-actions"><button id="siteReload" type="button" class="btn secondary">Recuperar versión de GitHub</button><button type="submit" class="btn primary">Guardar portada en GitHub</button></div><div id="siteStatus" role="status" aria-live="polite"></div>
         </form>
       </section>
+
+      <section id="appearancePanel" class="panel theme-management" hidden aria-labelledby="appearanceTitle">
+        <div class="section-title"><h2 id="appearanceTitle">Apariencia y colores</h2>
+          <p>Elige entre 18 combinaciones. La vista previa no modifica la web: los colores cambiarán en todas las páginas públicas únicamente al pulsar «Guardar en GitHub».</p></div>
+        <div class="theme-head"><div><strong id="themeSelectionTitle">TecnologíaInsti original</strong><p id="themeSelectionText" class="hint">Selecciona una paleta para ver cómo quedaría.</p></div><span id="themeSavedBadge" class="theme-saved-badge">Tema guardado: original</span></div>
+        <div id="themeGallery" class="theme-gallery" role="radiogroup" aria-label="Combinación de colores de la web"></div>
+        <div class="theme-preview-label"><h3>Vista previa</h3><p class="hint">Representación de la portada, el menú y las tarjetas. No modifica tu página publicada.</p></div>
+        <div id="themePreview" class="theme-preview" aria-label="Vista previa del tema seleccionado">
+          <div class="theme-preview-header"><strong>Tecnología<span>Insti</span></strong><span class="theme-preview-menu">☰ MENÚ</span><span>IA · PROYECTOS · RECURSOS</span></div>
+          <div class="theme-preview-hero"><div><small>UN ESPACIO DE @TECNOLOGIAINSTI</small><h3>Imagina. Diseña.<br/><em>Construye. Aprende.</em></h3><p>Ideas, proyectos y recursos para el aula.</p><span class="theme-preview-button">Ver novedades ↗</span></div><div class="theme-preview-art" aria-hidden="true">⚙️<br/>🤖</div></div>
+          <div class="theme-preview-content"><h3>Últimas novedades</h3><div class="theme-preview-cards"><article><div class="theme-preview-visual">⚙</div><strong>Proyectos STEAM</strong><small>Actividades para Secundaria</small></article><article><div class="theme-preview-visual secondary">✦</div><strong>Recursos con IA</strong><small>Prompts e infografías</small></article></div></div>
+        </div>
+        <div class="theme-actions"><button id="themeReset" type="button" class="btn secondary">Seleccionar tema original</button><button id="themeReload" type="button" class="btn secondary">↻ Recuperar tema de GitHub</button><button id="themeSave" type="button" class="btn primary">Guardar colores en GitHub</button></div>
+        <p class="hint">Se conserva el diseño, el contenido, las publicaciones, las imágenes, las páginas y tus menús. El tema se almacena únicamente en <code>assets/cms-theme.json</code>.</p>
+        <div id="themeStatus" role="status" aria-live="polite"></div>
+      </section>
       <section id="videosPanel" class="panel" hidden aria-labelledby="videosTitle">
         <div class="section-title"><h2 id="videosTitle">Gestión manual de videotutoriales</h2><p>Añade vídeos individuales pegando su enlace de YouTube, sin depender de la sincronización de las listas. Puedes editar el título y la descripción en español.</p></div>
         <button id="videoAdd" class="btn primary" type="button">+ Añadir videotutorial</button><button id="videoReload" class="btn secondary" type="button">↻ Actualizar vídeos</button>
@@ -214,13 +231,13 @@
         <div class="tools-grid">
           <article class="tools-box">
             <h3>Copias de seguridad</h3>
-            <p>Descarga un archivo JSON con publicaciones administradas, menús, portada y vídeos manuales. Los originales de la web se conservan siempre.</p>
+            <p>Descarga un archivo JSON con publicaciones administradas, menús, portada, colores y vídeos manuales. Los originales de la web se conservan siempre.</p>
             <button id="backupExport" type="button" class="btn primary">↓ Descargar copia de datos (JSON)</button>
             <p><strong>Importante:</strong> el JSON <strong>no incluye las imágenes, PDF ni archivos Word</strong>. Para hacer una copia realmente completa, descarga también el ZIP del repositorio de GitHub.</p>
             <a id="backupRepo" class="btn secondary" href="https://github.com/tecnologiapuntes/tecno/archive/refs/heads/main.zip" target="_blank" rel="noopener noreferrer">↓ Copia completa del repositorio (ZIP)</a>
             <div id="backupStatus" role="status" aria-live="polite"></div>
             <details class="tools-restore"><summary>Restaurar una copia de datos</summary>
-              <p>La restauración crea un nuevo commit que sustituye los JSON de publicaciones, menú, portada y vídeos manuales que contiene la copia. <strong>No elimina ni altera los archivos multimedia ni el código.</strong> Confirma dos veces antes de continuar.</p>
+              <p>La restauración crea un nuevo commit que sustituye los JSON de publicaciones, menú, portada, apariencia (si está incluida) y vídeos manuales que contiene la copia. <strong>No elimina ni altera los archivos multimedia ni el código.</strong> Confirma dos veces antes de continuar.</p>
               <label for="backupRestore">Seleccionar copia JSON</label>
               <input id="backupRestore" type="file" accept="application/json,.json">
             </details>

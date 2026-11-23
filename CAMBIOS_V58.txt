@@ -1,0 +1,11 @@
+TECNOLOGÍAINSTI · V58 · APARIENCIA Y COLORES
+
+- 18 paletas listas para seleccionar desde Administrador → Apariencia y colores.
+- Vista previa sin modificar la web y guardado global en GitHub.
+- La selección se aplica a la portada, Tablón de novedades, ventanas de lectura,
+  páginas de IA y Séneca y páginas individuales de publicaciones.
+- Conserva V57 en el tema original.
+- Se incorpora assets/cms-theme.json como configuración AUTOGESTIONADA.
+- La exportación V58 de datos incluye el tema; restaurar copias V56 sigue funcionando.
+- Sin tocar posts.js, ni JSON de publicaciones, menús, vídeos o portada.
+- No incluir cms-theme.json en los ZIP: lo creará el gestor al guardar.

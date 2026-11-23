@@ -1,0 +1,122 @@
+/* TecnologíaInsti V58 · Apariencia unificada de todas las páginas públicas.
+   El tema original no recibe reglas de sustitución para conservar V57 intacta.
+   CSS externo después de las hojas existentes, archivo de selección independiente. */
+html[data-ti-theme-active="1"] {
+  --navy:var(--ti-nav);--navy2:var(--ti-nav);--navy3:var(--ti-nav);
+  --mint:var(--ti-accent);--turq:var(--ti-accent);--peach:var(--ti-extra);
+  --paper:var(--ti-page);--pale:var(--ti-page);--muted:#536777;
+  --menu-azul:var(--ti-nav);--menu-azul-profundo:var(--ti-nav);
+  --menu-menta:var(--ti-accent);--menu-melocoton:var(--ti-extra);
+  --menu-opcion:color-mix(in srgb,var(--ti-page),white 45%);
+  --ink:#1A304A;
+  color-scheme:light;
+}
+html[data-ti-theme-active="1"] body {background:var(--ti-page);color:#1A304A}
+/* Portada y cabeceras */
+html[data-ti-theme-active="1"] header.header,
+html[data-ti-theme-active="1"] .hero,
+html[data-ti-theme-active="1"] .topbar,
+html[data-ti-theme-active="1"] .detail-header,
+html[data-ti-theme-active="1"] footer {background:var(--ti-nav);color:var(--ti-nav-ink)}
+html[data-ti-theme-active="1"] .hero h1,
+html[data-ti-theme-active="1"] .hero .hero-copy,
+html[data-ti-theme-active="1"] .hero .text-link,
+html[data-ti-theme-active="1"] header.header .brand,
+html[data-ti-theme-active="1"] header.header .brand-light,
+html[data-ti-theme-active="1"] .topbar .brand,
+html[data-ti-theme-active="1"] .navbar .brand,
+html[data-ti-theme-active="1"] .detail-brand,
+html[data-ti-theme-active="1"] .detail-header nav a,
+html[data-ti-theme-active="1"] .topbar .mainlinks a,
+html[data-ti-theme-active="1"] .topbar .nav-trigger,
+html[data-ti-theme-active="1"] header.header nav>button,
+html[data-ti-theme-active="1"] header.header nav>.nav-dropdown>.nav-dropdown-trigger,
+html[data-ti-theme-active="1"] header.header nav .insta-nav,
+html[data-ti-theme-active="1"] footer a,
+html[data-ti-theme-active="1"] footer p {color:var(--ti-nav-ink)}
+html[data-ti-theme-active="1"] .hero .eyebrow,
+html[data-ti-theme-active="1"] .hero h1 em,
+html[data-ti-theme-active="1"] .hero .title-spark,
+html[data-ti-theme-active="1"] .detail-brand span,
+html[data-ti-theme-active="1"] .brand-light,
+html[data-ti-theme-active="1"] .art-plus {color:var(--ti-accent)}
+html[data-ti-theme-active="1"] .hero-copy>p,
+html[data-ti-theme-active="1"] .hero p,
+html[data-ti-theme-active="1"] .hero .hero-note,
+html[data-ti-theme-active="1"] .topbar .brand small {color:var(--ti-nav-sub)}
+html[data-ti-theme-active="1"] .hero .eyebrow>span {background:var(--ti-accent)}
+html[data-ti-theme-active="1"] .primary,
+html[data-ti-theme-active="1"] .header nav .nav-home,
+html[data-ti-theme-active="1"] .topbar .mainlinks .active,
+html[data-ti-theme-active="1"] .topbar .nav-trigger.active,
+html[data-ti-theme-active="1"] .playlist-fallback-link,
+html[data-ti-theme-active="1"] .detail-button:not(.outline) {background:var(--ti-accent);color:var(--ti-on-accent);border-color:var(--ti-accent)}
+html[data-ti-theme-active="1"] header.header .menu-toggle,
+html[data-ti-theme-active="1"] .topbar .menu-btn {background:var(--ti-extra);color:#203247;border-color:color-mix(in srgb,var(--ti-extra),black 18%);box-shadow:none}
+html[data-ti-theme-active="1"] header.header .menu-toggle:hover {background:color-mix(in srgb,var(--ti-extra),white 20%)}
+html[data-ti-theme-active="1"] .header .header-menu-panel,
+html[data-ti-theme-active="1"] .seneca-menu-panel {background:var(--ti-nav);border-color:color-mix(in srgb,var(--ti-nav-ink),transparent 72%)}
+html[data-ti-theme-active="1"] .menu-panel-top strong,
+html[data-ti-theme-active="1"] .seneca-menu-panel .menu-panel-top {color:var(--ti-nav-ink)}
+html[data-ti-theme-active="1"] .menu-panel-top span {color:var(--ti-nav-sub)}
+html[data-ti-theme-active="1"] .header .menu-panel-quick,
+html[data-ti-theme-active="1"] .header .menu-panel-group,
+html[data-ti-theme-active="1"] .seneca-menu-panel>div {background:white;color:#1A304A}
+html[data-ti-theme-active="1"] .header .menu-panel-quick button,
+html[data-ti-theme-active="1"] .header .menu-panel-group button,
+html[data-ti-theme-active="1"] .seneca-menu-panel a,
+html[data-ti-theme-active="1"] .ti-panel-branch>summary {background:var(--ti-page);color:#1A304A}
+html[data-ti-theme-active="1"] .header .menu-panel-quick button:hover,
+html[data-ti-theme-active="1"] .header .menu-panel-group button:hover,
+html[data-ti-theme-active="1"] .ti-panel-branch>summary:hover,
+html[data-ti-theme-active="1"] .nav-dropdown a:hover,
+html[data-ti-theme-active="1"] .ti-submenu .ti-leaf:hover {background:color-mix(in srgb,var(--ti-accent),white 74%)}
+/* Tarjetas, paneles y filtros */
+html[data-ti-theme-active="1"] .post,
+html[data-ti-theme-active="1"] .area,
+html[data-ti-theme-active="1"] .post-page-card,
+html[data-ti-theme-active="1"] .video-card,
+html[data-ti-theme-active="1"] .index-panel,
+html[data-ti-theme-active="1"] .detail-card,
+html[data-ti-theme-active="1"] .seneca-fallback,
+html[data-ti-theme-active="1"] .post-page-modal,
+html[data-ti-theme-active="1"] .modal {background:#fff;color:#1A304A;border-color:color-mix(in srgb,var(--ti-nav),white 83%)}
+html[data-ti-theme-active="1"] .post-visual,
+html[data-ti-theme-active="1"] .post-visual.peach,
+html[data-ti-theme-active="1"] .post-visual.blue,
+html[data-ti-theme-active="1"] .area .area-top>svg,
+html[data-ti-theme-active="1"] .area.peach .area-top>svg,
+html[data-ti-theme-active="1"] .area.blue .area-top>svg {background:color-mix(in srgb,var(--ti-accent),white 70%)}
+html[data-ti-theme-active="1"] .instagram-banner,
+html[data-ti-theme-active="1"] .social-banner,
+html[data-ti-theme-active="1"] .project-subsections,
+html[data-ti-theme-active="1"] .news-stats span,
+html[data-ti-theme-active="1"] .detail-resources a,
+html[data-ti-theme-active="1"] .post-page-download,
+html[data-ti-theme-active="1"] .post-page-gallery-controls button {background:color-mix(in srgb,var(--ti-accent),white 84%);color:#1A304A}
+html[data-ti-theme-active="1"] .filters button.active,
+html[data-ti-theme-active="1"] .project-subsections button.active,
+html[data-ti-theme-active="1"] .project-subsections button[aria-pressed=true] {background:var(--ti-nav);color:var(--ti-nav-ink);border-color:var(--ti-nav)}
+html[data-ti-theme-active="1"] .post-meta button,
+html[data-ti-theme-active="1"] .detail-chip,
+html[data-ti-theme-active="1"] .video-counter,
+html[data-ti-theme-active="1"] .index-meta b {background:color-mix(in srgb,var(--ti-accent),white 76%);color:#173047}
+html[data-ti-theme-active="1"] .post-page-header h2,
+html[data-ti-theme-active="1"] .post-page-card-copy h3,
+html[data-ti-theme-active="1"] .detail-card h1,
+html[data-ti-theme-active="1"] .detail-body,
+html[data-ti-theme-active="1"] .post-page-modal h2 {color:#1A304A}
+html[data-ti-theme-active="1"] .post-page-tag,
+html[data-ti-theme-active="1"] .post-page-content a,
+html[data-ti-theme-active="1"] .article-content a,
+html[data-ti-theme-active="1"] .detail-body a {color:color-mix(in srgb,var(--ti-nav),#006f73 50%)}
+html[data-ti-theme-active="1"] .post-page-overlay,
+html[data-ti-theme-active="1"] .modal-backdrop {background:color-mix(in srgb,var(--ti-nav),black 42%);backdrop-filter:blur(4px)}
+html[data-ti-theme-active="1"] .tag-ai {background:var(--ti-accent);color:var(--ti-on-accent)}
+html[data-ti-theme-active="1"] .tag-project {background:var(--ti-extra);color:#1A304A}
+html[data-ti-theme-active="1"] .tag-teach {background:color-mix(in srgb,var(--ti-nav),white 17%);color:var(--ti-nav-ink)}
+/* Página individual: evitar que texto claro sobre fondo claro se pierda */
+html[data-ti-theme-active="1"] .detail-header {border-bottom:1px solid color-mix(in srgb,var(--ti-nav-ink),transparent 78%)}
+html[data-ti-theme-active="1"] .detail-brand span {color:var(--ti-accent)}
+html[data-ti-theme-active="1"] .detail-button.outline {color:#1A304A;background:#fff}
+@media(prefers-reduced-motion:reduce){html[data-ti-theme-active="1"] *{scroll-behavior:auto}}

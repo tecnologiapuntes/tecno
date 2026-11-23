@@ -9,6 +9,7 @@
   const MENU_PATH = "assets/cms-menu.json";
   const VIDEOS_PATH = "assets/cms-videos.json";
   const SITE_PATH = "assets/cms-site.json";
+  const THEME_PATH = "assets/cms-theme.json";
   const menuCore = window.TI_MENU;
   const root = document;
   const el = (id) => root.getElementById(id);
@@ -18,7 +19,8 @@
     menu: menuCore.normalize(menuCore.defaults), menuBaseline: null, menuEditId: null, menuNextParent: "", activeTab: "posts",
     library: [], libraryLimit: 48, mediaPickerMode:"",selectedDoc:null,
     site:null,siteBaseline:null,siteImageFile:null,
-    manualVideos:[],videoBaseline:null,videoEditingId:null
+    manualVideos:[],videoBaseline:null,videoEditingId:null,
+    theme:null,themeBaseline:null,themeDraft:"original"
   };
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const localDate = () => {
@@ -484,7 +486,7 @@
   function signOut(){
     state.token=null;state.posts=[];state.login=null;state.original=null;state.editingId=null;releasePreviews();
     state.menu=menuCore.normalize(menuCore.defaults);state.menuBaseline=null;state.activeTab="posts";
-    state.library=[];state.selectedDoc=null;state.site=null;state.siteBaseline=null;state.manualVideos=[];state.videoBaseline=null;
+    state.library=[];state.selectedDoc=null;state.site=null;state.siteBaseline=null;state.manualVideos=[];state.videoBaseline=null;state.theme=null;state.themeBaseline=null;state.themeDraft="original";
     el("workspace").hidden=true;el("loginPanel").hidden=false;el("accountLabel").hidden=true;el("signOut").hidden=true;
     el("token").value="";
     status("loginMessage","Sesión cerrada. Tu token no se ha guardado.","success");
@@ -493,7 +495,7 @@
   function switchTab(tab){
     if(state.busy)return;
     state.activeTab=tab;
-    for(const [name,id] of Object.entries({posts:"tabPosts",menus:"tabMenus",media:"tabMedia",site:"tabSite",videos:"tabVideos",tools:"tabTools"})){
+    for(const [name,id] of Object.entries({posts:"tabPosts",menus:"tabMenus",media:"tabMedia",site:"tabSite",appearance:"tabAppearance",videos:"tabVideos",tools:"tabTools"})){
       el(id).classList.toggle("active",name===tab);
       el(id).setAttribute("aria-selected",String(name===tab));
     }
@@ -502,11 +504,13 @@
     el("menuPanel").hidden=tab!=="menus";
     el("mediaPanel").hidden=tab!=="media";
     el("sitePanel").hidden=tab!=="site";
+    el("appearancePanel").hidden=tab!=="appearance";
     el("videosPanel").hidden=tab!=="videos";
     el("toolsPanel").hidden=tab!=="tools";
     if(tab==="menus")renderMenuTree();
     if(tab==="media")loadLibrary().catch(e=>status("mediaStatus",errMessage(e),"error"));
     if(tab==="site")loadSite().catch(e=>status("siteStatus",errMessage(e),"error"));
+    if(tab==="appearance")loadTheme().catch(e=>status("themeStatus",errMessage(e),"error"));
     if(tab==="videos")loadManualVideos().catch(e=>status("videoStatus",errMessage(e),"error"));
   }
   function findMenuItem(id){
@@ -886,6 +890,49 @@
       status("siteStatus","Portada guardada. Los cambios aparecerán al actualizar la web.","success");
     }catch(e){status("siteStatus",errMessage(e),"error");}finally{state.busy=false;}
   }
+  // ========= V58 · Apariencia: 18 paletas, una sola configuración global =========
+  const themeCore=window.TI_THEMES;
+  const themeDefault=()=>({version:1,themeId:"original"});
+  function renderThemeGallery(){
+    const gallery=el("themeGallery");
+    gallery.innerHTML=themeCore.list.map(t=>`<button type="button" class="theme-choice" role="radio" aria-checked="${t.id===state.themeDraft}" data-theme-id="${esc(t.id)}" aria-label="${esc(t.number+'. '+t.name)}">
+      <span class="theme-swatches">${[t.nav,t.accent,t.extra,t.page].map(c=>`<span class="theme-swatch" style="background:${c}"></span>`).join("")}</span>
+      <span class="theme-choice-foot"><strong>${t.number}. ${esc(t.name)}</strong><span class="theme-selected-indicator">✓</span></span>
+      <small>${esc(t.description)}</small>
+    </button>`).join("");
+    renderThemePreview();
+  }
+  function renderThemePreview(){
+    const t=themeCore.resolve(state.themeDraft),preview=el("themePreview");
+    for(const [key,value] of Object.entries({"--preview-nav":t.nav,"--preview-ink":t.navInk,"--preview-sub":t.navSub,
+      "--preview-page":t.page,"--preview-accent":t.accent,"--preview-extra":t.extra,"--preview-btn-ink":t.onAccent}))preview.style.setProperty(key,value);
+    el("themeSelectionTitle").textContent=t.number+". "+t.name;
+    el("themeSelectionText").textContent=t.description;
+    el("themeSavedBadge").textContent="Tema guardado: "+themeCore.resolve(state.theme?.themeId).name;
+  }
+  async function loadTheme(){
+    const data=await readJson(THEME_PATH,themeDefault());
+    state.theme=data;
+    state.themeBaseline=JSON.stringify(data);
+    state.themeDraft=themeCore.parseDocument(data);
+    renderThemeGallery();
+    status("themeStatus","Colores actuales cargados desde GitHub. Selecciona otro tema para previsualizarlo.","success");
+  }
+  async function saveTheme(){
+    if(state.busy)return;
+    state.busy=true;el("themeSave").disabled=true;
+    status("themeStatus","Comprobando la configuración de colores en GitHub…");
+    try{
+      const current=await readJson(THEME_PATH,themeDefault());
+      if(JSON.stringify(current)!==state.themeBaseline)throw Error("Los colores se modificaron desde otra sesión. Pulsa «Recuperar tema de GitHub» para evitar sobrescribir cambios ajenos.");
+      const updated={version:1,themeId:themeCore.resolve(state.themeDraft).id,updatedAt:new Date().toISOString()};
+      await saveJsonAtomic(THEME_PATH,updated,"Actualizar apariencia de TecnologíaInsti: "+themeCore.resolve(updated.themeId).name);
+      state.theme=updated;state.themeBaseline=JSON.stringify(updated);
+      renderThemePreview();
+      status("themeStatus","Tema guardado en GitHub. Se aplicará a la portada, publicaciones y páginas de vídeos al actualizar la web.","success");
+    }catch(err){status("themeStatus",errMessage(err),"error");}
+    finally{state.busy=false;el("themeSave").disabled=false;}
+  }
   // ========= Videotutoriales manuales =========
   const emptyVideos=()=>({version:1,videos:[]});
   async function loadManualVideos(){
@@ -954,7 +1001,7 @@
     }catch(e){status("videoStatus",errMessage(e),"error");}finally{state.busy=false;}
   }
   // ========= V56 · Copias de seguridad y diagnóstico =========
-  const BACKUP_PATHS=[CMS_PATH,MENU_PATH,SITE_PATH,VIDEOS_PATH];
+  const BACKUP_PATHS=[CMS_PATH,MENU_PATH,SITE_PATH,VIDEOS_PATH,THEME_PATH];
   const BACKUP_MARK="TecnologiaInstiBackupV56";
   const backupEsc=esc;
   function createDownload(name,text,mime="application/json"){
@@ -972,10 +1019,10 @@
     try{
       const remote=await Promise.all(BACKUP_PATHS.map(path=>readJson(path,null)));
       const legacy=await readRemotePosts();
-      const backup={format:BACKUP_MARK,version:56,exportedAt:new Date().toISOString(),repository:OWNER+"/"+REPO,branch:state.branch,
+      const backup={format:BACKUP_MARK,version:58,exportedAt:new Date().toISOString(),repository:OWNER+"/"+REPO,branch:state.branch,
         files:Object.fromEntries(BACKUP_PATHS.map((path,i)=>[path,remote[i]])),
         legacyPosts:legacy,
-        note:"Esta copia JSON incluye publicaciones, menús, portada, vídeos manuales y referencia de publicaciones originales. NO incluye bytes de fotos, documentos, ficheros de vídeo ni listas automáticas de YouTube. Descarga además el ZIP completo del repositorio para conservarlos."};
+        note:"Esta copia JSON incluye publicaciones, menús, portada, apariencia, vídeos manuales y referencia de publicaciones originales. NO incluye bytes de fotos, documentos, ficheros de vídeo ni listas automáticas de YouTube. Descarga además el ZIP completo del repositorio para conservarlos."};
       const date=new Date().toISOString().slice(0,10);
       createDownload(`TecnologiaInsti_copia_de_datos_${date}.json`,JSON.stringify(backup,null,2)+"\n");
       status("backupStatus","Copia de datos descargada. Para guardar imágenes y documentos, descarga también la copia completa del repositorio.","success");
@@ -989,7 +1036,9 @@
     if(menu!==null&&(!menu||!Array.isArray(menu.items)||menuCore.normalize(menu).items.length!==menu.items.length))throw Error("El menú de la copia no es válido.");
     if(site!==null&&(!site||typeof site.hero!=="object"||!Array.isArray(site.areasOrder)))throw Error("La configuración de portada de la copia no es válida.");
     if(videos!==null&&(!videos||!Array.isArray(videos.videos)))throw Error("Los vídeos manuales de la copia no son válidos.");
-    if(BACKUP_PATHS.some(path=>!(path in data.files)))throw Error("La copia está incompleta.");
+    if([CMS_PATH,MENU_PATH,SITE_PATH,VIDEOS_PATH].some(path=>!(path in data.files)))throw Error("La copia está incompleta.");
+    const theme=data.files[THEME_PATH];
+    if(theme!==undefined&&theme!==null&&(!theme||typeof theme.themeId!=="string"||!window.TI_THEMES.list.some(t=>t.id===theme.themeId)))throw Error("El tema de color de la copia no es válido.");
     return true;
   }
   async function restoreBackup(input){
@@ -1000,13 +1049,14 @@
     try{
       const data=JSON.parse(await file.text());validateBackup(data);
       const count=data.files[CMS_PATH]?.posts?.length||0;
-      const notice=`VAS A RESTAURAR una copia del ${new Date(data.exportedAt||Date.now()).toLocaleString("es-ES")} que contiene ${count} publicaciones administradas.\n\nSe reemplazarán los archivos JSON actuales de publicaciones, menús, portada y vídeos manuales incluidos en esta copia. Se conservarán los medios, el código y los posts originales.\n\n¿Continuar?`;
+      const notice=`VAS A RESTAURAR una copia del ${new Date(data.exportedAt||Date.now()).toLocaleString("es-ES")} que contiene ${count} publicaciones administradas.\n\nSe reemplazarán los archivos JSON actuales de publicaciones, menús, portada, apariencia (si está incluida en la copia) y vídeos manuales. Se conservarán los medios, el código y los posts originales.\n\n¿Continuar?`;
       if(!confirm(notice))return;
       if(!confirm("SEGUNDA CONFIRMACIÓN: ¿restaurar los datos sobre la versión actual de GitHub? Crea antes una copia actual si quieres conservar los cambios recientes."))return;
       state.busy=true;setToolsBusy(true);
       status("backupStatus","Creando un punto de restauración en un nuevo commit de GitHub…");
       const changes=[];
       for(const path of BACKUP_PATHS){
+        if(!(path in data.files))continue; // copias V56/V57 anteriores no contenían apariencia
         const value=data.files[path];
         if(value===null)continue; // una sección que no existía no borra la existente
         const sha=await createGitBlob(JSON.stringify(value,null,2)+"\n");
@@ -1085,6 +1135,16 @@
   }
 
   function bind() {
+    el("tabAppearance").addEventListener("click",()=>switchTab("appearance"));
+    el("themeGallery").addEventListener("click",e=>{
+      const choice=e.target.closest("[data-theme-id]");
+      if(!choice)return;
+      state.themeDraft=themeCore.resolve(choice.dataset.themeId).id;
+      renderThemeGallery();
+    });
+    el("themeReset").addEventListener("click",()=>{state.themeDraft="original";renderThemeGallery();});
+    el("themeReload").addEventListener("click",()=>loadTheme().catch(e=>status("themeStatus",errMessage(e),"error")));
+    el("themeSave").addEventListener("click",saveTheme);
     el("tabPosts").addEventListener("click",()=>switchTab("posts"));
     el("tabMenus").addEventListener("click",()=>switchTab("menus"));
     el("tabMedia").addEventListener("click",()=>switchTab("media"));
