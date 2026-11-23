@@ -2,13 +2,14 @@
   "playlist_id": "PL4P4xfIXfbrF57UhR4Y_El-mdtnddYcyn",
   "playlist_title": "Cuaderno Séneca. LOMLOE",
   "source": "yt-dlp",
-  "updated_at": "2026-11-17T22:36:01.510009+00:00",
+  "updated_at": "2026-11-23T06:51:23.048496+00:00",
   "videos": [
     {
       "id": "4OuTn9qWlhg",
       "title": "01 Seneca LOMLOE Workbook. Getting Started. Setup📓📓",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/4OuTn9qWlhg/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Primeros pasos y configuración del Cuaderno de Séneca LOMLOE",
       "description_es": ""
     },
@@ -17,6 +18,7 @@
       "title": "02 Seneca Notebook LOMLOE 2023-2024 Evaluable activities without creating SdA📓📓",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/nCNLwkP4yWU/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Actividades evaluables sin crear una situación de aprendizaje (SdA)",
       "description_es": ""
     },
@@ -25,6 +27,7 @@
       "title": "03 Seneca Notebook LOMLOE 2023-2024. Creation of Learning Situations. SdA📓📓",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/k4D2kOy0bH0/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Creación de situaciones de aprendizaje (SdA)",
       "description_es": ""
     },
@@ -33,6 +36,7 @@
       "title": "04 Seneca Notebook LOMLOE 2023-2024. Assessable activities from the Learning Standards. 📓📓",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/Gs1zh28SjYs/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Actividades evaluables a partir de los estándares de aprendizaje",
       "description_es": ""
     },
@@ -41,6 +45,7 @@
       "title": "05 Seneca Notebook LOMLOE 2023-2024. Assess criteria without using a notebook or learning materia...",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/OlfWUpzb7ks/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Evaluar criterios sin utilizar el cuaderno ni materiales de aprendizaje",
       "description_es": ""
     },
@@ -49,6 +54,7 @@
       "title": "06 Séneca Notebook LOMLOE 2023-2024. Exporting grades from Moodle to Séneca",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/CsWDoUxCe9o/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Exportación de calificaciones de Moodle a Séneca",
       "description_es": ""
     },
@@ -57,6 +63,7 @@
       "title": "07. Séneca Gradebook LOMLOE 2023-2024. Grading the Quarter",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/SSbml5eBmKU/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Calificación del trimestre en Séneca",
       "description_es": ""
     },
@@ -65,6 +72,7 @@
       "title": "08. Séneca Gradebook LOMLOE 2023-2024. Cloning assessable activities📓📓IMPORTANT READ DESCRIPTION",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/XezhOBE1eD0/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Clonación de actividades evaluables (leer la descripción)",
       "description_es": ""
     },
@@ -73,6 +81,7 @@
       "title": "09. Séneca Gradebook LOMLOE 23-24. Recovering activities. Solutions for missing data.",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/C-0Rfvq0Rrc/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Recuperación de actividades y solución de datos desaparecidos",
       "description_es": ""
     },
@@ -81,6 +90,7 @@
       "title": "10. Seneca Notebook LOMLOE 23-24. Easy Seneca Extension. Mass Grading Criteria.",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/b8sfML11Sic/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Extensión Easy Séneca: calificación masiva de criterios",
       "description_es": ""
     },
@@ -89,6 +99,7 @@
       "title": "11. Cuaderno de Séneca LOMLOE 23-24. NOVEDAD Marzo 2024. Borrar actividades evaluables calificadas",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/b1yrPeEUQxI/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Cuaderno de Séneca LOMLOE 23-24. NOVEDAD Marzo 2024. Borrar actividades evaluables calificadas",
       "description_es": ""
     },
@@ -97,6 +108,7 @@
       "title": "12.Cuaderno de Séneca LOMLOE. Recuperación de criterios no superados OJO trimestres anteriores",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/pOAUQ7EYy40/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "Cuaderno de Séneca LOMLOE. Recuperación de criterios no superados OJO trimestres anteriores",
       "description_es": ""
     },
@@ -105,6 +117,7 @@
       "title": "13. Séneca Gradebook LOMLOE 23-24. NEW FEATURE. Return of the behavior tracker. Green🤢 and red😡 f...",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/toq7uDPVX98/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "",
       "description_es": ""
     },
@@ -113,6 +126,7 @@
       "title": "14. Séneca Gradebook LOMLOE 23-24. VERY USEFUL. NEW FEATURE. Return of CHECK-type activities",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/4_So6I88AMU/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "",
       "description_es": ""
     },
@@ -121,6 +135,7 @@
       "title": "15. Séneca Gradebook LOMLOE: How to fix evaluation criteria not showing in the global view",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/cm5_RsfA4MI/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "",
       "description_es": ""
     },
@@ -129,6 +144,7 @@
       "title": "16. Séneca Gradebook LOMLOE. IMPORTANT UPDATE. CALCULATING TERM GRADES",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/qBLO8bWwbkk/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "",
       "description_es": ""
     },
@@ -137,6 +153,7 @@
       "title": "17 Seneca Notebook. START USING THE NOTEBOOK IN THE 2ND TERM OR IN THE 3RD IF YOU HAVEN'T USED IT...",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/0WLQ0WO--9g/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "",
       "description_es": ""
     },
@@ -145,6 +162,7 @@
       "title": "18 Seneca's Notebook. TIP to see the notes before grading",
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/blcvVWuDQMs/hqdefault.jpg",
+      "upload_date": "",
       "title_es": "",
       "description_es": ""
     }
