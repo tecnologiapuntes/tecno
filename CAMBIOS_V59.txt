@@ -1,0 +1,17 @@
+TECNOLOGÍAINSTI V59 — SITEMAP AUTOMÁTICO Y GOOGLE SEARCH CONSOLE
+
+Novedades:
+- sitemap.xml inicial con 24 publicaciones originales y 3 páginas principales.
+- scripts/generar_sitemap.py: genera el sitemap con publicaciones visibles y HTML públicos.
+- .github/workflows/actualizar-sitemap.yml: actualización al recibir cambios y revisión diaria.
+- admin/sitemap-v59.js: genera el XML al publicar, editar o eliminar entradas desde el gestor.
+- admin/admin.js: publica cms-posts.json y sitemap.xml en UN SOLO commit; botón de actualización manual; actualización al restaurar una copia.
+- admin/index.html: nueva opción Seguridad y diagnóstico → Índice para Google.
+- LEEME_GITHUB_V59.md: instalación, Search Console y futura integración de la herramienta PRA.
+
+Archivos conservados:
+- Publicaciones, menús personalizados, portada, apariencia, recursos multimedia, vídeos.
+- El archivo de verificación de Google que ya subiste al repositorio.
+
+Atención: como el ZIP no contiene assets/cms-posts.json, la primera vez pulsa
+"Actualizar sitemap en GitHub" desde el administrador tras instalar V59.

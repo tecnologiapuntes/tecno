@@ -1,0 +1,51 @@
+name: Actualizar sitemap de TecnologíaInsti
+on:
+  workflow_dispatch:
+  schedule:
+    # Las publicaciones programadas se añaden después de su fecha, sin publicarlas antes.
+    - cron: '23 6 * * *'
+  push:
+    branches: [main, master]
+    paths:
+      - 'assets/cms-posts.json'
+      - 'assets/posts.js'
+      - 'index.html'
+      - 'cuaderno-seneca.html'
+      - 'videotutoriales-ia.html'
+      - 'herramientas/**'
+      - 'scripts/generar_sitemap.py'
+      - '.github/workflows/actualizar-sitemap.yml'
+permissions:
+  contents: write
+concurrency:
+  group: tecnologia-insti-sitemap
+  cancel-in-progress: false
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Obtener el contenido del repositorio
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generar índice de páginas y publicaciones públicas
+        run: python scripts/generar_sitemap.py
+      - name: Guardar el sitemap actualizado en GitHub
+        shell: bash
+        run: |
+          set -e
+          git add sitemap.xml
+          if git diff --cached --quiet -- sitemap.xml; then
+            echo 'El sitemap no ha cambiado.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Actualizar sitemap público [skip ci]'
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin "${{ github.ref_name }}"

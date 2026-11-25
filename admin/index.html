@@ -13,7 +13,7 @@
   <script src="../assets/post-format.js?v=52"></script>
   <script src="../assets/post-visibility.js?v=54"></script>
   <script src="../assets/ti-search-v56.js?v=57"></script>
-  <script src="../assets/themes-v58.js?v=58"></script><script defer src="./admin.js?v=58"></script>
+  <script src="../assets/themes-v58.js?v=58"></script><script src="./sitemap-v59.js?v=59"></script><script defer src="./admin.js?v=59"></script>
 </head>
 <body>
   <header class="topbar">
@@ -241,6 +241,13 @@
               <label for="backupRestore">Seleccionar copia JSON</label>
               <input id="backupRestore" type="file" accept="application/json,.json">
             </details>
+          </article>
+          <article class="tools-box">
+            <h3>Índice para Google (sitemap)</h3>
+            <p>Un listado de las páginas y publicaciones visibles de TecnologíaInsti para ayudar a Google a descubrirlas. Se actualiza también al guardar publicaciones.</p>
+            <button id="sitemapRefresh" type="button" class="btn primary">↻ Actualizar sitemap en GitHub</button>
+            <p><a href="../sitemap.xml" target="_blank" rel="noopener noreferrer">Ver sitemap publicado ↗</a></p>
+            <div id="sitemapStatus" role="status" aria-live="polite"></div>
           </article>
           <article class="tools-box">
             <h3>Diagnóstico de la web</h3>

@@ -1,0 +1,906 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tecnología Insti · Generador PRA</title><style>:root{--ink:#183147;--muted:#586b7a;--teal:#087c80;--pale:#e6f5f3;--line:#d8e4e7;--bg:#f0f5f6;--white:#fff}*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}[hidden]{display:none!important}header{background:#142e42;color:white;display:flex;align-items:center;justify-content:space-between;padding:15px max(24px,calc((100% - 1360px)/2));gap:15px}.brand{display:flex;gap:12px;align-items:center;white-space:nowrap;letter-spacing:.07em}.brand small{display:block;font-size:10px;color:#9fdbd6;letter-spacing:.14em}.brandlogo{width:46px;height:46px;object-fit:contain;border-radius:12px;background:#ffffff12;padding:2px;box-shadow:0 0 0 1px #75d3ca inset}.tag{color:#b4d2d8;font-size:12px;white-space:nowrap}main{max-width:1400px;margin:auto;padding:26px 25px}.intro{background:linear-gradient(110deg,#163b50,#086c70);color:white;border-radius:20px;padding:26px 34px;margin-bottom:24px;position:relative}.eyebrow{letter-spacing:.15em;font-size:11px;color:#a3e9df;font-weight:700}.intro h1{font-size:clamp(27px,3vw,39px);line-height:1.12;margin:10px 0}.intro p{max-width:760px;margin:10px 0;color:#e5f4f4}.steps{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;font-size:13px}.steps b{display:inline-grid;place-items:center;width:24px;height:24px;background:#ffffff25;border-radius:50%;margin-right:4px}.layout{display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,1fr);gap:20px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 4px 18px #14334408}.sectionhead{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}.sectionhead h2{font-size:19px;margin:0;line-height:1.3}.sectionhead p{font-size:13px;color:var(--muted);margin:3px 0}.num{background:var(--pale);color:var(--teal);font-weight:800;border-radius:9px;padding:6px 9px;font-size:12px}.compact{margin-top:23px}.typegrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}button,input,textarea,select{font:inherit}button{cursor:pointer;border-radius:9px;border:1px solid var(--line);padding:10px 13px;background:white;color:var(--ink);font-weight:650;line-height:1.3}button:hover{border-color:var(--teal)}button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #4bb7b9;outline-offset:2px}button[disabled]{opacity:.45;cursor:not-allowed}.type{display:flex;text-align:left;flex-direction:column;gap:4px;padding:13px}.type span{font-size:12px;font-weight:400;color:var(--muted)}.type[aria-pressed=true],.chip[aria-pressed=true]{background:var(--pale);border-color:var(--teal);color:#076467}.type[aria-pressed=true]{box-shadow:inset 0 0 0 1px var(--teal)}.note{background:#edf7f7;border-left:3px solid #58a6a4;padding:9px 12px;border-radius:5px;font-size:13px}.context{display:grid;grid-template-columns:1fr 1fr;gap:10px}.context label,.observations{font-size:13px;font-weight:650;display:block}.wide{grid-column:1/-1}input:not([type=checkbox]),textarea,select{width:100%;border:1px solid #cbd9dd;background:white;border-radius:8px;padding:9px;color:var(--ink)}label select,label input:not([type=checkbox]),label textarea{margin-top:5px}textarea{resize:vertical;line-height:1.5}.optional{font-size:10px;vertical-align:middle;color:var(--muted);font-weight:500;background:#edf1f2;border-radius:10px;padding:3px 7px}.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{border-radius:20px;font-size:12px;padding:7px 10px}.hint{color:var(--muted);font-size:12px}.tools{display:flex;gap:8px;margin-bottom:12px}.tools button{white-space:nowrap;font-size:12px}.tools input{min-width:0}.group{border:1px solid var(--line);border-radius:11px;margin-bottom:8px;overflow:hidden}.group summary{cursor:pointer;display:flex;align-items:center;gap:9px;background:#f7fafb;padding:12px;font-weight:650;font-size:14px;list-style:none}.group summary::-webkit-details-marker{display:none}.group summary:after{content:'+';margin-left:auto;font-size:19px;color:var(--teal)}.group[open] summary:after{content:'−'}.gnum{font-size:11px;font-weight:800;color:var(--teal)}.gcount{margin-left:auto;font-size:11px;color:var(--muted);white-space:nowrap}.groupitems{padding:8px 12px}.need{display:flex;align-items:flex-start;gap:9px;padding:7px 0;font-size:13px;cursor:pointer}.need input,.check input{accent-color:var(--teal);width:17px;height:17px;flex-shrink:0;margin:2px 0 0}.need .suggest{display:block;color:var(--teal);font-size:10px}.observations{margin-top:14px}.generatebar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:#eef6f6;margin-top:17px;border-radius:12px;padding:12px}.generatebar label{font-size:11px}.generatebar strong{font-size:14px}.generatebar .primary{margin-left:auto}.primary{background:var(--teal);color:white;border-color:var(--teal)}.primary:hover{background:#05686d}.secondary{background:#f9fbfb}.link{border:0;color:var(--muted);background:transparent;font-size:12px;padding:10px 0}.empty{min-height:260px;display:grid;align-content:center;justify-items:center;text-align:center;border:1px dashed #bed1d6;border-radius:13px;color:var(--muted);padding:20px}.empty h3{margin:8px 0;color:var(--ink)}.empty p{font-size:13px}.documenticon{font-size:44px;color:var(--teal)}.field{margin:14px 0}.fieldhead{display:flex;justify-content:space-between;gap:5px;align-items:center;margin-bottom:6px}.fieldhead label{font-size:14px;font-weight:750}.fieldhead button{padding:5px 8px;font-size:11px}.field textarea{min-height:120px;font-size:13px}.exports{display:flex;gap:7px;flex-wrap:wrap}.exports button{font-size:12px;flex:1}.review{border-top:1px solid var(--line);margin-top:18px;padding-top:13px;font-size:12px;color:var(--muted)}.review p{margin:5px 0}#status{white-space:pre-line;font-size:13px;font-weight:650;color:var(--teal)}.check{display:flex;gap:8px;align-items:flex-start;font-size:13px;margin:12px 0}.full{width:100%;margin-top:8px}hr{border:0;border-top:1px solid var(--line);margin:20px 0}footer{color:var(--muted);font-size:12px;margin:22px 0}footer p{margin:4px 0}a{color:var(--teal)}@media(max-width:900px){.layout{grid-template-columns:1fr}.intro{padding:22px}.desktop{display:none}}@media(max-width:480px){main{padding:12px}.panel{padding:15px}.typegrid{grid-template-columns:1fr}.tag{display:none}.generatebar .primary{width:100%}}@media print{header,.intro,.layout>.panel:first-child,footer,.exports,#connector,#webnotice,#status,.review,.fieldhead button{display:none!important}body,main,.layout,.results{background:white!important;display:block!important;padding:0!important;margin:0!important;box-shadow:none;border:0}.field textarea{display:none}.field .printtext{display:block!important;white-space:pre-wrap;font-size:11pt}.field{break-inside:auto}.fieldhead{break-after:avoid}.sectionhead h2{font-size:18pt}}.printtext{display:none}
+
+#onlyselected[aria-pressed=true]{background:var(--pale);color:var(--teal);border-color:var(--teal)}@media(max-width:540px){.tools{flex-wrap:wrap}.tools input{flex-basis:100%}.tools button{flex:1}}
+
+/* Ayudas discretas: visibles solo por interacción. */
+.group{overflow:visible}.group summary{border-radius:10px}.need{position:relative;align-items:flex-start;cursor:default}.needchoice{display:flex;align-items:flex-start;gap:9px;flex:1;cursor:pointer;min-width:0}.needinfo{flex:none;width:24px;height:24px;border-radius:50%;padding:0;color:#315a6d;background:#eef6fb;font:800 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;border:1px solid #bfd4df;display:grid;place-items:center;box-shadow:0 1px 2px #14334412}.needinfo:hover,.needinfo:focus-visible,.needinfo[aria-expanded=true]{border-color:#5e9db3;background:#e6f2f8;color:#183147}.needtip{display:none;position:absolute;z-index:20;right:0;top:calc(100% + 4px);width:min(370px,calc(100vw - 48px));background:#17384a;color:white;font-size:12px;font-weight:400;line-height:1.55;border-radius:12px;padding:0;box-shadow:0 10px 28px #14334433;overflow:hidden}.needinfo[aria-expanded=true]+.needtip{display:block}.needtiphead{display:flex;align-items:center;gap:10px;padding:11px 14px;background:linear-gradient(135deg,#1d4760,#1b5b78)}.needtipicon{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#ffffff1c;border:1px solid #ffffff33;font-weight:800;font-size:16px;flex:none}.needtiptitle{font-weight:800;font-size:13px;line-height:1.35}.needtipbody{padding:12px 14px 13px}.needtiplabel{display:block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#9fdaf3;margin:0 0 4px}.needtiptext{margin:0 0 10px;color:#eef7fb}.needtipexample{background:#f3b72b;color:#143344;border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.45;box-shadow:inset 0 0 0 1px #ffffff22}.needtipexample .needtiplabel{color:#6a4b00;margin-bottom:3px}.charcount{text-align:right;font-size:11px;color:var(--muted);margin-top:2px}.pendingopts{border:1px solid var(--line);border-radius:11px;padding:12px;background:#f7fafb;margin-top:12px}.pendingopts h3{font-size:15px;margin:0}.pendinggrid{display:grid;grid-template-columns:1fr 1fr;gap:0 8px}.pendingopts>label{display:block;font-size:13px;margin-top:10px}.pendinggrid .check{margin:5px 0}@media(max-width:480px){.pendinggrid{grid-template-columns:1fr}.needtip{right:auto;left:0;width:min(340px,calc(100vw - 36px))}}@media print{.charcount{display:none!important}}
+
+#confirmdialog{border:1px solid var(--line);border-radius:16px;color:var(--ink);padding:24px;width:min(460px,calc(100% - 32px));box-shadow:0 14px 55px #102b4650}#confirmdialog::backdrop{background:#142e4266}#confirmdialog h2{font-size:19px;margin:0 0 10px}#confirmdialog p{font-size:14px;margin:0 0 18px}.confirm-actions{display:flex;gap:10px;justify-content:flex-end}
+
+/* V1.6: acceso a la información */
+.accessopts{margin:18px 0 0;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#f7fafb;min-width:0}.accessopts legend{font-size:14px;font-weight:750;padding:0 6px}.accessopts .hint{margin:0 0 10px}.accesslabel{display:block;font-size:13px;font-weight:650;margin:7px 0 4px}.accessmaterials{margin-top:9px}.accessmaterials .check{margin:7px 0}.field .printtext{white-space:pre-wrap}
+
+.evalopts summary{cursor:pointer;font-weight:700;font-size:14px}.evalopts[open] summary{margin-bottom:8px}.evalopts .hint{font-weight:400}.prefbar{border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-top:12px;display:flex;flex-wrap:wrap;gap:7px;align-items:center}.prefbar .check{margin:0;flex:1;min-width:200px}.prefbar button{font-size:12px}.prefbar p{width:100%;margin:0}.prefbar #prefstatus{width:100%;color:var(--teal)}.measuretools{margin:8px 0 0;font-size:12px;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:#f7fafb}.measuretools summary{cursor:pointer;font-weight:650;color:var(--teal)}.measureline{display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid var(--line);padding:7px 0}.measureline span{flex:1}.measureline button{padding:2px 8px;font-size:17px;line-height:1.1}.addmeasure{display:flex;gap:6px;align-items:flex-end;margin-top:10px}.addmeasure textarea{min-height:0!important;font-size:12px}.addmeasure button{flex:none;font-size:11px}.fieldhead{flex-wrap:wrap}.fieldhead label{flex:1;min-width:140px}.pendingopts #p_formatwrap,.pendingopts #p_periodwrap{margin-top:10px}.pendingopts #p_formatwrap label,.pendingopts #p_periodwrap label{font-size:13px}@media print{.measuretools{display:none!important}}
+</style></head><body><header><div class="brand"><img class="brandlogo" src="data:image/png;base64,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" alt="Logo Tecnología Insti"><div><b>TECNOLOGÍA INSTI</b><small>HERRAMIENTAS DOCENTES</small></div></div><span class="tag">PRA · Andalucía · V1.7</span></header><main><section class="intro"><div class="eyebrow">APOYO A LA PRÁCTICA DOCENTE</div><h1>Generador de programas<br class="desktop"> de refuerzo del aprendizaje</h1><p>Elige el motivo, ajusta las necesidades y genera los cinco apartados de la propuesta curricular. Sin registro y sin inteligencia artificial.</p><div class="steps"><span><b>1</b> Configurar</span><span><b>2</b> Seleccionar</span><span><b>3</b> Revisar y trasladar</span></div></section><div class="layout"><section class="panel"><div class="sectionhead"><span class="num">01</span><div><h2>Motivo del programa</h2><p>Selecciona la situación principal. Puedes añadir otras necesidades después.</p></div></div><div id="types" class="typegrid"></div><p id="typeinfo" class="note"></p><div id="pendingopts" class="pendingopts" hidden><h3>Organización de la recuperación</h3><p class="hint">Marca solo lo previsto en el plan de la materia. No es obligatorio elegir ninguna opción adicional.</p><div class="pendinggrid"><label class="check"><input id="p_booklet" type="checkbox"> Cuadernillo de recuperación</label><label class="check"><input id="p_platform" type="checkbox" disabled> Actividades de recuperación en la plataforma (selecciónala abajo)</label><label class="check"><input id="p_deliver" type="checkbox"> Entregas periódicas</label><label class="check"><input id="p_exam" type="checkbox"> Prueba escrita</label><label class="check"><input id="p_practical" type="checkbox"> Actividades prácticas o proyectos</label><label class="check"><input id="p_current" type="checkbox"> Evidencias de la materia actual, si está previsto</label></div><div id="p_formatwrap" hidden><label>Formato del cuadernillo<select id="p_format"><option value="unknown">Sin especificar</option><option value="paper">Papel</option><option value="digital">Digital</option><option value="both">Papel y digital</option></select></label></div><div id="p_periodwrap" hidden><label>Distribución de las entregas<select id="p_period"><option value="periodic">Periódicas / fechas acordadas</option><option value="term">Trimestrales</option></select></label></div><label id="p_numberwrap" hidden>Número de entregas<select id="p_number"><option value="1">Una</option><option value="2">Dos</option><option value="3" selected>Tres</option><option value="other">Otro / por determinar</option></select></label><label>¿Cursa actualmente esta materia?<select id="p_cursa"><option value="unknown">Sin especificar</option><option value="yes">Sí</option><option value="no">No</option></select></label><label>Canal de consulta con el profesorado<select id="p_channel"><option value="unknown">Sin especificar</option><option value="class">Durante las clases</option><option value="platform">Plataforma educativa seleccionada</option><option value="tutorial">Horario de atención acordado</option><option value="both">Plataforma y horario acordado</option></select></label><label class="check"><input id="p_review" type="checkbox"> Revisión y orientación antes o después de cada entrega</label></div><div class="sectionhead compact"><span class="num">02</span><div><h2>Contexto educativo</h2><p>Datos opcionales para contextualizar la propuesta.</p></div></div><div class="context"><label>Etapa<select id="stage"><option>ESO</option><option>Primaria</option><option>Bachillerato</option></select></label><label>Curso<select id="course"></select></label><label class="wide">Materia o ámbito<select id="subject"></select></label><label id="otherwrap" class="wide" hidden>Indica la materia<input id="other" maxlength="80" placeholder="Materia o ámbito (sin datos personales)"></label></div><fieldset class="accessopts"><legend>Formas de acceso a la información <span class="optional">Opcional</span></legend><p class="hint">Selecciona la plataforma y los materiales que realmente utilizas. Se incluirán en el apartado correspondiente de Séneca.</p><label class="accesslabel" for="platform">Plataforma educativa</label><select id="platform"><option value="">No indicar / no se utiliza</option><option value="moodle">Moodle</option><option value="classroom">Google Classroom</option><option value="both">Moodle y Google Classroom</option><option value="generic">Plataforma educativa del centro</option><option value="other">Otra plataforma</option></select><label id="platformotherwrap" class="accesslabel" hidden>Nombre de la plataforma<input id="platformother" maxlength="70" placeholder="Nombre de la plataforma"></label><div class="accessmaterials"><label class="check"><input type="checkbox" id="access_book"> Libro de texto</label><label class="check"><input type="checkbox" id="access_copies"> Fotocopias con actividades de refuerzo del aprendizaje</label><label class="check"><input type="checkbox" id="access_schemes"> Esquemas, resúmenes y mapas conceptuales realizados en clase</label></div></fieldset><details class="accessopts evalopts"><summary>Instrumentos de evaluación habituales <span class="optional">Opcional</span> <span id="evalcount" class="hint"></span></summary><p class="hint">Marca los que realmente empleas; en pendientes, solo los previstos en el plan de recuperación. Si no marcas ninguno, se ofrecerán orientaciones generales según las necesidades.</p><div id="evalchoices" class="pendinggrid"></div></details><div class="prefbar"><label class="check"><input type="checkbox" id="remember"> Recordar mis preferencias docentes</label><button type="button" id="saveprefs" class="secondary" disabled>Guardar preferencias</button><span id="prefstatus" class="hint" role="status"></span><p class="hint">Solo etapa, curso, materia del listado, plataforma del listado, materiales, instrumentos y extensión. No se guardan perfiles, necesidades ni textos del PRA.</p></div><div class="sectionhead compact"><span class="num">03</span><div><h2>Selección rápida <span class="optional">Opcional</span></h2><p>Aplica sugerencias orientativas por perfil. No equivalen a una evaluación ni a un diagnóstico.</p></div></div><div id="profiles" class="chips"></div><p class="hint">Los perfiles añaden sugerencias: no bloquean ni sustituyen tu selección. Puedes activar varios.</p><div class="sectionhead compact"><span class="num">04</span><div><h2>Necesidades de intervención</h2><p>Marca únicamente las que se ajusten al caso. Puedes modificar la selección entre 36 opciones generales. Pulsa o pasa el ratón por el icono de ayuda para ver una explicación breve y un ejemplo práctico.</p></div></div><div class="tools"><input id="search" type="search" placeholder="Buscar una necesidad…" aria-label="Buscar una necesidad"><button id="onlyselected" class="secondary" aria-pressed="false">Ver marcadas</button><button id="expand" class="secondary">Desplegar todo</button></div><div id="groups"></div><label class="observations">Otras necesidades o medidas (opcional)<textarea id="extra" rows="2" maxlength="800" placeholder="Describe una medida concreta, sin nombres ni datos identificativos. Se añadirá al apartado de actividades."></textarea></label><div class="generatebar"><div><strong id="count">0 seleccionadas</strong><div class="hint" id="stale"></div></div><label>Extensión<select id="length"><option value="brief">Breve (adaptable)</option><option value="normal" selected>Estándar adaptable</option><option value="long">Detallada (adaptable)</option></select></label><button id="generate" class="primary">Generar propuesta →</button></div><button class="link" id="reset">Limpiar y empezar de nuevo</button></section><section class="panel results" id="results"><div class="sectionhead"><span class="num">05</span><div><h2>Propuestas de otros aspectos a trabajar en el programa</h2><p>Revisa y edita el texto antes de trasladarlo a Séneca. Puedes gestionar las medidas de cada apartado o generar alternativas sin cambiar los demás. Redacción en líneas con guiones normales (-), sin viñetas especiales. La extensión se ajusta automáticamente: con pocas opciones es más breve y, si se seleccionan bastantes, añade algo más de desarrollo sin hacerse excesiva.</p></div></div><div id="empty" class="empty"><div class="documenticon">▤</div><h3>Tu propuesta aparecerá aquí</h3><p>Selecciona las necesidades y pulsa Generar propuesta.</p></div><div id="output" hidden><div id="summary" class="note"></div><div id="fields"></div><div class="exports"><button id="copyall" class="secondary">Copiar todo</button><button id="word" class="secondary">Word (.docx)</button><button id="pdf" class="secondary">Imprimir / PDF</button></div><div id="connector" hidden><hr><h3>Trasladar a Séneca</h3><p class="hint">Abre el formulario del PRA en Séneca. Si has abierto el generador desde esa página, solo se comprobará esa pestaña antes de escribir.</p><label class="check"><input type="checkbox" id="append" checked> Añadir al texto existente (sin repetir líneas idénticas)</label><button id="fill" class="primary full">Rellenar en Séneca</button><button id="undo" class="secondary full" disabled>Deshacer último traslado</button></div><p id="webnotice" class="note" hidden>Versión web: copia los textos o utiliza la extensión de Chrome para trasladarlos a Séneca.</p></div><p id="status" role="status" aria-live="polite"></p><div class="review"><b>Revisión docente imprescindible</b><p>Las sugerencias son orientativas; no sustituyen los acuerdos del equipo docente ni los criterios de evaluación. No introduzcas datos personales. La aplicación no envía información a servidores. Solo guarda preferencias generales si lo autorizas; no guarda el contenido de los PRA.</p></div></section></div><footer><b>Tecnología Insti</b> · Herramienta independiente, no oficial. <a href="https://www.juntadeandalucia.es/boja/2026/216803/2" target="_blank" rel="noopener noreferrer">Referencia normativa (Orden de 31/08/2026)</a><p>ESO: art. 33 de la Orden de 30/05/2023, modificado en 2026. La selección del motivo orienta un único programa, no crea expedientes separados. No incluye programas de profundización.</p></footer></main><dialog id="confirmdialog" aria-labelledby="confirmtitle"><form method="dialog"><h2 id="confirmtitle">Confirmar operación</h2><p id="confirmmessage"></p><div class="confirm-actions"><button value="cancel" autofocus>Cancelar</button><button class="primary" value="ok">Continuar</button></div></form></dialog><script>const BANK = [
+  {
+    "title": "Comprensión y recuperación de aprendizajes",
+    "items": [
+      {
+        "id": "comprender",
+        "label": "Comprensión de conceptos y explicaciones",
+        "help": "Cuando cuesta identificar lo esencial, entender conceptos o conectar conocimientos nuevos con los previos.",
+        "measures": [
+          "Se presentarán los contenidos de forma progresiva, destacando las ideas esenciales y relacionándolas con ejemplos cercanos y conocimientos previos.",
+          "Se alternarán explicaciones breves con preguntas de comprobación, ejemplos y actividades de relación entre conceptos.",
+          "Se utilizarán organizadores previos, esquemas de síntesis y modelos concretos que faciliten la comprensión.",
+          "Se reservarán momentos breves de recapitulación antes de avanzar hacia contenidos nuevos.",
+          "Se comprobará la comprensión mediante preguntas de aplicación y explicaciones con palabras propias."
+        ],
+        "brief": [
+          "Destacar las ideas clave antes de ampliar la explicación",
+          "Localizar y resumir tres ideas esenciales",
+          "Esquemas de síntesis y ejemplos contrastados",
+          "Reservar un momento de recapitulación al cierre",
+          "Comprobar la identificación de las ideas mediante preguntas breves"
+        ]
+      },
+      {
+        "id": "consigna",
+        "label": "Comprensión de instrucciones y enunciados",
+        "help": "Cuando no identifica qué se le pide, confunde los datos o necesita aclaraciones para empezar.",
+        "measures": [
+          "Se ofrecerán consignas claras, con el objetivo, los datos y el producto esperado diferenciados.",
+          "Antes de comenzar, se pedirá que identifique qué debe hacer y, cuando sea necesario, se mostrarán ejemplos equivalentes sin resolver la tarea.",
+          "Se facilitarán modelos de respuesta, tarjetas de verbos de acción y enunciados estructurados.",
+          "Se comprobará al inicio de la actividad que ha comprendido las instrucciones, permitiendo aclaraciones cuando proceda.",
+          "Se cuidará la claridad de los enunciados y se aclararán consignas cuando su comprensión no sea el aprendizaje evaluado, sin anticipar respuestas."
+        ],
+        "brief": [
+          "Presentar objetivo, datos y producto esperado por separado",
+          "Reformular la consigna antes de resolverla",
+          "Tarjetas de verbos de acción y ejemplos de respuesta",
+          "Comprobar la comprensión antes del trabajo autónomo",
+          "Valorar la correspondencia entre consigna y respuesta"
+        ]
+      },
+      {
+        "id": "consolidar",
+        "label": "Consolidación y memoria de aprendizajes",
+        "help": "Cuando olvida contenidos trabajados o necesita más práctica para afianzar los conocimientos esenciales.",
+        "measures": [
+          "Se destacarán los aprendizajes imprescindibles y se facilitarán referencias de consulta para su recuperación.",
+          "Se propondrán actividades de repaso espaciado y dificultad progresiva, retomando los errores frecuentes y evitando ejercicios repetitivos innecesarios.",
+          "Se emplearán fichas de repaso, ejemplos resueltos y actividades autocorregibles cuando estén disponibles.",
+          "Se distribuirán pequeñas sesiones de consolidación durante el periodo de aplicación del programa.",
+          "Se recogerán evidencias sucesivas para comprobar la retención y aplicación de los aprendizajes esenciales."
+        ],
+        "brief": [
+          "Recuperar contenidos con claves visuales y preguntas",
+          "Practicar la recuperación espaciada sin consultar apuntes al inicio",
+          "Tarjetas de repaso y preguntas acumulativas",
+          "Distribuir pequeñas sesiones de repaso en la semana",
+          "Contrastar el progreso en comprobaciones sucesivas"
+        ]
+      },
+      {
+        "id": "razonar",
+        "label": "Razonamiento y resolución de problemas",
+        "help": "Cuando cuesta elegir una estrategia, relacionar datos, justificar decisiones o resolver situaciones nuevas.",
+        "measures": [
+          "Se explicitarán los pasos de razonamiento mediante ejemplos comentados y representaciones de los datos relevantes.",
+          "Se trabajarán problemas graduados, comparando estrategias y retirando progresivamente las ayudas para favorecer la resolución autónoma.",
+          "Se facilitarán guías de resolución, diagramas y ejemplos de procedimientos con distintos niveles de apoyo.",
+          "Se alternarán momentos de resolución guiada con tiempos de reflexión y trabajo individual.",
+          "Se valorará la estrategia empleada, su justificación y la comprobación del resultado conforme al criterio evaluado."
+        ],
+        "brief": [
+          "Hacer visible el proceso de pensamiento con ejemplos comentados",
+          "Comparar soluciones y justificar la elección",
+          "Diagramas de decisión y modelos razonados",
+          "Facilitar tiempo para pensar antes de compartir respuestas",
+          "Evaluar el procedimiento y no solo el resultado"
+        ]
+      },
+      {
+        "id": "transferir",
+        "label": "Aplicación práctica de los conocimientos",
+        "help": "Cuando comprende la teoría pero le cuesta utilizarla en tareas reales o contextos distintos.",
+        "measures": [
+          "Se mostrarán conexiones entre los contenidos y situaciones cotidianas o propias de la materia.",
+          "Se plantearán retos y casos prácticos que permitan aplicar lo aprendido en situaciones progresivamente menos familiares.",
+          "Se utilizarán modelos de aplicación, demostraciones y materiales relacionados con contextos reales.",
+          "Se organizarán momentos de ensayo acompañado y aplicación autónoma.",
+          "Se recogerán evidencias de transferencia mediante situaciones nuevas y explicación del procedimiento seguido."
+        ],
+        "brief": [
+          "Mostrar cómo se aplica un mismo saber en varios contextos",
+          "Resolver una situación nueva con pistas decrecientes",
+          "Casos cercanos y modelos de aplicación",
+          "Organizar una fase de ensayo y otra de aplicación individual",
+          "Valorar la justificación de la estrategia en un contexto nuevo"
+        ]
+      },
+      {
+        "id": "ritmo",
+        "label": "Ritmo de aprendizaje y práctica adicional",
+        "help": "Cuando necesita más tiempo, repeticiones guiadas o una progresión más gradual.",
+        "measures": [
+          "Se priorizarán los contenidos esenciales y se presentarán en una secuencia accesible, ajustando los apoyos al punto de partida.",
+          "Se graduará la dificultad de las tareas, incluyendo práctica adicional y oportunidades de revisión en aquellos aprendizajes aún no consolidados.",
+          "Se proporcionarán materiales con distintos grados de ayuda, desde modelos completos hasta guías parciales.",
+          "Se ajustarán los tiempos de trabajo y se fijarán metas intermedias alcanzables según la evolución observada.",
+          "Se realizarán comprobaciones periódicas para decidir si procede mantener, reducir o modificar los apoyos."
+        ],
+        "brief": [
+          "Partir de una comprobación de saberes imprescindibles",
+          "Reforzar las lagunas detectadas mediante tareas específicas",
+          "Mapa de prerrequisitos y actividades de recuperación",
+          "Alternar refuerzo focalizado y participación en la programación común",
+          "Comprobar la recuperación con evidencias vinculadas a los criterios"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Comunicación y tratamiento de la información",
+    "items": [
+      {
+        "id": "lectura",
+        "label": "Comprensión y fluidez lectora",
+        "help": "Cuando leer con precisión, localizar ideas o interpretar el significado de un texto dificulta el aprendizaje.",
+        "measures": [
+          "Se presentarán textos estructurados y se anticiparán el tema, el vocabulario y las ideas principales.",
+          "Se utilizarán actividades de lectura guiada, localización de información y preguntas de comprensión, reduciendo la carga lectora ajena al objetivo.",
+          "Se facilitarán textos segmentados, organizadores de lectura y, cuando proceda, recursos de lectura acompañada o en voz alta.",
+          "Se ofrecerá un tiempo de lectura ajustado a la dificultad y se alternarán momentos de lectura individual y guiada.",
+          "Se distinguirán las dificultades de acceso al texto del aprendizaje evaluado y se recogerán evidencias de comprensión mediante formatos adecuados."
+        ],
+        "brief": [
+          "Anticipar el tema y señalar la estructura del texto",
+          "Responder a preguntas que exijan localizar evidencias",
+          "Textos segmentados con encabezados claros",
+          "Alternar lectura acompañada y lectura autónoma",
+          "Comprobar la respuesta y la evidencia textual utilizada"
+        ]
+      },
+      {
+        "id": "escritura",
+        "label": "Expresión escrita y organización de ideas",
+        "help": "Cuando cuesta redactar, estructurar respuestas, revisar textos o expresar por escrito lo que sabe.",
+        "measures": [
+          "Se mostrarán modelos de textos y respuestas, explicando su estructura y los elementos que deben incluir.",
+          "Se propondrán tareas de escritura por fases, desde la planificación de ideas hasta la revisión de la producción final.",
+          "Se facilitarán plantillas, guiones, conectores y listas de revisión, así como apoyos de escritura autorizados cuando proceda.",
+          "Se reservará tiempo para preparar y revisar las respuestas, ajustando la carga de copia cuando no sea el objetivo.",
+          "Se utilizarán rúbricas claras y se diferenciarán los errores de presentación o escritura de los aprendizajes específicos que se evalúan."
+        ],
+        "brief": [
+          "Mostrar la estructura de producciones escritas mediante ejemplos",
+          "Planificar, redactar y revisar un texto en fases",
+          "Plantillas de planificación y conectores",
+          "Separar el tiempo de planificación del de revisión",
+          "Valorar organización y contenido mediante criterios explícitos"
+        ]
+      },
+      {
+        "id": "oral",
+        "label": "Comprensión y expresión oral",
+        "help": "Cuando cuesta seguir explicaciones orales, formular preguntas o comunicar conocimientos verbalmente.",
+        "measures": [
+          "Se acompañarán las explicaciones orales de referencias visuales, pausas y comprobaciones de comprensión.",
+          "Se facilitarán intervenciones breves y preparadas, reformulación de explicaciones y actividades de comunicación ajustadas al objetivo.",
+          "Se emplearán guiones de intervención, apoyos visuales, audios o modelos de expresión oral cuando resulten adecuados.",
+          "Se proporcionará tiempo para preparar las intervenciones y se favorecerán intercambios en parejas o grupos pequeños.",
+          "Se recogerán evidencias de comprensión y expresión mediante observación, preguntas y producciones orales pertinentes."
+        ],
+        "brief": [
+          "Anticipar preguntas y ofrecer modelos de exposición",
+          "Explicar un procedimiento con apoyo de un guion",
+          "Tarjetas de palabras clave y soportes visuales",
+          "Permitir ensayos en pareja antes de intervenir",
+          "Valorar la claridad del mensaje con una escala conocida"
+        ]
+      },
+      {
+        "id": "vocabulario",
+        "label": "Vocabulario y lenguaje de la materia",
+        "help": "Cuando los términos específicos, símbolos verbales o expresiones académicas suponen una barrera.",
+        "measures": [
+          "Se anticipará el vocabulario esencial y se explicará mediante definiciones claras, imágenes y ejemplos de uso.",
+          "Se incorporarán actividades de asociación, clasificación y utilización del vocabulario en situaciones propias de la materia.",
+          "Se facilitarán glosarios, tarjetas de conceptos y materiales de consulta apropiados.",
+          "Se dedicarán momentos breves a revisar términos antes de abordar tareas que los requieran.",
+          "Se comprobará el uso comprensivo del vocabulario en actividades contextualizadas, sin limitar la valoración a su memorización."
+        ],
+        "brief": [
+          "Introducir términos técnicos con definiciones y ejemplos",
+          "Relacionar términos con imágenes, usos y contraejemplos",
+          "Glosarios visuales y bancos de palabras",
+          "Recuperar vocabulario en momentos breves y recurrentes",
+          "Comprobar el uso de términos en un contexto significativo"
+        ]
+      },
+      {
+        "id": "graficos",
+        "label": "Interpretación de gráficos, símbolos y datos",
+        "help": "Cuando necesita ayuda para comprender tablas, planos, gráficos, fórmulas o representaciones visuales.",
+        "measures": [
+          "Se explicarán las convenciones de las representaciones gráficas mediante ejemplos comentados y referencias visuales.",
+          "Se plantearán actividades de interpretación y elaboración de tablas, gráficos o esquemas de dificultad progresiva.",
+          "Se utilizarán modelos anotados, leyendas, plantillas y representaciones adaptadas a la materia.",
+          "Se alternará la interpretación acompañada con la práctica individual y se reservará tiempo para comprobar los datos.",
+          "Se valorará la interpretación correcta y el uso de las representaciones en función del aprendizaje que se pretende evaluar."
+        ],
+        "brief": [
+          "Explicar leyendas, unidades y convenciones antes de interpretar",
+          "Transformar datos entre representaciones y explicar su significado",
+          "Tablas anotadas, pictogramas y gráficos de referencia",
+          "Realizar primero una interpretación guiada",
+          "Valorar la lectura correcta de escalas, símbolos y relaciones"
+        ]
+      },
+      {
+        "id": "idioma",
+        "label": "Comprensión de la lengua de enseñanza",
+        "help": "Cuando el dominio del idioma dificulta seguir explicaciones, acceder a materiales o participar.",
+        "measures": [
+          "Se utilizará lenguaje claro, apoyos visuales y referencias lingüísticas ajustadas al nivel de comprensión.",
+          "Se plantearán actividades contextualizadas que permitan participar y adquirir progresivamente el vocabulario necesario.",
+          "Se facilitarán glosarios visuales o bilingües y modelos de respuesta cuando sean adecuados.",
+          "Se favorecerá el apoyo entre iguales y se coordinarán las actuaciones con los recursos del centro cuando proceda.",
+          "Se recogerán evidencias mediante formatos accesibles, diferenciando la barrera lingüística del contenido evaluado cuando sea posible."
+        ],
+        "brief": [
+          "Usar mensajes claros y contextualizar el vocabulario nuevo",
+          "Relacionar imágenes, palabras y acciones en tareas significativas",
+          "Glosarios bilingües cuando proceda y apoyos visuales",
+          "Facilitar interacción con iguales y acompañamiento inicial",
+          "Distinguir el dominio lingüístico de los saberes de la materia cuando el criterio lo permita"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Autonomía y organización",
+    "items": [
+      {
+        "id": "organizar",
+        "label": "Organización de materiales y tareas",
+        "help": "Cuando olvida material, pierde documentos o necesita una estructura clara para organizar el trabajo.",
+        "measures": [
+          "Se presentará de forma visible la información esencial sobre tareas, materiales y plazos.",
+          "Se practicarán rutinas de preparación del material, planificación y comprobación de los pasos necesarios.",
+          "Se facilitarán agendas, calendarios, listas de comprobación o planificadores sencillos.",
+          "Se reservarán momentos al inicio y al cierre de las sesiones para organizar el puesto y revisar las tareas pendientes.",
+          "Se registrará la evolución en la preparación de materiales y organización de tareas para ajustar el apoyo."
+        ],
+        "brief": [
+          "Mostrar al inicio los materiales necesarios y dónde encontrarlos",
+          "Preparar el puesto mediante una rutina breve",
+          "Inventario visual y lista de materiales",
+          "Reservar minutos de preparación y recogida",
+          "Registrar la autonomía en la preparación del trabajo"
+        ]
+      },
+      {
+        "id": "autonomia",
+        "label": "Inicio y realización autónoma de tareas",
+        "help": "Cuando depende continuamente del profesorado o no sabe cómo comenzar y continuar una actividad.",
+        "measures": [
+          "Se ofrecerán instrucciones secuenciadas y referencias claras sobre el primer paso y el objetivo de la actividad.",
+          "Las tareas complejas se dividirán en metas intermedias, retirando las ayudas de forma progresiva y enseñando estrategias para solicitar ayuda.",
+          "Se proporcionarán guías paso a paso, modelos de referencia y listas de comprobación.",
+          "Se alternarán momentos de apoyo inicial y trabajo autónomo, con revisiones intermedias según la necesidad observada.",
+          "Se observará el grado de autonomía, registrando qué apoyos necesita para iniciar, continuar y terminar las tareas."
+        ],
+        "brief": [
+          "Explicitar el primer paso y el resultado esperado",
+          "Iniciar con una microtarea y retirar progresivamente las ayudas",
+          "Tarjetas de arranque y modelos iniciales",
+          "Realizar una comprobación temprana y después espaciarla",
+          "Observar el inicio autónomo en tareas equivalentes"
+        ]
+      },
+      {
+        "id": "estudio",
+        "label": "Hábitos y técnicas de estudio",
+        "help": "Cuando no mantiene una rutina de estudio o desconoce estrategias para preparar tareas y pruebas.",
+        "measures": [
+          "Se orientará sobre qué contenidos repasar, qué materiales utilizar y cómo organizar el estudio.",
+          "Se practicarán técnicas de síntesis, recuperación activa y planificación mediante metas breves y realistas.",
+          "Se emplearán esquemas, preguntas de repaso, planificadores y materiales de autoevaluación.",
+          "Se acordarán momentos de seguimiento de la rutina y se revisará su eficacia de manera periódica.",
+          "Se comprobará el progreso con tareas de recuperación y registros sencillos de las estrategias utilizadas."
+        ],
+        "brief": [
+          "Explicar rutinas de repaso con objetivos concretos",
+          "Realizar prácticas cortas y distribuidas",
+          "Plan semanal y fichas de recuperación",
+          "Acordar momentos de estudio compatibles con la jornada",
+          "Revisar el cumplimiento y la eficacia de la rutina"
+        ]
+      },
+      {
+        "id": "revision",
+        "label": "Revisión y corrección de errores",
+        "help": "Cuando entrega sin revisar, repite errores o necesita aprender a utilizar las correcciones.",
+        "measures": [
+          "Se explicitarán los elementos que debe comprobar y se mostrarán ejemplos de errores habituales y sus correcciones.",
+          "Se ofrecerán oportunidades de revisión y mejora tras recibir retroalimentación específica sobre el siguiente paso.",
+          "Se facilitarán listas de cotejo, modelos corregidos y pautas de autocorrección.",
+          "Se reservará tiempo para revisar producciones antes de entregarlas y para aplicar las orientaciones recibidas.",
+          "Se compararán las primeras producciones con las revisadas y se recogerán evidencias del aprendizaje demostrado."
+        ],
+        "brief": [
+          "Mostrar procedimientos de verificación con ejemplos",
+          "Localizar errores, explicar su causa y corregirlos",
+          "Listas de cotejo y soluciones comentadas",
+          "Reservar un tiempo de autocorrección antes de entregar",
+          "Valorar las correcciones razonadas y el progreso"
+        ]
+      },
+      {
+        "id": "plazos",
+        "label": "Finalización y entrega de actividades",
+        "help": "Cuando acumula tareas sin terminar, incumple plazos o necesita controlar mejor su progreso.",
+        "measures": [
+          "Se comunicarán las tareas prioritarias, los plazos y el producto esperado de forma clara.",
+          "Se organizarán las actividades extensas en entregas parciales, con metas alcanzables y revisión del avance.",
+          "Se utilizarán calendarios visibles, registros de entregas y listas de tareas pendientes.",
+          "Se distribuirán los tiempos de trabajo en fases y se anticiparán las fechas de revisión y entrega.",
+          "Se hará un seguimiento de las entregas y del aprendizaje evidenciado en ellas, diferenciando ambos aspectos."
+        ],
+        "brief": [
+          "Explicitar requisitos mínimos y fechas de entrega",
+          "Completar productos parciales hasta cerrar la tarea",
+          "Calendario y lista de requisitos",
+          "Pactar revisiones intermedias y plazos realistas",
+          "Registrar tareas completadas y calidad de las entregas"
+        ]
+      },
+      {
+        "id": "transiciones",
+        "label": "Adaptación a rutinas y cambios",
+        "help": "Cuando necesita anticipación ante cambios de actividad, espacios, instrucciones o rutinas.",
+        "measures": [
+          "Se anticiparán los cambios mediante avisos breves y una secuencia de trabajo previsible.",
+          "Se introducirán las transiciones de forma gradual, explicitando qué finaliza y qué comienza.",
+          "Se podrán utilizar horarios visuales, agendas de sesión o señales de transición.",
+          "Se organizarán los cambios de actividad con tiempo suficiente y se ajustarán las rutinas según la respuesta observada.",
+          "Se observará la adaptación a las transiciones para revisar los apoyos, sin convertirla en un criterio académico ajeno a la materia."
+        ],
+        "brief": [
+          "Anticipar los cambios con información clara",
+          "Ensayar la transición y preparar lo necesario",
+          "Horario visual y avisos de transición",
+          "Acordar señales y tiempos previsibles para cambiar de tarea",
+          "Observar la adaptación y ajustar los apoyos"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Atención, motivación y participación",
+    "items": [
+      {
+        "id": "atencion",
+        "label": "Atención y concentración",
+        "help": "Cuando pierde el hilo de las explicaciones, se distrae o le cuesta retomar la actividad.",
+        "measures": [
+          "Se alternarán explicaciones breves con comprobaciones de comprensión y señales discretas para recuperar el foco.",
+          "Se propondrán tareas en bloques manejables, con objetivos concretos y pausas justificadas cuando sean necesarias.",
+          "Se facilitarán guiones visuales, listas de pasos y materiales sin elementos distractores innecesarios.",
+          "Se procurará una ubicación que favorezca la concentración y el acceso al profesorado, ajustando los tiempos de trabajo.",
+          "Se utilizará observación sistemática y comprobaciones breves de aprendizaje, valorando el desempeño conforme a los criterios aplicables."
+        ],
+        "brief": [
+          "Alternar explicaciones breves con comprobaciones activas",
+          "Responder a pequeñas preguntas durante la exposición",
+          "Guiones visuales y señales de atención",
+          "Ajustar la ubicación y reducir distractores evitables",
+          "Observar la participación y comprobar ideas clave"
+        ]
+      },
+      {
+        "id": "autorregular",
+        "label": "Autorregulación y control de impulsos",
+        "help": "Cuando responde precipitadamente, se bloquea o necesita aprender a gestionar pausas y frustración.",
+        "measures": [
+          "Se anticiparán las exigencias de la tarea y se mostrarán estrategias sencillas para detenerse, pensar y retomar el trabajo.",
+          "Se practicarán secuencias de planificación, revisión y recuperación tras errores o bloqueos, con ayudas ajustadas.",
+          "Se facilitarán recordatorios visuales de estrategias, temporizadores o pautas de autorregulación cuando sean útiles.",
+          "Se preverán pausas breves justificadas y momentos de reflexión antes de responder o cambiar de actividad.",
+          "Se registrará la eficacia de los apoyos y se ofrecerán oportunidades para demostrar el aprendizaje sin penalizar barreras ajenas al criterio."
+        ],
+        "brief": [
+          "Modelar una pausa de comprobación antes de decidir",
+          "Practicar la secuencia parar, pensar, actuar y revisar",
+          "Recordatorios visuales y lista de seguridad",
+          "Dar tiempo de respuesta sin presión innecesaria",
+          "Valorar las decisiones razonadas y la revisión previa"
+        ]
+      },
+      {
+        "id": "motivacion",
+        "label": "Motivación e implicación en el aprendizaje",
+        "help": "Cuando muestra poco interés, desconecta de las tareas o no encuentra utilidad en lo que aprende.",
+        "measures": [
+          "Se explicará la finalidad de las actividades y su relación con situaciones cercanas e intereses del alumnado.",
+          "Se propondrán metas concretas, actividades con sentido y opciones equivalentes de realización cuando sean compatibles con el objetivo.",
+          "Se utilizarán recursos contextualizados, retos breves y modelos de productos alcanzables.",
+          "Se establecerán objetivos intermedios con revisiones breves y oportunidades de elección ajustadas.",
+          "Se ofrecerá retroalimentación específica sobre los avances y se recogerán evidencias del aprendizaje alcanzado."
+        ],
+        "brief": [
+          "Relacionar el objetivo con situaciones relevantes para el alumnado",
+          "Elegir entre tareas equivalentes de aplicación cercana",
+          "Casos cotidianos y ejemplos de utilidad",
+          "Ofrecer momentos breves de elección y puesta en común",
+          "Valorar la consecución del objetivo en la tarea elegida"
+        ]
+      },
+      {
+        "id": "confianza",
+        "label": "Confianza y perseverancia",
+        "help": "Cuando evita retos, abandona ante errores o necesita reconocer sus capacidades y avances.",
+        "measures": [
+          "Se anticiparán los objetivos y se mostrarán ejemplos que ayuden a abordar las tareas con seguridad.",
+          "Se graduarán los retos y se ofrecerán oportunidades de ensayo, revisión y mejora, reforzando los avances concretos.",
+          "Se facilitarán modelos de referencia, escalas de progreso y guías de autoevaluación sencillas.",
+          "Se organizarán momentos de apoyo discreto y metas intermedias para evitar la dependencia constante.",
+          "Se compararán evidencias de progreso y se dará retroalimentación sobre fortalezas y próximos objetivos."
+        ],
+        "brief": [
+          "Mostrar metas observables y ejemplos de logro",
+          "Comparar una producción inicial con otra mejorada",
+          "Escalas de progreso y muestras de trabajos",
+          "Programar revisiones periódicas breves",
+          "Registrar cambios respecto al punto de partida sin sustituir los criterios"
+        ]
+      },
+      {
+        "id": "participar",
+        "label": "Participación y cooperación",
+        "help": "Cuando le cuesta intervenir, asumir responsabilidades o trabajar con otros compañeros.",
+        "measures": [
+          "Se explicitarán las normas, los roles y las formas de participar en las actividades compartidas.",
+          "Se promoverán tareas cooperativas con responsabilidades claras y momentos de trabajo individual identificables.",
+          "Se utilizarán tarjetas de roles, guiones de intervención y materiales compartidos accesibles.",
+          "Se aplicarán agrupamientos flexibles y apoyos entre iguales, evitando la dependencia permanente de un compañero.",
+          "Se recogerán evidencias individuales y grupales según los criterios aplicables, con observación y listas de cotejo cuando proceda."
+        ],
+        "brief": [
+          "Explicitar formas diversas de participar",
+          "Preparar una contribución concreta a una actividad compartida",
+          "Guiones de intervención y tarjetas de roles",
+          "Alternar participación individual, en pareja y en grupo",
+          "Valorar las contribuciones vinculadas al aprendizaje"
+        ]
+      },
+      {
+        "id": "iniciativa",
+        "label": "Iniciativa y toma de decisiones",
+        "help": "Cuando necesita apoyo para explorar alternativas, decidir cómo actuar o proponer soluciones.",
+        "measures": [
+          "Se mostrarán alternativas de actuación y se explicarán los criterios para seleccionar una estrategia.",
+          "Se ofrecerán tareas abiertas y decisiones guiadas, retirando gradualmente las pistas y favoreciendo propuestas propias.",
+          "Se facilitarán ejemplos contrastados, diagramas de decisión y materiales de experimentación adecuados.",
+          "Se reservará tiempo para explorar opciones y justificar decisiones antes de recibir ayuda adicional.",
+          "Se valorarán las decisiones razonadas y las evidencias del proceso conforme a los criterios de evaluación."
+        ],
+        "brief": [
+          "Mostrar que pueden existir distintas estrategias válidas",
+          "Comparar opciones y elaborar una propuesta justificada",
+          "Banco de ideas y plantillas de decisión",
+          "Reservar tiempo individual antes de debatir en grupo",
+          "Valorar la adecuación y justificación de la propuesta"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Accesibilidad e inclusión",
+    "items": [
+      {
+        "id": "visual",
+        "label": "Apoyos visuales y presentación accesible",
+        "help": "Cuando esquemas, imágenes, formatos claros o reducción de carga visual facilitan el acceso.",
+        "measures": [
+          "Se presentará la información con estructura clara, tipografía legible, palabras clave y apoyos visuales pertinentes.",
+          "Se utilizarán tareas con referencias gráficas y formatos de presentación ajustados, evitando información redundante.",
+          "Se facilitarán esquemas, infografías, plantillas y materiales digitales accesibles cuando estén disponibles.",
+          "Se organizarán los materiales y espacios para facilitar su consulta y se comprobará que los apoyos son eficaces.",
+          "Se utilizarán formatos de evaluación claros y accesibles, manteniendo el referente de evaluación correspondiente."
+        ],
+        "brief": [
+          "Asociar explicaciones a imágenes o diagramas pertinentes",
+          "Completar secuencias visuales y explicar sus relaciones",
+          "Esquemas, ilustraciones y códigos visuales consistentes",
+          "Mantener visibles los apoyos durante la práctica",
+          "Comprobar comprensión mediante respuestas apoyadas en gráficos"
+        ]
+      },
+      {
+        "id": "sensorial",
+        "label": "Acceso sensorial a la información",
+        "help": "Cuando existen barreras para percibir información visual o auditiva y se requieren ajustes específicos.",
+        "measures": [
+          "Se ofrecerán vías alternativas de acceso a la información según las barreras observadas y los apoyos acordados.",
+          "Se ajustarán las actividades para que la información relevante pueda percibirse por canales accesibles sin modificar el objetivo.",
+          "Se utilizarán los recursos de accesibilidad adecuados, como subtítulos, ampliación, audio o materiales táctiles cuando proceda.",
+          "Se revisarán ubicación, iluminación, ruido y condiciones de acceso de acuerdo con las necesidades individuales.",
+          "Se aplicarán los ajustes de acceso acordados y se verificará que las evidencias recogidas permiten valorar el aprendizaje previsto."
+        ],
+        "brief": [
+          "Presentar información esencial en un canal accesible y verificar su recepción",
+          "Realizar tareas con apoyos sensoriales adecuados",
+          "Materiales con subtítulos, transcripción o alternativas táctiles según necesidad",
+          "Ajustar iluminación, sonido y ubicación de forma individualizada",
+          "Comprobar el aprendizaje en condiciones de acceso acordadas"
+        ]
+      },
+      {
+        "id": "motor",
+        "label": "Acceso físico y manipulación de materiales",
+        "help": "Cuando necesita ajustes para utilizar herramientas, desplazarse o realizar actividades manuales.",
+        "measures": [
+          "Se explicarán los procedimientos utilizando demostraciones y materiales que puedan consultarse de forma accesible.",
+          "Se ajustarán la manipulación, la secuencia y el formato de las tareas según los apoyos acordados, preservando el objetivo de aprendizaje.",
+          "Se facilitarán herramientas, soportes o materiales adaptados cuando estén disponibles y resulten necesarios.",
+          "Se organizarán espacios accesibles, tiempos y condiciones de seguridad adecuados a la actividad.",
+          "Se recogerán evidencias mediante procedimientos accesibles y compatibles con el criterio evaluado."
+        ],
+        "brief": [
+          "Demostrar la tarea desde una posición y soporte accesibles",
+          "Realizar las acciones con adaptaciones de acceso acordadas",
+          "Útiles adaptados y soportes de estabilización cuando proceda",
+          "Organizar recorridos y puestos accesibles",
+          "Evaluar el aprendizaje evitando barreras motrices ajenas al criterio"
+        ]
+      },
+      {
+        "id": "comunicar",
+        "label": "Alternativas para comunicarse y responder",
+        "help": "Cuando necesita otros canales para expresar respuestas, participar o demostrar lo aprendido.",
+        "measures": [
+          "Se presentarán instrucciones y modelos en formatos compatibles con las formas de comunicación acordadas.",
+          "Se ofrecerán alternativas de respuesta oral, escrita, práctica o digital cuando permitan trabajar el mismo objetivo.",
+          "Se utilizarán guiones, sistemas de comunicación o recursos de apoyo acordados con los profesionales correspondientes.",
+          "Se facilitará tiempo suficiente para preparar y expresar las respuestas y se organizarán interacciones accesibles.",
+          "Se admitirán evidencias alternativas cuando sean compatibles con el criterio, sin modificar automáticamente el referente de evaluación."
+        ],
+        "brief": [
+          "Explicar opciones equivalentes de expresión del aprendizaje",
+          "Responder con el formato adecuado al objetivo evaluado",
+          "Herramientas de comunicación y soportes alternativos autorizados",
+          "Prever tiempo y condiciones para utilizar los apoyos",
+          "Aplicar los mismos referentes de evaluación cuando sean equivalentes"
+        ]
+      },
+      {
+        "id": "tecnologia",
+        "label": "Tecnología y recursos de apoyo",
+        "help": "Cuando herramientas de accesibilidad, lectura, dictado o dispositivos de apoyo favorecen el aprendizaje.",
+        "measures": [
+          "Se facilitará el acceso a la información mediante las herramientas de apoyo autorizadas y adecuadas al caso.",
+          "Se incorporarán actividades que permitan utilizar dichos recursos con autonomía progresiva.",
+          "Se emplearán, cuando estén recomendados y disponibles, recursos como lectura en voz alta, dictado, zoom o dispositivos específicos.",
+          "Se reservará tiempo para preparar y aprender a utilizar los apoyos, coordinando su disponibilidad cuando proceda.",
+          "Se documentarán los apoyos empleados y se recogerán evidencias compatibles con el aprendizaje evaluado."
+        ],
+        "brief": [
+          "Enseñar el uso funcional de la herramienta de acceso",
+          "Practicar su utilización en tareas reales de aula",
+          "Tecnología de apoyo autorizada y guías de uso",
+          "Prever tiempos de preparación y disponibilidad del recurso",
+          "Comprobar el logro con el apoyo habitual sin penalizar su uso"
+        ]
+      },
+      {
+        "id": "evaluacion",
+        "label": "Accesibilidad en tareas y pruebas",
+        "help": "Cuando el formato, el tiempo o la forma de responder dificulta demostrar los aprendizajes adquiridos.",
+        "measures": [
+          "Se anticipará la estructura de las actividades de evaluación y se explicarán los elementos que se van a valorar.",
+          "Se ofrecerán actividades de práctica con formatos equivalentes y oportunidades de corrección antes de nuevas comprobaciones.",
+          "Se facilitarán rúbricas, modelos de formato y recursos de acceso autorizados según el aprendizaje evaluado.",
+          "Se ajustarán formato, tiempo o distribución de las pruebas cuando esté justificado y acordado.",
+          "Se diversificarán los instrumentos y formas de respuesta cuando sean compatibles con los criterios; los ajustes de acceso no supondrán por sí solos cambios en estos."
+        ],
+        "brief": [
+          "Explicar qué evidencias permiten comprobar cada aprendizaje",
+          "Realizar productos o respuestas equivalentes cuando proceda",
+          "Rúbricas, modelos y formatos accesibles",
+          "Diversificar momentos de recogida de evidencias",
+          "Triangular evidencias sin modificar los criterios aplicables"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Continuidad académica y desempeño",
+    "items": [
+      {
+        "id": "recuperar",
+        "label": "Recuperación de aprendizajes no adquiridos",
+        "help": "Cuando hay dificultades detectadas al inicio o durante el curso y conviene recuperar aprendizajes concretos.",
+        "measures": [
+          "Se identificarán los aprendizajes que requieren refuerzo y se indicarán los materiales de referencia para recuperarlos.",
+          "Se propondrán actividades específicas sobre los errores detectados, con una progresión ajustada y nuevas oportunidades de práctica.",
+          "Se facilitarán fichas de consolidación, ejemplos y recursos de consulta vinculados a los aprendizajes pendientes.",
+          "Se establecerán momentos de revisión y objetivos parciales durante el periodo de aplicación.",
+          "Se recogerán evidencias de recuperación conforme a los criterios aplicables y se ajustará el plan según el progreso."
+        ],
+        "brief": [
+          "Compartir objetivos de mejora derivados de la evaluación inicial",
+          "Practicar los saberes concretos que necesitan refuerzo",
+          "Actividades diagnósticas y materiales de consolidación",
+          "Establecer una revisión temprana de la respuesta a las medidas",
+          "Contrastar evidencias posteriores con la evaluación inicial"
+        ]
+      },
+      {
+        "id": "asistencia",
+        "label": "Continuidad tras ausencias o escolarización irregular",
+        "help": "Cuando faltas de asistencia o cambios de escolarización han interrumpido el progreso académico.",
+        "measures": [
+          "Se facilitará una selección organizada de materiales esenciales y orientaciones para retomar el aprendizaje.",
+          "Se priorizarán las tareas necesarias para recuperar la continuidad, evitando una acumulación indiscriminada de ejercicios.",
+          "Se utilizarán materiales de consulta, guías de recuperación y la plataforma educativa si está disponible.",
+          "Se acordarán plazos realistas y momentos de consulta, coordinando el seguimiento con tutoría cuando proceda.",
+          "Se identificarán los aprendizajes recuperados y los que requieren nuevas oportunidades de práctica, sin confundir asistencia con calificación."
+        ],
+        "brief": [
+          "Facilitar una síntesis de aprendizajes esenciales del periodo",
+          "Priorizar tareas imprescindibles y recuperar contenidos por fases",
+          "Guía de reincorporación y materiales de consulta",
+          "Acordar un calendario gradual de reincorporación",
+          "Comprobar los aprendizajes recuperados sin confundir asistencia y logro"
+        ]
+      },
+      {
+        "id": "procedimientos",
+        "label": "Técnicas y procedimientos de la materia",
+        "help": "Cuando necesita práctica guiada para aplicar técnicas, utilizar herramientas o seguir protocolos seguros.",
+        "measures": [
+          "Se mostrarán los procedimientos y las normas de uso de herramientas mediante demostraciones comentadas.",
+          "Se propondrán prácticas progresivas, con supervisión y retirada gradual de las ayudas cuando sea seguro.",
+          "Se utilizarán guías de procedimiento, modelos, herramientas autorizadas y materiales adecuados a la actividad.",
+          "Se organizará el puesto de trabajo y se establecerán tiempos de práctica y supervisión ajustados al riesgo y al objetivo.",
+          "Se valorarán el proceso, la aplicación de técnicas y el cumplimiento de los criterios que correspondan mediante observación y evidencias prácticas."
+        ],
+        "brief": [
+          "Demostrar el procedimiento y verbalizar decisiones clave",
+          "Practicar la técnica con ejemplos y retirar ayudas gradualmente",
+          "Guías de procedimiento y modelos de referencia",
+          "Alternar demostración, práctica supervisada y trabajo autónomo",
+          "Observar el proceso y valorar el resultado según los criterios"
+        ]
+      },
+      {
+        "id": "precision",
+        "label": "Calidad y precisión de las producciones",
+        "help": "Cuando necesita mejorar la exactitud, la presentación o la calidad técnica de sus trabajos.",
+        "measures": [
+          "Se mostrarán ejemplos de referencia y se explicarán los aspectos de calidad relevantes para el aprendizaje.",
+          "Se propondrán tareas de práctica y revisión centradas en los errores de ejecución más frecuentes.",
+          "Se facilitarán modelos, instrumentos de comprobación y rúbricas con descriptores claros.",
+          "Se reservará tiempo para realizar comprobaciones intermedias y mejorar las producciones.",
+          "Se compararán evidencias de ejecución y revisión, valorando la calidad conforme a los criterios de la materia."
+        ],
+        "brief": [
+          "Mostrar ejemplos con distintos niveles de calidad",
+          "Revisar una producción y mejorar aspectos concretos",
+          "Modelos de referencia y herramientas de comprobación",
+          "Prever una fase final de ajuste y revisión",
+          "Aplicar criterios de calidad previamente compartidos"
+        ]
+      },
+      {
+        "id": "seguimiento",
+        "label": "Seguimiento individual del progreso",
+        "help": "Cuando conviene revisar con frecuencia las medidas, ajustar apoyos y establecer metas observables.",
+        "measures": [
+          "Se comunicarán objetivos concretos y se facilitarán orientaciones sobre los siguientes pasos según el progreso.",
+          "Se propondrán tareas breves de comprobación y mejora que permitan identificar qué aprendizajes requieren mayor apoyo.",
+          "Se utilizarán registros de progreso, listas de cotejo y evidencias de las producciones realizadas.",
+          "Se fijarán momentos de revisión y se coordinarán las medidas con el equipo docente cuando proceda.",
+          "Se revisará la eficacia de las medidas mediante indicadores observables y se decidirá si mantenerlas, modificarlas o retirarlas."
+        ],
+        "brief": [
+          "Se comunicarán objetivos concretos y se facilitarán orientaciones sobre los siguientes pasos según el progreso.",
+          "Se propondrán tareas breves de comprobación y mejora que permitan identificar qué aprendizajes requieren mayor apoyo.",
+          "Se utilizarán registros de progreso, listas de cotejo y evidencias de las producciones realizadas.",
+          "Se fijarán momentos de revisión y se coordinarán las medidas con el equipo docente cuando proceda.",
+          "Se revisará la eficacia de las medidas mediante indicadores observables y se decidirá si mantenerlas, modificarlas o retirarlas."
+        ]
+      },
+      {
+        "id": "incorporacion",
+        "label": "Adaptación al centro y a la dinámica de aula",
+        "help": "Cuando necesita conocer las rutinas, recursos, normas y formas de trabajo tras una incorporación o cambio.",
+        "measures": [
+          "Se explicarán las rutinas, los canales de información y los materiales imprescindibles para participar en la materia.",
+          "Se propondrán tareas iniciales accesibles para identificar el punto de partida y favorecer la incorporación progresiva.",
+          "Se facilitarán guías de aula, calendarios y modelos de actividades habituales.",
+          "Se organizarán momentos de acogida, consulta y apoyo entre iguales cuando resulten adecuados.",
+          "Se realizará un seguimiento inicial de los aprendizajes y de la eficacia de las medidas de acceso para ajustar el programa."
+        ],
+        "brief": [
+          "Se explicarán las rutinas, los canales de información y los materiales imprescindibles para participar en la materia.",
+          "Se propondrán tareas iniciales accesibles para identificar el punto de partida y favorecer la incorporación progresiva.",
+          "Se facilitarán guías de aula, calendarios y modelos de actividades habituales.",
+          "Se organizarán momentos de acogida, consulta y apoyo entre iguales cuando resulten adecuados.",
+          "Se realizará un seguimiento inicial de los aprendizajes y de la eficacia de las medidas de acceso para ajustar el programa."
+        ]
+      }
+    ]
+  }
+];
+
+const HELP_EXTRAS = {"comprender": "por ejemplo, cuando entiende mejor al ver un esquema o al relacionar el contenido con ejemplos cercanos", "consigna": "por ejemplo, cuando empieza bien después de leer juntos el enunciado o al subrayar verbos y datos", "razonar": "por ejemplo, cuando necesita que se modelen los pasos para resolver un problema o justificar una respuesta", "consolidar": "por ejemplo, cuando olvida aprendizajes trabajados y necesita repasos breves y frecuentes", "ritmo": "por ejemplo, cuando requiere más tiempo, menos ejercicios o una secuencia más progresiva", "recuperar": "por ejemplo, cuando arrastra lagunas de unidades anteriores o necesita volver a aprendizajes básicos", "lectura": "por ejemplo, cuando le cuesta localizar ideas principales, interpretar preguntas o seguir un texto largo", "escritura": "por ejemplo, cuando sabe la respuesta, pero le cuesta ordenarla o expresarla por escrito", "oral": "por ejemplo, cuando necesita apoyo para seguir explicaciones, participar o exponer con claridad", "vocabulario": "por ejemplo, cuando los términos técnicos de la materia le impiden comprender la tarea", "graficos": "por ejemplo, cuando necesita ayuda para leer tablas, ejes, planos, esquemas o diagramas", "idioma": "por ejemplo, cuando comprende mejor con imágenes, palabras clave o modelos muy claros", "organizar": "por ejemplo, cuando olvida material, pierde fichas o no anota bien las tareas", "autonomia": "por ejemplo, cuando necesita apoyo para iniciar una tarea y mantenerla hasta terminarla", "plazos": "por ejemplo, cuando entrega fuera de fecha o necesita hitos intermedios para avanzar", "revision": "por ejemplo, cuando mejora claramente al revisar con una lista de comprobación", "estudio": "por ejemplo, cuando necesita aprender a resumir, repasar o preparar pruebas con método", "transiciones": "por ejemplo, cuando los cambios de actividad o de espacio le desorganizan", "atencion": "por ejemplo, cuando se distrae con facilidad y necesita tareas cortas y metas concretas", "motivacion": "por ejemplo, cuando participa más al ver utilidad en la tarea o al recibir refuerzo positivo", "confianza": "por ejemplo, cuando evita participar por miedo a equivocarse o abandona pronto", "participar": "por ejemplo, cuando necesita apoyos para implicarse en el trabajo individual o cooperativo", "iniciativa": "por ejemplo, cuando espera siempre indicaciones y le cuesta proponer o decidir cómo empezar", "autorregular": "por ejemplo, cuando necesita ayuda para controlar impulsos, frustración o nerviosismo", "visual": "por ejemplo, cuando mejora con esquemas, pictogramas, modelos o información muy estructurada", "sensorial": "por ejemplo, cuando el ruido, la luz o la presentación del material interfieren en su acceso", "motor": "por ejemplo, cuando precisa ajustes para manipular materiales, escribir o usar herramientas", "tecnologia": "por ejemplo, cuando un lector de pantalla, un audio o una plantilla digital facilitan el acceso", "comunicar": "por ejemplo, cuando necesita apoyos para expresar ideas, responder o interactuar", "asistencia": "por ejemplo, cuando faltas, cambios de centro o interrupciones han afectado al seguimiento", "transferir": "por ejemplo, cuando comprende un contenido, pero le cuesta aplicarlo en otra tarea o situación", "evaluacion": "por ejemplo, cuando necesita mostrar lo aprendido con formatos más accesibles o apoyados", "procedimientos": "por ejemplo, cuando necesita practicar paso a paso una técnica, herramienta o protocolo", "precision": "por ejemplo, cuando conviene mejorar la exactitud, la presentación o el acabado final", "seguimiento": "por ejemplo, cuando es importante revisar cada cierto tiempo si las medidas están funcionando", "incorporacion": "por ejemplo, cuando necesita conocer rutinas, materiales y canales del centro tras llegar nuevo"};
+BANK.forEach(group=>group.items.forEach(item=>{if(HELP_EXTRAS[item.id]&&!item.help.includes("Ejemplo:")) item.help += " Ejemplo: "+HELP_EXTRAS[item.id]+".";}));
+</script><script>'use strict';
+const $=id=>document.getElementById(id), all=BANK.flatMap(g=>g.items), byId=Object.fromEntries(all.map(x=>[x.id,x]));
+const BANK_FIELDS=[['T_METODOLOGIA','Formas de acceso a la información'],['T_ACT_TAREAS','Tipos de actividades y tareas'],['T_RECURSOS','Recursos didácticos'],['T_AGRDISTESPTIE','Agrupamientos, distribución espacios y tiempos'],['T_INSEVAL','Instrumentos de evaluación']];
+const FIELD_ORDER=[1,0,2,3,4], FIELDS=FIELD_ORDER.map(i=>BANK_FIELDS[i]);
+const TYPES=[['difficulty','Dificultades de aprendizaje','Durante el curso o en la evaluación inicial.','Refuerzo de aprendizajes cuya evolución no es adecuada. No requiere esperar a una evaluación trimestral.',['recuperar','consolidar','revision','seguimiento']],['neae','Necesidades específicas de apoyo (NEAE)','Respuesta educativa ajustada al caso.','Selecciona, si procede, un perfil orientativo y revisa las medidas acordadas con el equipo docente y orientación.',['autonomia','evaluacion']],['repeat','Alumnado repetidor','No ha promocionado de curso.','Parte de las dificultades del curso anterior; modifica las estrategias de refuerzo según su eficacia.',['recuperar','estudio','organizar','seguimiento']],['pending','Materia pendiente','Promoción con materias sin superar.','Identifica los aprendizajes y criterios pendientes y establece hitos de recuperación.',['recuperar','plazos','seguimiento']]];
+const PROFILES=[['TDAH / atención',['atencion','autorregular','organizar','autonomia']],['DEA · Lectura / dislexia',['lectura','visual','consigna','evaluacion']],['DEA · Escritura / disgrafía',['escritura','comunicar','visual','revision','consigna']],['DEA · Cálculo / discalculia',['consolidar','comprender','graficos','razonar','revision']],['NEE · Discapacidad intelectual',['consolidar','comprender','autonomia','visual','transferir']],['NEE · Autismo (TEA)',['transiciones','visual','consigna','autonomia','autorregular','participar']],['NEE · Sensorial',['sensorial','visual','tecnologia','comunicar']],['NEE · Motora',['motor','tecnologia','comunicar','visual','evaluacion']],['Comunicación y lenguaje',['oral','vocabulario','visual','comunicar']],['Incorporación tardía / lengua',['incorporacion','idioma','vocabulario','visual','participar']],['Desventaja socioeducativa',['asistencia','organizar','estudio','motivacion','ritmo']],['Altas capacidades · barreras de participación',['iniciativa','transferir','motivacion','participar','confianza']],['Refuerzo de hábitos de estudio',['estudio','organizar','plazos','revision','motivacion']],['Refuerzo ordinario general',['consolidar','consigna','recuperar','revision','confianza']]];
+const SUBJECTS={ESO:['Lengua Castellana y Literatura','Matemáticas','Matemáticas A','Matemáticas B','Primera Lengua Extranjera','Inglés','Geografía e Historia','Biología y Geología','Física y Química','Tecnología y Digitalización','Tecnología','Digitalización','Computación y Robótica','Educación Física','Educación Plástica, Visual y Audiovisual','Música','Educación en Valores Cívicos y Éticos','Economía y Emprendimiento','Latín','Ámbito Científico-Tecnológico','Ámbito Lingüístico y Social','Ámbito Práctico','Otra materia o ámbito'],Primaria:['Lengua Castellana y Literatura','Matemáticas','Conocimiento del Medio Natural, Social y Cultural','Primera Lengua Extranjera','Educación Artística','Educación Física','Educación en Valores Cívicos y Éticos','Otra materia o ámbito'],Bachillerato:['Lengua Castellana y Literatura','Matemáticas','Matemáticas Aplicadas a las Ciencias Sociales','Primera Lengua Extranjera','Filosofía','Historia de España','Historia del Mundo Contemporáneo','Biología','Física','Química','Tecnología e Ingeniería','Dibujo Técnico','Economía','Educación Física','Otra materia o ámbito']};
+const CONTEXT=[[/matem|cálculo/i,['Representaciones numéricas y gráficas de los saberes trabajados','Problemas graduados con datos y procedimientos propios de la materia','Ejemplos resueltos y materiales de representación matemática','Práctica guiada seguida de resolución individual','Evidencias de razonamiento matemático, procedimiento y comprobación']], [/tecnolog|robótica|digital|práctico|dibujo técnico/i,['Demostraciones, esquemas técnicos y secuencias de trabajo','Pequeños retos de diseño, montaje, representación o programación según los contenidos','Modelos, simulaciones y guías de procedimiento','Organización del puesto de trabajo y supervisión de las fases necesarias','Evidencias del proceso técnico y del producto conforme a los criterios']], [/lengua|latín|inglés|francés/i,['Modelos de textos y ejemplos de comunicación contextualizados','Actividades de comprensión, producción y revisión de mensajes','Guiones, glosarios y ejemplos de textos propios de la materia','Alternancia de trabajo individual y práctica comunicativa guiada','Evidencias de comprensión y producción ajustadas al criterio']], [/geograf|historia|social/i,['Mapas, cronologías y fuentes contextualizadas','Análisis guiado de fuentes y relaciones entre hechos y procesos','Mapas comentados, ejes cronológicos y organizadores de información','Tiempo para interpretar fuentes y contrastar explicaciones','Evidencias de interpretación de fuentes y argumentación']], [/biolog|física|química|medio|científico/i,['Representaciones de fenómenos y explicaciones apoyadas en ejemplos','Observación, interpretación de datos y actividades de aplicación científica','Modelos, tablas de datos y guías de observación','Práctica guiada y supervisión de experiencias cuando proceda','Evidencias de explicación científica y aplicación de procedimientos']], [/educación física/i,['Demostraciones motrices y consignas breves','Prácticas motrices progresivas y ajustadas al objetivo','Material deportivo adaptado cuando proceda y señales visuales','Organización segura de espacios y tiempos de práctica','Observación del desempeño motor conforme a los criterios']], [/música|artística|plástica/i,['Modelos sonoros o visuales y demostraciones','Producciones artísticas progresivas y revisión de técnicas','Materiales de creación y ejemplos de referencia','Tiempo para experimentación y revisión de producciones','Evidencias del proceso creativo y de la producción']]];
+let type='',profiles=new Set(),manual=new Map(),generated=false,dirty=false,lastTransfer=null,onlySelected=false;
+const extension=typeof chrome!=='undefined'&&!!chrome.scripting&&!!chrome.tabs;
+const params=new URLSearchParams(location.search), sourceTab=extension&&/^\d+$/.test(params.get('tabId')||'')?Number(params.get('tabId')):null, embedded=extension&&params.get('embedded')==='1';
+function ask(message){return new Promise(resolve=>{const d=$('confirmdialog');$('confirmmessage').textContent=message;d.returnValue='cancel';d.addEventListener('close',()=>resolve(d.returnValue==='ok'),{once:true});d.showModal();});}
+
+function node(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
+function recommendations(){return new Set([...(TYPES.find(t=>t[0]===type)?.[4]||[]),...[...profiles].flatMap(i=>PROFILES[i][1])]);}
+function selection(){const r=recommendations();for(const [id,on] of manual)on?r.add(id):r.delete(id);return r;}
+function change(){if(generated){dirty=true;$('stale').textContent='Configuración modificada: vuelve a generar.';['fill','copyall','word','pdf'].forEach(x=>$(x).disabled=true);}renderSelection();}
+function renderSelection(){const rec=recommendations(),sel=selection();document.querySelectorAll('.type').forEach(x=>x.setAttribute('aria-pressed',x.dataset.id===type));document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',profiles.has(+x.dataset.i)));document.querySelectorAll('.need').forEach(x=>{const id=x.dataset.id;x.querySelector('input').checked=sel.has(id);x.querySelector('.suggest').hidden=!rec.has(id);});document.querySelectorAll('.group').forEach((x,i)=>x.querySelector('.gcount').textContent=BANK[i].items.filter(a=>sel.has(a.id)).length+'/'+BANK[i].items.length);$('count').textContent=sel.size+' de '+all.length+' seleccionadas';$('generate').disabled=!type||(!sel.size&&!$('extra').value.trim());$('typeinfo').textContent=TYPES.find(t=>t[0]===type)?.[3]||'Elige el motivo principal del PRA.';$('pendingopts').hidden=type!=='pending';$('evalcount').textContent=selectedEval().length+' seleccionados';if(onlySelected)filter();}
+function closeTips(){document.querySelectorAll('.needinfo[aria-expanded=true]').forEach(b=>b.setAttribute('aria-expanded','false'));}document.addEventListener('click',e=>{if(!e.target.closest('.needinfo'))closeTips();});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeTips();if(document.activeElement?.classList.contains('needinfo'))document.activeElement.blur();}});function splitHelpText(text){const raw=String(text||'').trim();const parts=raw.split(/\s+Ejemplo:\s+/i);return {desc:parts[0].trim(),example:(parts[1]||'').trim()};}
+function setTipOpen(btn,open){btn.setAttribute('aria-expanded',String(open));}
+function wireTip(btn){let timer=null;const open=()=>{clearTimeout(timer);timer=setTimeout(()=>{closeTips();setTipOpen(btn,true);},350);};const close=()=>{clearTimeout(timer);setTipOpen(btn,false);};btn.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')open();});btn.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')close();});btn.addEventListener('focus',()=>{if(btn.matches(':focus-visible')){closeTips();setTipOpen(btn,true);}});btn.addEventListener('blur',close);btn.addEventListener('click',e=>{e.preventDefault();clearTimeout(timer);const wasOpen=btn.getAttribute('aria-expanded')==='true';closeTips();setTipOpen(btn,!wasOpen);});}
+
+function build(){for(const t of TYPES){const b=node('button','type');b.dataset.id=t[0];b.append(node('b','',t[1]),node('span','',t[2]));b.onclick=()=>{type=t[0];change();};$('types').append(b);}PROFILES.forEach((p,i)=>{const b=node('button','chip',p[0]);b.dataset.i=i;b.onclick=()=>{if(profiles.has(i))profiles.delete(i);else{profiles.add(i);for(const id of p[1])manual.delete(id);}change();};$('profiles').append(b);});BANK.forEach((g,i)=>{const d=node('details','group');d.open=i===0;const s=node('summary');s.append(node('span','gnum',String(i+1).padStart(2,'0')),node('span','',g.title),node('span','gcount'));d.append(s);const list=node('div','groupitems');for(const item of g.items){const l=node('div','need');l.dataset.id=item.id;const choice=node('label','needchoice');const input=node('input');input.type='checkbox';input.onchange=()=>{manual.set(item.id,input.checked);change();};const txt=node('span','',item.label);txt.append(node('small','suggest','Sugerencia del motivo o perfil'));choice.append(input,txt);const info=node('button','needinfo','?');info.type='button';info.setAttribute('aria-label','Información: '+item.label);info.setAttribute('aria-describedby','tip-'+item.id);info.setAttribute('aria-expanded','false');const parts=splitHelpText(item.help);const tip=node('div','needtip');tip.id='tip-'+item.id;tip.setAttribute('role','tooltip');const head=node('div','needtiphead');head.append(node('span','needtipicon','?'),node('div','needtiptitle',item.label));const body=node('div','needtipbody');body.append(node('span','needtiplabel','Qué significa'));body.append(node('p','needtiptext',parts.desc));if(parts.example){const ex=node('div','needtipexample');ex.append(node('span','needtiplabel','Ejemplo en el aula'));ex.append(node('div','',parts.example));body.append(ex);}tip.append(head,body);wireTip(info);l.append(choice,info,tip);list.append(l);}d.append(list);$('groups').append(d);});FIELDS.forEach((f,i)=>{const w=node('div','field'),h=node('div','fieldhead'),l=node('label','',`${i+1}. ${f[1]}`),b=node('button','secondary','Copiar');l.htmlFor='field'+i;const a=node('textarea');a.id='field'+i;a.rows=6;a.addEventListener('input',()=>{w.querySelector('.printtext').textContent=cleanText(a.value);});a.addEventListener('blur',()=>{a.value=cleanText(a.value);w.querySelector('.printtext').textContent=a.value;});const p=node('div','printtext');b.onclick=()=>{if(dirty){status('Vuelve a generar la propuesta antes de copiar.');return;}copy(a.value);};h.append(l,b);const count=node('div','charcount');count.id='chars'+i;w.append(h,a,p,count);a.addEventListener('input',()=>updateCount(i));a.addEventListener('blur',()=>updateCount(i));$('fields').append(w);fieldTools(w,h,i);});}
+function options(el,vals){el.replaceChildren(...vals.map(v=>{const o=node('option','',v);o.value=v;return o;}));}function setStage(){const n=$('stage').value==='ESO'?4:$('stage').value==='Primaria'?6:2;options($('course'),['Sin especificar',...Array.from({length:n},(_,i)=>`${i+1}.º`)]);options($('subject'),['Sin especificar',...SUBJECTS[$('stage').value]]);$('otherwrap').hidden=true;change();}
+function subject(){return $('subject').value==='Otra materia o ámbito'?$('other').value.trim():$('subject').value==='Sin especificar'?'':$('subject').value;}
+function cleanText(t){return String(t).normalize('NFC').replace(/\r\n?/g,'\n').replace(/[\u2022\u25e6\u2023\u2043\u2219\u25aa\u25ab\u25cf\u25cb\u25a0\u25a1]/g,'-').replace(/[\u00a0\u202f]/g,' ').replace(/[\u200b\u200c\u200d\u2060\ufeff]/g,'').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g,'').trim();}
+const BASE={
+ difficulty:['Se partirá de las dificultades observadas durante el curso, identificando los aprendizajes que necesitan refuerzo y facilitando orientaciones claras para retomarlos.','Se priorizarán actividades vinculadas a los aprendizajes no adquiridos, con práctica guiada, revisión de errores y oportunidades de mejora durante el periodo de aplicación.','Se seleccionarán materiales de consulta y refuerzo ajustados a las dificultades detectadas y a los recursos disponibles en el centro.','El refuerzo se integrará en la dinámica habitual de la materia, estableciendo momentos concretos de ayuda y revisión en función del progreso.','Se recogerán evidencias de los aprendizajes que requieren refuerzo mediante los instrumentos adecuados de la programación, revisando periódicamente los avances y ajustando la intervención.'],
+ neae:['Se facilitará el acceso a los aprendizajes mediante los apoyos y formatos adecuados a las barreras identificadas, de acuerdo con las medidas educativas acordadas para el caso.','Las actividades se ajustarán a las necesidades observadas mediante apoyos graduados, procurando favorecer la participación y la autonomía sin introducir cambios curriculares no acordados.','Se emplearán materiales accesibles y recursos de apoyo pertinentes, coordinando su uso con los profesionales implicados cuando proceda.','Se organizarán los espacios, tiempos y agrupamientos según las necesidades individuales y los apoyos establecidos por el equipo docente.','Se diversificarán los instrumentos y se aplicarán los ajustes de acceso que procedan, manteniendo los criterios de evaluación aplicables y documentando los apoyos utilizados.'],
+ repeat:['Se tomarán como referencia los aprendizajes no adquiridos y las dificultades observadas durante el curso anterior, ofreciendo nuevas vías de acceso a los contenidos.','Se modificarán las estrategias de trabajo que no resultaron eficaces el curso anterior y se reforzarán los aprendizajes esenciales mediante actividades ajustadas al punto de partida.','Se utilizarán materiales de refuerzo y modelos de trabajo alternativos a los que no hayan resultado eficaces, según los recursos disponibles.','Se organizará un seguimiento regular con metas parciales, evitando reproducir sin cambios las estrategias del curso anterior.','Se valorarán las evidencias actuales conforme a los criterios aplicables y se revisará si las nuevas medidas favorecen la recuperación de los aprendizajes no adquiridos.'],
+ pending:['Se indicarán los aprendizajes de la materia pendiente, los materiales de referencia y la forma de acceso a los recursos de recuperación.','Se establecerá un itinerario de recuperación centrado en los aprendizajes no adquiridos, con actividades y orientaciones ajustadas al plan de la materia.','Se seleccionarán materiales de recuperación y consulta vinculados a los aprendizajes pendientes, con instrucciones claras sobre su uso.','Se concretarán los plazos y los momentos de seguimiento previstos en el plan de recuperación, evitando concentrar todo el trabajo al final del curso.','Se recogerán las evidencias previstas en el plan de recuperación, con revisión del progreso y valoración conforme a los criterios y la programación aplicables.']
+};
+const DETAIL=[
+ 'Se comprobará que el alumnado sabe localizar y utilizar los materiales y se ajustará la información ofrecida en función de las barreras que persistan.',
+ 'Tras las actividades de comprobación se proporcionarán orientaciones concretas sobre qué se ha adquirido, qué necesita revisión y cuál será el siguiente paso.',
+ 'Se revisará la utilidad de los materiales y se mantendrán los apoyos que faciliten el aprendizaje, retirándolos de forma gradual cuando dejen de ser necesarios.',
+ 'Se establecerán momentos de revisión de la eficacia de las medidas y, cuando proceda, se coordinarán las actuaciones con tutoría y el equipo docente.',
+ 'Se utilizarán evidencias variadas y se informará de los aspectos que se van a valorar. El seguimiento del programa permitirá decidir qué medidas conviene mantener, modificar o retirar, sin confundir los indicadores de progreso con los criterios de calificación.'
+];
+const PENDING={
+ booklet:['Se facilitará el cuadernillo de recuperación y se indicarán las referencias de consulta correspondientes a cada bloque.','Se trabajará mediante un cuadernillo de actividades secuenciadas, combinando ejercicios de consolidación y aplicación.','Se utilizará el cuadernillo de recuperación junto con los materiales de consulta indicados en cada bloque.','Se organizará el trabajo del cuadernillo conforme a los plazos acordados, con momentos de revisión.','Se revisarán las actividades del cuadernillo para recoger evidencias del aprendizaje conforme al plan de recuperación.'],
+ platform:['Los materiales y avisos estarán disponibles en la plataforma educativa del centro.','Se realizarán las actividades previstas en la plataforma educativa, con orientaciones para su realización.','Se utilizarán los recursos digitales publicados en la plataforma, organizados por bloques.','Se utilizarán los canales de la plataforma para consultar plazos y resolver dudas según la organización del centro.','Se revisarán las evidencias de aprendizaje recogidas en las actividades de la plataforma.'],
+ exam:['Se informará con antelación de los contenidos de referencia y del formato de la prueba prevista.','Se realizarán actividades de preparación y comprobación de los aprendizajes que se evaluarán en la prueba.','Se facilitarán referencias y ejemplos de práctica para preparar la prueba de recuperación.','Se comunicará con antelación la fecha de la prueba y se establecerán momentos de consulta.','Se realizará la prueba escrita prevista en el plan de recuperación, valorando las evidencias conforme a los criterios aplicables.'],
+ practical:['Se facilitarán las instrucciones y referencias necesarias para realizar las tareas prácticas previstas.','Se propondrán tareas prácticas o proyectos de recuperación vinculados a los aprendizajes pendientes.','Se indicarán los materiales y recursos necesarios para realizar las actividades prácticas o proyectos.','Se organizarán los espacios, recursos y plazos de las tareas prácticas de acuerdo con su planificación.','Se recogerán evidencias de las tareas prácticas o proyectos mediante los instrumentos previstos en la programación.'],
+ current:['Se indicará qué aprendizajes de la materia actual pueden servir como referencia para la recuperación, conforme al plan establecido.','Se aprovecharán actividades de la materia actual que permitan evidenciar los aprendizajes pendientes cuando así esté previsto.','Se utilizarán los materiales de la materia actual que resulten pertinentes para los aprendizajes pendientes.','Se coordinará el seguimiento con la dinámica de la materia actual de acuerdo con el plan de recuperación.','Se tendrán en cuenta las evidencias de la materia actual cuando el plan de recuperación lo contemple y sean pertinentes para los criterios pendientes.']
+};
+function pendingTexts(i){let a=[];for(const id of Object.keys(PENDING))if($('p_'+id).checked)a.push(PENDING[id][i]);if($('p_deliver').checked){const n=$('p_number').value;const word=({1:'una entrega',2:'dos entregas',3:'tres entregas',other:'varias entregas'})[n];a.push(['Se facilitarán orientaciones y referencias de consulta para '+word+'.','El trabajo se estructurará en '+word+' con objetivos y fechas previamente establecidos.','Se organizarán los materiales de referencia por bloques correspondientes a '+word+'.','Se distribuirá la recuperación en '+word+', con plazos realistas y revisión del progreso antes de continuar.','Se revisarán las evidencias correspondientes a '+word+', proporcionando retroalimentación para orientar la siguiente fase.'][i]);}if($('p_cursa').value==='no')a.push(['Se indicará expresamente cómo contactar con el profesorado responsable para resolver dudas.','','Se facilitará un canal de consulta y materiales suficientes para el trabajo autónomo.','Al no cursar actualmente la materia, se concretarán un canal y momentos de atención individualizada.','Se realizará un seguimiento individualizado de las evidencias previstas en el plan de recuperación.'][i]);return a.filter(Boolean);}
+function sentence(x){x=String(x).trim();return x?x.replace(/[.]+$/,'')+'.':'';}
+// Concise V1.3: whole sentences, priority to explicit teacher choices,
+// coverage across the five fields and no arbitrary mid-sentence truncation.
+const COMPACT_BASE={
+ difficulty:['Se facilitará el acceso a los aprendizajes que necesitan refuerzo mediante orientaciones ajustadas a las dificultades observadas.','Se reforzarán los aprendizajes no adquiridos mediante práctica guiada y revisión de errores.','Se seleccionarán materiales de refuerzo adecuados a las dificultades detectadas.','El refuerzo se integrará en las sesiones habituales, con momentos de apoyo y revisión.','Se valorarán los aprendizajes reforzados conforme a los criterios aplicables y se revisará el progreso.'],
+ neae:['Se facilitará el acceso a los contenidos mediante los apoyos acordados para las barreras observadas.','Se ajustarán las actividades a las necesidades observadas, favoreciendo la participación y la autonomía.','Se emplearán recursos accesibles y apoyos acordados con los profesionales implicados cuando proceda.','Se ajustarán espacios, tiempos y agrupamientos a las necesidades individuales y a las medidas acordadas.','Se aplicarán los ajustes de acceso acordados y se mantendrán los criterios de evaluación aplicables.'],
+ repeat:['Se partirá de las dificultades del curso anterior, ofreciendo nuevas vías de acceso a los contenidos.','Se reforzarán los aprendizajes no adquiridos con estrategias diferentes de las que no resultaron eficaces el curso anterior.','Se seleccionarán materiales de refuerzo alternativos a los que no resultaron eficaces el curso anterior.','Se establecerán metas parciales y revisiones regulares para evitar repetir estrategias ineficaces del curso anterior.','Se valorarán las evidencias actuales conforme a los criterios aplicables y se revisará la eficacia de las nuevas medidas.'],
+ pending:['Se indicarán los aprendizajes pendientes y las referencias de consulta necesarias para recuperarlos.','Se trabajarán los aprendizajes pendientes conforme al plan de recuperación de la materia.','Se facilitarán los materiales de consulta y recuperación previstos en el plan.','Se concretarán plazos y momentos de seguimiento del plan de recuperación.','Se valorarán las evidencias conforme a los criterios pendientes y al plan de recuperación.']
+};
+const wc=s=>s.trim()?s.trim().split(/\s+/).length:0;
+const joinEs=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' y '+a.at(-1);
+function lengthBand(mode,count){
+  const preset={brief:[34,50],normal:[60,90],long:[100,140]}[mode];
+  let [min,max]=preset;
+  if(count>=5){min+=6;max+=8;}
+  if(count>=8){min+=6;max+=10;}
+  if(count>=12){min+=4;max+=10;}
+  if(mode==='brief'){max=Math.min(max,72);}
+  if(mode==='normal'){max=Math.min(max,118);}
+  if(mode==='long'){max=Math.min(max,165);}
+  return [min,max];
+}
+// V1.6: teacher-selected access resources are explicit, not inferred.
+function platformName(){const p=$('platform').value;return ({moodle:'Moodle',classroom:'Google Classroom',both:'Moodle y Google Classroom',generic:'la plataforma educativa del centro'})[p]||(p==='other'?cleanText($('platformother').value).replace(/\s+/g,' ').trim():'');}
+function accessLines(){const platform=platformName(), out=[];
+ if(platform)out.push(sentence(platform==='la plataforma educativa del centro'?'Plataforma educativa del centro: materiales y orientaciones de consulta':'Plataforma educativa: '+platform));
+ if($('access_book').checked)out.push('Libro de texto.');
+ if($('access_copies').checked)out.push('Fotocopias con actividades de refuerzo del aprendizaje.');
+ if($('access_schemes').checked)out.push('Esquemas, resúmenes y mapas conceptuales realizados en clase.');
+ return out;
+}
+function syncPlatform(){const other=$('platform').value==='other';$('platformotherwrap').hidden=!other;$('p_platform').disabled=!platformName();if($('p_platform').disabled)$('p_platform').checked=false;syncPending();}
+function dashLines(lines){return [...new Set(lines.flatMap(s=>cleanText(s).split('\n')).map(s=>s.trim().replace(/^[-–—]+\s*/, '').trim()).filter(Boolean))].map(s=>'- '+s).join('\n');}
+function pendingCompact(i){
+ const selected=id=>$('p_'+id).checked&&(id!=='platform'||(i!==0&&!!platformName()));
+ const opts={booklet:['el cuadernillo de recuperación','actividades del cuadernillo','el cuadernillo','momentos de revisión del cuadernillo','las actividades del cuadernillo'],platform:['','actividades de recuperación en '+platformName(),'recursos de '+platformName(),'consultas por '+platformName(),'las actividades de recuperación en '+platformName()],exam:['las referencias y el formato de la prueba escrita','ejercicios de preparación de la prueba escrita','ejemplos para preparar la prueba escrita','la fecha y preparación de la prueba escrita','la prueba escrita prevista'],practical:['las instrucciones de las prácticas o proyectos','prácticas o proyectos de recuperación','materiales para prácticas o proyectos','los plazos y espacios de las prácticas o proyectos','las prácticas o proyectos'],current:['las referencias de la materia actual pertinentes para la recuperación','actividades pertinentes de la materia actual','materiales pertinentes de la materia actual','seguimiento durante la materia actual','las evidencias pertinentes de la materia actual']};
+ const parts=Object.keys(opts).filter(selected).map(k=>opts[k][i]);
+ const res=[];if(parts.length){const singular=parts.length===1&&/^(el |la |seguimiento )/.test(parts[0]);res.push(sentence((singular?['Se facilitará ','Se realizará ','Se utilizará ','Se organizará ','Se tendrá en cuenta ']:['Se facilitarán ','Se realizarán ','Se utilizarán ','Se organizarán ','Se tendrán en cuenta '])[i]+joinEs(parts)));}
+ if(selected('deliver')){const n=({1:'una entrega',2:'dos entregas',3:'tres entregas',other:'varias entregas'})[$('p_number').value]+($('p_period').value==='term'?' según el calendario trimestral':'');res.push(sentence(['Se indicarán los materiales para '+n,'El trabajo se organizará en '+n+' con objetivos y fechas','Los materiales se organizarán para '+n,'Se fijarán plazos y revisiones para '+n,'Se revisarán las evidencias de '+n][i]));}
+ if($('p_cursa').value==='no'&&i!==1&&(i!==3||$('p_channel').value==='unknown'))res.push(['Se indicará cómo contactar con el profesorado responsable.','','Se facilitará material para el trabajo autónomo.','Al no cursar actualmente la materia, se fijarán un canal y momentos de consulta.','Se realizará un seguimiento individualizado de la recuperación.'][i]);
+ return [...res,...pendingExtra(i)];
+}
+const SIMILAR=[['comprender','consigna','autonomia'],['consolidar','recuperar','ritmo'],['razonar','transferir','procedimientos'],['organizar','plazos','estudio'],['revision','precision','seguimiento'],['atencion','autorregular','transiciones'],['motivacion','confianza','iniciativa'],['visual','sensorial','tecnologia'],['oral','comunicar'],['idioma','vocabulario','incorporacion'],['asistencia','incorporacion']];
+const closeNeeds=(a,b)=>a===b||SIMILAR.some(g=>g.includes(a)&&g.includes(b));
+let proposalCoverage=null;
+
+const EVAL_OPTIONS=[['written','Pruebas escritas'],['observation','Observación directa y sistemática'],['tasks','Actividades y tareas de clase'],['notebook','Cuaderno del alumnado'],['projects','Trabajos y proyectos'],['practice','Prácticas de taller o laboratorio'],['oral','Exposiciones y pruebas orales'],['rubrics','Rúbricas y listas de cotejo'],['digital','Cuestionarios digitales'],['portfolio','Portfolio o carpeta de aprendizaje']];
+const selectedEval=()=>EVAL_OPTIONS.filter(([id])=>$('ev_'+id).checked);
+function evalLines(){return selectedEval().map(([,name])=>sentence(name));}
+function evalCompatible(item){const ids=new Set(selectedEval().map(([id])=>id));if(!ids.size)return true;const needs={escritura:['rubrics'],oral:['observation','oral'],autonomia:['observation'],transiciones:['observation'],atencion:['observation'],participar:['observation','rubrics'],procedimientos:['observation','practice']};return !needs[item.id]||needs[item.id].every(id=>ids.has(id));}
+function buildEval(){for(const [id,name] of EVAL_OPTIONS){const l=node('label','check'),c=node('input');c.type='checkbox';c.id='ev_'+id;c.onchange=change;l.append(c,document.createTextNode(' '+name));$('evalchoices').append(l);}}
+const PREF_KEY='ti-pra-preferences-v17';
+const prefIds=['stage','course','subject','platform','length','access_book','access_copies','access_schemes',...EVAL_OPTIONS.map(([id])=>'ev_'+id)];
+function prefSnapshot(){return Object.fromEntries(prefIds.map(id=>{const e=$(id);return [id,e.type==='checkbox'?e.checked:e.value];}));}
+async function prefRead(){try{return extension?(await chrome.storage.local.get(PREF_KEY))[PREF_KEY]:JSON.parse(localStorage.getItem(PREF_KEY)||'null');}catch{return null;}}
+async function prefWrite(value){try{if(extension){if(value)await chrome.storage.local.set({[PREF_KEY]:value});else await chrome.storage.local.remove(PREF_KEY);}else{if(value)localStorage.setItem(PREF_KEY,JSON.stringify(value));else localStorage.removeItem(PREF_KEY);}return true;}catch{return false;}}
+function applyPrefs(p){if(!p)return;const set=id=>{const e=$(id),v=p[id];if(e.type==='checkbox'){e.checked=v===true;}else if([...e.options].some(o=>o.value===v))e.value=v;};set('stage');setStage();prefIds.filter(id=>id!=='stage').forEach(set);$('otherwrap').hidden=$('subject').value!=='Otra materia o ámbito';syncPlatform();syncPending();renderSelection();}
+let savedPrefs=null;
+async function loadPrefs(){const p=await prefRead();if(p&&typeof p==='object'){savedPrefs=p;applyPrefs(p);$('remember').checked=true;$('saveprefs').disabled=false;$('prefstatus').textContent='Preferencias recuperadas.';}}
+function syncPending(){const d=$('p_deliver').checked;$('p_numberwrap').hidden=!d;$('p_periodwrap').hidden=!d;$('p_formatwrap').hidden=!$('p_booklet').checked;$('p_current').disabled=$('p_cursa').value==='no';if($('p_current').disabled)$('p_current').checked=false;for(const o of $('p_channel').options)if(['platform','both'].includes(o.value))o.disabled=!platformName();if($('p_channel').selectedOptions[0]?.disabled)$('p_channel').value='unknown';$('p_channel').querySelector('[value="class"]').disabled=$('p_cursa').value==='no';if($('p_channel').selectedOptions[0]?.disabled)$('p_channel').value='unknown';$('p_review').disabled=!d;if(!d)$('p_review').checked=false;}
+function pendingExtra(i){let a=[];const fmt={paper:'en papel',digital:'en formato digital',both:'en papel y en formato digital'}[$('p_format').value];if($('p_booklet').checked&&fmt&&i===0)a.push('El cuadernillo de recuperación se facilitará '+fmt+'.');if($('p_deliver').checked&&$('p_review').checked&&i===3)a.push('Se ofrecerá orientación y revisión en torno a cada entrega, con indicaciones para continuar el trabajo.');if($('p_deliver').checked&&$('p_review').checked&&i===4)a.push('Se revisarán los avances tras cada entrega y se concretarán los aprendizajes que requieran nueva práctica.');const channel={class:'durante las clases de la materia',platform:'a través de '+platformName(),tutorial:'en el horario de atención acordado',both:'a través de '+platformName()+' y en el horario de atención acordado'}[$('p_channel').value];if(channel&&i===3)a.push('Las dudas se atenderán '+channel+'.');return a;}
+
+function makeProposal(variants={}){
+ const items=all.filter(a=>selection().has(a.id)),mode=$('length').value,sub=subject(),ctx=CONTEXT.find(c=>c[0].test(sub))?.[1];
+ const limits=lengthBand(mode,items.length);
+ const prefixes=['Como apoyo, se podrán utilizar ','Se podrán incorporar ','Se podrán emplear ','Se considerará la siguiente organización: ','Se podrán recoger '];
+ const counts=new Map(items.map(x=>[x.id,0]));
+ const fields=BANK_FIELDS.map((f,i)=>({i,base:[...(i===0?accessLines():i===4?evalLines():[]),COMPACT_BASE[type][i],...(type==='pending'?pendingCompact(i):[])],lines:[],used:[],context:ctx?sentence(prefixes[i]+ctx[i][0].toLowerCase()+ctx[i].slice(1)):'',detail:mode==='long'?DETAIL[i]:''}));
+ const cost=f=>wc([...f.base,...f.lines].join(' '));
+ // Start with subject context in standard/detailed if there is room for measures too.
+ for(const f of fields)if(f.context&&mode!=='brief'&&cost(f)+wc(f.context)<=limits[0]-28)f.base.push(f.context);
+ // Distribute measures across fields, favoring teacher-added needs and those not yet represented.
+ // Related needs are normally placed in different fields rather than restating the same idea.
+ const fieldOrder=[1,0,4,3,2];
+ for(let round=0;round<12;round++){
+   let progress=false;
+   for(const i of fieldOrder){const f=fields[i];if(cost(f)>=limits[0])continue;
+     const choices=items.filter(x=>!f.used.includes(x.id)&&!f.used.some(y=>closeNeeds(y,x.id)))
+       .map(x=>({x,text:sentence(x.measures[i]),score:(counts.get(x.id)===0?100:0)+(manual.get(x.id)===true?25:0)-counts.get(x.id)*15}))
+       .filter(c=>(i!==4||evalCompatible(c.x))&&!f.base.includes(c.text)&&!f.lines.includes(c.text)&&cost(f)+wc(c.text)<=limits[1])
+       .sort((a,b)=>b.score-a.score||wc(a.text)-wc(b.text));
+     if(variants[i]&&choices.length>1){const best=choices.filter(c=>c.score>=choices[0].score-25);if(best.length>1){const offset=variants[i]%best.length;choices.splice(0,0,...choices.splice(offset,1));}}
+     if(!choices.length)continue;const c=choices[0];f.lines.push(c.text);f.used.push(c.x.id);counts.set(c.x.id,counts.get(c.x.id)+1);progress=true;
+   }if(!progress)break;
+ }
+ // Add a relevant contextual sentence or a detailed follow-up only if not already present and it fits.
+ for(const f of fields){if(f.context&&!f.base.includes(f.context)&&cost(f)+wc(f.context)<=limits[1]&&cost(f)<limits[0])f.lines.push(f.context);if(f.detail&&cost(f)+wc(f.detail)<=limits[1]&&cost(f)<limits[0])f.lines.push(f.detail);}
+ proposalCoverage={total:items.length,covered:[...counts.values()].filter(n=>n>0).length,missing:items.filter(x=>counts.get(x.id)===0).map(x=>x.label)};
+ return FIELD_ORDER.map(i=>fields[i]).map(f=>dashLines([...f.base,...f.lines,...(f.i===1&&$('extra').value.trim()?[$('extra').value]:[])]));
+}
+
+const revisions=[0,0,0,0,0], originalFields=['','','','',''];
+function setField(i,text){const a=$('field'+i);a.value=cleanText(text);a.nextElementSibling.textContent=a.value;updateCount(i);renderMeasures(i);}
+function currentMeasures(i){return cleanText($('field'+i).value).split('\n').map(s=>s.trim()).filter(Boolean);}
+function editedNotice(){if(generated){$('summary').textContent=$('summary').textContent.split(' · objetivo orientativo')[0]+' · Propuesta modificada: comprueba que todas las necesidades estén atendidas.';}}
+function renderMeasures(i){const list=$('measurelist'+i);if(!list)return;list.replaceChildren();currentMeasures(i).forEach((s,k)=>{const r=node('div','measureline'),t=node('span','',s),b=node('button','secondary','×');b.type='button';b.title='Eliminar esta medida';b.setAttribute('aria-label','Eliminar medida '+(k+1));b.onclick=()=>{const a=currentMeasures(i);a.splice(k,1);setField(i,a.join('\n'));editedNotice();};r.append(t,b);list.append(r);});}
+function fieldTools(w,h,i){const regen=node('button','secondary','↻ Alternativa');regen.type='button';regen.title='Generar una alternativa solo para este apartado';regen.onclick=async()=>{if(!generated||dirty){status('Genera primero la propuesta actualizada.');return;}if(!await ask('¿Sustituir únicamente este apartado? Los otros cuatro no cambiarán.'))return;const old=cleanText($('field'+i).value);const saved=proposalCoverage;let next=old;for(let k=0;k<8&&next===old;k++){revisions[i]++;next=makeProposal({[FIELD_ORDER[i]]:revisions[i]})[i];}proposalCoverage=saved;if(next===old){status('No hay otra combinación distinta con esta selección. Puedes añadir o editar medidas.');return;}setField(i,next);editedNotice();status('Apartado actualizado; los demás no han cambiado.');};h.insertBefore(regen,h.lastChild);const d=node('details','measuretools'),s=node('summary','','Gestionar medidas / añadir propia'),list=node('div','measurelist');list.id='measurelist'+i;const add=node('div','addmeasure'),input=node('textarea');input.rows=2;input.maxLength=600;input.placeholder='Escribe una medida para este apartado';input.setAttribute('aria-label','Nueva medida');const b=node('button','secondary','Añadir medida'),restore=node('button','link','Restaurar texto generado');b.onclick=()=>{if(!input.value.trim())return;setField(i,dashLines([...currentMeasures(i),input.value]));input.value='';editedNotice();};restore.onclick=async()=>{if(await ask('¿Restaurar el texto inicial de este apartado?')){setField(i,originalFields[i]);editedNotice();}};add.append(input,b);d.append(s,list,add,restore);w.append(d);d.addEventListener('toggle',()=>{if(d.open)renderMeasures(i);});w.querySelector('textarea').addEventListener('input',()=>{renderMeasures(i);editedNotice();});}
+
+function updateCount(i){$('chars'+i).textContent=cleanText($('field'+i).value).length.toLocaleString('es-ES')+' caracteres';}
+async function generate(){if(!$('generate').disabled){if(generated&&!await ask('Se sustituirán los textos actuales por una nueva propuesta. ¿Continuar?'))return;const values=makeProposal();values.forEach((v,i)=>{originalFields[i]=v;revisions[i]=0;setField(i,v);});const n=selection().size,mode=$('length').value;const context=[$('stage').value,$('course').value!=='Sin especificar'?$('course').value:'',subject()].filter(Boolean).join(' · ');const band=lengthBand(mode,n);$('summary').textContent=context+' · '+TYPES.find(t=>t[0]===type)[1]+' · '+n+' necesidades · objetivo orientativo por apartado: '+band[0]+'-'+band[1]+' palabras'+(proposalCoverage.missing.length?` · ${proposalCoverage.covered} de ${n} necesidades con medidas expresas; sin medida específica: ${proposalCoverage.missing.join('; ')}. Revisa o elige una extensión mayor.`:'');$('empty').hidden=true;$('output').hidden=false;generated=true;dirty=false;$('stale').textContent='';['fill','copyall','word','pdf'].forEach(x=>$(x).disabled=false);document.querySelectorAll('.addmeasure textarea').forEach(e=>e.value='');status('Propuesta generada. Revisa los cinco apartados.');if(innerWidth<901)$('results').scrollIntoView({behavior:'smooth'});}}
+function values(){return FIELDS.map((_,i)=>cleanText($('field'+i).value));}function status(s){$('status').textContent=s;}async function copy(t){t=cleanText(t);try{if(navigator.clipboard&&isSecureContext)await navigator.clipboard.writeText(t);else{const e=node('textarea');e.value=t;document.body.append(e);e.select();if(!document.execCommand('copy'))throw Error();e.remove();}status('Texto copiado.');}catch{status('No se pudo copiar automáticamente. Selecciona y copia el texto manualmente.');}}
+function allText(){return FIELDS.map((f,i)=>f[1]+'\n'+values()[i]).join('\n\n');}
+async function reset(){if((type||generated||selection().size)&&!await ask('¿Limpiar toda la selección y la propuesta?'))return;type='';profiles.clear();manual.clear();generated=false;dirty=false;$('extra').value='';$('search').value='';onlySelected=false;$('onlyselected').setAttribute('aria-pressed','false');$('onlyselected').textContent='Ver marcadas';$('stage').value='ESO';setStage();$('other').value='';$('length').value='normal';$('platform').value='';$('platformother').value='';document.querySelectorAll('.accessmaterials input').forEach(x=>x.checked=false);syncPlatform();document.querySelectorAll('#pendingopts input').forEach(x=>x.checked=false);$('p_number').value='3';$('p_numberwrap').hidden=true;$('p_cursa').value='unknown';$('p_current').disabled=false;$('p_format').value='unknown';$('p_period').value='periodic';$('p_channel').value='unknown';document.querySelectorAll('#evalchoices input').forEach(x=>x.checked=false);if($('remember').checked&&savedPrefs)applyPrefs(savedPrefs);syncPending();$('stale').textContent='';$('output').hidden=true;$('empty').hidden=false;FIELDS.forEach((_,i)=>{originalFields[i]='';revisions[i]=0;setField(i,'');});document.querySelectorAll('.addmeasure textarea').forEach(e=>e.value='');document.querySelectorAll('.measuretools').forEach(e=>e.open=false);status('');filter();renderSelection();}
+function filter(){const q=$('search').value.toLocaleLowerCase('es').normalize('NFD').replace(/\p{Diacritic}/gu,'').trim();document.querySelectorAll('.group').forEach(g=>{let visible=0;g.querySelectorAll('.need').forEach(l=>{const t=(byId[l.dataset.id].label+' '+byId[l.dataset.id].help).toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');l.hidden=(!!q&&!t.includes(q))||(onlySelected&&!selection().has(l.dataset.id));if(!l.hidden)visible++;});g.hidden=!visible;if((q||onlySelected)&&visible)g.open=true;});}
+// Minimal OOXML package writer (stored ZIP, no remote libraries).
+const encoder=new TextEncoder();function crc32(a){let c=-1;for(const b of a){c^=b;for(let k=0;k<8;k++)c=(c>>>1)^((c&1)?0xedb88320:0);}return(c^-1)>>>0;}
+function zip(files){let chunks=[],central=[],off=0,cs=0;for(const [name,text] of Object.entries(files)){const n=encoder.encode(name),d=encoder.encode(text),crc=crc32(d),l=new Uint8Array(30+n.length),v=new DataView(l.buffer);v.setUint32(0,0x04034b50,true);v.setUint16(4,20,true);v.setUint32(14,crc,true);v.setUint32(18,d.length,true);v.setUint32(22,d.length,true);v.setUint16(26,n.length,true);l.set(n,30);chunks.push(l,d);const c=new Uint8Array(46+n.length),cv=new DataView(c.buffer);cv.setUint32(0,0x02014b50,true);cv.setUint16(4,20,true);cv.setUint16(6,20,true);cv.setUint32(16,crc,true);cv.setUint32(20,d.length,true);cv.setUint32(24,d.length,true);cv.setUint16(28,n.length,true);cv.setUint32(42,off,true);c.set(n,46);central.push(c);off+=l.length+d.length;cs+=c.length;}const end=new Uint8Array(22),e=new DataView(end.buffer);e.setUint32(0,0x06054b50,true);e.setUint16(8,central.length,true);e.setUint16(10,central.length,true);e.setUint32(12,cs,true);e.setUint32(16,off,true);return new Blob([...chunks,...central,end],{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});}
+const xml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c])).replace(/[\x00-\x08\x0b\x0c\x0e-\x1f]/g,'');function word(){const p=(s,b=false,size=22)=>`<w:p><w:pPr><w:spacing w:after="100"/></w:pPr><w:r><w:rPr>${b?'<w:b/>':''}<w:sz w:val="${size}"/></w:rPr><w:t xml:space="preserve">${xml(s)}</w:t></w:r></w:p>`;let body=p('TECNOLOGÍA INSTI · GENERADOR PRA',true,28)+p('Propuesta curricular · Documento de trabajo',true,24)+p($('summary').textContent);FIELDS.forEach((f,i)=>{body+=p(f[1],true,24)+values()[i].split('\n').map(s=>p(s)).join('');});body+=p('Propuesta orientativa. Revisar y adaptar antes de incorporar a Séneca.');const files={'[Content_Types].xml':'<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>','_rels/.rels':'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>','word/document.xml':'<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+body+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134"/></w:sectPr></w:body></w:document>'};const url=URL.createObjectURL(zip(files)),a=node('a');a.href=url;a.download='Tecnologia_Insti_PRA.docx';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);}
+// Connector: only exact form fields, no credentials, no submission.
+function formAction(ids,operation,data,expected){const matches=ids.map(id=>{const elements=[...new Set([...document.querySelectorAll(`[id="${id}"], textarea[name="${id}"]`)])];return elements.length===1&&elements[0] instanceof HTMLTextAreaElement&&!elements[0].readOnly&&!elements[0].disabled?elements[0]:null;});if(matches.some(e=>!e))return {ok:false};const before=matches.map(e=>e.value);if(operation==='probe')return{ok:true,before};if(expected&&before.some((v,i)=>v!==expected[i]))return{ok:false,changed:true};if(data.some((s,i)=>matches[i].maxLength>=0&&s.length>matches[i].maxLength))return{ok:false,tooLong:true};const setter=Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,'value').set;try{matches.forEach((e,i)=>setter.call(e,data[i]));matches.forEach(e=>{e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));});if(matches.some((e,i)=>e.value!==data[i]))throw Error('verification');return{ok:true,before,after:matches.map(e=>e.value)};}catch{matches.forEach((e,i)=>{setter.call(e,before[i]);e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));});return{ok:false};}}
+
+// V1.5.1: whitespace-only Séneca fields are empty, not existing content.
+function mergeField(existing,incoming){
+ const previous=String(existing).replace(/^[\s\u200b\u200c\u200d\u2060\ufeff]+|[\s\u200b\u200c\u200d\u2060\ufeff]+$/g,'');
+ const next=cleanText(incoming);
+ if(!cleanText(previous))return next;
+ const key=line=>line.trim().replace(/^[-–—]+\s*/, '').trim();
+ const known=new Set(cleanText(previous).split('\n').map(key).filter(Boolean));
+ const added=next.split('\n').filter(line=>key(line)&&!known.has(key(line))).join('\n').trim();
+ return [previous,added].filter(Boolean).join('\n');
+}
+async function fill(){if(dirty||!generated)return;const data=values();if(data.some(v=>!v.trim())){status('Completa los cinco apartados antes de trasladar.');return;}const ids=FIELDS.map(f=>f[0]);try{const tabs=await chrome.tabs.query({url:['https://seneca.juntadeandalucia.es/*','https://www.juntadeandalucia.es/educacion/seneca/*']});let hits=[];for(const t of tabs.filter(t=>sourceTab===null||t.id===sourceTab)){try{const r=await chrome.scripting.executeScript({target:{tabId:t.id,allFrames:true},func:formAction,args:[ids,'probe',null,null]});for(const x of r)if(x.result?.ok)hits.push({tabId:t.id,frameId:x.frameId,documentId:x.documentId,before:x.result.before});}catch{}}if(hits.length!==1){status(hits.length?'Se han localizado varios formularios PRA compatibles. Deja solo el que quieras rellenar. No se ha escrito nada.':'No se ha encontrado un formulario con los cinco campos editables. Abre Propuesta curricular del PRA en Séneca. No se ha escrito nada.');return;}const h=hits[0],append=$('append').checked,merged=append?h.before.map((s,i)=>mergeField(s,data[i])):data;if(!await ask(`Se ${append?'añadirá texto a':'sustituirá el texto de'} los cinco campos del único formulario localizado (${h.before.filter(s=>cleanText(s)).length} contienen texto). Verifica que el PRA abierto es el correcto. ¿Continuar?`))return;const target=h.documentId?{tabId:h.tabId,documentIds:[h.documentId]}:{tabId:h.tabId,frameIds:[h.frameId]};const r=await chrome.scripting.executeScript({target,func:formAction,args:[ids,'write',merged,h.before]});if(!r[0]?.result?.ok){status(r[0]?.result?.tooLong?'Algún campo supera la longitud permitida. No se ha escrito nada.':'El formulario cambió o no pudo verificarse. Revisa Séneca.');return;}lastTransfer={target,before:h.before,after:r[0].result.after};$('undo').disabled=false;status('Cinco campos trasladados. Revisa el contenido en Séneca y guarda manualmente.');if(embedded){await chrome.scripting.executeScript({target:{tabId:h.tabId},func:()=>{const overlay=document.getElementById('ti-pra-overlay-v15');if(overlay)overlay.hidden=true;}});}await chrome.tabs.update(h.tabId,{active:true});}catch(e){status('No se pudo completar el traslado. Revisa el formulario y los permisos de la extensión.');}}
+async function undo(){if(!lastTransfer||!await ask('¿Restaurar los textos anteriores? Solo se hará si los campos siguen sin cambios.'))return;try{const r=await chrome.scripting.executeScript({target:lastTransfer.target,func:formAction,args:[FIELDS.map(f=>f[0]),'write',lastTransfer.before,lastTransfer.after]});if(!r[0]?.result?.ok){status('No se puede restaurar: el formulario cambió o ya no está abierto.');return;}lastTransfer=null;$('undo').disabled=true;status('Textos anteriores restaurados.');}catch{status('No se pudo restaurar el formulario.');}}
+buildEval();build();$('platform').onchange=()=>{syncPlatform();change();};$('platformother').oninput=()=>{syncPlatform();change();};document.querySelectorAll('.accessmaterials input').forEach(x=>x.onchange=change);syncPlatform();document.querySelectorAll('#pendingopts input,#pendingopts select').forEach(x=>x.addEventListener('change',()=>{syncPending();change();}));$('stage').onchange=setStage;$('subject').onchange=()=>{$('otherwrap').hidden=$('subject').value!=='Otra materia o ámbito';change();};['course','other','extra','length'].forEach(id=>$(id).addEventListener(id==='other'||id==='extra'?'input':'change',change));$('search').oninput=filter;$('onlyselected').onclick=()=>{onlySelected=!onlySelected;$('onlyselected').setAttribute('aria-pressed',String(onlySelected));$('onlyselected').textContent=onlySelected?'Ver todas':'Ver marcadas';filter();};$('expand').onclick=()=>{const ds=[...document.querySelectorAll('.group:not([hidden])')],open=ds.some(d=>!d.open);ds.forEach(d=>d.open=open);$('expand').textContent=open?'Contraer todo':'Desplegar todo';};$('generate').onclick=generate;$('reset').onclick=reset;$('copyall').onclick=()=>copy(allText());$('word').onclick=word;$('pdf').onclick=()=>window.print();$('connector').hidden=!extension;$('webnotice').hidden=extension;$('fill').onclick=fill;$('undo').onclick=undo;setStage();renderSelection();
+
+$('remember').onchange=async()=>{const on=$('remember').checked;$('saveprefs').disabled=!on;if(!on){savedPrefs=null;const ok=await prefWrite(null);$('prefstatus').textContent=ok?'Preferencias eliminadas.':'No se pudo eliminar el almacenamiento local.';}else $('prefstatus').textContent='Pulsa Guardar preferencias para conservar la configuración habitual.';};$('saveprefs').onclick=async()=>{if(!$('remember').checked)return;const p=prefSnapshot();if(await prefWrite(p)){savedPrefs=p;$('prefstatus').textContent='Preferencias guardadas en este dispositivo.';}else $('prefstatus').textContent='No se pudo guardar en este navegador.';};loadPrefs();
+</script></body></html>

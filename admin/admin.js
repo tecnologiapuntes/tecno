@@ -6,6 +6,7 @@
   const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
   const POSTS_PATH = "assets/posts.js";
   const CMS_PATH = "assets/cms-posts.json";
+  const SITEMAP_PATH = "sitemap.xml";
   const MENU_PATH = "assets/cms-menu.json";
   const VIDEOS_PATH = "assets/cms-videos.json";
   const SITE_PATH = "assets/cms-site.json";
@@ -332,6 +333,25 @@
     await github(`/git/refs/heads/${encodeURIComponent(state.branch)}`,{method:"PATCH",body:JSON.stringify({sha:next.sha,force:false})});
     return next.sha;
   }
+  // V59: sitemap y contenido se guardan en el mismo commit desde el navegador.
+  // Si la tarea programada de GitHub usa GITHUB_TOKEN, puede actualizar el
+  // repositorio sin disparar otro despliegue de Pages. El commit del CMS sí.
+  async function sitemapBlobFor(legacy,cms) {
+    let paths=["index.html","cuaderno-seneca.html","videotutoriales-ia.html"];
+    try {
+      const head=await github(`/git/ref/heads/${encodeURIComponent(state.branch)}`);
+      const commit=await github(`/git/commits/${head.object.sha}`);
+      const tree=await github(`/git/trees/${commit.tree.sha}?recursive=1`);
+      if(!tree.truncated)paths=(tree.tree||[]).filter(p=>p.type==="blob" && p.path.endsWith(".html")).map(p=>p.path);
+    } catch(error) {
+      console.warn("No se pudo consultar el árbol HTML completo para el sitemap; se incluirán las páginas principales.",error);
+    }
+    return createGitBlob(window.TI_SITEMAP_V59.build(legacy,cms,paths));
+  }
+  async function addSitemapChange(changes,legacy,cms) {
+    const sha=await sitemapBlobFor(legacy,cms);
+    changes.push({path:SITEMAP_PATH,sha});
+  }
   function setBusy(busy) {
     state.busy=busy;
     el("savePost").disabled=busy;
@@ -423,6 +443,8 @@
       }
       const postsBlob=await createGitBlob(JSON.stringify(cms,null,2)+"\n");
       changes.push({path:CMS_PATH,sha:postsBlob});
+      status("saveStatus","Actualizando el índice de Google junto con la publicación…");
+      await addSitemapChange(changes,data.legacy,cms);
       status("saveStatus","Guardando todos los cambios en un único commit…");
       await atomicCommit(changes,`${state.editingId?"Actualizar":"Crear"} publicación: ${title.slice(0,80)}`);
       state.posts=combined;
@@ -450,7 +472,9 @@
       cms.updatedAt=new Date().toISOString();
       const others=mergePosts(data.legacy,cms);
       const sha=await createGitBlob(JSON.stringify(cms,null,2)+"\n");
-      await atomicCommit([{path:CMS_PATH,sha}],`Eliminar publicación: ${p.title.slice(0,80)}`);
+      const changes=[{path:CMS_PATH,sha}];
+      await addSitemapChange(changes,data.legacy,cms);
+      await atomicCommit(changes,`Eliminar publicación: ${p.title.slice(0,80)}`);
       state.posts=others;renderList();
       alert("Publicación eliminada del listado de la web.");
     }catch(e){alert(errMessage(e));}
@@ -1010,7 +1034,19 @@
     document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
   }
   function setToolsBusy(busy){
-    for(const id of ["backupExport","backupRestore","diagRun"])el(id).disabled=busy;
+    for(const id of ["backupExport","backupRestore","diagRun","sitemapRefresh"])el(id).disabled=busy;
+  }
+  async function refreshSitemap(){
+    if(state.busy)return;
+    state.busy=true;setToolsBusy(true);
+    status("sitemapStatus","Consultando las publicaciones y generando el índice para Google…");
+    try{
+      const remote=await latestData();
+      const sha=await sitemapBlobFor(remote.legacy,remote.cms);
+      await atomicCommit([{path:SITEMAP_PATH,sha}],"Actualizar índice sitemap para Google Search Console");
+      status("sitemapStatus","Sitemap actualizado en GitHub. Se publicará con el siguiente despliegue de GitHub Pages.","success");
+    }catch(e){status("sitemapStatus",errMessage(e),"error");}
+    finally{state.busy=false;setToolsBusy(false);}
   }
   async function exportBackup(){
     if(state.busy)return;
@@ -1063,6 +1099,10 @@
         changes.push({path,sha});
       }
       if(!changes.length)throw Error("Esta copia no contiene datos para restaurar.");
+      if(data.files[CMS_PATH]){
+        const legacy=await readRemotePosts();
+        await addSitemapChange(changes,legacy,data.files[CMS_PATH]);
+      }
       await atomicCommit(changes,`Restaurar copia de datos TecnologíaInsti (${data.exportedAt||"V56"})`);
       await refreshPosts();
       status("backupStatus","Copia restaurada en un commit nuevo. Actualiza la página pública cuando GitHub Pages termine de publicarla.","success");
@@ -1201,6 +1241,7 @@
     });
     el("videoCancel").addEventListener("click",()=>el("videoForm").hidden=true);
     el("videoForm").addEventListener("submit",saveVideo);
+    el("sitemapRefresh").addEventListener("click",refreshSitemap);
     el("menuAddTop").addEventListener("click",()=>openMenuForm());
     el("menuAddChild").addEventListener("click",()=>openMenuForm(null,state.menu.items[0]?.id||""));
     el("menuTree").addEventListener("click",e=>{
