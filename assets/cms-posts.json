@@ -115,6 +115,18 @@
         "assets/posts/web-8-ideas-para-evaluar-sin-examen-con-gemini-y-cha-mwtqfc6z-mwtqfd6k-nxq9go4.webp",
         "assets/posts/web-8-ideas-para-evaluar-sin-examen-con-gemini-y-cha-mwtqfc6z-mwtqfdak-49acomb.webp"
       ]
+    },
+    {
+      "id": "web-generador-de-pra-para-seneca-simplifica-la-elabo-mwwgnjyj",
+      "title": "# 📚 Generador de PRA para Séneca: simplifica la elaboración de tus programas de refuerzo",
+      "category": "Utilidades Séneca",
+      "excerpt": "# 📚 Generador de PRA para Séneca: simplifica la elaboración de tus programas de refuerzo Elaborar los Programas de Refuerzo del Aprendizaje (PRA) puede suponer una importante carga administrativa para el profesorado. Por eso, des",
+      "created": "2026-11-25",
+      "content": "# 📚 Generador de PRA para Séneca: simplifica la elaboración de tus programas de refuerzo\nElaborar los **Programas de Refuerzo del Aprendizaje (PRA)** puede suponer una importante carga administrativa para el profesorado.\nPor eso, desde **TecnologíaInsti** he desarrollado una herramienta gratuita que permite generar propuestas educativas personalizadas, facilitar su redacción y ahorrar tiempo en la preparación de los cinco apartados que debemos cumplimentar en Séneca.\nEstá pensada especialmente para el **profesorado de Andalucía**, con una interfaz sencilla, sin necesidad de registro y sin utilizar inteligencia artificial.\n\n## 🎯 ¿Qué puedes hacer con el generador?\n✅ **Cuatro situaciones educativas:** elaborar propuestas para alumnado con dificultades de aprendizaje, necesidades específicas de apoyo educativo (NEAE), alumnado repetidor y materias pendientes.\n✅ **14 perfiles y 36 necesidades educativas:** seleccionar las necesidades que mejor se ajusten a cada situación.\n✅ **Personalización por materia:** adaptar las propuestas a la etapa educativa, el curso y la asignatura o ámbito.\n✅ **Recursos y evaluación:** seleccionar plataformas educativas, materiales de apoyo e instrumentos de evaluación.\n✅ **Materias pendientes:** configurar cuadernillos, actividades de recuperación, entregas periódicas, pruebas y mecanismos de seguimiento.\n✅ **Cinco apartados de Séneca:** generar las propuestas en el mismo orden que aparece en la plataforma.\n✅ **Edición completa:** modificar textos, añadir o eliminar medidas y generar alternativas para cada apartado de manera independiente.\n✅ **Exportación de documentos:** copiar los textos, descargarlos en Word o imprimirlos y guardarlos como PDF.\n✅ **Preferencias docentes:** recordar opcionalmente la configuración habitual para agilizar futuras propuestas.\n\n## 🌐 Utiliza gratuitamente el generador online\n**¡La versión web ya está disponible!**\nPuedes acceder desde tu navegador, sin instalar nada y sin registrarte.\n👉 [ABRIR GENERADOR DE PRA PARA SÉNECA](https://tecnologiapuntes.github.io/tecno/herramientas/generador-pra/)\nSelecciona el motivo del programa, configura las necesidades educativas y pulsa **«Generar propuesta»**. Después podrás revisar y personalizar los cinco apartados antes de copiarlos a Séneca.\n\n## 🧩 Próximamente: extensión para Google Chrome\n\nTambién he desarrollado una **extensión para Google Chrome**, actualmente pendiente de aprobación en Chrome Web Store.\nEsta versión permitirá abrir el generador directamente desde Séneca y **trasladar automáticamente los textos a los cinco apartados correspondientes**, siempre después de la revisión y confirmación del docente.\nMientras tanto, la versión web es completamente funcional para generar, editar, copiar y exportar las propuestas.\n\n## 🔒 Privacidad y seguridad\nLa herramienta es **gratuita, no requiere registro y no utiliza inteligencia artificial**.\nEl contenido de los PRA se procesa en el propio navegador, sin enviarse a servidores externos. Si el usuario lo autoriza, únicamente se guardan preferencias generales de configuración en su dispositivo.\nNo es necesario introducir nombres ni otros datos personales del alumnado.\n\n## ⚠️ Información importante\nEsta es una **herramienta independiente y no oficial**, desarrollada desde TecnologíaInsti, sin vinculación con la Junta de Andalucía.\nLos textos generados son propuestas orientativas de apoyo al profesorado. Deben revisarse y adaptarse a las necesidades reales del alumnado, a las medidas educativas acordadas y a los criterios de evaluación aplicables.\n💡 **¿Tienes alguna sugerencia de mejora?**\nLa herramienta seguirá evolucionando para facilitar el trabajo diario del profesorado. Cualquier propuesta o comentario será bienvenido.\n**TecnologíaInsti**\n*Imagina. Diseña. Construye. Aprende.*",
+      "sourceLinks": [],
+      "published": 1,
+      "tags": [],
+      "image": "assets/posts/web-generador-de-pra-para-seneca-simplifica-la-elabo-mwwgnjyj-mwwgnk2d-quwpacp.webp"
     }
   ],
   "hiddenIds": [
@@ -122,5 +134,5 @@
     "intro-project",
     "intro-prompt"
   ],
-  "updatedAt": "2026-11-23T20:42:31.052Z"
+  "updatedAt": "2026-11-25T18:32:15.446Z"
 }
