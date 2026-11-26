@@ -127,6 +127,22 @@
       "published": 1,
       "tags": [],
       "image": "assets/posts/web-generador-de-pra-para-seneca-simplifica-la-elabo-mwwgnjyj-mwwgnk2d-quwpacp.webp"
+    },
+    {
+      "id": "web-rosco-4d-andalucia-aprendemos-jugando-mwy56e1b",
+      "title": "🟢⚪ ROSCO 4D ANDALUCÍA | ¡Aprendemos jugando!",
+      "category": "Utilidades Séneca",
+      "excerpt": "¡Celebra el 4 de diciembre, Día de la Bandera de Andalucía, con un rosco interactivo inspirado en Pasapalabra! 🎮 Una herramienta gratuita para repasar conocimientos sobre Andalucía de forma divertida, tanto individualmente como p",
+      "created": "2026-11-26",
+      "content": "¡Celebra el **4 de diciembre, Día de la Bandera de Andalucía**, con un rosco interactivo inspirado en *Pasapalabra*! 🎮\nUna herramienta gratuita para repasar conocimientos sobre Andalucía de forma divertida, tanto individualmente como por equipos.\n🎯 **¿QUÉ INCLUYE?**\n✅ **216 preguntas** sobre Andalucía en 4 niveles de dificultad.\n✅ **Juego individual o duelo** entre dos equipos, con preguntas diferentes.\n✅ **Dos vistas:** rosco clásico o dos roscos simultáneos.\n✅ **Dos formas de responder:** escribiendo la respuesta o mediante corrección del docente desde la PDI.\n✅ **Cronómetros**, comodines, cambios de turno y botón Deshacer.\n✅ **Vista previa**, resultados finales, diplomas y repaso de errores.\n\n📝 **¡CREA TU PROPIO ROSCO!**\nLo más interesante es su **editor docente**, con el que puedes modificar las 216 preguntas, respuestas y pistas, o adaptarlas a cualquier materia.\n💻 **Edita desde casa, descarga tu rosco personalizado en un único archivo HTML y utilízalo en cualquier ordenador o PDI, incluso sin Internet.**\nSin registros, instalaciones ni conocimientos de programación. Además, incluye instrucciones para el profesorado.\n\n🌐 **¡PRUÉBALO AQUÍ!**\n[HAC CLIC AQUÍ](https://tecnologiapuntes.github.io/roscoandalucia/)\n\n💚🤍 ¡Espero que os resulte útil para celebrar el 4D y poner a prueba cuánto sabemos de nuestra tierra!\n**@tecnologiainsti**",
+      "sourceLinks": [],
+      "published": 1,
+      "tags": [],
+      "image": "assets/posts/web-rosco-4d-andalucia-aprendemos-jugando-mwy56e1b-mwy56e5z-y4q1gw3.webp",
+      "images": [
+        "assets/posts/web-rosco-4d-andalucia-aprendemos-jugando-mwy56e1b-mwy56e5z-y4q1gw3.webp",
+        "assets/posts/web-rosco-4d-andalucia-aprendemos-jugando-mwy56e1b-mwy56eai-2rghpoa.webp"
+      ]
     }
   ],
   "hiddenIds": [
@@ -134,5 +150,5 @@
     "intro-project",
     "intro-prompt"
   ],
-  "updatedAt": "2026-11-25T18:32:15.446Z"
+  "updatedAt": "2026-11-26T22:46:31.386Z"
 }
